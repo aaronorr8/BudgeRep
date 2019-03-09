@@ -65,9 +65,9 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         super.viewDidLoad()
         
 //SET NAVIGATION BAR BUTTON AND TITLE COLOR
-        UINavigationBar.appearance().tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        UINavigationBar.appearance().tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         //UINavigationBar.appearance().barTintColor = bgColorGradient1
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)]
         
         /*let remainingAmount = budgetRemainingG[myIndexG]
         if remainingAmount >= 0.0 {
