@@ -193,6 +193,9 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
+        
+        
+        
         return CGSize(width: view.frame.width - 10, height: 110.0)
     }
     
@@ -270,6 +273,12 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! BudgetCollectionViewCell
         let emptyCell = collectionView.dequeueReusableCell(withReuseIdentifier: "emptyCell", for: indexPath) as! BudgetCollectionViewCell
+        
+        //Set cell border
+        cell.contentView.layer.borderWidth = 1.0
+        cell.contentView.layer.cornerRadius = 8.0
+        cell.contentView.layer.borderColor = UIColor.darkGray.cgColor
+        
         
         if budgetNameG.count == 0 {
             return emptyCell
