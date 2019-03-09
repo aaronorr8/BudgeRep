@@ -8,20 +8,59 @@
 
 /* Begin PBXBuildFile section */
 		0DA4370322332E5200110700 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA4370222332E5200110700 /* AppDelegate.swift */; };
-		0DA4370522332E5200110700 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA4370422332E5200110700 /* ViewController.swift */; };
-		0DA4370822332E5200110700 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DA4370622332E5200110700 /* Main.storyboard */; };
-		0DA4370A22332E5300110700 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DA4370922332E5300110700 /* Assets.xcassets */; };
 		0DA4370D22332E5300110700 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DA4370B22332E5300110700 /* LaunchScreen.storyboard */; };
+		0DA4371522332EA400110700 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DA4371422332EA400110700 /* GoogleService-Info.plist */; };
+		0DA43717223331AB00110700 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DA43716223331AB00110700 /* Main.storyboard */; };
+		0DA437342233336E00110700 /* BudgetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA437332233336E00110700 /* BudgetsViewController.swift */; };
+		0DA437372233339E00110700 /* BudgetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA437362233339E00110700 /* BudgetCollectionViewCell.swift */; };
+		0DA43739223333AD00110700 /* BudgetCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA43738223333AD00110700 /* BudgetCollectionReusableView.swift */; };
+		0DA4373B223333C000110700 /* WavyProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA4373A223333C000110700 /* WavyProgressView.swift */; };
+		0DA4373D223333D200110700 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA4373C223333D200110700 /* CircularProgressView.swift */; };
+		0DA4373F223333E000110700 /* FooterBudgetCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA4373E223333E000110700 /* FooterBudgetCollectionView.swift */; };
+		0DA43742223333F200110700 /* AddBudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA43740223333F100110700 /* AddBudgetViewController.swift */; };
+		0DA43743223333F200110700 /* AddSpendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA43741223333F200110700 /* AddSpendViewController.swift */; };
+		0DA437462233340A00110700 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA437442233340900110700 /* HistoryTableViewCell.swift */; };
+		0DA437472233340A00110700 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA437452233340A00110700 /* HistoryViewController.swift */; };
+		0DA4374B2233343000110700 /* AddReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA437482233342E00110700 /* AddReminderViewController.swift */; };
+		0DA4374C2233343000110700 /* RemindersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA437492233342F00110700 /* RemindersTableViewCell.swift */; };
+		0DA4374D2233343000110700 /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA4374A2233343000110700 /* RemindersViewController.swift */; };
+		0DA437502233349300110700 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA4374F2233349300110700 /* SettingsViewController.swift */; };
+		0DA43753223334C800110700 /* SignInUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA43752223334C700110700 /* SignInUpViewController.swift */; };
+		0DA437562233354100110700 /* ReminderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA437552233354100110700 /* ReminderItem.swift */; };
+		25A933E7C5DAD6DF2D222780 /* Pods_BudgeAppMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C778C86DABD18BCB8E509DC /* Pods_BudgeAppMaster.framework */; };
+		4326BF34223347D4002B501D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326BF33223347D4002B501D /* ViewController.swift */; };
+		4393F83F2233FBA8004CD359 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4393F83E2233FBA8004CD359 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0DA436FF22332E5200110700 /* BudgeAppMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BudgeAppMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DA4370222332E5200110700 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0DA4370422332E5200110700 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0DA4370722332E5200110700 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0DA4370922332E5300110700 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0DA4370C22332E5300110700 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0DA4370E22332E5300110700 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0DA4371422332EA400110700 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		0DA43716223331AB00110700 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		0DA4371B223332CB00110700 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0DA437332233336E00110700 /* BudgetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetsViewController.swift; sourceTree = "<group>"; };
+		0DA437362233339E00110700 /* BudgetCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetCollectionViewCell.swift; sourceTree = "<group>"; };
+		0DA43738223333AD00110700 /* BudgetCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetCollectionReusableView.swift; sourceTree = "<group>"; };
+		0DA4373A223333C000110700 /* WavyProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WavyProgressView.swift; sourceTree = "<group>"; };
+		0DA4373C223333D200110700 /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		0DA4373E223333E000110700 /* FooterBudgetCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterBudgetCollectionView.swift; sourceTree = "<group>"; };
+		0DA43740223333F100110700 /* AddBudgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBudgetViewController.swift; sourceTree = "<group>"; };
+		0DA43741223333F200110700 /* AddSpendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSpendViewController.swift; sourceTree = "<group>"; };
+		0DA437442233340900110700 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		0DA437452233340A00110700 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		0DA437482233342E00110700 /* AddReminderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReminderViewController.swift; sourceTree = "<group>"; };
+		0DA437492233342F00110700 /* RemindersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersTableViewCell.swift; sourceTree = "<group>"; };
+		0DA4374A2233343000110700 /* RemindersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
+		0DA4374F2233349300110700 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		0DA43752223334C700110700 /* SignInUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInUpViewController.swift; sourceTree = "<group>"; };
+		0DA437552233354100110700 /* ReminderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderItem.swift; sourceTree = "<group>"; };
+		4326BF33223347D4002B501D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "Data Model/ViewController.swift"; sourceTree = "<group>"; };
+		4393F83E2233FBA8004CD359 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4DAF6C3356B20D0714001DF0 /* Pods-BudgeAppMaster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BudgeAppMaster.release.xcconfig"; path = "Pods/Target Support Files/Pods-BudgeAppMaster/Pods-BudgeAppMaster.release.xcconfig"; sourceTree = "<group>"; };
+		6C778C86DABD18BCB8E509DC /* Pods_BudgeAppMaster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BudgeAppMaster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD8C2B23E7AA693730F0A2EE /* Pods-BudgeAppMaster.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BudgeAppMaster.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BudgeAppMaster/Pods-BudgeAppMaster.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25A933E7C5DAD6DF2D222780 /* Pods_BudgeAppMaster.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +80,8 @@
 			children = (
 				0DA4370122332E5200110700 /* BudgeAppMaster */,
 				0DA4370022332E5200110700 /* Products */,
+				BE04710EF740D23C1AFB61DB /* Pods */,
+				64AC9071C417182E3D7E145C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +97,96 @@
 			isa = PBXGroup;
 			children = (
 				0DA4370222332E5200110700 /* AppDelegate.swift */,
-				0DA4370422332E5200110700 /* ViewController.swift */,
-				0DA4370622332E5200110700 /* Main.storyboard */,
-				0DA4370922332E5300110700 /* Assets.xcassets */,
-				0DA4370B22332E5300110700 /* LaunchScreen.storyboard */,
+				0DA4371A223332CA00110700 /* Data Model */,
+				4326BF33223347D4002B501D /* ViewController.swift */,
+				0DA4371C223332ED00110700 /* Views */,
+				0DA437352233337300110700 /* Budgets */,
+				0DA4374E2233343500110700 /* Reminders */,
+				0DA437512233349800110700 /* Settings */,
+				0DA43754223334CB00110700 /* SignIn */,
 				0DA4370E22332E5300110700 /* Info.plist */,
+				0DA4371422332EA400110700 /* GoogleService-Info.plist */,
 			);
 			path = BudgeAppMaster;
+			sourceTree = "<group>";
+		};
+		0DA4371A223332CA00110700 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				0DA437552233354100110700 /* ReminderItem.swift */,
+				0DA4371B223332CB00110700 /* ViewController.swift */,
+			);
+			path = "Data Model";
+			sourceTree = "<group>";
+		};
+		0DA4371C223332ED00110700 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0DA43716223331AB00110700 /* Main.storyboard */,
+				4393F83E2233FBA8004CD359 /* Assets.xcassets */,
+				0DA4370B22332E5300110700 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0DA437352233337300110700 /* Budgets */ = {
+			isa = PBXGroup;
+			children = (
+				0DA437332233336E00110700 /* BudgetsViewController.swift */,
+				0DA437362233339E00110700 /* BudgetCollectionViewCell.swift */,
+				0DA43738223333AD00110700 /* BudgetCollectionReusableView.swift */,
+				0DA4373A223333C000110700 /* WavyProgressView.swift */,
+				0DA4373C223333D200110700 /* CircularProgressView.swift */,
+				0DA4373E223333E000110700 /* FooterBudgetCollectionView.swift */,
+				0DA43740223333F100110700 /* AddBudgetViewController.swift */,
+				0DA43741223333F200110700 /* AddSpendViewController.swift */,
+				0DA437442233340900110700 /* HistoryTableViewCell.swift */,
+				0DA437452233340A00110700 /* HistoryViewController.swift */,
+			);
+			path = Budgets;
+			sourceTree = "<group>";
+		};
+		0DA4374E2233343500110700 /* Reminders */ = {
+			isa = PBXGroup;
+			children = (
+				0DA4374A2233343000110700 /* RemindersViewController.swift */,
+				0DA437482233342E00110700 /* AddReminderViewController.swift */,
+				0DA437492233342F00110700 /* RemindersTableViewCell.swift */,
+			);
+			path = Reminders;
+			sourceTree = "<group>";
+		};
+		0DA437512233349800110700 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				0DA4374F2233349300110700 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		0DA43754223334CB00110700 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				0DA43752223334C700110700 /* SignInUpViewController.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		64AC9071C417182E3D7E145C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6C778C86DABD18BCB8E509DC /* Pods_BudgeAppMaster.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BE04710EF740D23C1AFB61DB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AD8C2B23E7AA693730F0A2EE /* Pods-BudgeAppMaster.debug.xcconfig */,
+				4DAF6C3356B20D0714001DF0 /* Pods-BudgeAppMaster.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +196,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0DA4371122332E5300110700 /* Build configuration list for PBXNativeTarget "BudgeAppMaster" */;
 			buildPhases = (
+				65245ABF5FB5C971571A193F /* [CP] Check Pods Manifest.lock */,
 				0DA436FB22332E5200110700 /* Sources */,
 				0DA436FC22332E5200110700 /* Frameworks */,
 				0DA436FD22332E5200110700 /* Resources */,
+				33D155BFEAA607B5FED5D86B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,34 +250,104 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DA4370D22332E5300110700 /* LaunchScreen.storyboard in Resources */,
-				0DA4370A22332E5300110700 /* Assets.xcassets in Resources */,
-				0DA4370822332E5200110700 /* Main.storyboard in Resources */,
+				0DA43717223331AB00110700 /* Main.storyboard in Resources */,
+				0DA4371522332EA400110700 /* GoogleService-Info.plist in Resources */,
+				4393F83F2233FBA8004CD359 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		33D155BFEAA607B5FED5D86B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BudgeAppMaster/Pods-BudgeAppMaster-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BudgeAppMaster/Pods-BudgeAppMaster-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		65245ABF5FB5C971571A193F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BudgeAppMaster-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0DA436FB22332E5200110700 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DA4370522332E5200110700 /* ViewController.swift in Sources */,
+				0DA4373F223333E000110700 /* FooterBudgetCollectionView.swift in Sources */,
+				4326BF34223347D4002B501D /* ViewController.swift in Sources */,
+				0DA4374B2233343000110700 /* AddReminderViewController.swift in Sources */,
+				0DA43742223333F200110700 /* AddBudgetViewController.swift in Sources */,
+				0DA4373B223333C000110700 /* WavyProgressView.swift in Sources */,
+				0DA437472233340A00110700 /* HistoryViewController.swift in Sources */,
+				0DA43739223333AD00110700 /* BudgetCollectionReusableView.swift in Sources */,
+				0DA437502233349300110700 /* SettingsViewController.swift in Sources */,
+				0DA4374C2233343000110700 /* RemindersTableViewCell.swift in Sources */,
+				0DA4373D223333D200110700 /* CircularProgressView.swift in Sources */,
+				0DA437562233354100110700 /* ReminderItem.swift in Sources */,
+				0DA43753223334C800110700 /* SignInUpViewController.swift in Sources */,
+				0DA437342233336E00110700 /* BudgetsViewController.swift in Sources */,
+				0DA43743223333F200110700 /* AddSpendViewController.swift in Sources */,
+				0DA437462233340A00110700 /* HistoryTableViewCell.swift in Sources */,
 				0DA4370322332E5200110700 /* AppDelegate.swift in Sources */,
+				0DA437372233339E00110700 /* BudgetCollectionViewCell.swift in Sources */,
+				0DA4374D2233343000110700 /* RemindersViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0DA4370622332E5200110700 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0DA4370722332E5200110700 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0DA4370B22332E5300110700 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -280,6 +477,7 @@
 		};
 		0DA4371222332E5300110700 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD8C2B23E7AA693730F0A2EE /* Pods-BudgeAppMaster.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +496,7 @@
 		};
 		0DA4371322332E5300110700 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DAF6C3356B20D0714001DF0 /* Pods-BudgeAppMaster.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
