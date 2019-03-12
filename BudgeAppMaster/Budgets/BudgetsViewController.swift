@@ -28,13 +28,11 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    
     var gradientLayer: CAGradientLayer!
     var roundButton = UIButton()
     var totalBudgetsAllocation = 0.0
     var totalBudgetsAvailable = 0.0
     var amt: Int = 0
-    
 
     let hiddenBgColor = UIColor.clear
     let visibleBgColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -53,9 +51,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         
         db = Firestore.firestore()
         
-        
-        
-        
+       
         //Show login screen if user isn't logged in
         let currentUser = Auth.auth().currentUser
         if currentUser == nil {
@@ -67,6 +63,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(BudgetsViewController.handleLongGesture))
         self.collectionView.addGestureRecognizer(longPressGesture)
+        
         
     }
     
@@ -155,6 +152,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
             //MARK: HEADER TOTAL REMAINING
             let amount = Double(amt/100) + Double(amt%100)/100
             headerView.totalRemainingBudget.text = String(convertDoubleToCurency(amount: totalBudgetsAvailable))
+            self.navigationItem.title = String(convertDoubleToCurency(amount: totalBudgetsAvailable))
             
             
             //MARK: HEADER PROGRESS BAR
