@@ -35,9 +35,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     var totalBudgetsAvailable = 0.0
     var amt: Int = 0
     
-    //MARK: FOR HEADER WHEN SCROLLING
-//    let duration = 0.3
-//    let offset = scrollView.contentOffset.y
+
     let hiddenBgColor = UIColor.clear
     let visibleBgColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     let hiddenTitleColor = UIColor.clear
@@ -56,18 +54,13 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         db = Firestore.firestore()
         
         
+        
+        
         //Show login screen if user isn't logged in
         let currentUser = Auth.auth().currentUser
         if currentUser == nil {
             self.performSegue(withIdentifier: "goToLogin", sender: self)
         }
-        
-        
-        for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
-            print("\(key) = \(value) \n")
-        }
-        
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]
         
         
         collectionView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom:15, right: 0)
@@ -82,45 +75,10 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         super.viewWillAppear(animated)
         fireStoreListener()
         
-        
-        //MARK: HIDE NAVIGATION BAR
-//        UIApplication.shared.statusBarStyle = .lightContent
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
-//        UIApplication.shared.statusBarView?.backgroundColor = UIColor.clear
-        
-       
-        
-        //MARK: SET BACKGROUND COLOR
-//        createGradientLayer()
-        //self.view.backgroundColor = bgColorSolid
-        
-        //self.tabBarController?.navigationItem.title = "Profile Settings"
-        
-        //MARK: SHOW VISIBLE NAV BAR WHEN RETURNING TO VIEW IF SCROLLED
-        if hideNav == false {
-            self.navigationController?.navigationBar.backgroundColor = self.visibleBgColor
-//            UIApplication.shared.statusBarView?.backgroundColor = self.visibleBgColor
-            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: self.visibleTitleColor]
-            self.navigationController?.navigationBar.tintColor = self.visibleTitleColor
-            self.navigationController?.navigationBar.shadowImage = UIImage(named: "shadowImage")
-//            UIApplication.shared.statusBarStyle = .default
-        } else {
-//            UIApplication.shared.statusBarStyle = .lightContent
-            self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-            self.navigationController?.navigationBar.shadowImage = UIImage()
-            self.navigationController?.navigationBar.backgroundColor = UIColor.clear
-//            UIApplication.shared.statusBarView?.backgroundColor = UIColor.clear
-        }
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
-
-//        createUserDefaults()
-//        collectionView.reloadData()
         calculateTotalAvailable()
         calculateTotalAllocation()
         
@@ -130,24 +88,13 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
    
-//    func createGradientLayer() {
-//        gradientLayer = CAGradientLayer()
-//        gradientLayer.frame = self.view.bounds
-//        gradientLayer.colors = [bgColorGradient1.cgColor, bgColorGradient2.cgColor]
-//        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-//        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
-//        self.view.layer.insertSublayer(gradientLayer, at: 0)
-//    }
-    
-    
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset.y)
         
         let duration = 0.3
         let offset = scrollView.contentOffset.y
         
-        if offset > -25 {
+        if offset > -40 {
             hideNav = false
         } else {
             hideNav = true
@@ -157,8 +104,6 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         
             UIView.animate(withDuration: 0.5, animations: {
                 self.navigationController?.navigationBar.backgroundColor = self.hiddenBgColor
-//                UIApplication.shared.statusBarStyle = .lightContent
-//                UIApplication.shared.statusBarView?.backgroundColor = self.hiddenBgColor
                 self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: self.hiddenTitleColor]
                 self.navigationController?.navigationBar.tintColor = self.hiddenTitleColor
                 self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -169,8 +114,6 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
             
             UIView.animate(withDuration: 0.5, animations: {
                 self.navigationController?.navigationBar.backgroundColor = self.visibleBgColor
-//                UIApplication.shared.statusBarStyle = .default
-//                UIApplication.shared.statusBarView?.backgroundColor = self.visibleBgColor
                 self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: self.visibleTitleColor]
                 self.navigationController?.navigationBar.tintColor = self.visibleTitleColor
                 self.navigationController?.navigationBar.shadowImage = UIImage(named: "shadowImage")
@@ -192,8 +135,6 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        
         
         
         return CGSize(width: view.frame.width - 10, height: 110.0)
@@ -253,10 +194,6 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         }
     }
     
-//    func addNewBudget(sender: UIButton) {
-//        print("It Works!")
-//    }
-    
     
     //MARK: HIDE ADD BUDGET BUTTON IF EMPTY
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
@@ -291,8 +228,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         //MARK: CELL VIEW LABELS
         cell.budgetNameLabel.text = budgetNameG[indexPath.row]
         cell.budgetRemainingLabel.text = "\(String(convertDoubleToCurency(amount: budgetRemainingG[indexPath.row])))"
-//        cell.budgetRemainingLabel.text = "\(String(convertDoubleToCurency(amount: budgetAmountG[indexPath.row] - (budgetHistoryAmountG[budgetNameG[indexPath.row]]!.reduce(0, +)))))"
-        
+   
         
         //MARK: PROGRESS BAR LABELS
         let selectedBudget = budgetNameG[indexPath.row]
@@ -320,22 +256,15 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if budgetNameG.count == 0 {
-            print("Empty")
         } else {
-        
-        myIndexG = indexPath.row
-        
-        switchView()
-        print(myIndexG)
+            myIndexG = indexPath.row
+            switchView()
         }
     }
     
 
     func calculateTotalAvailable() {
-        
-//        let amount = Double(amt/100) + Double(amt%100)/100
-//        totalBudgetsAvailable = budgetRemainingG.reduce(0, +)
-        
+
         let array = Array(budgetHistoryAmountG.values)
         let flatArray = array.flatMap {$0}
         let history = flatArray.reduce(0, +)
@@ -347,7 +276,6 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     func calculateTotalAllocation() {
         
         totalBudgetsAllocation = budgetAmountG.reduce(0, +)
-        print("totalBudgetAllocation: \(totalBudgetsAllocation)")
     }
     
     
@@ -370,16 +298,13 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         let item3 = budgetRemainingG[sourceIndexPath.row]
         budgetRemainingG.remove(at: sourceIndexPath.row)
         budgetRemainingG.insert(item3, at: destinationIndexPath.row)
-        
-//        setUserDefaults()
+
         saveToFireStore()
         
     }
    
     
     func addNewBudgetHandler(alert: UIAlertAction) {
-        //let newView = AddBillViewController()
-        //self.navigationController?.pushViewController(newView, animated: true)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "EditBudget")
         self.present(viewController, animated: true)
@@ -415,8 +340,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "AddSpendNav")
         self.present(viewController, animated: true)
-        
-        print("tap")
+       
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -475,38 +399,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
             rolloverTotalG = defaults.object(forKey: "RolloverTotal") as! Double
             print("User Defaults rolloverTotalG: \(defaults.object(forKey: "RolloverTotal") as! Double)")
         }
-//        if UserDefaults.standard.object(forKey: "ReminderName") != nil {
-//            reminderNameG = defaults.object(forKey: "ReminderName") as! [String]
-//            print("User Defaults ReminderName: \(defaults.object(forKey: "ReminderName") as! [String])")
-//        }
-//        if UserDefaults.standard.object(forKey: "ReminderDone") != nil {
-//            reminderDoneG = defaults.object(forKey: "ReminderDone") as! [Bool]
-//            print("User Defaults ReminderDone: \(defaults.object(forKey: "ReminderDone") as! [Bool])")
-//        }
-//        if UserDefaults.standard.object(forKey: "ReminderAmount") != nil {
-//            reminderAmountG = defaults.object(forKey: "ReminderAmount") as! [Double]
-//            print("User Defaults ReminderAmount: \(defaults.object(forKey: "ReminderAmount") as! [Double])")
-//        }
-//        if UserDefaults.standard.object(forKey: "ReminderLinkedBudget") != nil {
-//            reminderLinkedBudgetG = defaults.object(forKey: "ReminderLinkedBudget") as! [String]
-//            print("User Defaults ReminderLinkedBudget: \(defaults.object(forKey: "ReminderLinkedBudget") as! [String])")
-//        }
-//        if UserDefaults.standard.object(forKey: "ReminderDate") != nil {
-//            reminderDateG = defaults.object(forKey: "ReminderDate") as! [Int]
-//            print("User Defaults ReminderDate: \(defaults.object(forKey: "ReminderDate") as! [Int])")
-//        }
-//        if UserDefaults.standard.object(forKey: "ReminderRepeat") != nil {
-//            reminderRepeatG = defaults.object(forKey: "ReminderRepeat") as! [Bool]
-//            print("User Defaults ReminderRepeat: \(defaults.object(forKey: "ReminderRepeat") as! [Bool])")
-//        }
-//        if UserDefaults.standard.object(forKey: "ReminderNotification") != nil {
-//            reminderNotificationG = defaults.object(forKey: "ReminderNotification") as! [Bool]
-//            print("User Defaults ReminderNotification: \(defaults.object(forKey: "ReminderNotification") as! [Bool])")
-//        }
-//        if UserDefaults.standard.object(forKey: "ReminderNoteID") != nil {
-//            reminderNoteIDG = defaults.object(forKey: "ReminderNoteID") as! [Int]
-//            print("User Defaults ReminderNoteID: \(defaults.object(forKey: "ReminderNoteID") as! [Int])")
-//        }
+
         if UserDefaults.standard.object(forKey: "NotificationID") != nil {
             notificationIDG = defaults.object(forKey: "NotificationID") as! Int
             print("User Defaults NotificationID: \(defaults.object(forKey: "NotificationID") as! Int)")
@@ -564,9 +457,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
                     budgetHistoryTimeG = document.get("budgetHistoryTime") as! [String : [String]]
                     budgetRemainingG = document.get("budgetRemaining") as! [Double]
                     totalSpentG = document.get("totalSpent") as! Double
-                    
-                    print("Current data: \(data)")
-                    
+                   
                     self.collectionView.reloadData()
                     self.calculateTotalAvailable()
                     self.calculateTotalAllocation()

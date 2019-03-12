@@ -35,6 +35,10 @@ class SettingsViewController: UIViewController {
     
     
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         UIApplication.shared.applicationIconBadgeNumber = 0
         print("clear badge")
