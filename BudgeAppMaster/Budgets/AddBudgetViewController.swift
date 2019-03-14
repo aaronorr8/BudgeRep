@@ -198,31 +198,10 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
         
         setNavigationBarColor()
         
-        
-////SET NAVIGATION BAR GRADIENT
-//        let gradient = CAGradientLayer()
-//        let sizeLength = UIScreen.main.bounds.size.height * 2
-//        let defaultNavigationBarFrame = CGRect(x: 0, y: 0, width: sizeLength, height: 64)
-//        gradient.frame = defaultNavigationBarFrame
-//        gradient.colors = [bgColorGradient1.cgColor, bgColorGradient2.cgColor]
-//        gradient.startPoint = CGPoint(x: 1, y: 1)
-//        gradient.endPoint = CGPoint(x: 0, y: 0)
-//
-//        UINavigationBar.appearance().setBackgroundImage(self.image(fromLayer: gradient), for: .default)
+      
     }
     
-    //FOR NAVIGATION BAR GRADIENT
-//    func image(fromLayer layer: CALayer) -> UIImage {
-//        UIGraphicsBeginImageContext(layer.frame.size)
-//
-//        layer.render(in: UIGraphicsGetCurrentContext()!)
-//
-//        let outputImage = UIGraphicsGetImageFromCurrentImageContext()
-//
-//        UIGraphicsEndImageContext()
-//
-//        return outputImage!
-//    }
+   
     
     func setNavigationBarColor() {
         let barView = UIView(frame: CGRect(x:0, y:0, width:view.frame.width, height:UIApplication.shared.statusBarFrame.height))

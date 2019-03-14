@@ -133,13 +133,13 @@
 			isa = PBXGroup;
 			children = (
 				0DA437332233336E00110700 /* BudgetsViewController.swift */,
+				0DA43740223333F100110700 /* AddBudgetViewController.swift */,
+				0DA43741223333F200110700 /* AddSpendViewController.swift */,
 				0DA437362233339E00110700 /* BudgetCollectionViewCell.swift */,
 				0DA43738223333AD00110700 /* BudgetCollectionReusableView.swift */,
 				0DA4373A223333C000110700 /* WavyProgressView.swift */,
 				0DA4373C223333D200110700 /* CircularProgressView.swift */,
 				0DA4373E223333E000110700 /* FooterBudgetCollectionView.swift */,
-				0DA43740223333F100110700 /* AddBudgetViewController.swift */,
-				0DA43741223333F200110700 /* AddSpendViewController.swift */,
 				0DA437442233340900110700 /* HistoryTableViewCell.swift */,
 				0DA437452233340A00110700 /* HistoryViewController.swift */,
 			);

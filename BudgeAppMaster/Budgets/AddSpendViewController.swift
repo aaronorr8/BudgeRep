@@ -64,6 +64,13 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         
         super.viewDidLoad()
         
+        //Add underline to text fields
+        let bottomLine = CALayer()
+        bottomLine.frame = CGRect(origin: CGPoint(x: 0, y:spendAmount.frame.height - 1), size: CGSize(width: spendAmount.frame.width, height:  1))
+        bottomLine.backgroundColor = UIColor.black  .cgColor
+        spendAmount.borderStyle = UITextField.BorderStyle.none
+        spendAmount.layer.addSublayer(bottomLine)
+        
 //SET NAVIGATION BAR BUTTON AND TITLE COLOR
         UINavigationBar.appearance().tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         //UINavigationBar.appearance().barTintColor = bgColorGradient1
