@@ -67,7 +67,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         //Add underline to text fields
         let bottomLine = CALayer()
         bottomLine.frame = CGRect(origin: CGPoint(x: 0, y:spendAmount.frame.height - 1), size: CGSize(width: spendAmount.frame.width, height:  1))
-        bottomLine.backgroundColor = UIColor.black  .cgColor
+        bottomLine.backgroundColor = UIColor.black.cgColor
         spendAmount.borderStyle = UITextField.BorderStyle.none
         spendAmount.layer.addSublayer(bottomLine)
         
@@ -124,7 +124,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
                 } else {
                     toggleSwitch.isOn = true
                     saveAsRefundToggle = true
-                    amountSpentLabel.text = "Amount Refunded:"
+                    amountSpentLabel.text = "Refund Amount:"
                 }
         
         let toggleText = UILabel()
@@ -184,7 +184,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         }
        
         if saveAsRefundToggle == true {
-            amountSpentLabel.text = "Amount Refunded:"
+            amountSpentLabel.text = "Refund Amount:"
         } else {
             amountSpentLabel.text = "Amount Spent:"
         }

@@ -468,14 +468,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$0.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8vu-mZ-ZN0">
-                                <rect key="frame" x="188" y="101" width="171" height="49"/>
+                                <rect key="frame" x="209" y="101" width="150" height="49"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="171" id="ch8-Uj-aem"/>
+                                    <constraint firstAttribute="width" constant="150" id="ch8-Uj-aem"/>
                                     <constraint firstAttribute="height" constant="49" id="jmA-8W-oIV"/>
                                 </constraints>
                                 <color key="textColor" red="0.25490196078431371" green="0.45882352941176469" blue="0.019607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="26"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartInsertDeleteType="no" smartQuotesType="no"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -494,7 +494,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="v2x-n5-SuH"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="26"/>
                                 <state key="normal" title="Save">
                                     <color key="titleColor" red="0.25490196078431371" green="0.45882352941176469" blue="0.019607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -514,12 +514,12 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount Spent:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1Q-Rf-bar">
-                                <rect key="frame" x="16" y="105" width="164" height="41"/>
+                                <rect key="frame" x="16" y="101" width="191" height="49"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="164" id="aKP-Iq-aCx"/>
-                                    <constraint firstAttribute="height" constant="41" id="gCE-6V-1wa"/>
+                                    <constraint firstAttribute="width" constant="191" id="aKP-Iq-aCx"/>
+                                    <constraint firstAttribute="height" constant="49" id="gCE-6V-1wa"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -529,7 +529,7 @@
                                     <constraint firstAttribute="height" constant="44" id="TSn-X3-mRV"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bav-E8-e0a">
@@ -552,7 +552,7 @@
                             <constraint firstItem="Bav-E8-e0a" firstAttribute="top" secondItem="itS-FW-iYR" secondAttribute="bottom" constant="13" id="84E-4Z-NCp"/>
                             <constraint firstItem="kUx-xT-OjT" firstAttribute="top" secondItem="8vu-mZ-ZN0" secondAttribute="bottom" constant="11" id="9IR-Sk-EcL"/>
                             <constraint firstItem="Bav-E8-e0a" firstAttribute="centerX" secondItem="QN0-CT-PTa" secondAttribute="centerX" id="MMm-wN-5ug"/>
-                            <constraint firstItem="N1Q-Rf-bar" firstAttribute="top" secondItem="QN0-CT-PTa" secondAttribute="top" constant="41" id="RpN-rM-A4U"/>
+                            <constraint firstItem="N1Q-Rf-bar" firstAttribute="top" secondItem="QN0-CT-PTa" secondAttribute="top" constant="37" id="RpN-rM-A4U"/>
                             <constraint firstItem="N1Q-Rf-bar" firstAttribute="leading" secondItem="QN0-CT-PTa" secondAttribute="leading" constant="16" id="S3h-Ib-Kj2"/>
                             <constraint firstItem="itS-FW-iYR" firstAttribute="top" secondItem="kUx-xT-OjT" secondAttribute="bottom" constant="20" id="bX4-ce-5uc"/>
                             <constraint firstItem="QN0-CT-PTa" firstAttribute="trailing" secondItem="kUx-xT-OjT" secondAttribute="trailing" constant="16" id="cs9-K9-upX"/>
