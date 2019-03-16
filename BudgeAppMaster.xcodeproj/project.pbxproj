@@ -56,7 +56,7 @@
 		0DA4374F2233349300110700 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0DA43752223334C700110700 /* SignInUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInUpViewController.swift; sourceTree = "<group>"; };
 		0DA437552233354100110700 /* ReminderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderItem.swift; sourceTree = "<group>"; };
-		4326BF33223347D4002B501D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "Data Model/ViewController.swift"; sourceTree = "<group>"; };
+		4326BF33223347D4002B501D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4393F83E2233FBA8004CD359 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4DAF6C3356B20D0714001DF0 /* Pods-BudgeAppMaster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BudgeAppMaster.release.xcconfig"; path = "Pods/Target Support Files/Pods-BudgeAppMaster/Pods-BudgeAppMaster.release.xcconfig"; sourceTree = "<group>"; };
 		6C778C86DABD18BCB8E509DC /* Pods_BudgeAppMaster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BudgeAppMaster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,7 +98,6 @@
 			children = (
 				0DA4370222332E5200110700 /* AppDelegate.swift */,
 				0DA4371A223332CA00110700 /* Data Model */,
-				4326BF33223347D4002B501D /* ViewController.swift */,
 				0DA4371C223332ED00110700 /* Views */,
 				0DA437352233337300110700 /* Budgets */,
 				0DA4374E2233343500110700 /* Reminders */,
@@ -114,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				0DA437552233354100110700 /* ReminderItem.swift */,
+				4326BF33223347D4002B501D /* ViewController.swift */,
 				0DA4371B223332CB00110700 /* ViewController.swift */,
 			);
 			path = "Data Model";

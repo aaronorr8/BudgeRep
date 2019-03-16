@@ -37,6 +37,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var amountSpentLabel: UILabel!
     @IBOutlet weak var spendNoteField: UITextField!
+    @IBOutlet weak var viewHistoryOutlet: UIButton!
     
     
   
@@ -65,11 +66,25 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         super.viewDidLoad()
         
         //Add underline to text fields
-        let bottomLine = CALayer()
-        bottomLine.frame = CGRect(origin: CGPoint(x: 0, y:spendAmount.frame.height - 1), size: CGSize(width: spendAmount.frame.width, height:  1))
-        bottomLine.backgroundColor = UIColor.black.cgColor
+        let bottomLineAmount = CALayer()
+        bottomLineAmount.frame = CGRect(origin: CGPoint(x: 0, y:spendAmount.frame.height - 1), size: CGSize(width: spendAmount.frame.width, height:  1))
+        bottomLineAmount.backgroundColor = UIColor.black.cgColor
         spendAmount.borderStyle = UITextField.BorderStyle.none
-        spendAmount.layer.addSublayer(bottomLine)
+        spendAmount.layer.addSublayer(bottomLineAmount)
+        
+        //Add rounded outline to save button
+        saveButton.backgroundColor = .clear
+        saveButton.layer.cornerRadius = 10
+        saveButton.layer.borderWidth = 2
+        saveButton.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
+        
+        //Keyboard Shift (1/3)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
+        
+
         
 //SET NAVIGATION BAR BUTTON AND TITLE COLOR
         UINavigationBar.appearance().tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
@@ -108,6 +123,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
             
         }
         
+        
         //KEYBOARD ACCESSORY VIEW
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
@@ -138,31 +154,36 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         spendNoteField.inputAccessoryView = toolBar
         
         
+    }
         
-////SET NAVIGATION BAR GRADIENT
-//        let gradient = CAGradientLayer()
-//        let sizeLength = UIScreen.main.bounds.size.height * 2
-//        let defaultNavigationBarFrame = CGRect(x: 0, y: 0, width: sizeLength, height: 64)
-//        gradient.frame = defaultNavigationBarFrame
-//        gradient.colors = [bgColorGradient1.cgColor, bgColorGradient2.cgColor]
-//        gradient.startPoint = CGPoint(x: 1, y: 1)
-//        gradient.endPoint = CGPoint(x: 0, y: 0)
-//
-//        UINavigationBar.appearance().setBackgroundImage(self.image(fromLayer: gradient), for: .default)
+    //Keyboard Shift (2/3)
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
-////FOR NAVIGATION BAR GRADIENT
-//    func image(fromLayer layer: CALayer) -> UIImage {
-//        UIGraphicsBeginImageContext(layer.frame.size)
-//
-//        layer.render(in: UIGraphicsGetCurrentContext()!)
-//
-//        let outputImage = UIGraphicsGetImageFromCurrentImageContext()
-//
-//        UIGraphicsEndImageContext()
-//
-//        return outputImage!
-//    }
+    //Keyboard Shift (3/3)
+    @objc func keyboardWillChange(notification: Notification) {
+        guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+        
+        let spaceAfterLastButton = view.frame.height - viewHistoryOutlet.frame.size.height/2 - viewHistoryOutlet.frame.origin.y
+        let distance = spaceAfterLastButton - keyboardRect.height
+        
+        if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification {
+            
+            if distance < 0 {
+                view.frame.origin.y = distance - 20
+            } else {
+                view.frame.origin.y = 0
+            }
+        } else {
+            view.frame.origin.y = 0
+        }
+    }
+
     
     func setNavigationBarColor() {
         let barView = UIView(frame: CGRect(x:0, y:0, width:view.frame.width, height:UIApplication.shared.statusBarFrame.height))
@@ -225,6 +246,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
         
         let edit = UIAlertAction(title: "Edit Budget", style: .default) { action in
             self.closeKeyboard()
@@ -232,12 +254,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
             print(editModeG)
             self.switchViewtoEdit()
         }
-        
-//        let viewHistory = UIAlertAction(title: "View Spend History", style: .default) { action in
-//
-//            self.switchViewtoHistory()
-//            self.view.endEditing(true)
-//        }
+      
         
         let delete = UIAlertAction(title: "Delete Budget", style: .default) { action in
             self.closeKeyboard()
@@ -245,7 +262,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
             self.dismiss(animated: true, completion: nil)
         }
         
-//        actionSheet.addAction(viewHistory)
+
         actionSheet.addAction(edit)
         actionSheet.addAction(delete)
         actionSheet.addAction(cancel)

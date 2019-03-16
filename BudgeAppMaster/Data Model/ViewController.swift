@@ -11,10 +11,13 @@ import UIKit
 let defaults = UserDefaults.standard
 
 
+
+
 //NAVIGATION
 var myIndexG = 0
 var editModeG = false
 var closeAllG = false
+
 
 //SETTINGS
 var monthlyResetNotificationSetting = false
