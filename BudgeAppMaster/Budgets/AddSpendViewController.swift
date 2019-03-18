@@ -56,6 +56,14 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
     var selectedBudget = budgetNameG[myIndexG]
     var spendNote = String()
     
+    //Create temperary arrays
+    let tempBudgetHistoryAmountG = budgetHistoryAmountG
+    let tempBudgetNoteG = budgetNoteG
+    let tempBudgetHistoryDateG = budgetHistoryDateG
+    let tempBudgetHistoryTimeG = budgetHistoryTimeG
+    let tempBudgetRemainingG = budgetRemainingG
+    let tempTotalSpentG = totalSpentG
+    
     override func viewDidLayoutSubviews() {
         //self.navigationController?.setNavigationBarHidden(false, animated: false)
         
@@ -291,17 +299,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         //DISMISS KEYBOARD
         view.endEditing(true)
         
-//        //GET DATE AND TIME
-//        let date = Date()
-//        let calendar = Calendar.current
-//
-//        let hour = calendar.component(.hour, from: date)
-//        let minutes = calendar.component(.minute, from: date)
-//        let seconds = calendar.component(.second, from: date)
-//
-//        let day = calendar.component(.day, from: date)
-//        let month = calendar.component(.month, from: date)
-        
+
         //FORMAT DATE AND TIME
         let formatterDate = DateFormatter()
         let formatterTime = DateFormatter()
@@ -336,6 +334,8 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
             spendNote = spendNoteField.text!
         }
         
+     
+     
         //ADD SPEND HISTORY TO BEGINNING OF ARRAY
         budgetHistoryAmountG[selectedBudget]?.insert(amount, at: 0)
         budgetNoteG[selectedBudget]?.insert(spendNote, at:0)
@@ -350,30 +350,59 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         //print("\(hour):\(minutes)")
             
         totalSpentG = totalSpentG + amount
-            
         
-//        setUserDefaults()
+        //Used for confirmation toast
+        savedBudget = selectedBudget
+        savedAmount = convertDoubleToCurency(amount: amount)
+        
+
         saveToFireStore()
+        self.dismiss(animated: true, completion: nil)
         
-        
-//PRINT BUDGETS
-        print("budgetNameG: \(budgetNameG)")
-        print("budgetAmountG: \(budgetAmountG)")
-        print("budgetHistoryAmountG: \(budgetHistoryAmountG)")
-        print("budgetNoteG: \(budgetNoteG)")
-        print("budgetHistoryDateG: \(budgetHistoryDateG)")
-        print("budgetHistoryTimeG: \(budgetHistoryTimeG)")
-        print("totalSpentG: \(String(describing: totalSpentG))")
-        print("budgetRemainingG: \(budgetRemainingG)")
-        print("totalSpentG: \(totalSpentG)")
-        print("BREAK")
         
         //USED TO SUPPORT REMINDERS WITH LINKED BUDGETS
         presetAmountG = 0.0
         
-        self.dismiss(animated: true, completion: nil)
+//        self.dismiss(animated: true, completion: nil)
         
     }
+    
+    func saveToFireStore() {
+        
+        if let userID = Auth.auth().currentUser?.uid {
+            db.collection("budgets").document(userID).setData([
+                "budgetName": budgetNameG,
+                "budgetAmount": budgetAmountG,
+                "budgetHistoryAmount": budgetHistoryAmountG,
+                "budgetNote": budgetNoteG,
+                "budgetHistoryDate": budgetHistoryDateG,
+                "budgetHistoryTime": budgetHistoryTimeG,
+                "budgetRemaining": budgetRemainingG,
+                "totalSpent": totalSpentG
+            ]) { err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                    //revert values
+                    budgetHistoryAmountG = self.tempBudgetHistoryAmountG
+                    budgetNoteG = self.tempBudgetNoteG
+                    budgetHistoryDateG = self.tempBudgetHistoryDateG
+                    budgetHistoryTimeG = self.tempBudgetHistoryTimeG
+                    budgetRemainingG = self.tempBudgetRemainingG
+                    totalSpentG = self.tempTotalSpentG
+                    
+                    showToast = true
+                    toastSuccess = false
+                } else {
+                    print("Document successfully written!")
+                    showToast = true
+                    toastSuccess = true
+                    
+                }
+            }
+        }
+    }
+    
+    
 
 //DELETE BUDGET
     func deleteBudget() {
@@ -396,55 +425,35 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         totalSpentG = totalSpentG - totalSpentTemp
         saveToFireStore()
 //        setUserDefaults()
-        printBudgets()
+//        printBudgets()
     
     }
     
-    //MARK: PRINT BUDGETS
-    func printBudgets() {
-        print("Deleted!")
-        print("budgetNameG: \(budgetNameG)")
-        print("budgetAmountG: \(budgetAmountG)")
-        print("budgetHistoryAmountG: \(budgetHistoryAmountG)")
-        print("budgetHistoryDateG: \(budgetHistoryDateG)")
-        print("budgetHistoryTimeG: \(budgetHistoryTimeG)")
-        print("budgetRemainingG: \(budgetRemainingG)")
-        print("totalSpentG: \(totalSpentG)")
-        print("BREAK")
-    }
+//    //MARK: PRINT BUDGETS
+//    func printBudgets() {
+//        print("Deleted!")
+//        print("budgetNameG: \(budgetNameG)")
+//        print("budgetAmountG: \(budgetAmountG)")
+//        print("budgetHistoryAmountG: \(budgetHistoryAmountG)")
+//        print("budgetHistoryDateG: \(budgetHistoryDateG)")
+//        print("budgetHistoryTimeG: \(budgetHistoryTimeG)")
+//        print("budgetRemainingG: \(budgetRemainingG)")
+//        print("totalSpentG: \(totalSpentG)")
+//        print("BREAK")
+//    }
     
-    //Mark: SAVE USER DEFAULTS
-    func setUserDefaults() {
-        defaults.set(budgetHistoryAmountG, forKey: "BudgetHistoryAmount")
-        defaults.set(budgetNoteG, forKey: "BudgetNote")
-        defaults.set(budgetRemainingG, forKey: "BudgetRemaining")
-        defaults.set(budgetHistoryDateG, forKey: "BudgetHistoryDate")
-        defaults.set(budgetHistoryTimeG, forKey: "BudgetHistoryTime")
-        defaults.set(totalSpentG, forKey: "TotalSpent")
-    }
+//    //Mark: SAVE USER DEFAULTS
+//    func setUserDefaults() {
+//        defaults.set(budgetHistoryAmountG, forKey: "BudgetHistoryAmount")
+//        defaults.set(budgetNoteG, forKey: "BudgetNote")
+//        defaults.set(budgetRemainingG, forKey: "BudgetRemaining")
+//        defaults.set(budgetHistoryDateG, forKey: "BudgetHistoryDate")
+//        defaults.set(budgetHistoryTimeG, forKey: "BudgetHistoryTime")
+//        defaults.set(totalSpentG, forKey: "TotalSpent")
+//    }
     
     //MARK: Save to FireStore
-    func saveToFireStore() {
-        
-        if let userID = Auth.auth().currentUser?.uid {
-            db.collection("budgets").document(userID).setData([
-                "budgetName": budgetNameG,
-                "budgetAmount": budgetAmountG,
-                "budgetHistoryAmount": budgetHistoryAmountG,
-                "budgetNote": budgetNoteG,
-                "budgetHistoryDate": budgetHistoryDateG,
-                "budgetHistoryTime": budgetHistoryTimeG,
-                "budgetRemaining": budgetRemainingG,
-                "totalSpent": totalSpentG
-            ]) { err in
-                if let err = err {
-                    print("Error writing document: \(err)")
-                } else {
-                    print("Document successfully written!")
-                }
-            }
-        }
-    }
+    
     
     @IBAction func cancelButton(_ sender: Any) {
         presetAmountG = 0.0

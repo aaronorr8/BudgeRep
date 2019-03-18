@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D5AC2142240015C0047BB48 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5AC20F224001580047BB48 /* ToastView.swift */; };
+		0D5AC2152240015C0047BB48 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5AC210224001590047BB48 /* Toast.swift */; };
+		0D5AC2162240015C0047BB48 /* ToastCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5AC2122240015B0047BB48 /* ToastCenter.swift */; };
+		0D5AC2172240015C0047BB48 /* ToastWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5AC2132240015C0047BB48 /* ToastWindow.swift */; };
 		0DA4370322332E5200110700 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA4370222332E5200110700 /* AppDelegate.swift */; };
 		0DA4370D22332E5300110700 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DA4370B22332E5300110700 /* LaunchScreen.storyboard */; };
 		0DA4371522332EA400110700 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DA4371422332EA400110700 /* GoogleService-Info.plist */; };
@@ -33,6 +37,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D5AC20F224001580047BB48 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		0D5AC210224001590047BB48 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		0D5AC2112240015A0047BB48 /* Toaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toaster.h; sourceTree = "<group>"; };
+		0D5AC2122240015B0047BB48 /* ToastCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastCenter.swift; sourceTree = "<group>"; };
+		0D5AC2132240015C0047BB48 /* ToastWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastWindow.swift; sourceTree = "<group>"; };
 		0DA436FF22332E5200110700 /* BudgeAppMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BudgeAppMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DA4370222332E5200110700 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DA4370C22332E5300110700 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -75,6 +84,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D5AC20E224001480047BB48 /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				0D5AC210224001590047BB48 /* Toast.swift */,
+				0D5AC2122240015B0047BB48 /* ToastCenter.swift */,
+				0D5AC2112240015A0047BB48 /* Toaster.h */,
+				0D5AC20F224001580047BB48 /* ToastView.swift */,
+				0D5AC2132240015C0047BB48 /* ToastWindow.swift */,
+			);
+			path = Toast;
+			sourceTree = "<group>";
+		};
 		0DA436F622332E5200110700 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +117,7 @@
 		0DA4370122332E5200110700 /* BudgeAppMaster */ = {
 			isa = PBXGroup;
 			children = (
+				0D5AC20E224001480047BB48 /* Toast */,
 				0DA4370222332E5200110700 /* AppDelegate.swift */,
 				0DA4371A223332CA00110700 /* Data Model */,
 				0DA4371C223332ED00110700 /* Views */,
@@ -331,15 +353,19 @@
 				0DA4373B223333C000110700 /* WavyProgressView.swift in Sources */,
 				0DA437472233340A00110700 /* HistoryViewController.swift in Sources */,
 				0DA43739223333AD00110700 /* BudgetCollectionReusableView.swift in Sources */,
+				0D5AC2172240015C0047BB48 /* ToastWindow.swift in Sources */,
 				0DA437502233349300110700 /* SettingsViewController.swift in Sources */,
 				0DA4374C2233343000110700 /* RemindersTableViewCell.swift in Sources */,
+				0D5AC2142240015C0047BB48 /* ToastView.swift in Sources */,
 				0DA4373D223333D200110700 /* CircularProgressView.swift in Sources */,
 				0DA437562233354100110700 /* ReminderItem.swift in Sources */,
 				0DA43753223334C800110700 /* SignInUpViewController.swift in Sources */,
 				0DA437342233336E00110700 /* BudgetsViewController.swift in Sources */,
 				0DA43743223333F200110700 /* AddSpendViewController.swift in Sources */,
 				0DA437462233340A00110700 /* HistoryTableViewCell.swift in Sources */,
+				0D5AC2162240015C0047BB48 /* ToastCenter.swift in Sources */,
 				0DA4370322332E5200110700 /* AppDelegate.swift in Sources */,
+				0D5AC2152240015C0047BB48 /* Toast.swift in Sources */,
 				0DA437372233339E00110700 /* BudgetCollectionViewCell.swift in Sources */,
 				0DA4374D2233343000110700 /* RemindersViewController.swift in Sources */,
 			);

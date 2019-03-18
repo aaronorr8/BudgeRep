@@ -24,6 +24,12 @@ import Firebase
     
     let cellBackground = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     
+    //Save Spend Alert
+    var showToast = false
+    var toastSuccess = true
+    var savedBudget = String()
+    var savedAmount = String()
+    
 class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -43,6 +49,8 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     //MARK: PROGRESS BAR SCALE
     let xScale = CGFloat(1.0)
     let yScale = CGFloat(3.0)
+    
+    
 
     
     
@@ -74,6 +82,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         
     }
     
+    
     override func viewDidAppear(_ animated: Bool) {
         
         calculateTotalAvailable()
@@ -82,6 +91,30 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         let amount = Double(amt/100) + Double(amt%100)/100
         self.navigationItem.title = String(convertDoubleToCurency(amount: totalBudgetsAvailable))
         
+        showConfirmationToast()
+     
+        
+    }
+    
+    func showConfirmationToast() {
+        
+        if showToast == true && toastSuccess == true {
+            Toast(text: "Saved \(savedAmount) to \(savedBudget)", delay: 0.1, duration: 2.5).show()
+            let appearance = ToastView.appearance()
+            appearance.backgroundColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
+            appearance.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            appearance.font = UIFont.boldSystemFont(ofSize: 20)
+        } else if showToast == true && toastSuccess == false {
+            Toast(text: "Saved \(savedAmount) to \(savedBudget)", delay: 0.1, duration: 2.5).show()
+            let appearance = ToastView.appearance()
+            appearance.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+            appearance.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            appearance.font = UIFont.boldSystemFont(ofSize: 20)
+        } else {
+            //
+        }
+        
+        showToast = false
     }
     
    
@@ -357,46 +390,46 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     
     //MARK: Create UserDefaults
     func createUserDefaults() {
-        if UserDefaults.standard.object(forKey: "BudgetName") != nil {
-            budgetNameG = defaults.object(forKey: "BudgetName") as! [String]
-            print("User Defaults budgetNameG: \(defaults.object(forKey: "BudgetName") as! [String])")
-        }
-        if UserDefaults.standard.object(forKey: "BudgetAmount") != nil {
-            budgetAmountG = defaults.object(forKey: "BudgetAmount") as! [Double]
-            print("User Defaults budgetAmountG: \(defaults.object(forKey: "BudgetAmount") as! [Double])")
-        }
-        if UserDefaults.standard.object(forKey: "BudgetHistoryAmount") != nil {
-            budgetHistoryAmountG = defaults.object(forKey: "BudgetHistoryAmount") as! [String: [Double]]
-            print("User Defaults budgetHistoryAmountG: \(defaults.object(forKey: "BudgetHistoryAmount") as! [String: [Double]])")
-        }
-        if UserDefaults.standard.object(forKey: "BudgetHistoryDate") != nil {
-            budgetHistoryDateG = defaults.object(forKey: "BudgetHistoryDate") as! [String: [String]]
-            print("User Defaults budgetHistoryDateG: \(defaults.object(forKey: "BudgetHistoryDate") as! [String: [String]])")
-        }
-        if UserDefaults.standard.object(forKey: "BudgetHistoryTime") != nil {
-            budgetHistoryTimeG = defaults.object(forKey: "BudgetHistoryTime") as! [String: [String]]
-            print("User Defaults budgetHistoryTimeG: \(defaults.object(forKey: "BudgetHistoryTime") as! [String: [String]])")
-        }
-        if UserDefaults.standard.object(forKey: "BudgetRemaining") != nil {
-            budgetRemainingG = defaults.object(forKey: "BudgetRemaining") as! [Double]
-            print("User Defaults budgetRemainingG: \(defaults.object(forKey: "BudgetRemaining") as! [Double])")
-        }
-        if UserDefaults.standard.object(forKey: "TotalSpent") != nil {
-            totalSpentG = defaults.object(forKey: "TotalSpent") as! Double
-            print("User Defaults totalSpentG: \(defaults.object(forKey: "TotalSpent") as! Double)")
-        }
-        if UserDefaults.standard.object(forKey: "BudgetNote") != nil {
-            budgetNoteG = defaults.object(forKey: "BudgetNote") as! [String: [String]]
-            print("User Defaults budgetNoteG: \(defaults.object(forKey: "BudgetNote") as! [String: [String]])")
-        }
-        if UserDefaults.standard.object(forKey: "Rollover") != nil {
-            rolloverG = defaults.object(forKey: "Rollover") as! Bool
-            print("User Defaults rolloverG: \(defaults.object(forKey: "Rollover") as! Bool)")
-        }
-        if UserDefaults.standard.object(forKey: "RolloverTotal") != nil {
-            rolloverTotalG = defaults.object(forKey: "RolloverTotal") as! Double
-            print("User Defaults rolloverTotalG: \(defaults.object(forKey: "RolloverTotal") as! Double)")
-        }
+//        if UserDefaults.standard.object(forKey: "BudgetName") != nil {
+//            budgetNameG = defaults.object(forKey: "BudgetName") as! [String]
+//            print("User Defaults budgetNameG: \(defaults.object(forKey: "BudgetName") as! [String])")
+//        }
+//        if UserDefaults.standard.object(forKey: "BudgetAmount") != nil {
+//            budgetAmountG = defaults.object(forKey: "BudgetAmount") as! [Double]
+//            print("User Defaults budgetAmountG: \(defaults.object(forKey: "BudgetAmount") as! [Double])")
+//        }
+//        if UserDefaults.standard.object(forKey: "BudgetHistoryAmount") != nil {
+//            budgetHistoryAmountG = defaults.object(forKey: "BudgetHistoryAmount") as! [String: [Double]]
+//            print("User Defaults budgetHistoryAmountG: \(defaults.object(forKey: "BudgetHistoryAmount") as! [String: [Double]])")
+//        }
+//        if UserDefaults.standard.object(forKey: "BudgetHistoryDate") != nil {
+//            budgetHistoryDateG = defaults.object(forKey: "BudgetHistoryDate") as! [String: [String]]
+//            print("User Defaults budgetHistoryDateG: \(defaults.object(forKey: "BudgetHistoryDate") as! [String: [String]])")
+//        }
+//        if UserDefaults.standard.object(forKey: "BudgetHistoryTime") != nil {
+//            budgetHistoryTimeG = defaults.object(forKey: "BudgetHistoryTime") as! [String: [String]]
+//            print("User Defaults budgetHistoryTimeG: \(defaults.object(forKey: "BudgetHistoryTime") as! [String: [String]])")
+//        }
+//        if UserDefaults.standard.object(forKey: "BudgetRemaining") != nil {
+//            budgetRemainingG = defaults.object(forKey: "BudgetRemaining") as! [Double]
+//            print("User Defaults budgetRemainingG: \(defaults.object(forKey: "BudgetRemaining") as! [Double])")
+//        }
+//        if UserDefaults.standard.object(forKey: "TotalSpent") != nil {
+//            totalSpentG = defaults.object(forKey: "TotalSpent") as! Double
+//            print("User Defaults totalSpentG: \(defaults.object(forKey: "TotalSpent") as! Double)")
+//        }
+//        if UserDefaults.standard.object(forKey: "BudgetNote") != nil {
+//            budgetNoteG = defaults.object(forKey: "BudgetNote") as! [String: [String]]
+//            print("User Defaults budgetNoteG: \(defaults.object(forKey: "BudgetNote") as! [String: [String]])")
+//        }
+//        if UserDefaults.standard.object(forKey: "Rollover") != nil {
+//            rolloverG = defaults.object(forKey: "Rollover") as! Bool
+//            print("User Defaults rolloverG: \(defaults.object(forKey: "Rollover") as! Bool)")
+//        }
+//        if UserDefaults.standard.object(forKey: "RolloverTotal") != nil {
+//            rolloverTotalG = defaults.object(forKey: "RolloverTotal") as! Double
+//            print("User Defaults rolloverTotalG: \(defaults.object(forKey: "RolloverTotal") as! Double)")
+//        }
 
         if UserDefaults.standard.object(forKey: "NotificationID") != nil {
             notificationIDG = defaults.object(forKey: "NotificationID") as! Int
@@ -467,15 +500,15 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     
     
     func setUserDefaults() {
-        defaults.set(budgetNameG, forKey: "BudgetName")
-        defaults.set(budgetAmountG, forKey: "BudgetAmount")
-        defaults.set(budgetHistoryAmountG, forKey: "BudgetHistoryAmount")
-        defaults.set(budgetRemainingG, forKey: "BudgetRemaining")
-        defaults.set(budgetHistoryDateG, forKey: "BudgetHistoryDate")
-        defaults.set(budgetHistoryTimeG, forKey: "BudgetHistoryTime")
-        defaults.set(budgetNoteG, forKey: "BudgetNote")
-        defaults.set(rolloverG, forKey: "Rollover")
-        defaults.set(rolloverTotalG, forKey: "RolloverTotal")
+//        defaults.set(budgetNameG, forKey: "BudgetName")
+//        defaults.set(budgetAmountG, forKey: "BudgetAmount")
+//        defaults.set(budgetHistoryAmountG, forKey: "BudgetHistoryAmount")
+//        defaults.set(budgetRemainingG, forKey: "BudgetRemaining")
+//        defaults.set(budgetHistoryDateG, forKey: "BudgetHistoryDate")
+//        defaults.set(budgetHistoryTimeG, forKey: "BudgetHistoryTime")
+//        defaults.set(budgetNoteG, forKey: "BudgetNote")
+//        defaults.set(rolloverG, forKey: "Rollover")
+//        defaults.set(rolloverTotalG, forKey: "RolloverTotal")
         defaults.set(monthlyResetNotificationSetting, forKey: "MonthlyResetNotificationSetting")
         
        
