@@ -71,6 +71,8 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         
+        print("Temp....\(tempBudgetRemainingG)")
+        
         super.viewDidLoad()
         
         //Add underline to text fields

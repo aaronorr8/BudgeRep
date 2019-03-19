@@ -16,15 +16,23 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
     @IBOutlet weak var budgetNameField: UITextField!
     @IBOutlet weak var budgetAmountField: UITextField!
     @IBOutlet weak var addUpdateButton: UIButton!
-    @IBOutlet weak var instructionsLabel: UILabel!
     @IBOutlet weak var naviBar: UINavigationBar!
     @IBOutlet weak var navigationTitle: UINavigationItem!
-    
-  
-    
+ 
     
     var amt: Int = 0
     
+    //Create temperary arrays
+    let tempBudgetNameG = budgetNameG
+    let tempBudgetAmountG = budgetAmountG
+    let tempBudetHistoryAmountG = budgetHistoryAmountG
+    let tempBudgetNoteG = budgetNoteG
+    let tempBudgetHistoryDateG = budgetHistoryDateG
+    let tempBudgetHistoryTimeG = budgetHistoryTimeG
+    let tempBudgetRemainingG = budgetRemainingG
+    let tempTotalSpentG = totalSpentG
+    
+
 
     @IBAction func cancelButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -125,6 +133,15 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
             ]) { err in
                 if let err = err {
                     print("Error writing document: \(err)")
+                    //revert values
+                    budgetNameG = self.tempBudgetNameG
+                    budgetAmountG = self.tempBudgetAmountG
+                    budgetHistoryAmountG = self.tempBudetHistoryAmountG
+                    budgetNoteG = self.tempBudgetNoteG
+                    budgetHistoryDateG = self.tempBudgetHistoryDateG
+                    budgetHistoryTimeG = self.tempBudgetHistoryTimeG
+                    budgetRemainingG = self.tempBudgetRemainingG
+                    totalSpentG = self.tempTotalSpentG
                 } else {
                     print("Document successfully written!")
                 }
@@ -146,41 +163,7 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
         print("BREAK")
     }
     
-    
-    //MARK Save UserDefaults
-    func saveUserDefaults() {
-        defaults.set(budgetNameG, forKey: "BudgetName")
-        defaults.set(budgetAmountG, forKey: "BudgetAmount")
-        defaults.set(budgetHistoryAmountG, forKey: "BudgetHistoryAmount")
-        defaults.set(budgetNoteG, forKey: "BudgetNote")
-        defaults.set(budgetHistoryDateG, forKey: "BudgetHistoryDate")
-        defaults.set(budgetHistoryTimeG, forKey: "BudgetHistoryTime")
-        defaults.set(budgetRemainingG, forKey: "BudgetRemaining")
-    }
-    
-    override func viewDidLayoutSubviews() {
-        
-        if editModeG == true {
-            print("view did layout subviews editModeG: \(editModeG)")
-            navigationTitle.title = "Edit \(budgetNameG[myIndexG])"
-            budgetNameField.text = budgetNameG[myIndexG]
-            budgetAmountField.text = String(convertDoubleToCurency(amount: budgetAmountG[myIndexG]))
-//            budgetAmountField.text = String(budgetAmountG[myIndexG])
-            addUpdateButton.setTitle("Update", for: .normal)
-            instructionsLabel.text = "Edit budget details:"
-        } else {
-            print("view did layout subviews editModeG: \(editModeG)")
-            budgetNameField.becomeFirstResponder()
-            navigationTitle.title = "New Budget"
-            budgetNameField.placeholder = "Budget name"
-            budgetAmountField.placeholder = "Budget amount"
-            addUpdateButton.setTitle("Add", for: .normal)
-            instructionsLabel.text = "Add budget details:"
-        }
-        
-        
-        
-    }
+ 
     
     
     
@@ -188,30 +171,48 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         db = Firestore.firestore()
-        
-        UINavigationBar.appearance().tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        //UINavigationBar.appearance().barTintColor = bgColorGradient1
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)]
-        
+
         budgetAmountField.delegate = self
         budgetAmountField.placeholder = updateAmount()
         
-        setNavigationBarColor()
+        if editModeG == true {
+            print("view did layout subviews editModeG: \(editModeG)")
+            navigationTitle.title = "Edit \(budgetNameG[myIndexG])"
+            budgetNameField.text = budgetNameG[myIndexG]
+            budgetAmountField.text = String(convertDoubleToCurency(amount: budgetAmountG[myIndexG]))
+            addUpdateButton.setTitle("Update", for: .normal)
+        } else {
+            print("view did layout subviews editModeG: \(editModeG)")
+            navigationTitle.title = "Create New Budget"
+            budgetNameField.placeholder = "Enter budget name"
+            budgetAmountField.placeholder = "Enter budget amount"
+            addUpdateButton.setTitle("Save", for: .normal)
+            budgetNameField.becomeFirstResponder()
+        }
+       
         
+        //Add underline to text fields
+        let bottomLineName = CALayer()
+        bottomLineName.frame = CGRect(origin: CGPoint(x: 0, y:budgetNameField.frame.height - 1), size: CGSize(width: budgetNameField.frame.width, height:  1))
+        bottomLineName.backgroundColor = UIColor.black.cgColor
+        budgetNameField.borderStyle = UITextField.BorderStyle.none
+        budgetNameField.layer.addSublayer(bottomLineName)
+        
+        let bottomLineAmount = CALayer()
+        bottomLineAmount.frame = CGRect(origin: CGPoint(x: 0, y:budgetAmountField.frame.height - 1), size: CGSize(width: budgetAmountField.frame.width, height:  1))
+        bottomLineAmount.backgroundColor = UIColor.black.cgColor
+        budgetAmountField.borderStyle = UITextField.BorderStyle.none
+        budgetAmountField.layer.addSublayer(bottomLineAmount)
+        
+        //Add rounded outline to save button
+        addUpdateButton.backgroundColor = .clear
+        addUpdateButton.layer.cornerRadius = 10
+        addUpdateButton.layer.borderWidth = 2
+        addUpdateButton.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
       
     }
     
-   
-    
-    func setNavigationBarColor() {
-        let barView = UIView(frame: CGRect(x:0, y:0, width:view.frame.width, height:UIApplication.shared.statusBarFrame.height))
-        barView.backgroundColor = bgColorGradient1
-        
-        view.addSubview(barView)
-        
-        UINavigationBar.appearance().tintColor = bgColorGradient1
-    }
-    
+
     
     func textField(_ textField:UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -252,17 +253,15 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
         return formatter.string(from: NSNumber(value: amount))
     }
     
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("Return")
+        
+//        budgetNameField.resignFirstResponder()
+//        budgetAmountField.becomeFirstResponder()
+        return true
     }
-    */
+    
+    
+    
 
 }

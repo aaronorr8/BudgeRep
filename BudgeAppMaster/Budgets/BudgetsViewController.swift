@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import AudioToolbox
 
     //COLORS
     let colorTrackH = #colorLiteral(red: 0.5741485357, green: 0.5741624236, blue: 0.574154973, alpha: 1)
@@ -104,6 +105,10 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
             appearance.backgroundColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
             appearance.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             appearance.font = UIFont.boldSystemFont(ofSize: 20)
+            
+            //Add vibration
+            let peek = SystemSoundID(1102)
+            AudioServicesPlaySystemSound(peek)
         } else if showToast == true && toastSuccess == false {
             Toast(text: "Saved \(savedAmount) to \(savedBudget)", delay: 0.1, duration: 2.5).show()
             let appearance = ToastView.appearance()

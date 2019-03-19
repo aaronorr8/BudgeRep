@@ -380,33 +380,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Budget Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5ug-D9-8MF">
-                                <rect key="frame" x="16" y="149" width="343" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" textContentType="name"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Budget Amount" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0ta-Vh-oJJ">
-                                <rect key="frame" x="16" y="198" width="343" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add budget details:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4K-N2-hR0">
-                                <rect key="frame" x="16" y="109" width="343" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MTp-1K-b7J">
-                                <rect key="frame" x="117" y="257" width="140" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ezh-CZ-KIn">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="ybZ-p6-WVQ"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Title" id="ydT-hx-h5W">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="vvd-TU-0Vb">
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="cancelButton:" destination="V4j-wU-ZpU" id="DH5-7o-5Y9"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MTp-1K-b7J">
+                                <rect key="frame" x="125" y="332" width="124" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="Save">
-                                    <color key="titleColor" red="0.28627450980000002" green="0.047058823530000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -423,35 +423,79 @@
                                     <action selector="addButton:" destination="V4j-wU-ZpU" eventType="touchUpInside" id="HLs-Sb-0e8"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ezh-CZ-KIn">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Title" id="ydT-hx-h5W">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="vvd-TU-0Vb">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <connections>
-                                                <action selector="cancelButton:" destination="V4j-wU-ZpU" id="DH5-7o-5Y9"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UKW-oN-hlM">
+                                <rect key="frame" x="0.0" y="176" width="375" height="154"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter name" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5ug-D9-8MF">
+                                        <rect key="frame" x="16" y="21" width="343" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="k6x-uX-pTx"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" textContentType="name"/>
+                                    </textField>
+                                    <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter amount" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0ta-Vh-oJJ">
+                                        <rect key="frame" x="16" y="114" width="343" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="9cc-qu-Pl1"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAP-OJ-tAd">
+                                        <rect key="frame" x="16" y="0.0" width="109.5" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="109.5" id="qWy-ou-oWA"/>
+                                            <constraint firstAttribute="height" constant="21" id="s5q-Zn-8yE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="leM-Qe-vEl">
+                                        <rect key="frame" x="16" y="93" width="161" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="161" id="EbE-lh-RzI"/>
+                                            <constraint firstAttribute="height" constant="21" id="nnA-iB-GG5"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.98823529409999999" green="0.84313725490000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="0ta-Vh-oJJ" firstAttribute="top" secondItem="leM-Qe-vEl" secondAttribute="bottom" id="3Xe-5l-iQB"/>
+                                    <constraint firstItem="GAP-OJ-tAd" firstAttribute="top" secondItem="UKW-oN-hlM" secondAttribute="top" id="CtP-kZ-wjO"/>
+                                    <constraint firstItem="leM-Qe-vEl" firstAttribute="top" secondItem="5ug-D9-8MF" secondAttribute="bottom" constant="32" id="RS6-x6-bf4"/>
+                                    <constraint firstItem="5ug-D9-8MF" firstAttribute="top" secondItem="GAP-OJ-tAd" secondAttribute="bottom" id="W1j-Zm-Evb"/>
+                                    <constraint firstItem="5ug-D9-8MF" firstAttribute="leading" secondItem="UKW-oN-hlM" secondAttribute="leading" constant="16" id="YEf-ny-Bv7"/>
+                                    <constraint firstItem="0ta-Vh-oJJ" firstAttribute="leading" secondItem="UKW-oN-hlM" secondAttribute="leading" constant="16" id="YL2-Oo-lDM"/>
+                                    <constraint firstItem="leM-Qe-vEl" firstAttribute="leading" secondItem="UKW-oN-hlM" secondAttribute="leading" constant="16" id="j2t-db-7jq"/>
+                                    <constraint firstAttribute="trailing" secondItem="5ug-D9-8MF" secondAttribute="trailing" constant="16" id="srb-8j-ozP"/>
+                                    <constraint firstAttribute="trailing" secondItem="0ta-Vh-oJJ" secondAttribute="trailing" constant="16" id="vHm-3A-bqr"/>
+                                    <constraint firstItem="GAP-OJ-tAd" firstAttribute="leading" secondItem="UKW-oN-hlM" secondAttribute="leading" constant="16" id="vlJ-Wl-XJu"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ezh-CZ-KIn" firstAttribute="trailing" secondItem="Cyx-UP-mfP" secondAttribute="trailing" id="0qc-K7-V8g"/>
+                            <constraint firstItem="UKW-oN-hlM" firstAttribute="leading" secondItem="Cyx-UP-mfP" secondAttribute="leading" id="4aa-JI-xCM"/>
+                            <constraint firstItem="UKW-oN-hlM" firstAttribute="trailing" secondItem="Cyx-UP-mfP" secondAttribute="trailing" id="6Lu-P8-d6k"/>
+                            <constraint firstItem="UKW-oN-hlM" firstAttribute="top" secondItem="ezh-CZ-KIn" secondAttribute="bottom" constant="112" id="AOC-yr-yLG"/>
+                            <constraint firstItem="MTp-1K-b7J" firstAttribute="top" secondItem="UKW-oN-hlM" secondAttribute="bottom" constant="2" id="q3Y-6p-0A0"/>
+                            <constraint firstItem="ezh-CZ-KIn" firstAttribute="top" secondItem="Cyx-UP-mfP" secondAttribute="top" id="rtX-EL-YuZ"/>
+                            <constraint firstItem="ezh-CZ-KIn" firstAttribute="leading" secondItem="Cyx-UP-mfP" secondAttribute="leading" id="tTt-MN-x99"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Cyx-UP-mfP"/>
                     </view>
                     <connections>
                         <outlet property="addUpdateButton" destination="MTp-1K-b7J" id="yzc-ng-Rr4"/>
                         <outlet property="budgetAmountField" destination="0ta-Vh-oJJ" id="VhJ-TT-XtN"/>
                         <outlet property="budgetNameField" destination="5ug-D9-8MF" id="mPA-EA-Sq4"/>
-                        <outlet property="instructionsLabel" destination="l4K-N2-hR0" id="D3H-UE-hwA"/>
                         <outlet property="navigationTitle" destination="ydT-hx-h5W" id="uDb-L0-n1s"/>
                     </connections>
                 </viewController>
@@ -495,7 +539,7 @@
                                     <constraint firstAttribute="width" constant="141" id="Yra-TK-Dl9"/>
                                     <constraint firstAttribute="height" constant="50" id="vYF-U7-Dtd"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="Save">
                                     <color key="titleColor" red="0.25490196078431371" green="0.45882352941176469" blue="0.019607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -1406,7 +1450,7 @@
         <image name="BudgetOutline" width="25" height="25"/>
         <image name="BudgetSolid" width="25" height="25"/>
         <image name="CheckmarkOpen2" width="51" height="50"/>
-        <image name="Menu" width="51.200000762939453" height="51.200000762939453"/>
+        <image name="Menu" width="32" height="32"/>
         <image name="NextButton" width="52" height="52"/>
         <image name="Pig" width="148" height="80"/>
         <image name="PlusButton" width="60" height="60"/>
