@@ -12,7 +12,6 @@ class HistoryTableViewCell: UITableViewCell {
     
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var spendNote: UILabel!
     
     override func awakeFromNib() {

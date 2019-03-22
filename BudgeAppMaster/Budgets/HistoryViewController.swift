@@ -33,8 +33,8 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
         cell.amountLabel.text = String(convertDoubleToCurency(amount: amount![indexPath.row]))
         cell.spendNote.text = note![indexPath.row]
-        cell.dateLabel.text = String(date![indexPath.row])
-        cell.timeLabel.text = String(time![indexPath.row])
+        cell.dateLabel.text = String("\(date![indexPath.row]), \(time![indexPath.row])")
+
         
         return cell
     }
