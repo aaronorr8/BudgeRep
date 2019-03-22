@@ -33,7 +33,55 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
     let tempTotalSpentG = totalSpentG
     
 
-
+    override func viewDidLayoutSubviews() {
+        //Add underline to text fields
+        let bottomLineName = CALayer()
+        bottomLineName.frame = CGRect(origin: CGPoint(x: 0, y:budgetNameField.frame.height - 1), size: CGSize(width: budgetNameField.frame.width, height:  1))
+        bottomLineName.backgroundColor = UIColor.black.cgColor
+        budgetNameField.borderStyle = UITextField.BorderStyle.none
+        budgetNameField.layer.addSublayer(bottomLineName)
+        
+        let bottomLineAmount = CALayer()
+        bottomLineAmount.frame = CGRect(origin: CGPoint(x: 0, y:budgetAmountField.frame.height - 1), size: CGSize(width: budgetAmountField.frame.width, height:  1))
+        bottomLineAmount.backgroundColor = UIColor.black.cgColor
+        budgetAmountField.borderStyle = UITextField.BorderStyle.none
+        budgetAmountField.layer.addSublayer(bottomLineAmount)
+        
+        //Add rounded outline to save button
+        addUpdateButton.backgroundColor = .clear
+        addUpdateButton.layer.cornerRadius = 10
+        addUpdateButton.layer.borderWidth = 2
+        addUpdateButton.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        db = Firestore.firestore()
+        
+        budgetAmountField.delegate = self
+        budgetAmountField.placeholder = updateAmount()
+        
+        if editModeG == true {
+            print("view did layout subviews editModeG: \(editModeG)")
+            navigationTitle.title = "Edit \(budgetNameG[myIndexG])"
+            budgetNameField.text = budgetNameG[myIndexG]
+            budgetAmountField.text = String(convertDoubleToCurency(amount: budgetAmountG[myIndexG]))
+            addUpdateButton.setTitle("Update", for: .normal)
+        } else {
+            print("view did layout subviews editModeG: \(editModeG)")
+            navigationTitle.title = "Create New Budget"
+            budgetNameField.placeholder = "Enter budget name"
+            budgetAmountField.placeholder = "Enter budget amount"
+            addUpdateButton.setTitle("Save", for: .normal)
+            budgetNameField.becomeFirstResponder()
+        }
+        
+        
+    }
+    
+    
+    
     @IBAction func cancelButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
         editModeG = false
@@ -167,50 +215,7 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
     
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        db = Firestore.firestore()
-
-        budgetAmountField.delegate = self
-        budgetAmountField.placeholder = updateAmount()
-        
-        if editModeG == true {
-            print("view did layout subviews editModeG: \(editModeG)")
-            navigationTitle.title = "Edit \(budgetNameG[myIndexG])"
-            budgetNameField.text = budgetNameG[myIndexG]
-            budgetAmountField.text = String(convertDoubleToCurency(amount: budgetAmountG[myIndexG]))
-            addUpdateButton.setTitle("Update", for: .normal)
-        } else {
-            print("view did layout subviews editModeG: \(editModeG)")
-            navigationTitle.title = "Create New Budget"
-            budgetNameField.placeholder = "Enter budget name"
-            budgetAmountField.placeholder = "Enter budget amount"
-            addUpdateButton.setTitle("Save", for: .normal)
-            budgetNameField.becomeFirstResponder()
-        }
-       
-        
-        //Add underline to text fields
-        let bottomLineName = CALayer()
-        bottomLineName.frame = CGRect(origin: CGPoint(x: 0, y:budgetNameField.frame.height - 1), size: CGSize(width: budgetNameField.frame.width, height:  1))
-        bottomLineName.backgroundColor = UIColor.black.cgColor
-        budgetNameField.borderStyle = UITextField.BorderStyle.none
-        budgetNameField.layer.addSublayer(bottomLineName)
-        
-        let bottomLineAmount = CALayer()
-        bottomLineAmount.frame = CGRect(origin: CGPoint(x: 0, y:budgetAmountField.frame.height - 1), size: CGSize(width: budgetAmountField.frame.width, height:  1))
-        bottomLineAmount.backgroundColor = UIColor.black.cgColor
-        budgetAmountField.borderStyle = UITextField.BorderStyle.none
-        budgetAmountField.layer.addSublayer(bottomLineAmount)
-        
-        //Add rounded outline to save button
-        addUpdateButton.backgroundColor = .clear
-        addUpdateButton.layer.cornerRadius = 10
-        addUpdateButton.layer.borderWidth = 2
-        addUpdateButton.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
-      
-    }
+   
     
 
     

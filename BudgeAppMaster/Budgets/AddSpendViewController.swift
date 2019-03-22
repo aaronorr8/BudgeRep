@@ -65,16 +65,6 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
     let tempTotalSpentG = totalSpentG
     
     override func viewDidLayoutSubviews() {
-        //self.navigationController?.setNavigationBarHidden(false, animated: false)
-        
-    }
-    
-    override func viewDidLoad() {
-        
-        print("Temp....\(tempBudgetRemainingG)")
-        
-        super.viewDidLoad()
-        
         //Add underline to text fields
         let bottomLineAmount = CALayer()
         bottomLineAmount.frame = CGRect(origin: CGPoint(x: 0, y:spendAmount.frame.height - 1), size: CGSize(width: spendAmount.frame.width, height:  1))
@@ -87,6 +77,16 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         saveButton.layer.cornerRadius = 10
         saveButton.layer.borderWidth = 2
         saveButton.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
+    }
+    
+    
+    override func viewDidLoad() {
+        
+        print("Temp....\(tempBudgetRemainingG)")
+        
+        super.viewDidLoad()
+        
+        
         
         //Keyboard Shift (1/3)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
