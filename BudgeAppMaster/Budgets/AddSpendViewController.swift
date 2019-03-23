@@ -66,11 +66,8 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
     
     override func viewDidLayoutSubviews() {
         //Add underline to text fields
-        let bottomLineAmount = CALayer()
-        bottomLineAmount.frame = CGRect(origin: CGPoint(x: 0, y:spendAmount.frame.height - 1), size: CGSize(width: spendAmount.frame.width, height:  1))
-        bottomLineAmount.backgroundColor = UIColor.black.cgColor
-        spendAmount.borderStyle = UITextField.BorderStyle.none
-        spendAmount.layer.addSublayer(bottomLineAmount)
+        spendAmount.setUnderLine()
+        
         
         //Add rounded outline to save button
         saveButton.backgroundColor = .clear

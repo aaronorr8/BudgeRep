@@ -19,13 +19,15 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
     @IBOutlet weak var dueDateInput: UITextField!
     @IBOutlet weak var selectBudgetField: UITextField!
     @IBOutlet weak var navItem: UINavigationItem!
-    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var repeatSwitchOutlet: UISwitch!
     @IBOutlet weak var notificationSwitchOutlet: UISwitch!
     @IBOutlet weak var reminderLabel1: UILabel!
-    @IBOutlet weak var reminderLabel2: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    
     
 
     var amt: Int = 0
@@ -36,6 +38,26 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
     var notificationSetting = true
     
 
+    override func viewDidLayoutSubviews() {
+        //Add underline to text fields
+        reminderNameInput.setUnderLine()
+        reminderAmountInput.setUnderLine()
+        selectBudgetField.setUnderLine()
+        
+        scrollView.bounces = false
+        
+        
+        
+//        //Add rounded outline to save button
+//        customSaveButton.backgroundColor = .clear
+//        customSaveButton.layer.cornerRadius = 7
+//        customSaveButton.layer.borderWidth = 1
+//        customSaveButton.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
+//        customSaveButton.setTitleColor(#colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1), for: .normal)
+//        customSaveButton.titleLabel?.font = UIFont(name: "Helvetica", size: 18)
+    }
+    
+    
     override func viewDidLoad() {
      
         super.viewDidLoad()
@@ -116,16 +138,14 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
             //HIDE OR UNHIDE REMINDER INPUTS
             if reminderArray[myIndexG].notificationSetting == false {
                 reminderLabel1.isHidden = true
-                reminderLabel2.isHidden = true
                 dueDateInput.isHidden = true
             } else {
                 reminderLabel1.isHidden = false
-                reminderLabel2.isHidden = false
                 dueDateInput.isHidden = false
             }
             
             //SET BUTTON TITLE
-            saveButton.setTitle("Update", for: .normal)
+//            saveButton.setTitle("Update", for: .normal)
         }
     }
     
@@ -153,6 +173,7 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
     
     //MARK: REPEAT SWITCH
     @IBAction func repeatSwitchButton(_ sender: Any) {
+        self.view.endEditing(true)
         if (repeatSwitchOutlet.isOn) == true {
             print("Repeat On")
             repeatSetting = true
@@ -166,6 +187,7 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
     
     //MARK: NOTIFICATION SWITCH
     @IBAction func notificationSwitchButton(_ sender: Any) {
+        self.view.endEditing(true)
         if (notificationSwitchOutlet.isOn) == true {
             print("Notification On")
             
@@ -176,46 +198,42 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
             
             notificationSetting = true
             reminderLabel1.isHidden = false
-            reminderLabel2.isHidden = false
             dueDateInput.isHidden = false
         } else {
             print("Notification Off")
             notificationSetting = false
             reminderLabel1.isHidden = true
-            reminderLabel2.isHidden = true
             dueDateInput.isHidden = true
         }
         print(notificationSetting)
     }
     
-    
-    
-    //MARK: ADD NOTIFICATION
-    @IBAction func addReminder(_ sender: Any) {
+    //MARK: SAVE BUTTON
+    @IBAction func saveButton(_ sender: Any) {
         
         let newReminder = ReminderItem()
-
+        
         //ADD NEW MODE
         if editModeG != true {
-
+            
             //ADD NAME
             if reminderNameInput != nil {
                 newReminder.name = reminderNameInput.text!
             }
-
+            
             //ADD AMOUNT
             if reminderAmountInput != nil {
                 let amount = Double(amt/100) + Double(amt%100)/100
                 newReminder.amount = amount
             }
-
+            
             //ADD LINKED BUDGET
             if selectBudgetField != nil {
                 newReminder.linkedBudget = selectBudgetField.text!
             } else {
                 newReminder.linkedBudget = selectBudgetField.text!
             }
-
+            
             //ADD DATE
             if dueDateInput != nil {
                 if notificationSwitchOutlet.isOn == true {
@@ -240,7 +258,7 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
             
             //ADD NOTIFICATION SETTING
             newReminder.notificationSetting = notificationSetting
-
+            
             //ADD REMINDER STATUS
             newReminder.done = false
             notificationIDG = notificationIDG + 1
@@ -251,7 +269,7 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
             //UPDATE NAME
             if reminderNameInput != nil {
                 reminderArray[myIndexG].name = reminderNameInput.text!
-//                self.dismiss(animated: true, completion: nil)
+                //                self.dismiss(animated: true, completion: nil)
             }
             
             //UPDATE AMOUNT
@@ -264,7 +282,7 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
             if selectBudgetField != nil {
                 reminderArray[myIndexG].linkedBudget = selectBudgetField.text!
             }
-          
+            
             //UPDATE DATE
             if dueDateInput != nil {
                 if notificationSwitchOutlet.isOn == true {
@@ -298,6 +316,8 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
         self.dismiss(animated: true, completion: nil)
 
     }
+    
+   
     
     
     @IBAction func cancelButton(_ sender: Any) {
@@ -455,4 +475,6 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
     }
      
 }
+
+
 

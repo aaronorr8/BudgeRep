@@ -15,7 +15,7 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
     
     @IBOutlet weak var budgetNameField: UITextField!
     @IBOutlet weak var budgetAmountField: UITextField!
-    @IBOutlet weak var addUpdateButton: UIButton!
+//    @IBOutlet weak var addUpdateButton: UIButton!
     @IBOutlet weak var naviBar: UINavigationBar!
     @IBOutlet weak var navigationTitle: UINavigationItem!
  
@@ -35,23 +35,15 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
 
     override func viewDidLayoutSubviews() {
         //Add underline to text fields
-        let bottomLineName = CALayer()
-        bottomLineName.frame = CGRect(origin: CGPoint(x: 0, y:budgetNameField.frame.height - 1), size: CGSize(width: budgetNameField.frame.width, height:  1))
-        bottomLineName.backgroundColor = UIColor.black.cgColor
-        budgetNameField.borderStyle = UITextField.BorderStyle.none
-        budgetNameField.layer.addSublayer(bottomLineName)
+        budgetNameField.setUnderLine()
+        budgetAmountField.setUnderLine()
         
-        let bottomLineAmount = CALayer()
-        bottomLineAmount.frame = CGRect(origin: CGPoint(x: 0, y:budgetAmountField.frame.height - 1), size: CGSize(width: budgetAmountField.frame.width, height:  1))
-        bottomLineAmount.backgroundColor = UIColor.black.cgColor
-        budgetAmountField.borderStyle = UITextField.BorderStyle.none
-        budgetAmountField.layer.addSublayer(bottomLineAmount)
         
-        //Add rounded outline to save button
-        addUpdateButton.backgroundColor = .clear
-        addUpdateButton.layer.cornerRadius = 10
-        addUpdateButton.layer.borderWidth = 2
-        addUpdateButton.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
+//        //Add rounded outline to save button
+//        addUpdateButton.backgroundColor = .clear
+//        addUpdateButton.layer.cornerRadius = 10
+//        addUpdateButton.layer.borderWidth = 2
+//        addUpdateButton.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
     }
     
     override func viewDidLoad() {
@@ -67,13 +59,13 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
             navigationTitle.title = "Edit \(budgetNameG[myIndexG])"
             budgetNameField.text = budgetNameG[myIndexG]
             budgetAmountField.text = String(convertDoubleToCurency(amount: budgetAmountG[myIndexG]))
-            addUpdateButton.setTitle("Update", for: .normal)
+//            addUpdateButton.setTitle("Update", for: .normal)
         } else {
             print("view did layout subviews editModeG: \(editModeG)")
             navigationTitle.title = "Create New Budget"
             budgetNameField.placeholder = "Enter budget name"
             budgetAmountField.placeholder = "Enter budget amount"
-            addUpdateButton.setTitle("Save", for: .normal)
+//            addUpdateButton.setTitle("Save", for: .normal)
             budgetNameField.becomeFirstResponder()
         }
         
@@ -265,8 +257,18 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
 //        budgetAmountField.becomeFirstResponder()
         return true
     }
-    
-    
-    
 
+}
+
+extension UITextField {
+    func setUnderLine() {
+        let border = CALayer()
+        let width = CGFloat(0.5)
+        border.borderColor = UIColor.lightGray.cgColor
+        border.frame = CGRect(x: 0, y: self.frame.size.height - width, width:  self.frame.size.width-10, height: self.frame.size.height)
+        
+        border.borderWidth = width
+        self.layer.addSublayer(border)
+        self.layer.masksToBounds = true
+    }
 }

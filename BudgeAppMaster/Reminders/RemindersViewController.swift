@@ -36,6 +36,8 @@ class RemindersViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
 //        setNavigationBarColor()
         loadItems()
