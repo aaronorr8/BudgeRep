@@ -668,6 +668,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="QN0-CT-PTa" firstAttribute="trailing" secondItem="itS-FW-iYR" secondAttribute="trailing" constant="16" id="0o7-nU-IoN"/>
                             <constraint firstItem="kUx-xT-OjT" firstAttribute="leading" secondItem="QN0-CT-PTa" secondAttribute="leading" constant="16" id="CzG-XA-F7g"/>
                             <constraint firstItem="itS-FW-iYR" firstAttribute="centerX" secondItem="QN0-CT-PTa" secondAttribute="centerX" id="H7N-Dy-XCN"/>
                             <constraint firstItem="QN0-CT-PTa" firstAttribute="trailing" secondItem="kUx-xT-OjT" secondAttribute="trailing" constant="16" id="O5N-4d-IZP"/>
@@ -676,6 +677,7 @@
                             <constraint firstItem="itS-FW-iYR" firstAttribute="top" secondItem="kUx-xT-OjT" secondAttribute="bottom" constant="23" id="RV6-aq-fu7"/>
                             <constraint firstItem="N1Q-Rf-bar" firstAttribute="top" secondItem="QN0-CT-PTa" secondAttribute="top" constant="60" id="RpN-rM-A4U"/>
                             <constraint firstItem="N1Q-Rf-bar" firstAttribute="leading" secondItem="QN0-CT-PTa" secondAttribute="leading" constant="16" id="S3h-Ib-Kj2"/>
+                            <constraint firstItem="itS-FW-iYR" firstAttribute="leading" secondItem="QN0-CT-PTa" secondAttribute="leading" constant="16" id="YsX-0j-7fo"/>
                             <constraint firstItem="kUx-xT-OjT" firstAttribute="top" secondItem="8vu-mZ-ZN0" secondAttribute="bottom" constant="16" id="bJL-ge-gSO"/>
                             <constraint firstItem="MCp-4g-X3d" firstAttribute="leading" secondItem="QN0-CT-PTa" secondAttribute="leading" id="cxW-hU-Lek"/>
                             <constraint firstItem="QN0-CT-PTa" firstAttribute="trailing" secondItem="8vu-mZ-ZN0" secondAttribute="trailing" constant="16" id="fKo-Gz-2LP"/>

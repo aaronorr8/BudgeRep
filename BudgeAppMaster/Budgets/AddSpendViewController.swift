@@ -67,6 +67,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
     override func viewDidLayoutSubviews() {
         //Add underline to text fields
         spendAmount.setUnderLine()
+        spendNoteField.setUnderLine()
         
         
         //Add rounded outline to save button
