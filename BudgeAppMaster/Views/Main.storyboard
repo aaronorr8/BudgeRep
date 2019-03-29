@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3UM-1s-xEN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M0a-wv-vxZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1307,6 +1307,104 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9OA-28-Pj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5464.8000000000002" y="2440.9295352323838"/>
+        </scene>
+        <!--Welcome View Controller-->
+        <scene sceneID="atb-ed-Osy">
+            <objects>
+                <viewController id="M0a-wv-vxZ" customClass="WelcomeViewController" customModule="BudgeAppMaster" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Ea-Y7-VLu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JgI-3P-YJU">
+                                <rect key="frame" x="26" y="592" width="0.0" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cj-C5-KoI">
+                                <rect key="frame" x="0.0" y="197.5" width="375" height="292"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Budge" translatesAutoresizingMaskIntoConstraints="NO" id="21p-qm-cgV">
+                                        <rect key="frame" x="115" y="70" width="145" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="145" id="ZHN-6W-HSl"/>
+                                            <constraint firstAttribute="height" constant="34" id="het-uE-FVj"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pig" translatesAutoresizingMaskIntoConstraints="NO" id="NUs-KE-DRy">
+                                        <rect key="frame" x="136.5" y="0.0" width="102" height="54"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="7YG-uR-ugV"/>
+                                            <constraint firstAttribute="width" constant="102" id="pJU-P4-C2v"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12C-hH-pe0">
+                                        <rect key="frame" x="26" y="112" width="323" height="102"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="102" id="cdS-M2-Gta"/>
+                                        </constraints>
+                                        <string key="text">Keep track of your spending with Budge App. A no fluff, no nonsense,  bare-bones, simple-minded, and incredibly rad way to manage your money.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QpP-Ot-hws">
+                                        <rect key="frame" x="108.5" y="249" width="158" height="43"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="158" id="fpt-wU-GrF"/>
+                                            <constraint firstAttribute="height" constant="43" id="q1u-wF-dIj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                        <state key="normal" title="Get Started">
+                                            <color key="titleColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="QpP-Ot-hws" firstAttribute="centerX" secondItem="12C-hH-pe0" secondAttribute="centerX" id="F6B-qX-fNm"/>
+                                    <constraint firstItem="12C-hH-pe0" firstAttribute="centerX" secondItem="0cj-C5-KoI" secondAttribute="centerX" id="IV4-3c-8CR"/>
+                                    <constraint firstAttribute="trailing" secondItem="12C-hH-pe0" secondAttribute="trailing" constant="26" id="Jd0-Yg-4Ma"/>
+                                    <constraint firstAttribute="height" constant="292" id="WAa-eX-PgK"/>
+                                    <constraint firstItem="21p-qm-cgV" firstAttribute="centerX" secondItem="NUs-KE-DRy" secondAttribute="centerX" id="bYR-oW-3jY"/>
+                                    <constraint firstItem="12C-hH-pe0" firstAttribute="top" secondItem="21p-qm-cgV" secondAttribute="bottom" constant="8" id="blW-bN-KVk"/>
+                                    <constraint firstItem="12C-hH-pe0" firstAttribute="leading" secondItem="0cj-C5-KoI" secondAttribute="leading" constant="26" id="c1r-Lu-wSu"/>
+                                    <constraint firstItem="QpP-Ot-hws" firstAttribute="top" secondItem="12C-hH-pe0" secondAttribute="bottom" constant="35" id="h7L-Sg-Gy7"/>
+                                    <constraint firstItem="21p-qm-cgV" firstAttribute="top" secondItem="NUs-KE-DRy" secondAttribute="bottom" constant="16" id="oL4-H6-pXV"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="APr-Rg-bhz">
+                                <rect key="frame" x="117.5" y="609" width="140" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="5KU-mP-OHk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
+                                <state key="normal" title="Login to Budge">
+                                    <color key="titleColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="APr-Rg-bhz" firstAttribute="centerX" secondItem="Cct-eJ-jKd" secondAttribute="centerX" id="2ZF-EZ-bUs"/>
+                            <constraint firstItem="Cct-eJ-jKd" firstAttribute="trailing" secondItem="0cj-C5-KoI" secondAttribute="trailing" id="3aK-yC-2Cl"/>
+                            <constraint firstItem="NUs-KE-DRy" firstAttribute="centerX" secondItem="Cct-eJ-jKd" secondAttribute="centerX" id="4ZQ-9m-lXy"/>
+                            <constraint firstItem="0cj-C5-KoI" firstAttribute="leading" secondItem="Cct-eJ-jKd" secondAttribute="leading" id="GwS-S9-kcv"/>
+                            <constraint firstItem="Cct-eJ-jKd" firstAttribute="bottom" secondItem="APr-Rg-bhz" secondAttribute="bottom" constant="20" id="TOg-hk-dAR"/>
+                            <constraint firstItem="0cj-C5-KoI" firstAttribute="centerY" secondItem="Cct-eJ-jKd" secondAttribute="centerY" id="XgM-LB-LbC"/>
+                            <constraint firstItem="NUs-KE-DRy" firstAttribute="top" secondItem="Cct-eJ-jKd" secondAttribute="top" constant="177.5" id="rqk-r0-xA1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Cct-eJ-jKd"/>
+                    </view>
+                    <connections>
+                        <outlet property="getStartedButton" destination="QpP-Ot-hws" id="dS9-b8-F3W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lFC-2P-C62" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2564" y="948.57571214392806"/>
         </scene>
         <!--Sign In Up View Controller-->
         <scene sceneID="bZB-oi-7m4">
