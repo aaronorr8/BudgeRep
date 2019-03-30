@@ -33,6 +33,7 @@
 		0DA437562233354100110700 /* ReminderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA437552233354100110700 /* ReminderItem.swift */; };
 		25A933E7C5DAD6DF2D222780 /* Pods_BudgeAppMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C778C86DABD18BCB8E509DC /* Pods_BudgeAppMaster.framework */; };
 		4326BF34223347D4002B501D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326BF33223347D4002B501D /* ViewController.swift */; };
+		4351D753224EF245007ED47E /* BenefitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4351D752224EF245007ED47E /* BenefitsViewController.swift */; };
 		4393F83F2233FBA8004CD359 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4393F83E2233FBA8004CD359 /* Assets.xcassets */; };
 		43ECFE85224E61FC000BC957 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ECFE84224E61FC000BC957 /* WelcomeViewController.swift */; };
 /* End PBXBuildFile section */
@@ -67,6 +68,7 @@
 		0DA43752223334C700110700 /* SignInUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInUpViewController.swift; sourceTree = "<group>"; };
 		0DA437552233354100110700 /* ReminderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderItem.swift; sourceTree = "<group>"; };
 		4326BF33223347D4002B501D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4351D752224EF245007ED47E /* BenefitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitsViewController.swift; sourceTree = "<group>"; };
 		4393F83E2233FBA8004CD359 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43ECFE84224E61FC000BC957 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		4DAF6C3356B20D0714001DF0 /* Pods-BudgeAppMaster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BudgeAppMaster.release.xcconfig"; path = "Pods/Target Support Files/Pods-BudgeAppMaster/Pods-BudgeAppMaster.release.xcconfig"; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				43ECFE84224E61FC000BC957 /* WelcomeViewController.swift */,
+				4351D752224EF245007ED47E /* BenefitsViewController.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				0DA43742223333F200110700 /* AddBudgetViewController.swift in Sources */,
 				0DA4373B223333C000110700 /* WavyProgressView.swift in Sources */,
 				43ECFE85224E61FC000BC957 /* WelcomeViewController.swift in Sources */,
+				4351D753224EF245007ED47E /* BenefitsViewController.swift in Sources */,
 				0DA437472233340A00110700 /* HistoryViewController.swift in Sources */,
 				0DA43739223333AD00110700 /* BudgetCollectionReusableView.swift in Sources */,
 				0D5AC2172240015C0047BB48 /* ToastWindow.swift in Sources */,
