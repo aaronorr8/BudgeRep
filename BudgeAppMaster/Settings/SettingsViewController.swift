@@ -52,13 +52,14 @@ class SettingsViewController: UIViewController {
 
     }
     
-    //MARK: SignIn/Out
+    //MARK: SignOut
     @IBAction func signOutButton(_ sender: Any) {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
             print("Success. Signed out!!")
             self.userIDLabel.text = "Signed Out"
+            self.performSegue(withIdentifier: "goToLogin", sender: self)
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }

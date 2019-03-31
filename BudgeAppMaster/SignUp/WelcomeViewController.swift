@@ -28,7 +28,17 @@ class WelcomeViewController: UIViewController {
         
     }
     
+    
+    @IBAction func getStartedButton(_ sender: Any) {
+        signUpMode = true
+        self.performSegue(withIdentifier: "goToSignIn", sender: self)
+    }
+    
 
-  
+    @IBAction func loginButton(_ sender: Any) {
+        signUpMode = false
+        self.performSegue(withIdentifier: "goToSignIn", sender: self)
+    }
+    
 
 }

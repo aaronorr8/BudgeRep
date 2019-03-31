@@ -9,19 +9,33 @@
 import UIKit
 import Firebase
 
+var signUpMode = true
+
 class SignInUpViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var signInButtonOutlet: UIButton!
-    @IBOutlet weak var signUpInsteadOutlet: UIButton!
-    @IBOutlet weak var logInSignInLabel: UILabel!
+    @IBOutlet weak var switchModes: UIButton!
+    @IBOutlet weak var instructionLabel: UILabel!
+    
     
     let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
 
+    override func viewDidLayoutSubviews() {
+        
+        //Add underline to text fields
+        emailField.setUnderLine()
+        passwordField.setUnderLine()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setModeText()
+       
+     
         
         //Keyboard Shift (1/3)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -45,7 +59,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        let spaceAfterLastButton = view.frame.height - signUpInsteadOutlet.frame.size.height/2 - signUpInsteadOutlet.frame.origin.y
+        let spaceAfterLastButton = view.frame.height - switchModes.frame.size.height/2 - switchModes.frame.origin.y
         let distance = spaceAfterLastButton -  keyboardRect.height
         
         if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification {
@@ -73,6 +87,21 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
         let password = passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         startSpinner()
         
+        if signUpMode == true {
+            //SignUp Mode
+            Auth.auth().createUser(withEmail: email!, password: password!) { (user, error) in
+                if error != nil {
+                    self.stopSpinner()
+                    self.signUpAlert()
+                    print(error!)
+                } else {
+                    self.stopSpinner()
+                    self.dismiss(animated: true, completion: nil)
+                    print("Signup Successful!")
+                }
+            }
+        } else {
+        //Login Mode
         Auth.auth().signIn(withEmail: email!, password: password!) { (user, error) in
             if error != nil {
                 self.stopSpinner()
@@ -87,17 +116,30 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
         }
 
         self.view.endEditing(true)
+        }
     }
     
     
-    @IBAction func signUpInsteadButton(_ sender: Any) {
-        
+    @IBAction func switchModes(_ sender: Any) {
+        if signUpMode == true {
+            signUpMode = false
+        } else {
+            signUpMode = true
+        }
+        setModeText()
     }
+    
     
     
     
     func loginAlert() {
         let alert = UIAlertController(title: "Oops! Wrong email or password, try again.", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func signUpAlert() {
+        let alert = UIAlertController(title: "Oops! Looks like there's already an account with that email.", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
@@ -116,6 +158,16 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
     func stopSpinner() {
         activityIndicator.stopAnimating()
         UIApplication.shared.endIgnoringInteractionEvents()
+    }
+    
+    func setModeText() {
+        if signUpMode == true {
+            instructionLabel.text = "Create an Account"
+            switchModes.setTitle("Login Instead", for: .normal)
+        } else {
+            instructionLabel.text = "Login to Budge"
+            switchModes.setTitle("SignUp Instead", for: .normal)
+        }
     }
     
     
