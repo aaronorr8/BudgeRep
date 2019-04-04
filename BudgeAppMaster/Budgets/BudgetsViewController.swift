@@ -226,8 +226,11 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
             
         default:
             //4
-            assert(false, "Unexpected element kind")
+//            assert(false, "Unexpected element kind")
+            fatalError("Unexpected element kind")
         }
+        
+        
     }
     
     
@@ -251,8 +254,6 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         cell.contentView.layer.borderWidth = 1.0
         cell.contentView.layer.cornerRadius = 8.0
         cell.contentView.layer.borderColor = UIColor.darkGray.cgColor
-        
-        //Set cell border
         emptyCell.contentView.layer.borderWidth = 1.0
         emptyCell.contentView.layer.cornerRadius = 8.0
         emptyCell.contentView.layer.borderColor = UIColor.darkGray.cgColor
