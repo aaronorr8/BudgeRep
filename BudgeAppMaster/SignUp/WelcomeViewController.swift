@@ -21,6 +21,11 @@ class WelcomeViewController: UIViewController {
         getStartedButton.layer.borderWidth = 2
         getStartedButton.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //Hide navigation bar
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +44,10 @@ class WelcomeViewController: UIViewController {
         signUpMode = false
         self.performSegue(withIdentifier: "goToSignIn", sender: self)
     }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        self.navigationController?.setNavigationBarHidden(false, animated: false)
+//    }
     
 
 }

@@ -18,6 +18,8 @@ class BenefitsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
 
         //Add rounded outline to save button
         signUpButton.backgroundColor = .clear
