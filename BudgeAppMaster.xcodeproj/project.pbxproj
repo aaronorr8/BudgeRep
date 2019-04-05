@@ -36,6 +36,7 @@
 		4351D753224EF245007ED47E /* BenefitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4351D752224EF245007ED47E /* BenefitsViewController.swift */; };
 		4393F83F2233FBA8004CD359 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4393F83E2233FBA8004CD359 /* Assets.xcassets */; };
 		43ECFE85224E61FC000BC957 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ECFE84224E61FC000BC957 /* WelcomeViewController.swift */; };
+		43FE6F9C2257B581007C21BF /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FE6F9B2257B581007C21BF /* SettingTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		4393F83E2233FBA8004CD359 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43C7B2182256826D00F1FC0B /* BudgeAppMaster.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BudgeAppMaster.entitlements; sourceTree = "<group>"; };
 		43ECFE84224E61FC000BC957 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		43FE6F9B2257B581007C21BF /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		4DAF6C3356B20D0714001DF0 /* Pods-BudgeAppMaster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BudgeAppMaster.release.xcconfig"; path = "Pods/Target Support Files/Pods-BudgeAppMaster/Pods-BudgeAppMaster.release.xcconfig"; sourceTree = "<group>"; };
 		6C778C86DABD18BCB8E509DC /* Pods_BudgeAppMaster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BudgeAppMaster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD8C2B23E7AA693730F0A2EE /* Pods-BudgeAppMaster.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BudgeAppMaster.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BudgeAppMaster/Pods-BudgeAppMaster.debug.xcconfig"; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				0DA4374F2233349300110700 /* SettingsViewController.swift */,
+				43FE6F9B2257B581007C21BF /* SettingTableViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				4351D753224EF245007ED47E /* BenefitsViewController.swift in Sources */,
 				0DA437472233340A00110700 /* HistoryViewController.swift in Sources */,
 				0DA43739223333AD00110700 /* BudgetCollectionReusableView.swift in Sources */,
+				43FE6F9C2257B581007C21BF /* SettingTableViewController.swift in Sources */,
 				0D5AC2172240015C0047BB48 /* ToastWindow.swift in Sources */,
 				0DA437502233349300110700 /* SettingsViewController.swift in Sources */,
 				0DA4374C2233343000110700 /* RemindersTableViewCell.swift in Sources */,
