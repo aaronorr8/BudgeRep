@@ -35,12 +35,14 @@ class WelcomeViewController: UIViewController {
     
     
     @IBAction func getStartedButton(_ sender: Any) {
+        
 
     }
     
 
     @IBAction func loginButton(_ sender: Any) {
         signUpMode = false
+        
 
     }
     

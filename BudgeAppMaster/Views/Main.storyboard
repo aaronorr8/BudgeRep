@@ -1175,6 +1175,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                     <state key="normal" title="Reset"/>
+                                                    <connections>
+                                                        <action selector="resetAllBudgets:" destination="NBk-tc-AHQ" eventType="touchUpInside" id="2HT-2i-rPc"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Reset spending" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7Z-2p-NTP">
                                                     <rect key="frame" x="16" y="12" width="119" height="21"/>
@@ -1248,6 +1251,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AFL-Xb-kQT">
                                                     <rect key="frame" x="312" y="24" width="49" height="31"/>
+                                                    <connections>
+                                                        <action selector="monthlyResetSwitch:" destination="NBk-tc-AHQ" eventType="valueChanged" id="m95-2k-HrS"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1276,6 +1282,9 @@
                                                     <rect key="frame" x="152" y="9" width="71" height="33"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                     <state key="normal" title="Sign Out"/>
+                                                    <connections>
+                                                        <action selector="signOutButton:" destination="NBk-tc-AHQ" eventType="touchUpInside" id="W5X-Mm-vvt"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -1305,6 +1314,52 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="51" id="fZc-4H-W0J">
+                                        <rect key="frame" x="0.0" y="448" width="375" height="51"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fZc-4H-W0J" id="G0Y-xi-Gf0">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKW-Y1-R4X">
+                                                    <rect key="frame" x="163.5" y="8.5" width="48" height="33.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                    <state key="normal" title="Test it"/>
+                                                    <connections>
+                                                        <action selector="testItButton:" destination="NBk-tc-AHQ" eventType="touchUpInside" id="OQb-1D-Usi"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="uKW-Y1-R4X" firstAttribute="centerY" secondItem="G0Y-xi-Gf0" secondAttribute="centerY" id="Fhk-IQ-sbn"/>
+                                                <constraint firstItem="uKW-Y1-R4X" firstAttribute="centerX" secondItem="G0Y-xi-Gf0" secondAttribute="centerX" id="ogw-G6-aD4"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="uKW-Y1-R4X" secondAttribute="bottom" constant="-2" id="yjc-Hu-RFn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="51" id="JNe-Pu-6Lv">
+                                        <rect key="frame" x="0.0" y="499" width="375" height="51"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JNe-Pu-6Lv" id="EjR-q1-JpI">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsk-gB-S9y">
+                                                    <rect key="frame" x="101" y="8.5" width="173" height="33.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                    <state key="normal" title="Pending Notifications"/>
+                                                    <connections>
+                                                        <action selector="notifyMeButton:" destination="NBk-tc-AHQ" eventType="touchUpInside" id="jnD-yR-N9q"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="rsk-gB-S9y" firstAttribute="centerY" secondItem="EjR-q1-JpI" secondAttribute="centerY" id="BPs-z3-8uu"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="rsk-gB-S9y" secondAttribute="bottom" constant="-2" id="BTq-mQ-kXa"/>
+                                                <constraint firstItem="rsk-gB-S9y" firstAttribute="centerX" secondItem="EjR-q1-JpI" secondAttribute="centerX" id="fGr-oV-Frf"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -1314,6 +1369,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="SETTINGS" id="CPj-mW-3dD"/>
+                    <connections>
+                        <outlet property="monthlyResetSwitch" destination="AFL-Xb-kQT" id="baC-tI-1IJ"/>
+                        <segue destination="fBD-do-PNd" kind="presentation" identifier="goToLogin" id="MAD-z3-gm7"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wnl-9g-fpe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1906,7 +1965,7 @@
         <image name="SettingsSolid" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Vm8-f4-AYC"/>
+        <segue reference="MAD-z3-gm7"/>
         <segue reference="VgK-Dy-3zS"/>
         <segue reference="8MC-0u-7HE"/>
     </inferredMetricsTieBreakers>

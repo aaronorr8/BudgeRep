@@ -97,6 +97,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                 } else {
                     self.stopSpinner()
                     self.dismiss(animated: true, completion: nil)
+                    goToMain = true
                     print("Signup Successful!")
                 }
             }
