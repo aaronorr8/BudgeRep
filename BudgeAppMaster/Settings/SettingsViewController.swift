@@ -15,22 +15,17 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var monthlyResetSwitch: UISwitch!
-    @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var userIDLabel: UILabel!
 
     
     var amt: Int = 0
     var referenceNote = 0
-    
     var indexesToRemove = [Int]()
    
     override func viewWillAppear(_ animated: Bool) {
         
-//        UIApplication.shared.statusBarStyle = .lightContent
-//        UIApplication.shared.statusBarView?.backgroundColor = bgColorGradient1
-//        setNavigationBarColor()
-        monthlyResetSwitch.isOn = monthlyResetNotificationSetting
+        monthlyResetSetting = defaults.bool(forKey: "MonthlyResetSetting")
+        monthlyResetSwitch.isOn = monthlyResetSetting
     }
     
     
@@ -52,57 +47,7 @@ class SettingsViewController: UIViewController {
 
     }
     
-    //MARK: SignOut
-    @IBAction func signOutButton(_ sender: Any) {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            print("Success. Signed out!!")
-            self.userIDLabel.text = "Signed Out"
-            self.performSegue(withIdentifier: "goToLogin", sender: self)
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-    
-    }
-    
-    @IBAction func signupButton(_ sender: Any) {
-        
-        let email = emailField.text
-        let password = passwordField.text
-        
-        Auth.auth().createUser(withEmail: email!, password: password!) { (user, error) in
-            if error != nil {
-                print(error)
-            } else {
-                print("Signup Successful!")
-                if let userID = Auth.auth().currentUser?.uid {
-                    self.userIDLabel.text = userID
-                }
-            }
-        }
-    }
-    
-    @IBAction func loginButton(_ sender: Any) {
-        
-        let email = emailField.text
-        let password = passwordField.text
-        
-        Auth.auth().signIn(withEmail: email!, password: password!) { (user, error) in
-            if error != nil {
-                print(error)
-            } else {
-                print("Login successful!!")
-                
-                if let userID = Auth.auth().currentUser?.uid {
-                    self.userIDLabel.text = userID
-                }
-            }
-        }
-        
-        self.view.endEditing(true)
-    }
-    
+ 
     @IBAction func testItButton(_ sender: Any) {
         
         if let userID = Auth.auth().currentUser?.uid {
@@ -135,7 +80,6 @@ class SettingsViewController: UIViewController {
     }
     
     
-    
     //MARK: FireStore Listen for Data
     func listenDocument() {
         
@@ -156,22 +100,7 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    func getDocumentWithOptions() {
-        
-       print(db)
-    }
-    
-    
-    
-//    func setNavigationBarColor() {
-//        navBar.barTintColor = bgColorGradient1
-//        navBar.isTranslucent = false
-//        navBar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-//        navBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)]
-//        let barView = UIView(frame: CGRect(x:0, y:0, width:view.frame.width, height:UIApplication.shared.statusBarFrame.height))
-//        barView.backgroundColor = bgColorGradient1
-//        view.addSubview(barView)
-//    }
+
     
     
     @IBAction func notifyMeButton(_ sender: Any) {
@@ -200,7 +129,6 @@ class SettingsViewController: UIViewController {
             
             alert.addAction(UIAlertAction(title: "Yes! Rollover my money", style: UIAlertAction.Style.default, handler: { _ in
                 self.rolloverToRolloverBudget()
-                self.printBudgets()
                 self.resetReminderStatus()
                 self.cancelNonRepeatingReminderNotifications()
                 self.clearTempArrays()
@@ -211,7 +139,6 @@ class SettingsViewController: UIViewController {
             }))
             alert.addAction(UIAlertAction(title: "No. Just reset my budgets", style: UIAlertAction.Style.default, handler: { _ in
                 self.resetBudgetsNoRollover()
-                self.printBudgets()
                 self.resetReminderStatus()
                 self.cancelNonRepeatingReminderNotifications()
                 self.clearTempArrays()
@@ -237,11 +164,9 @@ class SettingsViewController: UIViewController {
             
             alert.addAction(UIAlertAction(title: "Reset", style: UIAlertAction.Style.default, handler: { _ in
                 self.resetBudgetsNoRollover()
-                self.printBudgets()
                 self.resetReminderStatus()
                 self.cancelNonRepeatingReminderNotifications()
                 self.clearTempArrays()
-                self.printBudgets()
                 self.deleteNonRepeatingReminders()
                 self.updateArrays()
                 self.saveToFireStore()
@@ -359,26 +284,7 @@ class SettingsViewController: UIViewController {
         
         let tempArray = reminderArray.enumerated().filter { !indexesToRemove.contains($0.offset)}.map { $0.element}
         reminderArray = tempArray
-        
-        
-//        let tempName = reminderNameG.enumerated().filter { !indexesToRemove.contains($0.offset) }.map { $0.element}
-//        let tempDone = reminderDoneG.enumerated().filter { !indexesToRemove.contains($0.offset) }.map { $0.element}
-//        let tempAmount = reminderAmountG.enumerated().filter { !indexesToRemove.contains($0.offset) }.map { $0.element}
-//        let tempLinkedBudget = reminderLinkedBudgetG.enumerated().filter { !indexesToRemove.contains($0.offset) }.map { $0.element}
-//        let tempDate = reminderDateG.enumerated().filter { !indexesToRemove.contains($0.offset) }.map { $0.element}
-//        let tempRepeat = reminderRepeatG.enumerated().filter { !indexesToRemove.contains($0.offset) }.map { $0.element}
-//        let tempNotification = reminderNotificationG.enumerated().filter { !indexesToRemove.contains($0.offset) }.map { $0.element}
-//        let tempNoteID = reminderNoteIDG.enumerated().filter { !indexesToRemove.contains($0.offset) }.map { $0.element}
-//
-//        reminderNameG = tempName
-//        reminderDoneG = tempDone
-//        reminderAmountG = tempAmount
-//        reminderLinkedBudgetG = tempLinkedBudget
-//        reminderDateG = tempDate
-//        reminderRepeatG = tempRepeat
-//        reminderNotificationG = tempNotification
-//        reminderNoteIDG = tempNoteID
-    }
+  }
     
  
     
@@ -405,12 +311,12 @@ class SettingsViewController: UIViewController {
     @IBAction func monthlyResetSwitch (_ sender: Any) {
         if monthlyResetSwitch.isOn == true {
             scheduleResetNotification()
-            monthlyResetNotificationSetting = true
-            setDefaultsForMonthlyReset()
+            monthlyResetSetting = true
+            defaults.set(monthlyResetSetting, forKey: "MonthlyResetSetting")
         } else {
             cancelResetNotification()
-            monthlyResetNotificationSetting = false
-            setDefaultsForMonthlyReset()
+            monthlyResetSetting = false
+            defaults.set(monthlyResetSetting, forKey: "MonthlyResetSetting")
         }
         
     }
@@ -502,37 +408,6 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    func printBudgets() {
-        print("RESET!!!")
-        print("budgetName: \(budgetNameG)")
-        print("budgetAmount: \(budgetAmountG)")
-        print("budgetHistoryAmount: \(budgetHistoryAmountG)")
-        print("budgetNote: \(budgetNoteG)")
-        print("budgetHistoryDate: \(budgetHistoryDateG)")
-        print("totalSpent: \(String(describing: totalSpentG))")
-        print("budgetRemaining: \(budgetRemainingG)")
-        print("totalSpentG: \(totalSpentG)")
-        print("rolloverTotalG: \(rolloverTotalG)")
-        print("BREAK")
-    }
-    
-    
-    func setUserDefaults() {
-        defaults.set(totalSpentG, forKey: "TotalSpent")
-        defaults.set(budgetNameG, forKey: "BudgetName")
-        defaults.set(budgetAmountG, forKey: "BudgetAmount")
-        defaults.set(budgetHistoryAmountG, forKey: "BudgetHistoryAmount")
-        defaults.set(budgetNoteG, forKey: "BudgetNote")
-        defaults.set(budgetRemainingG, forKey: "BudgetRemaining")
-        defaults.set(budgetHistoryDateG, forKey: "BudgetHistoryDate")
-        defaults.set(budgetHistoryTimeG, forKey: "BudgetHistoryTime")
-        defaults.set(rolloverG, forKey: "Rollover")
-        defaults.set(rolloverTotalG, forKey: "RolloverTotal")
-    }
-    
-    func setDefaultsForMonthlyReset() {
-        defaults.set(monthlyResetNotificationSetting, forKey: "MonthlyResetNotificationSetting")
-    }
 
 }
 

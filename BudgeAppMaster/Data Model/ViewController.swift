@@ -11,8 +11,6 @@ import UIKit
 let defaults = UserDefaults.standard
 
 
-
-
 //NAVIGATION
 var myIndexG = 0
 var editModeG = false
@@ -20,7 +18,7 @@ var closeAllG = false
 
 
 //SETTINGS
-var monthlyResetNotificationSetting = false
+var monthlyResetSetting = false
 
 //TEMP DATA
 var presetAmountG = 0.0
@@ -36,7 +34,7 @@ var billHistoryAmountG = [String: [Double]]()
 var billHistoryDateG = [String: [String]]()
 
 //WARNING: [SAVE THIS TO USER DEFAULTS]
-var notificationIDG = 0
+var notificationUniqueID = 0
 
 
 

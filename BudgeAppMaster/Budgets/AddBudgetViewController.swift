@@ -37,13 +37,7 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
         //Add underline to text fields
         budgetNameField.setUnderLine()
         budgetAmountField.setUnderLine()
-        
-        
-//        //Add rounded outline to save button
-//        addUpdateButton.backgroundColor = .clear
-//        addUpdateButton.layer.cornerRadius = 10
-//        addUpdateButton.layer.borderWidth = 2
-//        addUpdateButton.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
+
     }
     
     override func viewDidLoad() {
@@ -98,9 +92,7 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
             budgetRemainingG.append(amount - totalSpent!)
             
             saveToFireStore()
-//            saveUserDefaults()
-            printBudgets()
-            
+
             self.dismiss(animated: true, completion: nil)
             
         } else {
@@ -139,8 +131,6 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
                 budgetRemainingG[myIndexG] = (amount - totalSpent!)
                 
                 saveToFireStore()
-//                saveUserDefaults()
-                printBudgets()
                 
                 closeAllG = true
                 editModeG = false

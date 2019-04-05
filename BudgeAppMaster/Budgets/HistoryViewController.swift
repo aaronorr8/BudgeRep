@@ -111,8 +111,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             totalSpentG = totalSpent
             
             self.saveToFireStore()
-            
-//            self.setUserDefaults()
+
             
         }
         
@@ -136,7 +135,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             self.saveToFireStore()
             
-//            self.setUserDefaults()
             
         }
         
@@ -217,8 +215,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.saveToFireStore()
             
             self.tableView.reloadData()
-            
-            self.setUserDefaults()
+
             
             
         
@@ -275,14 +272,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         return false
     }
     
-    func setUserDefaults() {
-        defaults.set(budgetHistoryAmountG, forKey: "BudgetHistoryAmount")
-        defaults.set(budgetHistoryDateG, forKey: "BudgetHistoryDate")
-        defaults.set(budgetHistoryTimeG, forKey: "BudgetHistoryTime")
-        defaults.set(budgetRemainingG, forKey: "BudgetRemaining")
-        defaults.set(totalSpentG, forKey: "TotalSpent")
-        
-    }
     
     //MARK: Save to FireStore
     func saveToFireStore() {

@@ -424,37 +424,11 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
      
         totalSpentG = totalSpentG - totalSpentTemp
         saveToFireStore()
-//        setUserDefaults()
-//        printBudgets()
+
     
     }
     
-//    //MARK: PRINT BUDGETS
-//    func printBudgets() {
-//        print("Deleted!")
-//        print("budgetNameG: \(budgetNameG)")
-//        print("budgetAmountG: \(budgetAmountG)")
-//        print("budgetHistoryAmountG: \(budgetHistoryAmountG)")
-//        print("budgetHistoryDateG: \(budgetHistoryDateG)")
-//        print("budgetHistoryTimeG: \(budgetHistoryTimeG)")
-//        print("budgetRemainingG: \(budgetRemainingG)")
-//        print("totalSpentG: \(totalSpentG)")
-//        print("BREAK")
-//    }
-    
-//    //Mark: SAVE USER DEFAULTS
-//    func setUserDefaults() {
-//        defaults.set(budgetHistoryAmountG, forKey: "BudgetHistoryAmount")
-//        defaults.set(budgetNoteG, forKey: "BudgetNote")
-//        defaults.set(budgetRemainingG, forKey: "BudgetRemaining")
-//        defaults.set(budgetHistoryDateG, forKey: "BudgetHistoryDate")
-//        defaults.set(budgetHistoryTimeG, forKey: "BudgetHistoryTime")
-//        defaults.set(totalSpentG, forKey: "TotalSpent")
-//    }
-    
-    //MARK: Save to FireStore
-    
-    
+   
     @IBAction func cancelButton(_ sender: Any) {
         presetAmountG = 0.0
         view.endEditing(true)

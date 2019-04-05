@@ -35,19 +35,15 @@ class WelcomeViewController: UIViewController {
     
     
     @IBAction func getStartedButton(_ sender: Any) {
-//        signUpMode = true
-//        self.performSegue(withIdentifier: "goToSignIn", sender: self)
+
     }
     
 
     @IBAction func loginButton(_ sender: Any) {
         signUpMode = false
-        self.performSegue(withIdentifier: "goToSignIn", sender: self)
+
     }
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//        self.navigationController?.setNavigationBarHidden(false, animated: false)
-//    }
-    
+
 
 }

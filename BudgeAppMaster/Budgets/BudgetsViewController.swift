@@ -394,65 +394,6 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         }
     }
     
-   
-    
-    
-    
-    
-    //MARK: Create UserDefaults
-    func createUserDefaults() {
-//        if UserDefaults.standard.object(forKey: "BudgetName") != nil {
-//            budgetNameG = defaults.object(forKey: "BudgetName") as! [String]
-//            print("User Defaults budgetNameG: \(defaults.object(forKey: "BudgetName") as! [String])")
-//        }
-//        if UserDefaults.standard.object(forKey: "BudgetAmount") != nil {
-//            budgetAmountG = defaults.object(forKey: "BudgetAmount") as! [Double]
-//            print("User Defaults budgetAmountG: \(defaults.object(forKey: "BudgetAmount") as! [Double])")
-//        }
-//        if UserDefaults.standard.object(forKey: "BudgetHistoryAmount") != nil {
-//            budgetHistoryAmountG = defaults.object(forKey: "BudgetHistoryAmount") as! [String: [Double]]
-//            print("User Defaults budgetHistoryAmountG: \(defaults.object(forKey: "BudgetHistoryAmount") as! [String: [Double]])")
-//        }
-//        if UserDefaults.standard.object(forKey: "BudgetHistoryDate") != nil {
-//            budgetHistoryDateG = defaults.object(forKey: "BudgetHistoryDate") as! [String: [String]]
-//            print("User Defaults budgetHistoryDateG: \(defaults.object(forKey: "BudgetHistoryDate") as! [String: [String]])")
-//        }
-//        if UserDefaults.standard.object(forKey: "BudgetHistoryTime") != nil {
-//            budgetHistoryTimeG = defaults.object(forKey: "BudgetHistoryTime") as! [String: [String]]
-//            print("User Defaults budgetHistoryTimeG: \(defaults.object(forKey: "BudgetHistoryTime") as! [String: [String]])")
-//        }
-//        if UserDefaults.standard.object(forKey: "BudgetRemaining") != nil {
-//            budgetRemainingG = defaults.object(forKey: "BudgetRemaining") as! [Double]
-//            print("User Defaults budgetRemainingG: \(defaults.object(forKey: "BudgetRemaining") as! [Double])")
-//        }
-//        if UserDefaults.standard.object(forKey: "TotalSpent") != nil {
-//            totalSpentG = defaults.object(forKey: "TotalSpent") as! Double
-//            print("User Defaults totalSpentG: \(defaults.object(forKey: "TotalSpent") as! Double)")
-//        }
-//        if UserDefaults.standard.object(forKey: "BudgetNote") != nil {
-//            budgetNoteG = defaults.object(forKey: "BudgetNote") as! [String: [String]]
-//            print("User Defaults budgetNoteG: \(defaults.object(forKey: "BudgetNote") as! [String: [String]])")
-//        }
-//        if UserDefaults.standard.object(forKey: "Rollover") != nil {
-//            rolloverG = defaults.object(forKey: "Rollover") as! Bool
-//            print("User Defaults rolloverG: \(defaults.object(forKey: "Rollover") as! Bool)")
-//        }
-//        if UserDefaults.standard.object(forKey: "RolloverTotal") != nil {
-//            rolloverTotalG = defaults.object(forKey: "RolloverTotal") as! Double
-//            print("User Defaults rolloverTotalG: \(defaults.object(forKey: "RolloverTotal") as! Double)")
-//        }
-
-        if UserDefaults.standard.object(forKey: "NotificationID") != nil {
-            notificationIDG = defaults.object(forKey: "NotificationID") as! Int
-            print("User Defaults NotificationID: \(defaults.object(forKey: "NotificationID") as! Int)")
-        }
-        if UserDefaults.standard.object(forKey: "MonthlyResetNotificationSetting") != nil {
-            monthlyResetNotificationSetting = defaults.object(forKey: "MonthlyResetNotificationSetting") as! Bool
-            print("User Defaults MonthlyResetNotificationSetting: \(defaults.object(forKey: "MonthlyResetNotificationSetting") as! Bool)")
-        }
-        
-        
-    }
     
     //MARK: Save to FireStore
     func saveToFireStore() {
@@ -510,20 +451,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     
     
     
-    func setUserDefaults() {
-//        defaults.set(budgetNameG, forKey: "BudgetName")
-//        defaults.set(budgetAmountG, forKey: "BudgetAmount")
-//        defaults.set(budgetHistoryAmountG, forKey: "BudgetHistoryAmount")
-//        defaults.set(budgetRemainingG, forKey: "BudgetRemaining")
-//        defaults.set(budgetHistoryDateG, forKey: "BudgetHistoryDate")
-//        defaults.set(budgetHistoryTimeG, forKey: "BudgetHistoryTime")
-//        defaults.set(budgetNoteG, forKey: "BudgetNote")
-//        defaults.set(rolloverG, forKey: "Rollover")
-//        defaults.set(rolloverTotalG, forKey: "RolloverTotal")
-        defaults.set(monthlyResetNotificationSetting, forKey: "MonthlyResetNotificationSetting")
-        
-       
-    }
+    
     
     
     

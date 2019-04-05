@@ -36,7 +36,7 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
     var dueDateOptions = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "12th", "13th", "14th", "15th", "16th", "17th", "18th", "19th", "20th", "21st", "22nd", "23rd", "24th", "25th", "26th", "27th", "28th"]
     var repeatSetting = true
     var notificationSetting = true
-    
+
 
     override func viewDidLayoutSubviews() {
         //Add underline to text fields
@@ -46,24 +46,20 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
         
         scrollView.bounces = false
         
-        
-        
-//        //Add rounded outline to save button
-//        customSaveButton.backgroundColor = .clear
-//        customSaveButton.layer.cornerRadius = 7
-//        customSaveButton.layer.borderWidth = 1
-//        customSaveButton.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
-//        customSaveButton.setTitleColor(#colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1), for: .normal)
-//        customSaveButton.titleLabel?.font = UIFont(name: "Helvetica", size: 18)
     }
     
     
     override func viewDidLoad() {
+        
+        
+        
+        //Get User Default Values
+        notificationUniqueID = defaults.integer(forKey: "NotificationUniqueID")
      
         super.viewDidLoad()
         
         print("myIndexG: \(myIndexG)")
-        print("notificationIDG: \(notificationIDG)")
+    
 
         //SET NAV TITLE
         navItem.title = "Add Bill Reminder"
@@ -144,8 +140,6 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
                 dueDateInput.isHidden = false
             }
             
-            //SET BUTTON TITLE
-//            saveButton.setTitle("Update", for: .normal)
         }
     }
     
@@ -243,7 +237,7 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
                     let modifiedDay = tempDay.dropLast(2)
                     newReminder.date = Int(modifiedDay)!
                     noteDay = Int(modifiedDay)!
-                    noteReference = notificationIDG
+                    noteReference = notificationUniqueID
                     scheduleNotifications()
                 } else {
                     newReminder.date = 0
@@ -254,18 +248,28 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
             newReminder.reminderRepeat = repeatSetting
             
             //ADD NOTIFICATION ID
-            newReminder.notificationID = notificationIDG
+            newReminder.notificationID = notificationUniqueID
             
             //ADD NOTIFICATION SETTING
             newReminder.notificationSetting = notificationSetting
             
             //ADD REMINDER STATUS
             newReminder.done = false
-            notificationIDG = notificationIDG + 1
+            
+            
             reminderArray.append(newReminder)
             
+            //Increment notificationUniqueID
+            notificationUniqueID = notificationUniqueID + 1
+            
+            //Save to User Defaults
+            defaults.set(notificationUniqueID, forKey: "NotificationUniqueID")
+            
+            print("notificationUniqueID: \(notificationUniqueID)")
+            
+            
         } else {
-            //EDIT MODE
+            //MARK: EDIT MODE
             //UPDATE NAME
             if reminderNameInput != nil {
                 reminderArray[myIndexG].name = reminderNameInput.text!
@@ -473,6 +477,7 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
             print("Error encoding reminder array, \(error)")
         }
     }
+    
      
 }
 
