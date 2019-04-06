@@ -30,8 +30,7 @@ import AudioToolbox
     var toastSuccess = true
     var savedBudget = String()
     var savedAmount = String()
-    
-    var newAccount = false
+ 
     
 class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
@@ -60,6 +59,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Reset view for new users. Notification is posted when new users sign up
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
         
         db = Firestore.firestore()
