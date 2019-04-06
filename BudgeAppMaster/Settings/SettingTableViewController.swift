@@ -10,7 +10,7 @@ import UIKit
 import UserNotifications
 import Firebase
 
-var goToMain = true
+var goToMain = false
 
 class SettingTableViewController: UITableViewController {
 
@@ -24,9 +24,10 @@ class SettingTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-//        if goToMain == true {
-//            tabBarController?.selectedIndex = 0
-//        }
+        if goToMain == true {
+            tabBarController?.selectedIndex = 0
+            goToMain = false
+        }
         
         monthlyResetSetting = defaults.bool(forKey: "MonthlyResetSetting")
         monthlyResetSwitch.isOn = monthlyResetSetting
@@ -424,6 +425,8 @@ class SettingTableViewController: UITableViewController {
             print("Error encoding reminder array, \(error)")
         }
     }
+    
+    
     
     
 }

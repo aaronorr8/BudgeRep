@@ -31,6 +31,8 @@ import AudioToolbox
     var savedBudget = String()
     var savedAmount = String()
     
+    var newAccount = false
+    
 class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -58,8 +60,9 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        db = Firestore.firestore()
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
         
+        db = Firestore.firestore()
        
         //Show login screen if user isn't logged in
         let currentUser = Auth.auth().currentUser
@@ -79,6 +82,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+       
         fireStoreListener()
         
     }
@@ -93,8 +97,9 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         self.navigationItem.title = String(convertDoubleToCurency(amount: totalBudgetsAvailable))
         
         showConfirmationToast()
-     
         
+
+
     }
     
     func showConfirmationToast() {
@@ -447,9 +452,27 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
                     
             }
         }
+        
+       
     }
     
+    @objc func loadList(){
+        cleanData()
+        calculateTotalAvailable()
+        calculateTotalAllocation()
+        self.collectionView.reloadData()
+    }
     
+    func cleanData() {
+        budgetNameG.removeAll()
+        budgetAmountG.removeAll()
+        budgetHistoryAmountG.removeAll()
+        budgetNoteG.removeAll()
+        budgetHistoryDateG.removeAll()
+        budgetHistoryTimeG.removeAll()
+        budgetRemainingG.removeAll()
+        totalSpentG = 0.0
+    }
     
     
     

@@ -96,9 +96,11 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                     print(error!)
                 } else {
                     self.stopSpinner()
-                    self.dismiss(animated: true, completion: nil)
                     goToMain = true
+                    self.dismiss(animated: true, completion: nil)
                     print("Signup Successful!")
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+                    
                 }
             }
         } else {
@@ -111,6 +113,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
 
             } else {
                 self.stopSpinner()
+                goToMain = true
                 self.dismiss(animated: true, completion: nil)
                 print("Login successful!!")
             }
@@ -171,8 +174,8 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+  
     
-
 
 }
 
