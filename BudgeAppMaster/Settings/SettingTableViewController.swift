@@ -42,6 +42,9 @@ class SettingTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         UIApplication.shared.applicationIconBadgeNumber = 0
         print("clear badge")
+        
+        //Load Notification Items
+        loadItems()
     }
     
     
@@ -57,12 +60,19 @@ class SettingTableViewController: UITableViewController {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
+            deleteReminders()
             self.performSegue(withIdentifier: "goToLogin", sender: self)
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
         
     }
+    
+    @IBAction func restorePurchase(_ sender: Any) {
+       
+    }
+
+    
     
     
     @IBAction func testItButton(_ sender: Any) {
@@ -124,7 +134,7 @@ class SettingTableViewController: UITableViewController {
     @IBAction func notifyMeButton(_ sender: Any) {
         let center = UNUserNotificationCenter.current()
         center.getPendingNotificationRequests { (notifications) in
-            print("Count: \(notifications.count)")
+            print("################## Count: \(notifications.count)")
             for item in notifications {
                 print(item.content.title)
                 print(item.identifier)
@@ -390,6 +400,13 @@ class SettingTableViewController: UITableViewController {
         }
     }
     
+    func cancelAllReminderNotififications() {
+        for i in 0..<(reminderArray.count) {
+            noteReference = reminderArray[i].notificationID
+            cancelNotifications()
+        }
+    }
+    
     //MARK: Save to FireStore
     func saveToFireStore() {
         
@@ -424,6 +441,35 @@ class SettingTableViewController: UITableViewController {
         } catch {
             print("Error encoding reminder array, \(error)")
         }
+    }
+    
+    func loadItems() {
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            let decoder = PropertyListDecoder()
+            do {
+                reminderArray = try decoder.decode([ReminderItem].self, from: data)
+            } catch {
+                print("Error decoding reminder array, \(error)")
+            }
+        }
+    }
+    
+    func deleteReminders() {
+        //Cancel reminder notifications
+        cancelAllReminderNotififications()
+        
+        //Cancel monthly reset notification
+        cancelResetNotification()
+        
+        //Delete all reminders
+        reminderArray.removeAll()
+        
+        //Save
+        saveData()
+        
+        //Turn of monthly reset switch
+        monthlyResetSetting = false
+        defaults.set(monthlyResetSetting, forKey: "MonthlyResetSetting")
     }
     
     

@@ -1213,7 +1213,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2uL-Ws-8Gf">
-                                                    <rect key="frame" x="302" y="10" width="57" height="33"/>
+                                                    <rect key="frame" x="302" y="10.5" width="57" height="32.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="57" id="7lh-SO-XlG"/>
                                                     </constraints>
@@ -1279,7 +1279,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTb-KF-hqv">
-                                                    <rect key="frame" x="152" y="9" width="71" height="33"/>
+                                                    <rect key="frame" x="152" y="8.5" width="71" height="33.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                     <state key="normal" title="Sign Out"/>
                                                     <connections>
@@ -1302,9 +1302,12 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0F-bC-hyW">
-                                                    <rect key="frame" x="116" y="9" width="143" height="33"/>
+                                                    <rect key="frame" x="116" y="8.5" width="143" height="33.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                     <state key="normal" title="Restore Purchase"/>
+                                                    <connections>
+                                                        <action selector="restorePurchase:" destination="NBk-tc-AHQ" eventType="touchUpInside" id="TMO-KZ-RRW"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -1965,7 +1968,7 @@
         <image name="SettingsSolid" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Vm8-f4-AYC"/>
+        <segue reference="MAD-z3-gm7"/>
         <segue reference="VgK-Dy-3zS"/>
         <segue reference="8MC-0u-7HE"/>
     </inferredMetricsTieBreakers>
