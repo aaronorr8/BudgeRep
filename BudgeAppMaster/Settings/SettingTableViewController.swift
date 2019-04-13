@@ -31,7 +31,7 @@ class SettingTableViewController: UITableViewController {
             goToMain = false
         }
         
-        monthlyResetSetting = defaults.bool(forKey: "MonthlyResetSetting")
+        
         monthlyResetSwitch.isOn = monthlyResetSetting
     }
     
@@ -54,30 +54,10 @@ class SettingTableViewController: UITableViewController {
         super.viewDidLoad()
         
         db = Firestore.firestore()
-    
-        registeredDate = defaults.object(forKey: "RegisteredDate") as! Date
+        getUserDefaults()
         
     }
     
-    
-    //TEMP
-    @IBAction func printDate(_ sender: Any) {
-        iapDate = Date()
-        
-        let components = Calendar.current.dateComponents([.minute], from: registeredDate, to: iapDate)
-        let minutes = components.minute ?? 0
-        
-        print("RegisteredDate: \(registeredDate)")
-        print("iapDate: \(iapDate)")
-        print("difference is \(components.minute ?? 0) minutes")
-        
-        
-        if minutes > 8 && subscribedUser == false {
-            self.performSegue(withIdentifier: "goToIAP", sender: self)
-        }
-        
-        
-    }
     
     
     //MARK: SignOut
@@ -86,6 +66,8 @@ class SettingTableViewController: UITableViewController {
         do {
             try firebaseAuth.signOut()
             deleteReminders()
+            subscribedUser = false
+            setUserDefaults()
             self.performSegue(withIdentifier: "goToLogin", sender: self)
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
@@ -94,8 +76,15 @@ class SettingTableViewController: UITableViewController {
     }
     
     @IBAction func restorePurchase(_ sender: Any) {
+        
+        subscribedUser = false
+        setUserDefaults()
+        print("reset")
        
     }
+    
+    
+    
 
     
     
@@ -365,11 +354,11 @@ class SettingTableViewController: UITableViewController {
         if monthlyResetSwitch.isOn == true {
             scheduleResetNotification()
             monthlyResetSetting = true
-            defaults.set(monthlyResetSetting, forKey: "MonthlyResetSetting")
+            setUserDefaults()
         } else {
             cancelResetNotification()
             monthlyResetSetting = false
-            defaults.set(monthlyResetSetting, forKey: "MonthlyResetSetting")
+            setUserDefaults()
         }
         
     }
@@ -494,7 +483,18 @@ class SettingTableViewController: UITableViewController {
         
         //Turn of monthly reset switch
         monthlyResetSetting = false
+        setUserDefaults()
+    }
+    
+    func getUserDefaults() {
+        monthlyResetSetting = defaults.bool(forKey: "MonthlyResetSetting")
+        subscribedUser = defaults.bool(forKey: "SubscribedUser")
+        registeredDate = defaults.object(forKey: "RegisteredDate") as! Date
+    }
+    
+    func setUserDefaults() {
         defaults.set(monthlyResetSetting, forKey: "MonthlyResetSetting")
+        defaults.set(subscribedUser, forKey: "SubscribedUser")
     }
     
     

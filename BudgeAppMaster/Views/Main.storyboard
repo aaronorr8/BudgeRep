@@ -1026,6 +1026,7 @@
                     <connections>
                         <outlet property="collectionView" destination="lZp-W0-yOm" id="vHX-hN-w6k"/>
                         <segue destination="fBD-do-PNd" kind="presentation" identifier="goToLogin" id="FiT-xg-Q5X"/>
+                        <segue destination="eXN-CN-4TQ" kind="presentation" identifier="goToIAP" id="3hX-0F-b7Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O72-jK-KfL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1288,11 +1289,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="SETTINGS" id="CPj-mW-3dD">
-                        <barButtonItem key="leftBarButtonItem" title="SignUpDate" id="vbU-Hd-ski">
-                            <connections>
-                                <action selector="printDate:" destination="NBk-tc-AHQ" id="fsk-7w-GrY"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="nLM-3o-hyM"/>
                     </navigationItem>
                     <connections>
@@ -1878,7 +1874,7 @@
         <!--View Controller-->
         <scene sceneID="yJt-Fi-hE3">
             <objects>
-                <viewController id="eXN-CN-4TQ" customClass="IAPViewController" customModule="BudgeAppMaster" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IAP" id="eXN-CN-4TQ" customClass="IAPViewController" customModule="BudgeAppMaster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wgo-0I-k6g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2006,6 +2002,7 @@
         <image name="SettingsSolid" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="cEw-DZ-yRc"/>
         <segue reference="MAD-z3-gm7"/>
         <segue reference="AEH-d4-PVL"/>
         <segue reference="8MC-0u-7HE"/>

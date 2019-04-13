@@ -41,6 +41,7 @@ class IAPViewController: UIViewController {
     
         subscribedUser = true
         defaults.set(subscribedUser, forKey: "SubscribedUser")
+        self.dismiss(animated: true, completion: nil)
         
     }
     
@@ -52,8 +53,6 @@ class IAPViewController: UIViewController {
         subscribedUser = defaults.bool(forKey: "SubscribedUser")
         print("SubscribedUser: \(subscribedUser)")
         
-        registeredUser = defaults.bool(forKey: "RegisteredUser")
-        print("RegisteredUser: \(registeredUser)")
     }
     
     
@@ -102,6 +101,8 @@ class IAPViewController: UIViewController {
         
         return bulletList
     }
+    
+    
     
     
     

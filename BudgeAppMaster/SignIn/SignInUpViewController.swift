@@ -100,10 +100,8 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                     print(error!)
                 } else {
                     //SUCCESS STATE
-                    registeredDate = Date()
+                    registeredDate = Auth.auth().currentUser?.metadata.creationDate! ?? Date()
                     defaults.set(registeredDate, forKey: "RegisteredDate")
-                    registeredUser = true
-                    defaults.set(registeredUser, forKey: "RegisteredUser")
                     self.stopSpinner()
                     goToMain = true
                     self.dismiss(animated: true, completion: nil)
@@ -122,8 +120,8 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                 print(error as Any)
             } else {
                 //SUCCESS STATE
-                registeredUser = true
-                defaults.set(registeredUser, forKey: "RegisteredUser")
+                registeredDate = Auth.auth().currentUser?.metadata.creationDate! ?? Date()
+                defaults.set(registeredDate, forKey: "RegisteredDate")
                 self.stopSpinner()
                 goToMain = true
                 self.dismiss(animated: true, completion: nil)

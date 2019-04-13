@@ -78,6 +78,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         self.collectionView.addGestureRecognizer(longPressGesture)
         
         
+        
     }
     
     
@@ -99,9 +100,13 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         
         showConfirmationToast()
         
-
+        showIAP()
+        
+        
+      
 
     }
+    
     
     func showConfirmationToast() {
         
@@ -475,7 +480,26 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         totalSpentG = 0.0
     }
     
+   
     
+    func showIAP() {
+        subscribedUser = defaults.bool(forKey: "SubscribedUser")
+        registeredDate = defaults.object(forKey: "RegisteredDate") as! Date
+        
+        iapDate = Date()
+        
+        let components = Calendar.current.dateComponents([.minute], from: registeredDate, to: iapDate)
+        let minutes = components.minute ?? 0
+        
+        print("RegisteredDate: \(registeredDate)")
+        print("iapDate: \(iapDate)")
+        print("difference is \(components.minute ?? 0) minutes")
+        print("SubscribedUser: \(subscribedUser)")
+        
+        if minutes > 3 && subscribedUser == false {  //Minutes should be 10080 for 1 week
+            self.performSegue(withIdentifier: "goToIAP", sender: self)
+        }
+    }
     
     
     
