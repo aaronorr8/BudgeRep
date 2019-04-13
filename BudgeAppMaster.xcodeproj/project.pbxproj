@@ -30,6 +30,7 @@
 		0DA4374D2233343000110700 /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA4374A2233343000110700 /* RemindersViewController.swift */; };
 		0DA43753223334C800110700 /* SignInUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA43752223334C700110700 /* SignInUpViewController.swift */; };
 		0DA437562233354100110700 /* ReminderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA437552233354100110700 /* ReminderItem.swift */; };
+		0DACD959225FC1A3008EDF4B /* IAPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DACD958225FC1A3008EDF4B /* IAPViewController.swift */; };
 		25A933E7C5DAD6DF2D222780 /* Pods_BudgeAppMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C778C86DABD18BCB8E509DC /* Pods_BudgeAppMaster.framework */; };
 		4326BF34223347D4002B501D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326BF33223347D4002B501D /* ViewController.swift */; };
 		4351D753224EF245007ED47E /* BenefitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4351D752224EF245007ED47E /* BenefitsViewController.swift */; };
@@ -66,6 +67,7 @@
 		0DA4374A2233343000110700 /* RemindersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
 		0DA43752223334C700110700 /* SignInUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInUpViewController.swift; sourceTree = "<group>"; };
 		0DA437552233354100110700 /* ReminderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderItem.swift; sourceTree = "<group>"; };
+		0DACD958225FC1A3008EDF4B /* IAPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPViewController.swift; sourceTree = "<group>"; };
 		4326BF33223347D4002B501D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4351D752224EF245007ED47E /* BenefitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitsViewController.swift; sourceTree = "<group>"; };
 		4393F83E2233FBA8004CD359 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			children = (
 				43C7B2182256826D00F1FC0B /* BudgeAppMaster.entitlements */,
 				43ECFE86224E620C000BC957 /* SignUp */,
+				0DACD957225FC16B008EDF4B /* IAP */,
 				0D5AC20E224001480047BB48 /* Toast */,
 				0DA4370222332E5200110700 /* AppDelegate.swift */,
 				0DA4371A223332CA00110700 /* Data Model */,
@@ -199,6 +202,15 @@
 				0DA43752223334C700110700 /* SignInUpViewController.swift */,
 			);
 			path = SignIn;
+			sourceTree = "<group>";
+		};
+		0DACD957225FC16B008EDF4B /* IAP */ = {
+			isa = PBXGroup;
+			children = (
+				0DACD958225FC1A3008EDF4B /* IAPViewController.swift */,
+			);
+			name = IAP;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		43ECFE86224E620C000BC957 /* SignUp */ = {
@@ -369,6 +381,7 @@
 			files = (
 				0DA4373F223333E000110700 /* FooterBudgetCollectionView.swift in Sources */,
 				4326BF34223347D4002B501D /* ViewController.swift in Sources */,
+				0DACD959225FC1A3008EDF4B /* IAPViewController.swift in Sources */,
 				0DA4374B2233343000110700 /* AddReminderViewController.swift in Sources */,
 				0DA43742223333F200110700 /* AddBudgetViewController.swift in Sources */,
 				0DA4373B223333C000110700 /* WavyProgressView.swift in Sources */,

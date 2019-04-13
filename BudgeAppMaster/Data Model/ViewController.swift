@@ -20,6 +20,14 @@ var closeAllG = false
 //SETTINGS
 var monthlyResetSetting = false
 
+//IAP
+var registeredDate = Date()
+var iapDate = Date().addingTimeInterval(12345678)
+var subscribedUser = Bool()
+var registeredUser = Bool()
+
+
+
 //TEMP DATA
 var presetAmountG = 0.0
 var presetRefundG = false

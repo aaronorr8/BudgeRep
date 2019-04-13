@@ -19,6 +19,8 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var switchModes: UIButton!
     @IBOutlet weak var instructionLabel: UILabel!
     
+    var errorText = String()
+    
     
     let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
@@ -88,30 +90,40 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
         startSpinner()
         
         if signUpMode == true {
-            //SignUp Mode
+            //*SIGNUP MODE*
             Auth.auth().createUser(withEmail: email!, password: password!) { (user, error) in
                 if error != nil {
+                    //ERROR STATE
+                    self.errorText = error?.localizedDescription ?? "Unable to signup at this time. Please try again."
                     self.stopSpinner()
                     self.signUpAlert()
                     print(error!)
                 } else {
+                    //SUCCESS STATE
+                    registeredDate = Date()
+                    defaults.set(registeredDate, forKey: "RegisteredDate")
+                    registeredUser = true
+                    defaults.set(registeredUser, forKey: "RegisteredUser")
                     self.stopSpinner()
                     goToMain = true
                     self.dismiss(animated: true, completion: nil)
                     print("Signup Successful!")
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
-                    
                 }
             }
         } else {
-        //Login Mode
+        //*LOGIN MODE*
         Auth.auth().signIn(withEmail: email!, password: password!) { (user, error) in
             if error != nil {
+                //ERROR STATE
+                self.errorText = error?.localizedDescription ?? "Unable to login at this time. Please try again."
                 self.stopSpinner()
                 self.loginAlert()
                 print(error as Any)
-
             } else {
+                //SUCCESS STATE
+                registeredUser = true
+                defaults.set(registeredUser, forKey: "RegisteredUser")
                 self.stopSpinner()
                 goToMain = true
                 self.dismiss(animated: true, completion: nil)
@@ -137,13 +149,15 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
     
     
     func loginAlert() {
-        let alert = UIAlertController(title: "Oops! Wrong email or password, try again.", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: errorText, message: nil, preferredStyle: .alert)
+//        let alert = UIAlertController(title: "Oops! Wrong email or password, try again.", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
     func signUpAlert() {
-        let alert = UIAlertController(title: "Oops! Looks like there's already an account with that email.", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: errorText, message: nil, preferredStyle: .alert)
+//        let alert = UIAlertController(title: "Oops! Looks like there's already an account with that email.", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }

@@ -22,6 +22,8 @@ class SettingTableViewController: UITableViewController {
     var referenceNote = 0
     var indexesToRemove = [Int]()
     
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         
         if goToMain == true {
@@ -52,8 +54,31 @@ class SettingTableViewController: UITableViewController {
         super.viewDidLoad()
         
         db = Firestore.firestore()
+    
+        registeredDate = defaults.object(forKey: "RegisteredDate") as! Date
         
     }
+    
+    
+    //TEMP
+    @IBAction func printDate(_ sender: Any) {
+        iapDate = Date()
+        
+        let components = Calendar.current.dateComponents([.minute], from: registeredDate, to: iapDate)
+        let minutes = components.minute ?? 0
+        
+        print("RegisteredDate: \(registeredDate)")
+        print("iapDate: \(iapDate)")
+        print("difference is \(components.minute ?? 0) minutes")
+        
+        
+        if minutes > 8 && subscribedUser == false {
+            self.performSegue(withIdentifier: "goToIAP", sender: self)
+        }
+        
+        
+    }
+    
     
     //MARK: SignOut
     @IBAction func signOutButton(_ sender: Any) {

@@ -68,6 +68,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         let currentUser = Auth.auth().currentUser
         if currentUser == nil {
             self.performSegue(withIdentifier: "goToLogin", sender: self)
+            print("Show Login Screen")
         }
         
         
