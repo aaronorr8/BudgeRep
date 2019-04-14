@@ -436,8 +436,8 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
         
         //trigger on a specific date and time
         var dateComponents = DateComponents()
-        dateComponents.hour = 8
-//        dateComponents.minute = 00
+        dateComponents.hour = 7
+        dateComponents.minute = 30
 //        dateComponents.weekday = 2
 //        dateComponents.second = noteDay
         dateComponents.day = noteDay

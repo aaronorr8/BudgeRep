@@ -143,8 +143,8 @@ class RemindersViewController: UIViewController, UITableViewDelegate, UITableVie
                 
                 self.present(alert, animated: true, completion: nil)
             }
-            
             cancelNotifications()
+            saveData()
             
         } else {
             //MARK REMINDER AS NOT DONE
@@ -171,7 +171,7 @@ class RemindersViewController: UIViewController, UITableViewDelegate, UITableVie
             
             scheduleNotifications()
         }
-        
+        saveData()
         remindersTableView.reloadData()
         
     }
@@ -233,17 +233,17 @@ class RemindersViewController: UIViewController, UITableViewDelegate, UITableVie
         let content = UNMutableNotificationContent()
         
         //adding title, subtitle, body and badge
-        content.title = "Bill Reminder: \(reminderArray[myIndexG].name)"
+        content.title = "Remember to pay \(reminderArray[myIndexG].name)"
         content.subtitle = ""
         content.body = ""
         content.badge = 1
         
         //trigger on a specific date and time
         var dateComponents = DateComponents()
-        //        dateComponents.hour = 9
-        //        dateComponents.minute = noteDay
+                dateComponents.hour = 7
+                dateComponents.minute = 30
         //        dateComponents.weekday = 2
-        dateComponents.second = reminderArray[myIndexG].date
+        dateComponents.day = reminderArray[myIndexG].date
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         
