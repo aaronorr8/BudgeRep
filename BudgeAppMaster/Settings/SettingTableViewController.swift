@@ -83,43 +83,43 @@ class SettingTableViewController: UITableViewController {
        
     }
     
-    
-    
-
-    
-    
-    
-    @IBAction func testItButton(_ sender: Any) {
-        
-        if let userID = Auth.auth().currentUser?.uid {
-            db.collection("budgets").document(userID)
-                .addSnapshotListener { documentSnapshot, error in
-                    guard let document = documentSnapshot else {
-                        print("Error fetching document: \(error!)")
-                        return
-                    }
-                    guard let data = document.data() else {
-                        print("Document data was empty.")
-                        return
-                    }
-                    budgetNameG = document.get("budgetName") as! [String]
-                    budgetAmountG = document.get("budgetAmount") as! [Double]
-                    budgetHistoryAmountG = document.get("budgetHistoryAmount") as! [String : [Double]]
-                    budgetNoteG = document.get("budgetNote") as! [String : [String]]
-                    budgetHistoryDateG = document.get("budgetHistoryDate") as! [String : [String]]
-                    budgetHistoryTimeG = document.get("budgetHistoryTime") as! [String : [String]]
-                    budgetRemainingG = document.get("budgetRemaining") as! [Double]
-                    
-                    print("Current data: \(data)")
-                    
-            }
-            
-            
-        }
-        
-        
-    }
-    
+//
+//
+//
+//
+//
+//
+//    @IBAction func testItButton(_ sender: Any) {
+//
+//        if let userID = Auth.auth().currentUser?.uid {
+//            db.collection("budgets").document(userID)
+//                .addSnapshotListener { documentSnapshot, error in
+//                    guard let document = documentSnapshot else {
+//                        print("Error fetching document: \(error!)")
+//                        return
+//                    }
+//                    guard let data = document.data() else {
+//                        print("Document data was empty.")
+//                        return
+//                    }
+//                    budgetNameG = document.get("budgetName") as! [String]
+//                    budgetAmountG = document.get("budgetAmount") as! [Double]
+//                    budgetHistoryAmountG = document.get("budgetHistoryAmount") as! [String : [Double]]
+//                    budgetNoteG = document.get("budgetNote") as! [String : [String]]
+//                    budgetHistoryDateG = document.get("budgetHistoryDate") as! [String : [String]]
+//                    budgetHistoryTimeG = document.get("budgetHistoryTime") as! [String : [String]]
+//                    budgetRemainingG = document.get("budgetRemaining") as! [Double]
+//
+//                    print("Current data: \(data)")
+//
+//            }
+//
+//
+//        }
+//
+//
+//    }
+//
     
     
     //MARK: FireStore Listen for Data
@@ -145,18 +145,18 @@ class SettingTableViewController: UITableViewController {
     
     
     
-    @IBAction func notifyMeButton(_ sender: Any) {
-        let center = UNUserNotificationCenter.current()
-        center.getPendingNotificationRequests { (notifications) in
-            print("################## Count: \(notifications.count)")
-            for item in notifications {
-                print(item.content.title)
-                print(item.identifier)
-                print(item.trigger)
-                print("- - - - - - - - - -")
-            }
-        }
-    }
+//    @IBAction func notifyMeButton(_ sender: Any) {
+//        let center = UNUserNotificationCenter.current()
+//        center.getPendingNotificationRequests { (notifications) in
+//            print("################## Count: \(notifications.count)")
+//            for item in notifications {
+//                print(item.content.title)
+//                print(item.identifier)
+//                print(item.trigger)
+//                print("- - - - - - - - - -")
+//            }
+//        }
+//    }
     
     
     
@@ -379,7 +379,7 @@ class SettingTableViewController: UITableViewController {
         //trigger on a specific date and time
         var dateComponents = DateComponents()
         dateComponents.hour = 7
-        dateComponents.minute = 30
+        dateComponents.minute = 10
         //        dateComponents.weekday = 2
         //        dateComponents.second = 0
         dateComponents.day = 1

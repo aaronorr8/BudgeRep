@@ -1230,26 +1230,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fZc-4H-W0J" id="G0Y-xi-Gf0">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKW-Y1-R4X">
-                                                    <rect key="frame" x="163.5" y="9" width="48" height="33"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="48" id="UcB-9y-hDu"/>
-                                                        <constraint firstAttribute="height" constant="33" id="qWj-PD-6cE"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                                    <state key="normal" title="Test it">
-                                                        <color key="titleColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="testItButton:" destination="NBk-tc-AHQ" eventType="touchUpInside" id="OQb-1D-Usi"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="uKW-Y1-R4X" firstAttribute="centerX" secondItem="G0Y-xi-Gf0" secondAttribute="centerX" id="Egx-04-cpH"/>
-                                                <constraint firstItem="uKW-Y1-R4X" firstAttribute="centerY" secondItem="G0Y-xi-Gf0" secondAttribute="centerY" id="zTs-Qc-4Oz"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="51" id="JNe-Pu-6Lv">
@@ -1258,26 +1238,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JNe-Pu-6Lv" id="EjR-q1-JpI">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsk-gB-S9y">
-                                                    <rect key="frame" x="101" y="9" width="173" height="33"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="173" id="EPI-JK-OIV"/>
-                                                        <constraint firstAttribute="height" constant="33" id="KN1-Ss-p1n"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                                    <state key="normal" title="Pending Notifications">
-                                                        <color key="titleColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="notifyMeButton:" destination="NBk-tc-AHQ" eventType="touchUpInside" id="jnD-yR-N9q"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="rsk-gB-S9y" firstAttribute="centerX" secondItem="EjR-q1-JpI" secondAttribute="centerX" id="L79-Vp-jSp"/>
-                                                <constraint firstItem="rsk-gB-S9y" firstAttribute="centerY" secondItem="EjR-q1-JpI" secondAttribute="centerY" id="dGc-OG-mw2"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
