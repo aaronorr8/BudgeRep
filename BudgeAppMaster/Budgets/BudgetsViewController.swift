@@ -484,7 +484,10 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func showIAP() {
         subscribedUser = defaults.bool(forKey: "SubscribedUser")
-        registeredDate = defaults.object(forKey: "RegisteredDate") as! Date
+//        registeredDate = defaults.object(forKey: "RegisteredDate") as! Date
+        if defaults.object(forKey: "RegisteredDate") != nil {
+            registeredDate = defaults.object(forKey: "RegisteredDate") as! Date
+        }
         
         iapDate = Date()
         
