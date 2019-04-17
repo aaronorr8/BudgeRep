@@ -14,12 +14,15 @@ class IAPViewController: UIViewController {
     @IBOutlet weak var subscribeButton: UIButton!
     @IBOutlet weak var tryForFreeLabel: UILabel!
     @IBOutlet weak var benefitView: UIView!
+    @IBOutlet weak var closeButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        
         
         //Add rounded outline to save button
         subscribeButton.backgroundColor = .clear
@@ -35,6 +38,19 @@ class IAPViewController: UIViewController {
         
         benefitList.attributedText = add(stringList: arrayString, font: benefitList.font, bullet: "\u{2022}")
         self.benefitView.addSubview(benefitList)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        //Show or hide close button
+        if hideCloseButton == true {
+            closeButton.isHidden = true
+        } else {
+            closeButton.isHidden = false
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        hideCloseButton = true
     }
     
     @IBAction func subscribeButton(_ sender: Any) {
@@ -103,6 +119,9 @@ class IAPViewController: UIViewController {
     }
     
     
+    @IBAction func closeButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     
     

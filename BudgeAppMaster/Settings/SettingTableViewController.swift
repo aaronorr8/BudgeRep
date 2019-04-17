@@ -11,11 +11,14 @@ import UserNotifications
 import Firebase
 
 var goToMain = false
+var hideCloseButton = true
 
 class SettingTableViewController: UITableViewController {
 
 
     @IBOutlet weak var monthlyResetSwitch: UISwitch!
+    
+    
     
     
     var amt: Int = 0
@@ -141,6 +144,12 @@ class SettingTableViewController: UITableViewController {
             }
         }
     }
+    
+    @IBAction func subscribeButton(_ sender: Any) {
+        hideCloseButton = false
+        
+    }
+    
     
     
     

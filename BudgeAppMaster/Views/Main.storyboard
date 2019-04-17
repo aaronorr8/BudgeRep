@@ -1230,6 +1230,20 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fZc-4H-W0J" id="G0Y-xi-Gf0">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="64j-eJ-whA">
+                                                    <rect key="frame" x="81" y="10" width="212" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                    <state key="normal" title="Subscribe">
+                                                        <color key="titleColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="subscribeButton:" destination="NBk-tc-AHQ" eventType="touchUpInside" id="vx4-ab-72p"/>
+                                                        <segue destination="eXN-CN-4TQ" kind="presentation" id="uHM-nS-Bna"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="51" id="JNe-Pu-6Lv">
@@ -1259,7 +1273,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wnl-9g-fpe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6777" y="949"/>
+            <point key="canvasLocation" x="6776.8000000000002" y="948.57571214392806"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EIi-8Q-rbh">
@@ -1842,7 +1856,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="843-MJ-1qM">
                                 <rect key="frame" x="0.0" y="119" width="375" height="449"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get one more week for FREE, then just $1 a month thereafter. You'll easily save that and more by keeping a budget!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iny-5M-p5E">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Only $0.49 a month. You spend more than that in a gumball machine!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iny-5M-p5E">
                                         <rect key="frame" x="10" y="272" width="355" height="71"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="71" id="rzK-hY-GBc"/>
@@ -1923,12 +1937,27 @@
                                     <action selector="restorePurchase:" destination="eXN-CN-4TQ" eventType="touchUpInside" id="YHZ-BO-W2A"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCf-Ba-pdD">
+                                <rect key="frame" x="16" y="36" width="74" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="3H6-pC-8Xh"/>
+                                    <constraint firstAttribute="width" constant="74" id="kiO-RS-NbU"/>
+                                </constraints>
+                                <state key="normal" title="No Thanks">
+                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeButton:" destination="eXN-CN-4TQ" eventType="touchUpInside" id="kKH-g4-v70"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="fSd-dK-KtV" firstAttribute="centerX" secondItem="keM-ou-nTh" secondAttribute="centerX" id="Ba5-yE-w12"/>
                             <constraint firstItem="843-MJ-1qM" firstAttribute="centerY" secondItem="keM-ou-nTh" secondAttribute="centerY" id="Lj3-zZ-THS"/>
                             <constraint firstItem="keM-ou-nTh" firstAttribute="bottom" secondItem="fSd-dK-KtV" secondAttribute="bottom" constant="20" id="OdH-oM-PSq"/>
+                            <constraint firstItem="vCf-Ba-pdD" firstAttribute="top" secondItem="keM-ou-nTh" secondAttribute="top" constant="16" id="Rh8-yY-nXH"/>
+                            <constraint firstItem="vCf-Ba-pdD" firstAttribute="leading" secondItem="keM-ou-nTh" secondAttribute="leading" constant="16" id="qEi-oW-Zz0"/>
                             <constraint firstItem="keM-ou-nTh" firstAttribute="trailing" secondItem="843-MJ-1qM" secondAttribute="trailing" id="wLX-67-G04"/>
                             <constraint firstItem="843-MJ-1qM" firstAttribute="leading" secondItem="keM-ou-nTh" secondAttribute="leading" id="zMI-pt-isU"/>
                         </constraints>
@@ -1937,13 +1966,14 @@
                     <connections>
                         <outlet property="benefitList" destination="rSI-mn-S3A" id="OIe-k7-n9S"/>
                         <outlet property="benefitView" destination="M9X-lN-zVT" id="f70-R3-gqr"/>
+                        <outlet property="closeButton" destination="vCf-Ba-pdD" id="GyR-5Z-UmR"/>
                         <outlet property="subscribeButton" destination="4eK-cC-fjP" id="h8Q-PC-jlJ"/>
                         <outlet property="tryForFreeLabel" destination="iny-5M-p5E" id="pP6-Yq-J4U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iEb-iA-oJL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3549.5999999999999" y="273.91304347826087"/>
+            <point key="canvasLocation" x="3412" y="213.64317841079463"/>
         </scene>
     </scenes>
     <resources>
