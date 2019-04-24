@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import StoreKit
 
-class IAPViewController: UIViewController {
+class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
     @IBOutlet weak var benefitList: UILabel!
     @IBOutlet weak var subscribeButton: UIButton!
@@ -17,10 +18,32 @@ class IAPViewController: UIViewController {
     @IBOutlet weak var closeButton: UIButton!
     
     
+    var list = [SKProduct]()
+    var p = SKProduct()
+    var product = SKProduct()
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //IAP Code
+        if(SKPaymentQueue.canMakePayments()) {
+            print("IAP is enabled, loading")
+            let productID: NSSet = NSSet(objects: "budge.subscription")
+            let request: SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
+            request.delegate = self
+            request.start()
+            
+        } else {
+            print("please enable IAP")
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        
         
         
         
@@ -54,22 +77,114 @@ class IAPViewController: UIViewController {
     }
     
     @IBAction func subscribeButton(_ sender: Any) {
+        
+        for product in list {
+            let ProdID = product.productIdentifier
+            if(ProdID == "budge.subscription") {
+                p = product
+                buyProduct()
+            }
+        }
+        
+        
+//        self.dismiss(animated: true, completion: nil)
+        
     
-        subscribedUser = true
-        defaults.set(subscribedUser, forKey: "SubscribedUser")
-        self.dismiss(animated: true, completion: nil)
+        
         
     }
+    
+    
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        print("product request")
+        let myProduct = response.products
+        for product in myProduct {
+            for product in myProduct {
+                print("product added")
+                print(product.productIdentifier)
+                print(product.localizedTitle)
+                print(product.localizedDescription)
+                print(product.price)
+                
+                list.append(product)
+        }
+            
+             tryForFreeLabel.text = "Only \(product.localizedPrice) a month. You spend more than that in a gumball machine!"
+            //ADD CODE HERE TO ENABLE PRODUCT
+    }
+        
+        func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+            print("transactions restored")
+            for transaction in queue.transactions {
+                let t: SKPaymentTransaction = transaction
+                let prodID = t.payment.productIdentifier as String
+                
+                switch prodID {
+                case "budge.subscription":
+                    print("Subscribe")
+                    unlockApp()
+                default:
+                    print("IAP not found")
+                }
+            }
+        }
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        print("add payment")
+        
+        for transaction: AnyObject in transactions {
+            let trans = transaction as! SKPaymentTransaction
+            print(trans.error)
+            
+            switch trans.transactionState {
+            case .purchased:
+                print("buy ok, unlock IAP HERE")
+                print(p.productIdentifier)
+                
+                let prodID = p.productIdentifier
+                switch prodID {
+                case "budge.subscription":
+                    print("remove ads")
+                    unlockApp()
+                default:
+                    print("IAP not found")
+                }
+                queue.finishTransaction(trans)
+            case .failed:
+                print("buy error")
+                queue.finishTransaction(trans)
+                break
+            default:
+                print("Default")
+                break
+            }
+        }
+    }
+    
+    func buyProduct() {
+        print("buy " + p.productIdentifier)
+        let pay = SKPayment(product: p)
+        SKPaymentQueue.default().add(self)
+        SKPaymentQueue.default().add(pay as SKPayment)
+    }
+    
     
     @IBAction func restorePurchase(_ sender: Any) {
         
-        subscribedUser = true
-        defaults.set(subscribedUser, forKey: "SubscribedUser")
+        SKPaymentQueue.default().add(self)
+        SKPaymentQueue.default().restoreCompletedTransactions()
         
-        subscribedUser = defaults.bool(forKey: "SubscribedUser")
-        print("SubscribedUser: \(subscribedUser)")
+        
+//
+//        subscribedUser = true
+//        defaults.set(subscribedUser, forKey: "SubscribedUser")
+//
+//        subscribedUser = defaults.bool(forKey: "SubscribedUser")
+//        print("SubscribedUser: \(subscribedUser)")
         
     }
+    
     
     
     func add(stringList: [String],
@@ -122,6 +237,25 @@ class IAPViewController: UIViewController {
     @IBAction func closeButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    func unlockApp() {
+        //UNLOCK APP
+//        subscribedUser = true
+//        defaults.set(subscribedUser, forKey: "SubscribedUser")
+//        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func convertDoubleToCurency(amount: Double) -> String {
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .currency
+        numberFormatter.locale = Locale.current
+        
+        return numberFormatter.string(from: NSNumber(value: amount))!
+        
+    }
+        
+    
     
     
     

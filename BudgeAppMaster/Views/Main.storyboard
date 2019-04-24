@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -59,18 +58,55 @@
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="BILL REMINDERS" id="HHF-c2-TgJ">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="nQc-JK-f6H">
-                                            <connections>
-                                                <segue destination="T32-U2-0X2" kind="show" id="N97-Gr-QyJ"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="BILL REMINDERS" id="HHF-c2-TgJ"/>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="poI-WA-1SA">
                                 <rect key="frame" x="0.0" y="91" width="375" height="527"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="mDk-gm-siD">
+                                    <rect key="frame" x="0.0" y="123" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlusButton" translatesAutoresizingMaskIntoConstraints="NO" id="eIr-Jg-gH0">
+                                            <rect key="frame" x="13" y="9.5" width="25" height="25"/>
+                                            <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="25" id="nLs-Ka-auU"/>
+                                                <constraint firstAttribute="height" constant="25" id="urJ-dg-nf8"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add New Reminder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5su-na-F7E">
+                                            <rect key="frame" x="51" y="12.5" width="140" height="19"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="140" id="eD8-0P-L1p"/>
+                                                <constraint firstAttribute="height" constant="19" id="thY-NP-6Jw"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oc6-d3-fKb">
+                                            <rect key="frame" x="0.0" y="0.0" width="247" height="44"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="247" id="ZUp-Vm-ivr"/>
+                                            </constraints>
+                                            <connections>
+                                                <segue destination="T32-U2-0X2" kind="presentation" id="F6T-k6-dlG"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="5su-na-F7E" firstAttribute="leading" secondItem="eIr-Jg-gH0" secondAttribute="trailing" constant="13" id="8b9-Qo-xMb"/>
+                                        <constraint firstItem="Oc6-d3-fKb" firstAttribute="top" secondItem="mDk-gm-siD" secondAttribute="top" id="Adl-XN-ONM"/>
+                                        <constraint firstItem="5su-na-F7E" firstAttribute="centerY" secondItem="eIr-Jg-gH0" secondAttribute="centerY" id="Eji-dx-MG9"/>
+                                        <constraint firstItem="eIr-Jg-gH0" firstAttribute="centerY" secondItem="mDk-gm-siD" secondAttribute="centerY" id="bx9-ax-qKd"/>
+                                        <constraint firstItem="Oc6-d3-fKb" firstAttribute="leading" secondItem="mDk-gm-siD" secondAttribute="leading" id="gG9-br-TIx"/>
+                                        <constraint firstAttribute="bottom" secondItem="Oc6-d3-fKb" secondAttribute="bottom" id="vQE-QC-A3o"/>
+                                        <constraint firstItem="eIr-Jg-gH0" firstAttribute="leading" secondItem="mDk-gm-siD" secondAttribute="leading" constant="13" id="vtt-ph-4gu"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="95" id="4ly-R6-Age" customClass="RemindersTableViewCell" customModule="BudgeAppMaster" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="95"/>
@@ -1856,7 +1892,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="843-MJ-1qM">
                                 <rect key="frame" x="0.0" y="119" width="375" height="449"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Only $0.49 a month. You spend more than that in a gumball machine!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iny-5M-p5E">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Only $0.99 a month. You spend more than that in a gumball machine!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iny-5M-p5E">
                                         <rect key="frame" x="10" y="272" width="355" height="71"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="71" id="rzK-hY-GBc"/>
@@ -1992,8 +2028,8 @@
         <image name="SettingsSolid" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cEw-DZ-yRc"/>
-        <segue reference="MAD-z3-gm7"/>
+        <segue reference="3hX-0F-b7Y"/>
+        <segue reference="FiT-xg-Q5X"/>
         <segue reference="AEH-d4-PVL"/>
         <segue reference="8MC-0u-7HE"/>
     </inferredMetricsTieBreakers>

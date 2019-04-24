@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import StoreKit
 
-class WelcomeViewController: UIViewController {
+var localizedPriceString = String()
+
+class WelcomeViewController: UIViewController, SKProductsRequestDelegate {
     
     @IBOutlet weak var getStartedButton: UIButton!
+    
+    var product = SKProduct()
     
     
     override func viewDidLayoutSubviews() {
@@ -29,6 +34,18 @@ class WelcomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //IAP Code
+        if(SKPaymentQueue.canMakePayments()) {
+            print("IAP is enabled, loading")
+            let productID: NSSet = NSSet(objects: "budge.subscription")
+            let request: SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
+            request.delegate = self
+            request.start()
+            
+        } else {
+            print("please enable IAP")
+        }
 
         
     }
@@ -46,6 +63,34 @@ class WelcomeViewController: UIViewController {
 
     }
     
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        print("product request")
+        let myProduct = response.products
+        for product in myProduct {
+            for product in myProduct {
+                print("product added")
+                print(product.productIdentifier)
+                print(product.localizedTitle)
+                print(product.localizedDescription)
+                print(product.price)
+                
+                localizedPriceString = ("\(product.localizedPrice)")
+                
+            }
+            
+            
+        }
+    }
+    
 
 
+}
+
+extension SKProduct {
+    var localizedPrice: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = priceLocale
+        return formatter.string(from: price)!
+    }
 }

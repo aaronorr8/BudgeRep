@@ -35,6 +35,14 @@ class BenefitsViewController: UIViewController {
     
         benefitList.attributedText = add(stringList: arrayString, font: benefitList.font, bullet: "\u{2022}")
         self.benefitView.addSubview(benefitList)
+        
+        //Displace text about price
+        
+        if localizedPriceString != "" {
+            tryForFreeLabel.text = "Try Budge FREE for one week. No credit card required. Just \(localizedPriceString)/mo thereafter if you choose to subscribe."
+        } else {
+            tryForFreeLabel.text = "Try Budge FREE for one week. No credit card required. Just pennies a month thereafter if you choose to subscribe."
+        }
     }
     
     @IBAction func nextButton(_ sender: Any) {
