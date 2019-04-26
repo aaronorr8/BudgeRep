@@ -18,6 +18,8 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var signInButtonOutlet: UIButton!
     @IBOutlet weak var switchModes: UIButton!
     @IBOutlet weak var instructionLabel: UILabel!
+    @IBOutlet weak var pigImage: UIImageView!
+    
     
     var errorText = String()
     
@@ -180,9 +182,11 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
         if signUpMode == true {
             instructionLabel.text = "Create an Account"
             switchModes.setTitle("Login Instead", for: .normal)
+            pigImage.image = #imageLiteral(resourceName: "PigRight")
         } else {
             instructionLabel.text = "Login to Budge"
             switchModes.setTitle("SignUp Instead", for: .normal)
+            pigImage.image = #imageLiteral(resourceName: "PigLeft")
         }
     }
     
