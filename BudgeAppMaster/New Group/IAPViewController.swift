@@ -8,6 +8,7 @@
 
 import UIKit
 import StoreKit
+import Firebase
 
 class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
@@ -236,6 +237,7 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
     
     func unlockApp() {
         subscribedUser = true
+        saveToFireStore()
         defaults.set(subscribedUser, forKey: "SubscribedUser")
         self.dismiss(animated: true, completion: nil)
     }
@@ -248,6 +250,31 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
         
         return numberFormatter.string(from: NSNumber(value: amount))!
         
+    }
+    
+    //MARK: Save to FireStore
+    func saveToFireStore() {
+        
+        if let userID = Auth.auth().currentUser?.uid {
+            db.collection("budgets").document(userID).setData([
+                "budgetName": budgetNameG,
+                "budgetAmount": budgetAmountG,
+                "budgetHistoryAmount": budgetHistoryAmountG,
+                "budgetNote": budgetNoteG,
+                "budgetHistoryDate": budgetHistoryDateG,
+                "budgetHistoryTime": budgetHistoryTimeG,
+                "budgetRemaining": budgetRemainingG,
+                "totalSpent": totalSpentG,
+                "subscribedUser": subscribedUser
+            ]) { err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                } else {
+                    print("Document successfully written!")
+                    
+                }
+            }
+        }
     }
         
     

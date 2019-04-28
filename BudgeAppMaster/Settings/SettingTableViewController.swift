@@ -442,7 +442,8 @@ class SettingTableViewController: UITableViewController {
                 "budgetHistoryDate": budgetHistoryDateG,
                 "budgetHistoryTime": budgetHistoryTimeG,
                 "budgetRemaining": budgetRemainingG,
-                "totalSpent": totalSpentG
+                "totalSpent": totalSpentG,
+                "subscribedUser": subscribedUser
             ]) { err in
                 if let err = err {
                     print("Error writing document: \(err)")

@@ -422,7 +422,8 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
                 "budgetHistoryDate": budgetHistoryDateG,
                 "budgetHistoryTime": budgetHistoryTimeG,
                 "budgetRemaining": budgetRemainingG,
-                "totalSpent": totalSpentG
+                "totalSpent": totalSpentG,
+                "subscribedUser": subscribedUser
             ]) { err in
                 if let err = err {
                     print("Error writing document: \(err)")
@@ -455,6 +456,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
                     budgetHistoryTimeG = document.get("budgetHistoryTime") as! [String : [String]]
                     budgetRemainingG = document.get("budgetRemaining") as! [Double]
                     totalSpentG = document.get("totalSpent") as! Double
+                    subscribedUser = document.get("subscribedUser") as! Bool
                    
                     self.collectionView.reloadData()
                     self.calculateTotalAvailable()

@@ -31,6 +31,7 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
     let tempBudgetHistoryTimeG = budgetHistoryTimeG
     let tempBudgetRemainingG = budgetRemainingG
     let tempTotalSpentG = totalSpentG
+    let tempSubscribedUser = subscribedUser
     
 
     override func viewDidLayoutSubviews() {
@@ -159,7 +160,8 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
             "budgetHistoryDate": budgetHistoryDateG,
             "budgetHistoryTime": budgetHistoryTimeG,
             "budgetRemaining": budgetRemainingG,
-            "totalSpent": totalSpentG
+            "totalSpent": totalSpentG,
+            "subscribedUser": subscribedUser
             
             ]) { err in
                 if let err = err {
@@ -173,6 +175,7 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
                     budgetHistoryTimeG = self.tempBudgetHistoryTimeG
                     budgetRemainingG = self.tempBudgetRemainingG
                     totalSpentG = self.tempTotalSpentG
+                    subscribedUser = self.tempSubscribedUser
                 } else {
                     print("Document successfully written!")
                 }
@@ -191,6 +194,7 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
         print("budgetHistoryTime: \(budgetHistoryTimeG)")
         print("totalSpent: \(String(describing: totalSpentG))")
         print("budgetRemaining: \(budgetRemainingG)")
+        print("subscribedUser: \(subscribedUser)")
         print("BREAK")
     }
     
