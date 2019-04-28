@@ -139,13 +139,14 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
             
             switch trans.transactionState {
             case .purchased:
-                print("buy ok, unlock IAP HERE")
+                print("Purchased! Unlock app")
                 print(p.productIdentifier)
+                unlockApp()
                 
                 let prodID = p.productIdentifier
                 switch prodID {
                 case "budge.subscription":
-                    print("remove ads")
+                    print("Subscribed")
                     unlockApp()
                 default:
                     print("IAP not found")
@@ -176,12 +177,7 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
         SKPaymentQueue.default().restoreCompletedTransactions()
         
         
-//
-//        subscribedUser = true
-//        defaults.set(subscribedUser, forKey: "SubscribedUser")
-//
-//        subscribedUser = defaults.bool(forKey: "SubscribedUser")
-//        print("SubscribedUser: \(subscribedUser)")
+
         
     }
     
@@ -239,10 +235,9 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
     }
     
     func unlockApp() {
-        //UNLOCK APP
-//        subscribedUser = true
-//        defaults.set(subscribedUser, forKey: "SubscribedUser")
-//        self.dismiss(animated: true, completion: nil)
+        subscribedUser = true
+        defaults.set(subscribedUser, forKey: "SubscribedUser")
+        self.dismiss(animated: true, completion: nil)
     }
     
     func convertDoubleToCurency(amount: Double) -> String {

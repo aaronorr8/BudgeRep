@@ -108,6 +108,7 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
                 
                 budgetNameG[myIndexG] = budgetNameField.text!
                 
+                
                 let amount = Double(amt/100) + Double(amt%100)/100
                 budgetAmountG[myIndexG] = amount
                 
