@@ -174,9 +174,10 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
     
     @IBAction func restorePurchase(_ sender: Any) {
         
-        SKPaymentQueue.default().add(self)
-        SKPaymentQueue.default().restoreCompletedTransactions()
+//        SKPaymentQueue.default().add(self)
+//        SKPaymentQueue.default().restoreCompletedTransactions()
         
+        unlockApp()
         
 
         

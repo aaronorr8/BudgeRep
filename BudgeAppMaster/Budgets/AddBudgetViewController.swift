@@ -110,8 +110,21 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
                 budgetNameG[myIndexG] = budgetNameField.text!
                 
                 
-                let amount = Double(amt/100) + Double(amt%100)/100
-                budgetAmountG[myIndexG] = amount
+                //Set Ammount if not edited
+                
+                var amount = Double(amt/100) + Double(amt%100)/100
+                
+                if amount == 0.0 {
+                    amt = Int(budgetAmountG[myIndexG] * 100)
+                    amount = Double(amt/100) + Double(amt%100)/100
+                    budgetAmountG[myIndexG] = amount
+                } else {
+                    budgetAmountG[myIndexG] = amount
+                }
+                
+                
+                
+                
                 
                 let historyArray = budgetHistoryAmountG[oldName]
                 budgetHistoryAmountG.removeValue(forKey: budgetNameG[myIndexG])
