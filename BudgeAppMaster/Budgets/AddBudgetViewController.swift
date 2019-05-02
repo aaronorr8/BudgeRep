@@ -122,26 +122,28 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
                     budgetAmountG[myIndexG] = amount
                 }
                 
+                //Update Budget Name for History Dictionary
                 
+                //save values temperarily
+                let tempAmount = budgetHistoryAmountG[oldName]
+                let tempDate = budgetHistoryDateG[oldName]
+                let tempTime = budgetHistoryTimeG[oldName]
+                let tempNote = budgetNoteG[oldName]
+                let newName = budgetNameField.text!
                 
-                
-                
-                let historyArray = budgetHistoryAmountG[oldName]
-                budgetHistoryAmountG.removeValue(forKey: budgetNameG[myIndexG])
-                budgetHistoryAmountG[budgetNameField.text!] = historyArray
-                
-                let historyAmountArray = budgetHistoryAmountG[oldName]
+                //remove key:value pair
                 budgetHistoryAmountG.removeValue(forKey: oldName)
-                budgetHistoryAmountG[budgetNameField.text!] = historyAmountArray
-                
-                let historyDateArray = budgetHistoryDateG[oldName]
                 budgetHistoryDateG.removeValue(forKey: oldName)
-                budgetHistoryDateG[budgetNameField.text!] = historyDateArray
-                
-                let historyTimeArray = budgetHistoryTimeG[oldName]
                 budgetHistoryTimeG.removeValue(forKey: oldName)
-                budgetHistoryTimeG[budgetNameField.text!] = historyTimeArray
+                budgetNoteG.removeValue(forKey: oldName)
                 
+                //save values to new key
+                budgetHistoryAmountG[newName] = tempAmount
+                budgetHistoryDateG[newName] = tempDate
+                budgetHistoryTimeG[newName] = tempTime
+                budgetNoteG[newName] = tempNote
+            
+              
                 let totalSpent = budgetHistoryAmountG[budgetNameField.text!]?.reduce(0, +)
                 budgetRemainingG[myIndexG] = (amount - totalSpent!)
                 
@@ -158,6 +160,12 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
         
         
         
+    }
+    
+    func switchKey<T, U>(_ myDict: inout [T:U], fromKey: T, toKey: T) {
+        if let entry = myDict.removeValue(forKey: fromKey) {
+            myDict[toKey] = entry
+        }
     }
     
     //MARK: Save to FireStore

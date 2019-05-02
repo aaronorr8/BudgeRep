@@ -410,7 +410,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         
         //UPDATE BUDGETS
         let budgetNameTemp = budgetNameG[myIndexG]
-        let totalSpentTemp = (budgetHistoryAmountG[budgetNameG[myIndexG]]?.reduce(0, +))!
+        let totalSpentTemp = (budgetHistoryAmountG[budgetNameTemp]?.reduce(0, +))!
         
         
         if budgetHistoryAmountG[budgetNameG[myIndexG]] != nil {
