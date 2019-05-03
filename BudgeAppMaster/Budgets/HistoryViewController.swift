@@ -173,52 +173,21 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         //the confirm action taking the inputs
         let confirmDelete = UIAlertAction(title: "Yes, Delete", style: .default) { (_) in
             
-            print("budgetName: \(self.budgetName)")
-            print("delete it!!!!")
-            print("Amount to delete: \(budgetHistoryAmountG[self.budgetName]![self.historyIndex])")
-            print("Index of amount to delete: \(self.historyIndex)")
-            
-            print("budgetHistoryAmountG Before: \(budgetHistoryAmountG)")
-            print("budgetnoteG Before: \(budgetNoteG)")
-            print("budgetHistoryDateG Before: \(budgetHistoryDateG)")
-            print("budgetHistoryTimeG Before: \(budgetHistoryTimeG)")
-            
             //UPDATE TOTAL SPENT
             let amountToDelete = (budgetHistoryAmountG[self.budgetName]![self.historyIndex])
-            print("amountToDelete: \(amountToDelete)")
             
             budgetHistoryAmountG[self.budgetName]?.remove(at: self.historyIndex)
             budgetHistoryDateG[self.budgetName]?.remove(at: self.historyIndex)
             budgetNoteG[self.budgetName]?.remove(at: self.historyIndex)
             budgetHistoryTimeG[self.budgetName]?.remove(at: self.historyIndex)
             
-            print("budgetHistoryAmountG After: \(budgetHistoryAmountG)")
-            print("budgetnoteG After: \(budgetNoteG)")
-            print("budgetHistoryDateG After: \(budgetHistoryDateG)")
-            print("budgetHistoryTimeG After: \(budgetHistoryTimeG)")
-            
-            print("totalSpentG before: \(totalSpentG)")
-            print("budgetRemainingG Before: \(budgetRemainingG)")
-            
-            
-            //let totalSpent = (budgetHistoryAmountG[self.budgetName]?.reduce(0, +))!
-            //print("***totalSpent*** \(totalSpent)")
             totalSpentG = (totalSpentG - amountToDelete)
-            print("totalSpentG after: \(totalSpentG)")
             
             budgetRemainingG[myIndexG] = budgetAmountG[myIndexG] - (budgetHistoryAmountG[self.budgetName]?.reduce(0, +))!
             
-            //budgetAmountG[myIndexG] = budgetRemainingG[myIndexG] - (budgetHistoryAmountG[self.budgetName]?.reduce(0, +))!
-            
-            print("budgetRemainingG After: \(budgetRemainingG)")
-            
             self.saveToFireStore()
-            
             self.tableView.reloadData()
 
-            
-            
-        
         }
         
         //the cancel action doing nothing

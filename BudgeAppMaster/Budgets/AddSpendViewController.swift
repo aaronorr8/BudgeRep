@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 
+var toastOverride = false //used to not show toast when deleting
+
 
 //GRADIENT SUPPORT
 extension UIView {
@@ -28,6 +30,8 @@ extension UIView {
 }
 
 class AddSpendViewController: ViewController, UITextFieldDelegate{
+    
+    
     
     @IBOutlet weak var spendAmount: UITextField!
     @IBOutlet weak var selectedBudgetLabel: UILabel!
@@ -395,6 +399,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
                     toastSuccess = false
                 } else {
                     print("Document successfully written!")
+                    
                     showToast = true
                     toastSuccess = true
                     
@@ -424,6 +429,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         }
      
         totalSpentG = totalSpentG - totalSpentTemp
+        toastOverride = true
         saveToFireStore()
 
     
