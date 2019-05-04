@@ -65,16 +65,7 @@ class SettingTableViewController: UITableViewController {
     
     //MARK: SignOut
     @IBAction func signOutButton(_ sender: Any) {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            deleteReminders()
-            subscribedUser = false
-            setUserDefaults()
-            self.performSegue(withIdentifier: "goToLogin", sender: self)
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
+        signOut()
         
     }
     
@@ -180,23 +171,13 @@ class SettingTableViewController: UITableViewController {
             
             alert.addAction(UIAlertAction(title: "Yes! Rollover my money", style: UIAlertAction.Style.default, handler: { _ in
                 self.rolloverToRolloverBudget()
-                self.resetReminderStatus()
-                self.cancelNonRepeatingReminderNotifications()
-                self.clearTempArrays()
-                self.deleteNonRepeatingReminders()
-                self.updateArrays()
                 self.saveToFireStore()
-                self.saveData()
+                self.tabBarController?.selectedIndex = 0
             }))
             alert.addAction(UIAlertAction(title: "No. Just reset my budgets", style: UIAlertAction.Style.default, handler: { _ in
                 self.resetBudgetsNoRollover()
-                self.resetReminderStatus()
-                self.cancelNonRepeatingReminderNotifications()
-                self.clearTempArrays()
-                self.deleteNonRepeatingReminders()
-                self.updateArrays()
                 self.saveToFireStore()
-                self.saveData()
+                self.tabBarController?.selectedIndex = 0
             }))
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: { _ in
                 print("Cancel")
@@ -215,17 +196,79 @@ class SettingTableViewController: UITableViewController {
             
             alert.addAction(UIAlertAction(title: "Reset", style: UIAlertAction.Style.default, handler: { _ in
                 self.resetBudgetsNoRollover()
-                self.resetReminderStatus()
-                self.cancelNonRepeatingReminderNotifications()
-                self.clearTempArrays()
-                self.deleteNonRepeatingReminders()
-                self.updateArrays()
                 self.saveToFireStore()
-                self.saveData()
+                self.tabBarController?.selectedIndex = 0
             }))
             
             
             self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func resetReminders(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "Reset reminders?" , message: "Repeating reminders will be reset and non-repeating reminders will be deleted.", preferredStyle: UIAlertController.Style.alert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: { _ in
+            print("Cancel")
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: { _ in
+            self.resetReminderStatus()
+            self.cancelNonRepeatingReminderNotifications()
+            self.clearTempArrays()
+            self.deleteNonRepeatingReminders()
+            self.updateArrays()
+            self.saveData()
+            self.tabBarController?.selectedIndex = 1
+        }))
+        
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func deleteAccount(_ sender: Any) {
+        let alert = UIAlertController(title: "Delete account?" , message: "Deleting account will permanently delete your budgets and account information. If you are subscribed, you'll need to cancel that through iTunes.", preferredStyle: UIAlertController.Style.alert)
+        
+       
+        
+        alert.addAction(UIAlertAction(title: "Delete Account", style: UIAlertAction.Style.default, handler: { _ in
+            print("DELETE ACCOUNT!!")
+            self.deleteFirebaseDocument()
+            self.deleteFirebaseAccount()
+            self.signOut()
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: { _ in
+            print("Cancel")
+        }))
+        
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    
+    func deleteFirebaseAccount() {
+        let user = Auth.auth().currentUser
+        user?.delete { error in
+            if let error = error {
+                print("error: \(error)")
+            } else {
+                print("Account Deleted!")
+            }
+        }
+    }
+    
+    func deleteFirebaseDocument() {
+        let userID = Auth.auth().currentUser!.uid
+        db.collection("budgets").document(userID).delete() { err in
+            if let err = err {
+                print("error: \(err)")
+            } else {
+                print("Document Deleted!")
+            }
         }
     }
     
@@ -509,6 +552,20 @@ class SettingTableViewController: UITableViewController {
         defaults.set(monthlyResetSetting, forKey: "MonthlyResetSetting")
         defaults.set(subscribedUser, forKey: "SubscribedUser")
     }
+    
+    func signOut() {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            deleteReminders()
+            subscribedUser = false
+            setUserDefaults()
+            self.performSegue(withIdentifier: "goToLogin", sender: self)
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
+    
     
     
     
