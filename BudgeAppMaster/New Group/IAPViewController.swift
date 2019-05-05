@@ -111,7 +111,7 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
         }
             
              tryForFreeLabel.text = "Only \(product.localizedPrice) a month. You spend more than that in a gumball machine!"
-            //ADD CODE HERE TO ENABLE PRODUCT
+            
     }
         
         func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
@@ -119,11 +119,12 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
             for transaction in queue.transactions {
                 let t: SKPaymentTransaction = transaction
                 let prodID = t.payment.productIdentifier as String
-                
+            
                 switch prodID {
                 case "budge.subscription":
                     print("Subscribe")
                     unlockApp()
+                    closeIAPScreen()
                 default:
                     print("IAP not found")
                 }
@@ -143,16 +144,24 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
                 print("Purchased! Unlock app")
                 print(p.productIdentifier)
                 unlockApp()
+                closeIAPScreen()
                 
                 let prodID = p.productIdentifier
                 switch prodID {
                 case "budge.subscription":
                     print("Subscribed")
                     unlockApp()
+                    closeIAPScreen()
                 default:
                     print("IAP not found")
                 }
                 queue.finishTransaction(trans)
+                
+            case .restored:
+                print("Restore app purchase now!")
+                unlockApp()
+                showRestoredAlert()
+                
             case .failed:
                 print("buy error")
                 queue.finishTransaction(trans)
@@ -174,10 +183,11 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
     
     @IBAction func restorePurchase(_ sender: Any) {
         
-//        SKPaymentQueue.default().add(self)
-//        SKPaymentQueue.default().restoreCompletedTransactions()
+        SKPaymentQueue.default().add(self)
+        SKPaymentQueue.default().restoreCompletedTransactions()
+        print("something")
         
-        unlockApp()
+//        unlockApp()
         
 
         
@@ -240,6 +250,9 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
         subscribedUser = true
         saveToFireStore()
         defaults.set(subscribedUser, forKey: "SubscribedUser")
+    }
+    
+    func closeIAPScreen() {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -276,6 +289,16 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
                 }
             }
         }
+    }
+    
+    func showRestoredAlert() {
+        let alert = UIAlertController(title: "Budge Subscription Restored!", message:
+        "You now have full access to the app", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: { _ in
+            self.closeIAPScreen()
+        }))
+    
+        self.present(alert, animated: true, completion: nil)
     }
         
     

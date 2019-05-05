@@ -71,9 +71,7 @@ class SettingTableViewController: UITableViewController {
     
     @IBAction func restorePurchase(_ sender: Any) {
         
-        subscribedUser = false
-        setUserDefaults()
-        print("reset")
+        
        
     }
     
