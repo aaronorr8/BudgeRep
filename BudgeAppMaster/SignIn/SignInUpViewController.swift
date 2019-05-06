@@ -91,47 +91,55 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
         let password = passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         startSpinner()
         
-        if signUpMode == true {
-            //*SIGNUP MODE*
-            Auth.auth().createUser(withEmail: email!, password: password!) { (user, error) in
-                if error != nil {
-                    //ERROR STATE
-                    self.errorText = error?.localizedDescription ?? "Unable to signup at this time. Please try again."
-                    self.stopSpinner()
-                    self.signUpAlert()
-                    print(error!)
-                } else {
-                    //SUCCESS STATE
-                    registeredDate = Auth.auth().currentUser?.metadata.creationDate! ?? Date()
-                    defaults.set(registeredDate, forKey: "RegisteredDate")
-                    self.stopSpinner()
-                    goToMain = true
-                    self.dismiss(animated: true, completion: nil)
-                    print("Signup Successful!")
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+        if isValidEmail(testStr: emailField.text!) == true {
+        
+//        if emailField.text != "" {
+            
+            if signUpMode == true {
+                //*SIGNUP MODE*
+                Auth.auth().createUser(withEmail: email!, password: password!) { (user, error) in
+                    if error != nil {
+                        //ERROR STATE
+                        self.errorText = error?.localizedDescription ?? "Unable to signup at this time. Please try again."
+                        self.stopSpinner()
+                        self.signUpAlert()
+                        print(error!)
+                    } else {
+                        //SUCCESS STATE
+                        registeredDate = Auth.auth().currentUser?.metadata.creationDate! ?? Date()
+                        defaults.set(registeredDate, forKey: "RegisteredDate")
+                        self.stopSpinner()
+                        goToMain = true
+                        self.dismiss(animated: true, completion: nil)
+                        print("Signup Successful!")
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+                    }
                 }
+            } else {
+                //*LOGIN MODE*
+                Auth.auth().signIn(withEmail: email!, password: password!) { (user, error) in
+                    if error != nil {
+                        //ERROR STATE
+                        self.errorText = error?.localizedDescription ?? "Unable to login at this time. Please try again."
+                        self.stopSpinner()
+                        self.loginAlert()
+                        print(error as Any)
+                    } else {
+                        //SUCCESS STATE
+                        registeredDate = Auth.auth().currentUser?.metadata.creationDate! ?? Date()
+                        defaults.set(registeredDate, forKey: "RegisteredDate")
+                        self.stopSpinner()
+                        goToMain = true
+                        self.dismiss(animated: true, completion: nil)
+                        print("Login successful!!")
+                    }
+                }
+                
+                self.view.endEditing(true)
             }
         } else {
-        //*LOGIN MODE*
-        Auth.auth().signIn(withEmail: email!, password: password!) { (user, error) in
-            if error != nil {
-                //ERROR STATE
-                self.errorText = error?.localizedDescription ?? "Unable to login at this time. Please try again."
-                self.stopSpinner()
-                self.loginAlert()
-                print(error as Any)
-            } else {
-                //SUCCESS STATE
-                registeredDate = Auth.auth().currentUser?.metadata.creationDate! ?? Date()
-                defaults.set(registeredDate, forKey: "RegisteredDate")
-                self.stopSpinner()
-                goToMain = true
-                self.dismiss(animated: true, completion: nil)
-                print("Login successful!!")
-            }
-        }
-
-        self.view.endEditing(true)
+            stopSpinner()
+            emptyEmailFieldAlert()
         }
     }
     
@@ -146,12 +154,35 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    func emptyEmailFieldAlert() {
+        let alert = UIAlertController(title: "Please enter a valid email address.", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func resetPasswordAlert() {
+        let alert = UIAlertController(title: "Please check your email.", message: "You should receive a link to reset your password soon.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
     
     
     func loginAlert() {
         let alert = UIAlertController(title: errorText, message: nil, preferredStyle: .alert)
-//        let alert = UIAlertController(title: "Oops! Wrong email or password, try again.", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        
+        alert.addAction(UIAlertAction(title: "Reset Password", style: UIAlertAction.Style.default, handler: { _ in
+            
+            let email = self.emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+            Auth.auth().sendPasswordReset(withEmail: email!) { error in
+                if error == nil {
+                    self.resetPasswordAlert()
+                } else {
+                    print("reset password error: \(String(describing: error))")
+                }
+            }
+        }))
+
+        alert.addAction(UIAlertAction(title: "Retry", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -188,6 +219,13 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
             switchModes.setTitle("SignUp Instead", for: .normal)
             pigImage.image = #imageLiteral(resourceName: "PigLeft")
         }
+    }
+    
+    func isValidEmail(testStr:String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
     }
     
   
