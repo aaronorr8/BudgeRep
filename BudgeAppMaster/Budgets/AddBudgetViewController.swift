@@ -79,80 +79,90 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
         
         if editModeG == false {
         
-            print("Add Values")
             
 //SAVE AS NEW BUDGET ITEM
-            budgetNameG.append(budgetNameField.text!)
-            let amount = Double(amt/100) + Double(amt%100)/100
-            budgetAmountG.append(amount)
-            budgetHistoryAmountG[budgetNameField.text!] = []
-            budgetNoteG[budgetNameField.text!] = []
-            budgetHistoryDateG[budgetNameField.text!] = []
-            budgetHistoryTimeG[budgetNameField.text!] = []
-            let totalSpent = budgetHistoryAmountG[budgetNameField.text!]?.reduce(0, +)
-            budgetRemainingG.append(amount - totalSpent!)
-            
-            saveToFireStore()
-
-            self.dismiss(animated: true, completion: nil)
-            
+            if budgetNameField.text != "" {
+                budgetNameG.append(budgetNameField.text!)
+                let amount = Double(amt/100) + Double(amt%100)/100
+                budgetAmountG.append(amount)
+                budgetHistoryAmountG[budgetNameField.text!] = []
+                budgetNoteG[budgetNameField.text!] = []
+                budgetHistoryDateG[budgetNameField.text!] = []
+                budgetHistoryTimeG[budgetNameField.text!] = []
+                let totalSpent = budgetHistoryAmountG[budgetNameField.text!]?.reduce(0, +)
+                budgetRemainingG.append(amount - totalSpent!)
+                
+                saveToFireStore()
+                
+                self.dismiss(animated: true, completion: nil)
+                
+            } else {
+                print("EMPTY")
+                emptyTextAlert()
+            }
         } else {
             
 //EDIT BUDGET
-            print("Update Values")
+            
             
             //RETURN TO BUDGET VIEW
             if editModeG == true {
                 
-                //UPDATE BUDGET DATA
-                let oldName = budgetNameG[myIndexG]
-                
-                budgetNameG[myIndexG] = budgetNameField.text!
-                
-                
-                //Set Ammount if not edited
-                
-                var amount = Double(amt/100) + Double(amt%100)/100
-                
-                if amount == 0.0 {
-                    amt = Int(budgetAmountG[myIndexG] * 100)
-                    amount = Double(amt/100) + Double(amt%100)/100
-                    budgetAmountG[myIndexG] = amount
+                if budgetNameField.text != "" {
+                    
+                    //UPDATE BUDGET DATA
+                    let oldName = budgetNameG[myIndexG]
+                    
+                    budgetNameG[myIndexG] = budgetNameField.text!
+                    
+                    
+                    //Set Ammount if not edited
+                    
+                    var amount = Double(amt/100) + Double(amt%100)/100
+                    
+                    if amount == 0.0 {
+                        amt = Int(budgetAmountG[myIndexG] * 100)
+                        amount = Double(amt/100) + Double(amt%100)/100
+                        budgetAmountG[myIndexG] = amount
+                    } else {
+                        budgetAmountG[myIndexG] = amount
+                    }
+                    
+                    //Update Budget Name for History Dictionary
+                    
+                    //save values temperarily
+                    let tempAmount = budgetHistoryAmountG[oldName]
+                    let tempDate = budgetHistoryDateG[oldName]
+                    let tempTime = budgetHistoryTimeG[oldName]
+                    let tempNote = budgetNoteG[oldName]
+                    let newName = budgetNameField.text!
+                    
+                    //remove key:value pair
+                    budgetHistoryAmountG.removeValue(forKey: oldName)
+                    budgetHistoryDateG.removeValue(forKey: oldName)
+                    budgetHistoryTimeG.removeValue(forKey: oldName)
+                    budgetNoteG.removeValue(forKey: oldName)
+                    
+                    //save values to new key
+                    budgetHistoryAmountG[newName] = tempAmount
+                    budgetHistoryDateG[newName] = tempDate
+                    budgetHistoryTimeG[newName] = tempTime
+                    budgetNoteG[newName] = tempNote
+                    
+                    
+                    let totalSpent = budgetHistoryAmountG[budgetNameField.text!]?.reduce(0, +)
+                    budgetRemainingG[myIndexG] = (amount - totalSpent!)
+                    
+                    saveToFireStore()
+                    
+                    closeAllG = true
+                    editModeG = false
+                    
+                    self.dismiss(animated: true, completion: nil)
+                    
                 } else {
-                    budgetAmountG[myIndexG] = amount
+                    emptyTextAlert()
                 }
-                
-                //Update Budget Name for History Dictionary
-                
-                //save values temperarily
-                let tempAmount = budgetHistoryAmountG[oldName]
-                let tempDate = budgetHistoryDateG[oldName]
-                let tempTime = budgetHistoryTimeG[oldName]
-                let tempNote = budgetNoteG[oldName]
-                let newName = budgetNameField.text!
-                
-                //remove key:value pair
-                budgetHistoryAmountG.removeValue(forKey: oldName)
-                budgetHistoryDateG.removeValue(forKey: oldName)
-                budgetHistoryTimeG.removeValue(forKey: oldName)
-                budgetNoteG.removeValue(forKey: oldName)
-                
-                //save values to new key
-                budgetHistoryAmountG[newName] = tempAmount
-                budgetHistoryDateG[newName] = tempDate
-                budgetHistoryTimeG[newName] = tempTime
-                budgetNoteG[newName] = tempNote
-            
-              
-                let totalSpent = budgetHistoryAmountG[budgetNameField.text!]?.reduce(0, +)
-                budgetRemainingG[myIndexG] = (amount - totalSpent!)
-                
-                saveToFireStore()
-                
-                closeAllG = true
-                editModeG = false
-                
-                self.dismiss(animated: true, completion: nil)
 
             }
         }
@@ -217,6 +227,12 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
         print("budgetRemaining: \(budgetRemainingG)")
         print("subscribedUser: \(subscribedUser)")
         print("BREAK")
+    }
+    
+    func emptyTextAlert() {
+            let alert = UIAlertController(title: "Please enter a budget name.", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
     }
     
  

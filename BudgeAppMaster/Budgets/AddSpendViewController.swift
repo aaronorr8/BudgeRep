@@ -300,74 +300,80 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
 //SAVE BUTTON
     @IBAction func SaveButton(_ sender: Any) {
         
-        //DISMISS KEYBOARD
-        view.endEditing(true)
-        
-
-        //FORMAT DATE AND TIME
-        let formatterDate = DateFormatter()
-        let formatterTime = DateFormatter()
-        formatterDate.locale = Locale(identifier: "en_US_POSIX")
-        formatterTime.locale = Locale(identifier: "en_US_POSIX")
-        formatterDate.dateFormat = "MMMM dd"
-        formatterTime.dateFormat = "h:mma"
-            //"h:mm a 'on' MMMM dd, yyyy"
-        formatterTime.amSymbol = "am"
-        formatterTime.pmSymbol = "pm"
-        
-        let dateString = formatterDate.string(from: Date())
-        let timeString = formatterTime.string(from: Date())
-        print(dateString)
-        print(timeString)
-        // "4:44 PM on June 23, 2016\n"
-        //"h:mm a 'on' MMMM dd, yyyy"
-        
-        //SAVE AS REFUND IF TOGGLE IS TRUE
-        var amount = Double(amt/100) + Double(amt%100)/100
-        
-        if saveAsRefundToggle == true {
-            amount = 0 - amount
-        } else {
-            amount = abs(amount)
-        }
-        
-        //SET SPEND NOTE IF EMPTY
-        if spendNoteField.text == "" {
-            spendNote = ""
-        } else {
-            spendNote = spendNoteField.text!
-        }
-        
-     
-     
-        //ADD SPEND HISTORY TO BEGINNING OF ARRAY
-        budgetHistoryAmountG[selectedBudget]?.insert(amount, at: 0)
-        budgetNoteG[selectedBudget]?.insert(spendNote, at:0)
-        budgetHistoryDateG[selectedBudget]?.insert(dateString, at: 0)
-        budgetHistoryTimeG[selectedBudget]?.insert(timeString, at: 0)
-        
-        //CALCULATE REMAINING BUDGET
-        totalSpentTemp = (budgetHistoryAmountG[selectedBudget]?.reduce(0, +))!
-        budgetRemainingG[myIndexG] = (budgetAmountG[myIndexG] - totalSpentTemp)
-        
-        //print("\(month)/\(day)")
-        //print("\(hour):\(minutes)")
+        if spendAmount.text != "" {
             
-        totalSpentG = totalSpentG + amount
-        
-        //Used for confirmation toast
-        savedBudget = selectedBudget
-        savedAmount = convertDoubleToCurency(amount: amount)
+            //DISMISS KEYBOARD
+            view.endEditing(true)
+            
+            
+            //FORMAT DATE AND TIME
+            let formatterDate = DateFormatter()
+            let formatterTime = DateFormatter()
+            formatterDate.locale = Locale(identifier: "en_US_POSIX")
+            formatterTime.locale = Locale(identifier: "en_US_POSIX")
+            formatterDate.dateFormat = "MMMM dd"
+            formatterTime.dateFormat = "h:mma"
+            //"h:mm a 'on' MMMM dd, yyyy"
+            formatterTime.amSymbol = "am"
+            formatterTime.pmSymbol = "pm"
+            
+            let dateString = formatterDate.string(from: Date())
+            let timeString = formatterTime.string(from: Date())
+            print(dateString)
+            print(timeString)
+            // "4:44 PM on June 23, 2016\n"
+            //"h:mm a 'on' MMMM dd, yyyy"
+            
+            //SAVE AS REFUND IF TOGGLE IS TRUE
+            var amount = Double(amt/100) + Double(amt%100)/100
+            
+            if saveAsRefundToggle == true {
+                amount = 0 - amount
+            } else {
+                amount = abs(amount)
+            }
+            
+            //SET SPEND NOTE IF EMPTY
+            if spendNoteField.text == "" {
+                spendNote = ""
+            } else {
+                spendNote = spendNoteField.text!
+            }
+            
+            
+            
+            //ADD SPEND HISTORY TO BEGINNING OF ARRAY
+            budgetHistoryAmountG[selectedBudget]?.insert(amount, at: 0)
+            budgetNoteG[selectedBudget]?.insert(spendNote, at:0)
+            budgetHistoryDateG[selectedBudget]?.insert(dateString, at: 0)
+            budgetHistoryTimeG[selectedBudget]?.insert(timeString, at: 0)
+            
+            //CALCULATE REMAINING BUDGET
+            totalSpentTemp = (budgetHistoryAmountG[selectedBudget]?.reduce(0, +))!
+            budgetRemainingG[myIndexG] = (budgetAmountG[myIndexG] - totalSpentTemp)
+            
+            //print("\(month)/\(day)")
+            //print("\(hour):\(minutes)")
+            
+            totalSpentG = totalSpentG + amount
+            
+            //Used for confirmation toast
+            savedBudget = selectedBudget
+            savedAmount = convertDoubleToCurency(amount: amount)
+            
+            
+            saveToFireStore()
+            self.dismiss(animated: true, completion: nil)
+            
+            
+            //USED TO SUPPORT REMINDERS WITH LINKED BUDGETS
+            presetAmountG = 0.0
+            
+        } else {
+            emptyTextAlert()
+        }
         
 
-        saveToFireStore()
-        self.dismiss(animated: true, completion: nil)
-        
-        
-        //USED TO SUPPORT REMINDERS WITH LINKED BUDGETS
-        presetAmountG = 0.0
-        
-//        self.dismiss(animated: true, completion: nil)
         
     }
     
@@ -486,6 +492,12 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         return false
     }
     
+    
+    func emptyTextAlert() {
+        let alert = UIAlertController(title: "Please enter an amount.", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
     
     
     

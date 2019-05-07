@@ -261,11 +261,13 @@ class SettingTableViewController: UITableViewController {
     
     func deleteFirebaseDocument() {
         let userID = Auth.auth().currentUser!.uid
+        print("userID: \(userID)")
         db.collection("budgets").document(userID).delete() { err in
             if let err = err {
                 print("error: \(err)")
             } else {
                 print("Document Deleted!")
+                
             }
         }
     }

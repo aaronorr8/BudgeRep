@@ -210,114 +210,128 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
         //ADD NEW MODE
         if editModeG != true {
             
-            //ADD NAME
-            if reminderNameInput != nil {
-                newReminder.name = reminderNameInput.text!
-            }
-            
-            //ADD AMOUNT
-            if reminderAmountInput != nil {
-                let amount = Double(amt/100) + Double(amt%100)/100
-                newReminder.amount = amount
-            }
-            
-            //ADD LINKED BUDGET
-            if selectBudgetField != nil {
-                newReminder.linkedBudget = selectBudgetField.text!
-            } else {
-                newReminder.linkedBudget = selectBudgetField.text!
-            }
-            
-            //ADD DATE
-            if dueDateInput != nil {
-                if notificationSwitchOutlet.isOn == true {
-                    
-                    //REMOVE LAST 2 CHARACTERS FROM STRING
-                    let tempDay = dueDateInput.text!
-                    let modifiedDay = tempDay.dropLast(2)
-                    newReminder.date = Int(modifiedDay)!
-                    noteDay = Int(modifiedDay)!
-                    noteReference = notificationUniqueID
-                    scheduleNotifications()
-                } else {
-                    newReminder.date = 0
+            if reminderNameInput.text != "" {
+                
+                //ADD NAME
+                if reminderNameInput != nil {
+                    newReminder.name = reminderNameInput.text!
                 }
+                
+                //ADD AMOUNT
+                if reminderAmountInput != nil {
+                    let amount = Double(amt/100) + Double(amt%100)/100
+                    newReminder.amount = amount
+                }
+                
+                //ADD LINKED BUDGET
+                if selectBudgetField != nil {
+                    newReminder.linkedBudget = selectBudgetField.text!
+                } else {
+                    newReminder.linkedBudget = selectBudgetField.text!
+                }
+                
+                //ADD DATE
+                if dueDateInput != nil {
+                    if notificationSwitchOutlet.isOn == true {
+                        
+                        //REMOVE LAST 2 CHARACTERS FROM STRING
+                        let tempDay = dueDateInput.text!
+                        let modifiedDay = tempDay.dropLast(2)
+                        newReminder.date = Int(modifiedDay)!
+                        noteDay = Int(modifiedDay)!
+                        noteReference = notificationUniqueID
+                        scheduleNotifications()
+                    } else {
+                        newReminder.date = 0
+                    }
+                }
+                
+                //ADD REPEAT SETTING
+                newReminder.reminderRepeat = repeatSetting
+                
+                //ADD NOTIFICATION ID
+                newReminder.notificationID = notificationUniqueID
+                
+                //ADD NOTIFICATION SETTING
+                newReminder.notificationSetting = notificationSetting
+                
+                //ADD REMINDER STATUS
+                newReminder.done = false
+                
+                
+                reminderArray.append(newReminder)
+                
+                //Increment notificationUniqueID
+                notificationUniqueID = notificationUniqueID + 1
+                
+                //Save to User Defaults
+                defaults.set(notificationUniqueID, forKey: "NotificationUniqueID")
+                
+                saveData()
+                self.dismiss(animated: true, completion: nil)
+                
+                print("notificationUniqueID: \(notificationUniqueID)")
+                
+            } else {
+                emptyTextAlert()
             }
-            
-            //ADD REPEAT SETTING
-            newReminder.reminderRepeat = repeatSetting
-            
-            //ADD NOTIFICATION ID
-            newReminder.notificationID = notificationUniqueID
-            
-            //ADD NOTIFICATION SETTING
-            newReminder.notificationSetting = notificationSetting
-            
-            //ADD REMINDER STATUS
-            newReminder.done = false
-            
-            
-            reminderArray.append(newReminder)
-            
-            //Increment notificationUniqueID
-            notificationUniqueID = notificationUniqueID + 1
-            
-            //Save to User Defaults
-            defaults.set(notificationUniqueID, forKey: "NotificationUniqueID")
-            
-            print("notificationUniqueID: \(notificationUniqueID)")
-            
             
         } else {
             //MARK: EDIT MODE
-            //UPDATE NAME
-            if reminderNameInput != nil {
-                reminderArray[myIndexG].name = reminderNameInput.text!
-                //                self.dismiss(animated: true, completion: nil)
-            }
             
-            //UPDATE AMOUNT
-            if reminderAmountInput != nil {
-                let amount = Double(amt/100) + Double(amt%100)/100
-                reminderArray[myIndexG].amount = amount
-            }
-            
-            //UPDATE LINKED BUDGET
-            if selectBudgetField != nil {
-                reminderArray[myIndexG].linkedBudget = selectBudgetField.text!
-            }
-            
-            //UPDATE DATE
-            if dueDateInput != nil {
-                if notificationSwitchOutlet.isOn == true {
-                    
-                    //REMOVE LAST 2 CHARACTERS FROM STRING
-                    let tempDay = dueDateInput.text!
-                    let modifiedDay = tempDay.dropLast(2)
-                    reminderArray[myIndexG].date = (Int(modifiedDay)!)
-                    
-                    noteDay = reminderArray[myIndexG].date
-                    print("noteDay: \(noteDay)")
-                    noteReference = reminderArray[myIndexG].notificationID
-                    scheduleNotifications()
-                } else {
-                    reminderArray[myIndexG].date = 0
-                    noteReference = reminderArray[myIndexG].notificationID
-                    cancelNotifications()
+            if reminderNameInput.text != "" {
+                
+                //UPDATE NAME
+                if reminderNameInput != nil {
+                    reminderArray[myIndexG].name = reminderNameInput.text!
+                    //                self.dismiss(animated: true, completion: nil)
                 }
+                
+                //UPDATE AMOUNT
+                if reminderAmountInput != nil {
+                    let amount = Double(amt/100) + Double(amt%100)/100
+                    reminderArray[myIndexG].amount = amount
+                }
+                
+                //UPDATE LINKED BUDGET
+                if selectBudgetField != nil {
+                    reminderArray[myIndexG].linkedBudget = selectBudgetField.text!
+                }
+                
+                //UPDATE DATE
+                if dueDateInput != nil {
+                    if notificationSwitchOutlet.isOn == true {
+                        
+                        //REMOVE LAST 2 CHARACTERS FROM STRING
+                        let tempDay = dueDateInput.text!
+                        let modifiedDay = tempDay.dropLast(2)
+                        reminderArray[myIndexG].date = (Int(modifiedDay)!)
+                        
+                        noteDay = reminderArray[myIndexG].date
+                        print("noteDay: \(noteDay)")
+                        noteReference = reminderArray[myIndexG].notificationID
+                        scheduleNotifications()
+                    } else {
+                        reminderArray[myIndexG].date = 0
+                        noteReference = reminderArray[myIndexG].notificationID
+                        cancelNotifications()
+                    }
+                }
+                
+                //UPDATE REPEAT SETTING
+                reminderArray[myIndexG].reminderRepeat = repeatSetting
+                
+                // UPDATE NOTIFICATION SETTING
+                reminderArray[myIndexG].notificationSetting = notificationSetting
+                
+                saveData()
+                self.dismiss(animated: true, completion: nil)
+                
+            } else {
+                emptyTextAlert()
             }
-            
-            //UPDATE REPEAT SETTING
-            reminderArray[myIndexG].reminderRepeat = repeatSetting
-            
-            // UPDATE NOTIFICATION SETTING
-            reminderArray[myIndexG].notificationSetting = notificationSetting
-            
-            
         }
         
-        saveData()
-        self.dismiss(animated: true, completion: nil)
 
     }
     
@@ -476,6 +490,12 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
         } catch {
             print("Error encoding reminder array, \(error)")
         }
+    }
+    
+    func emptyTextAlert() {
+        let alert = UIAlertController(title: "Please name your reminder.", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
      

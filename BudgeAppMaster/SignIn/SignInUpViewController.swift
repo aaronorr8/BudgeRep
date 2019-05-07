@@ -19,6 +19,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var switchModes: UIButton!
     @IBOutlet weak var instructionLabel: UILabel!
     @IBOutlet weak var pigImage: UIImageView!
+    @IBOutlet weak var forgotPasswordOutlet: UIButton!
     
     
     var errorText = String()
@@ -91,7 +92,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
         let password = passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         startSpinner()
         
-        if isValidEmail(testStr: emailField.text!) == true {
+        if isValidEmail(testStr: email!) == true {
         
 //        if emailField.text != "" {
             
@@ -123,7 +124,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                         self.errorText = error?.localizedDescription ?? "Unable to login at this time. Please try again."
                         self.stopSpinner()
                         self.loginAlert()
-                        print(error as Any)
+                        print(error?.localizedDescription)
                     } else {
                         //SUCCESS STATE
                         registeredDate = Auth.auth().currentUser?.metadata.creationDate! ?? Date()
@@ -153,6 +154,11 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
         setModeText()
     }
     
+    @IBAction func forgotPassword(_ sender: Any) {
+        forgotPasswordAlert()
+    }
+    
+    
     
     func emptyEmailFieldAlert() {
         let alert = UIAlertController(title: "Please enter a valid email address.", message: nil, preferredStyle: .alert)
@@ -166,23 +172,59 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func forgotPasswordAlert() {
+        var email = self.emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        let alert = UIAlertController(title: "Reset password?", message: nil, preferredStyle: .alert)
+        
+        //Add text field
+        alert.addTextField { (textField) -> Void in
+            if email == "" {
+                textField.placeholder = "Enter email"
+            } else {
+                textField.text = email!
+            }
+        }
+        
+        alert.addAction(UIAlertAction(title: "Reset now", style: UIAlertAction.Style.default, handler: { _ in
+            
+            email = alert.textFields?[0].text?.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            if self.isValidEmail(testStr: email!) == true {
+                
+                Auth.auth().sendPasswordReset(withEmail: email!) { error in
+                    if error == nil {
+                        self.resetPasswordAlert()
+                    } else {
+                        print("reset password error: \(String(describing: error))")
+                    }
+                }
+            } else {
+                self.emptyEmailFieldAlert()
+            }
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     
     func loginAlert() {
         let alert = UIAlertController(title: errorText, message: nil, preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Reset Password", style: UIAlertAction.Style.default, handler: { _ in
-            
-            let email = self.emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-            Auth.auth().sendPasswordReset(withEmail: email!) { error in
-                if error == nil {
-                    self.resetPasswordAlert()
-                } else {
-                    print("reset password error: \(String(describing: error))")
-                }
-            }
-        }))
+//        alert.addAction(UIAlertAction(title: "Forgot password? Reset it now.", style: UIAlertAction.Style.default, handler: { _ in
+//
+//            let email = self.emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+//            Auth.auth().sendPasswordReset(withEmail: email!) { error in
+//                if error == nil {
+//                    self.resetPasswordAlert()
+//                } else {
+//                    print("reset password error: \(String(describing: error))")
+//                }
+//            }
+//        }))
 
-        alert.addAction(UIAlertAction(title: "Retry", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -214,10 +256,12 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
             instructionLabel.text = "Create an Account"
             switchModes.setTitle("Login Instead", for: .normal)
             pigImage.image = #imageLiteral(resourceName: "PigRight")
+            forgotPasswordOutlet.isHidden = true
         } else {
             instructionLabel.text = "Login to Budge"
             switchModes.setTitle("SignUp Instead", for: .normal)
             pigImage.image = #imageLiteral(resourceName: "PigLeft")
+            forgotPasswordOutlet.isHidden = false
         }
     }
     
