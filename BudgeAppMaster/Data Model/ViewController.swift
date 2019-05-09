@@ -19,6 +19,7 @@ var closeAllG = false
 
 //SETTINGS
 var monthlyResetSetting = false
+var monthlyResetLastMonth = 0
 
 //IAP
 var registeredDate = Date()

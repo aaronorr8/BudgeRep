@@ -82,6 +82,8 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         
         receiptValidation()
         
+        timeToResetAlert()
+        
         
     }
     
@@ -563,6 +565,54 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
             
             
         }
+    }
+    
+    func timeToResetAlert() {
+        //Get date
+        let date = Date()
+        let calendar = Calendar.current
+        let month = String(calendar.component(.month, from: date))
+        let year = String(calendar.component(.year, from: date))
+        var formattedMonth = String()
+        
+        //Get user defaults
+        monthlyResetSetting = defaults.bool(forKey: "MonthlyResetSetting")
+        monthlyResetLastMonth = defaults.integer(forKey: "MonthlyResetLastMonth")
+        print("MonthlyResetLastMonth: \(monthlyResetSetting)")
+        
+        //Determine if alert should be shown
+        var shouldShowMonthlyResetAlert = Bool()
+        
+        if month.count == 1 {
+            formattedMonth = "0\(month)"
+        } else {
+            formattedMonth = month
+        }
+        
+        let newDate = "\(year)\(formattedMonth)"
+        
+        if String(monthlyResetLastMonth) < newDate {
+            shouldShowMonthlyResetAlert = true
+        } else {
+            shouldShowMonthlyResetAlert = false
+        }
+        
+        if monthlyResetSetting == true && shouldShowMonthlyResetAlert == true {
+            showResetBudgetsAlert()
+            monthlyResetLastMonth = Int(newDate)!
+            defaults.set(monthlyResetLastMonth, forKey: "MonthlyResetLastMonth")
+        } else {
+            print("don't show reset budget alert")
+        }
+        
+    }
+    
+    
+    
+    func showResetBudgetsAlert() {
+        let alert = UIAlertController(title: "It's a new month, would you like to reset your budgets?", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     

@@ -406,6 +406,7 @@ class SettingTableViewController: UITableViewController {
         if monthlyResetSwitch.isOn == true {
             scheduleResetNotification()
             monthlyResetSetting = true
+            setMonthlyResetLastMonth()
             setUserDefaults()
         } else {
             cancelResetNotification()
@@ -413,6 +414,30 @@ class SettingTableViewController: UITableViewController {
             setUserDefaults()
         }
         
+    }
+    
+    func setMonthlyResetLastMonth() {
+        let date = Date()
+        let calendar = Calendar.current
+//        let month = String(calendar.component(.month, from: date))
+        //For testing
+        let month = "4"
+        let year = String(calendar.component(.year, from: date))
+        var formattedMonth = String()
+        
+        // Add a "0" in front of the month integer if it's a single digit. This is needed so I can calculate if this date is less than the current date to know if the ResetAlert should be shown.
+        if month.count == 1 {
+            formattedMonth = "0\(month)"
+        } else {
+            formattedMonth = month
+        }
+        
+        //combine year and month
+        let combinedDates = "\(year)\(formattedMonth)"
+        monthlyResetLastMonth = Int(combinedDates)!
+        print(monthlyResetLastMonth)
+        defaults.set(monthlyResetLastMonth, forKey: "MonthlyResetLastMonth")
+        print("MonthlyResetLastMonth: \(monthlyResetSetting)")
     }
     
     
@@ -425,7 +450,7 @@ class SettingTableViewController: UITableViewController {
         //adding title, subtitle, body and badge
         content.title = "Time to reset your budgets."
         content.subtitle = ""
-        content.body = "Open the app to reset your monthly budgets for the new month!"
+        content.body = "Open the app, go to Settings, reset your monthly budgets for the new month!"
         content.badge = 1
         
         //trigger on a specific date and time
