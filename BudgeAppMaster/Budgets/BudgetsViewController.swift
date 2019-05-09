@@ -578,7 +578,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         //Get user defaults
         monthlyResetSetting = defaults.bool(forKey: "MonthlyResetSetting")
         monthlyResetLastMonth = defaults.integer(forKey: "MonthlyResetLastMonth")
-        print("MonthlyResetLastMonth: \(monthlyResetSetting)")
+        print("MonthlyResetLastMonth: \(monthlyResetLastMonth)")
         
         //Determine if alert should be shown
         var shouldShowMonthlyResetAlert = Bool()

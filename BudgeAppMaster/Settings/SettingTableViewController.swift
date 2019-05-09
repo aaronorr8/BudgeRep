@@ -419,9 +419,7 @@ class SettingTableViewController: UITableViewController {
     func setMonthlyResetLastMonth() {
         let date = Date()
         let calendar = Calendar.current
-//        let month = String(calendar.component(.month, from: date))
-        //For testing
-        let month = "4"
+        let month = String(calendar.component(.month, from: date))
         let year = String(calendar.component(.year, from: date))
         var formattedMonth = String()
         
@@ -437,7 +435,7 @@ class SettingTableViewController: UITableViewController {
         monthlyResetLastMonth = Int(combinedDates)!
         print(monthlyResetLastMonth)
         defaults.set(monthlyResetLastMonth, forKey: "MonthlyResetLastMonth")
-        print("MonthlyResetLastMonth: \(monthlyResetSetting)")
+        print("MonthlyResetLastMonth: \(monthlyResetLastMonth)")
     }
     
     
