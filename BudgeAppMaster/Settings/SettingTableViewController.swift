@@ -159,7 +159,10 @@ class SettingTableViewController: UITableViewController {
     
     
     @IBAction func resetAllBudgets(_ sender: Any) {
-        
+        resetAllBudgets()
+    }
+    
+    func resetAllBudgets() {
         let remainingAvailable = budgetRemainingG.reduce(0, +)
         
         if remainingAvailable > 0.0 {
@@ -446,9 +449,9 @@ class SettingTableViewController: UITableViewController {
         let content = UNMutableNotificationContent()
         
         //adding title, subtitle, body and badge
-        content.title = "Time to reset your budgets."
+        content.title = "It's a new month, time to reset your budgets."
         content.subtitle = ""
-        content.body = "Open the app, go to Settings, reset your monthly budgets for the new month!"
+        content.body = "Open Budge and go to Settings to reset your monthly budget."
         content.badge = 1
         
         //trigger on a specific date and time
@@ -588,6 +591,16 @@ class SettingTableViewController: UITableViewController {
             print ("Error signing out: %@", signOutError)
         }
     }
+    
+    @IBAction func linkToAnotherDevice(_ sender: Any) {
+        let email = Auth.auth().currentUser?.email
+        
+        
+        let alert = UIAlertController(title: "To link your budget with another device simply login on the other device with the same email and password you used to set up this account.", message: "\(email ?? "")!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     
     
     

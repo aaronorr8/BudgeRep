@@ -610,8 +610,13 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     
     
     func showResetBudgetsAlert() {
-        let alert = UIAlertController(title: "It's a new month, would you like to reset your budgets?", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        let alert = UIAlertController(title: "It's a new month, do you want to reset your budgets?", message: "You can always reset your budgets from the Settings page anytime.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes, go to Settings", style: UIAlertAction.Style.default, handler: { _ in
+            //Go to Settings tab
+            self.tabBarController?.selectedIndex = 2
+            
+        }))
+        alert.addAction(UIAlertAction(title: "Not now", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     

@@ -1098,7 +1098,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vou-ka-roH">
-                                                    <rect key="frame" x="304" y="5.5" width="57" height="33"/>
+                                                    <rect key="frame" x="302" y="5.5" width="57" height="33"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="57" id="2PU-Uj-hmB"/>
                                                         <constraint firstAttribute="height" constant="33" id="lz7-gy-Hyl"/>
@@ -1124,7 +1124,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="l7Z-2p-NTP" firstAttribute="leading" secondItem="8iD-MJ-KDQ" secondAttribute="leading" constant="16" id="6P7-kv-YEI"/>
-                                                <constraint firstAttribute="trailing" secondItem="Vou-ka-roH" secondAttribute="trailing" constant="14" id="GHz-s3-CaS"/>
+                                                <constraint firstAttribute="trailing" secondItem="Vou-ka-roH" secondAttribute="trailing" constant="16" id="GHz-s3-CaS"/>
                                                 <constraint firstItem="l7Z-2p-NTP" firstAttribute="centerY" secondItem="8iD-MJ-KDQ" secondAttribute="centerY" id="YHj-b4-6xL"/>
                                                 <constraint firstItem="Vou-ka-roH" firstAttribute="centerY" secondItem="8iD-MJ-KDQ" secondAttribute="centerY" id="fdX-og-Cs9"/>
                                             </constraints>
@@ -1221,25 +1221,24 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="64j-eJ-whA">
-                                                    <rect key="frame" x="81.5" y="10.5" width="212" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ko-X2-Ls5">
+                                                    <rect key="frame" x="51" y="9" width="273" height="33"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="12W-q6-rmK"/>
-                                                        <constraint firstAttribute="width" constant="212" id="QED-FO-Qta"/>
+                                                        <constraint firstAttribute="height" constant="33" id="C6H-4R-adm"/>
+                                                        <constraint firstAttribute="width" constant="273" id="k5w-lc-UJ5"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                                    <state key="normal" title="Subscribe">
+                                                    <state key="normal" title="Link Budget with Another Device">
                                                         <color key="titleColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="subscribeButton:" destination="NBk-tc-AHQ" eventType="touchUpInside" id="vx4-ab-72p"/>
-                                                        <segue destination="eXN-CN-4TQ" kind="presentation" id="uHM-nS-Bna"/>
+                                                        <action selector="linkToAnotherDevice:" destination="NBk-tc-AHQ" eventType="touchUpInside" id="ZJ8-ea-3Rj"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="64j-eJ-whA" firstAttribute="centerY" secondItem="G0Y-xi-Gf0" secondAttribute="centerY" id="ZbO-rW-kcu"/>
-                                                <constraint firstItem="64j-eJ-whA" firstAttribute="centerX" secondItem="G0Y-xi-Gf0" secondAttribute="centerX" id="kAX-T9-ZME"/>
+                                                <constraint firstItem="1Ko-X2-Ls5" firstAttribute="centerY" secondItem="G0Y-xi-Gf0" secondAttribute="centerY" id="BZN-v2-DsA"/>
+                                                <constraint firstItem="1Ko-X2-Ls5" firstAttribute="centerX" secondItem="G0Y-xi-Gf0" secondAttribute="centerX" id="wWE-8a-Uir"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1253,8 +1252,8 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTb-KF-hqv">
                                                     <rect key="frame" x="106.5" y="9" width="162" height="33"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="162" id="Jjv-cL-QGo"/>
-                                                        <constraint firstAttribute="height" constant="33" id="faq-kL-kXm"/>
+                                                        <constraint firstAttribute="width" constant="162" id="VlA-hb-xC5"/>
+                                                        <constraint firstAttribute="height" constant="33" id="r4M-XA-Wp8"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                     <state key="normal" title="Sign Out">
@@ -1266,8 +1265,8 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="lTb-KF-hqv" firstAttribute="centerX" secondItem="c9u-A5-aXP" secondAttribute="centerX" id="gvp-zs-UWG"/>
-                                                <constraint firstItem="lTb-KF-hqv" firstAttribute="centerY" secondItem="c9u-A5-aXP" secondAttribute="centerY" id="hO2-Zt-IYs"/>
+                                                <constraint firstItem="lTb-KF-hqv" firstAttribute="centerX" secondItem="c9u-A5-aXP" secondAttribute="centerX" id="6eG-6h-w1c"/>
+                                                <constraint firstItem="lTb-KF-hqv" firstAttribute="centerY" secondItem="c9u-A5-aXP" secondAttribute="centerY" id="XDB-K9-3UP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1278,11 +1277,40 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="64j-eJ-whA">
+                                                    <rect key="frame" x="81.5" y="10.5" width="212" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="212" id="FfK-M3-9BD"/>
+                                                        <constraint firstAttribute="height" constant="30" id="O0G-Ee-N7S"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                    <state key="normal" title="Subscribe">
+                                                        <color key="titleColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="subscribeButton:" destination="NBk-tc-AHQ" eventType="touchUpInside" id="vx4-ab-72p"/>
+                                                        <segue destination="eXN-CN-4TQ" kind="presentation" id="uHM-nS-Bna"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="64j-eJ-whA" firstAttribute="centerX" secondItem="R3N-FQ-OJj" secondAttribute="centerX" id="3sH-bN-xAd"/>
+                                                <constraint firstItem="64j-eJ-whA" firstAttribute="centerY" secondItem="R3N-FQ-OJj" secondAttribute="centerY" id="c2E-3v-2GX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="51" id="o5h-jw-eRT">
+                                        <rect key="frame" x="0.0" y="499" width="375" height="51"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="o5h-jw-eRT" id="Vd6-lG-eM8">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0F-bC-hyW">
                                                     <rect key="frame" x="106" y="8.5" width="163" height="34"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="163" id="iAJ-12-Ndc"/>
-                                                        <constraint firstAttribute="height" constant="34" id="o4o-zG-gim"/>
+                                                        <constraint firstAttribute="height" constant="34" id="OI3-9m-XUx"/>
+                                                        <constraint firstAttribute="width" constant="163" id="Q52-bT-2X2"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                     <state key="normal" title="Restore Purchase">
@@ -1294,23 +1322,23 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="v0F-bC-hyW" firstAttribute="centerY" secondItem="R3N-FQ-OJj" secondAttribute="centerY" id="glm-Nj-Yyp"/>
-                                                <constraint firstItem="v0F-bC-hyW" firstAttribute="centerX" secondItem="R3N-FQ-OJj" secondAttribute="centerX" id="r6z-Gv-Wi1"/>
+                                                <constraint firstItem="v0F-bC-hyW" firstAttribute="centerX" secondItem="Vd6-lG-eM8" secondAttribute="centerX" id="gPk-ta-gOD"/>
+                                                <constraint firstItem="v0F-bC-hyW" firstAttribute="centerY" secondItem="Vd6-lG-eM8" secondAttribute="centerY" id="hLa-ae-uEi"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="51" id="o5h-jw-eRT">
-                                        <rect key="frame" x="0.0" y="499" width="375" height="51"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="51" id="104-Xd-sfg">
+                                        <rect key="frame" x="0.0" y="550" width="375" height="51"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="o5h-jw-eRT" id="Vd6-lG-eM8">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="104-Xd-sfg" id="TIt-ML-vBJ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m8h-Sk-zZF">
                                                     <rect key="frame" x="81.5" y="10.5" width="212" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="212" id="756-3Y-doH"/>
-                                                        <constraint firstAttribute="height" constant="30" id="IQ3-wO-aX0"/>
+                                                        <constraint firstAttribute="height" constant="30" id="RmT-8B-769"/>
+                                                        <constraint firstAttribute="width" constant="212" id="Vbg-gq-lNg"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                     <state key="normal" title="Delete Account">
@@ -1323,8 +1351,8 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="m8h-Sk-zZF" firstAttribute="centerX" secondItem="Vd6-lG-eM8" secondAttribute="centerX" id="2db-I8-EyV"/>
-                                                <constraint firstItem="m8h-Sk-zZF" firstAttribute="centerY" secondItem="Vd6-lG-eM8" secondAttribute="centerY" id="f8x-gv-Gcb"/>
+                                                <constraint firstItem="m8h-Sk-zZF" firstAttribute="centerY" secondItem="TIt-ML-vBJ" secondAttribute="centerY" id="Em9-QE-3G1"/>
+                                                <constraint firstItem="m8h-Sk-zZF" firstAttribute="centerX" secondItem="TIt-ML-vBJ" secondAttribute="centerX" id="K1s-3p-p2W"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1336,9 +1364,7 @@
                             <outlet property="delegate" destination="NBk-tc-AHQ" id="Ts9-kH-PNA"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="SETTINGS" id="CPj-mW-3dD">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="nLM-3o-hyM"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="SETTINGS" id="CPj-mW-3dD"/>
                     <connections>
                         <outlet property="monthlyResetSwitch" destination="AFL-Xb-kQT" id="baC-tI-1IJ"/>
                         <segue destination="fBD-do-PNd" kind="presentation" identifier="goToLogin" id="MAD-z3-gm7"/>
