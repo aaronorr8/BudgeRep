@@ -34,6 +34,7 @@
 		25A933E7C5DAD6DF2D222780 /* Pods_BudgeAppMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C778C86DABD18BCB8E509DC /* Pods_BudgeAppMaster.framework */; };
 		4326BF34223347D4002B501D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326BF33223347D4002B501D /* ViewController.swift */; };
 		4351D753224EF245007ED47E /* BenefitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4351D752224EF245007ED47E /* BenefitsViewController.swift */; };
+		436D9D412286269B0020F924 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436D9D402286269B0020F924 /* StoreKit.framework */; };
 		4393F83F2233FBA8004CD359 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4393F83E2233FBA8004CD359 /* Assets.xcassets */; };
 		43ECFE85224E61FC000BC957 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ECFE84224E61FC000BC957 /* WelcomeViewController.swift */; };
 		43FE6F9C2257B581007C21BF /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FE6F9B2257B581007C21BF /* SettingTableViewController.swift */; };
@@ -70,6 +71,7 @@
 		0DACD958225FC1A3008EDF4B /* IAPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPViewController.swift; sourceTree = "<group>"; };
 		4326BF33223347D4002B501D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4351D752224EF245007ED47E /* BenefitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitsViewController.swift; sourceTree = "<group>"; };
+		436D9D402286269B0020F924 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4393F83E2233FBA8004CD359 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43C7B2182256826D00F1FC0B /* BudgeAppMaster.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BudgeAppMaster.entitlements; sourceTree = "<group>"; };
 		43ECFE84224E61FC000BC957 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25A933E7C5DAD6DF2D222780 /* Pods_BudgeAppMaster.framework in Frameworks */,
+				436D9D412286269B0020F924 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +228,7 @@
 		64AC9071C417182E3D7E145C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				436D9D402286269B0020F924 /* StoreKit.framework */,
 				6C778C86DABD18BCB8E509DC /* Pods_BudgeAppMaster.framework */,
 			);
 			name = Frameworks;
@@ -274,8 +278,11 @@
 					0DA436FE22332E5200110700 = {
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -542,6 +549,7 @@
 			baseConfigurationReference = AD8C2B23E7AA693730F0A2EE /* Pods-BudgeAppMaster.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BudgeAppMaster/BudgeAppMaster.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CC6KPH6NEB;
 				INFOPLIST_FILE = BudgeAppMaster/Info.plist;
@@ -562,6 +570,7 @@
 			baseConfigurationReference = 4DAF6C3356B20D0714001DF0 /* Pods-BudgeAppMaster.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BudgeAppMaster/BudgeAppMaster.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CC6KPH6NEB;
 				INFOPLIST_FILE = BudgeAppMaster/Info.plist;
