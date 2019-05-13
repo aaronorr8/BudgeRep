@@ -30,7 +30,7 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
     let tempBudgetHistoryDateG = budgetHistoryDateG
     let tempBudgetHistoryTimeG = budgetHistoryTimeG
     let tempBudgetRemainingG = budgetRemainingG
-    let tempTotalSpentG = totalSpentG
+//    let tempTotalSpentG = totalSpentG
     let tempSubscribedUser = subscribedUser
     
 
@@ -191,7 +191,7 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
             "budgetHistoryDate": budgetHistoryDateG,
             "budgetHistoryTime": budgetHistoryTimeG,
             "budgetRemaining": budgetRemainingG,
-            "totalSpent": totalSpentG,
+//            "totalSpent": totalSpentG,
             "subscribedUser": subscribedUser
             
             ]) { err in
@@ -205,7 +205,7 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
                     budgetHistoryDateG = self.tempBudgetHistoryDateG
                     budgetHistoryTimeG = self.tempBudgetHistoryTimeG
                     budgetRemainingG = self.tempBudgetRemainingG
-                    totalSpentG = self.tempTotalSpentG
+//                    totalSpentG = self.tempTotalSpentG
                     subscribedUser = self.tempSubscribedUser
                 } else {
                     print("Document successfully written!")
@@ -223,7 +223,7 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
         print("budgetNote: \(budgetNoteG)")
         print("budgetHistoryDate: \(budgetHistoryDateG)")
         print("budgetHistoryTime: \(budgetHistoryTimeG)")
-        print("totalSpent: \(String(describing: totalSpentG))")
+//        print("totalSpent: \(String(describing: totalSpentG))")
         print("budgetRemaining: \(budgetRemainingG)")
         print("subscribedUser: \(subscribedUser)")
         print("BREAK")

@@ -31,6 +31,7 @@ var subscribedUser = Bool()
 //TEMP DATA
 var presetAmountG = 0.0
 var presetRefundG = false
+var presetNote = ""
 
 //USER DATA
 var incomeG = 0.0
@@ -53,7 +54,7 @@ var budgetHistoryAmountG = [String: [Double]]()
 var budgetHistoryDateG = [String: [String]]()
 var budgetHistoryTimeG = [String: [String]]()
 var budgetNoteG = [String: [String]]()
-var totalSpentG = Double() //a running total of money spent from all budgets
+//var totalSpentG = Double() //a running total of money spent from all budgets
 var rolloverG = Bool()
 var rolloverTotalG = Double()
 

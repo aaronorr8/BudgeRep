@@ -66,7 +66,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
     let tempBudgetHistoryDateG = budgetHistoryDateG
     let tempBudgetHistoryTimeG = budgetHistoryTimeG
     let tempBudgetRemainingG = budgetRemainingG
-    let tempTotalSpentG = totalSpentG
+//    let tempTotalSpentG = totalSpentG
     
     override func viewDidLayoutSubviews() {
         //Add underline to text fields
@@ -129,6 +129,10 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
             spendAmount.text = String(convertDoubleToCurency(amount: presetAmountG))
             amt = Int(presetAmountG) * 100
         }
+        if presetNote != "" {
+            spendNoteField.text = presetNote
+        }
+        
         
         //REMINDER REFUND PRESET SETTING
         if presetRefundG == true {
@@ -355,7 +359,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
             //print("\(month)/\(day)")
             //print("\(hour):\(minutes)")
             
-            totalSpentG = totalSpentG + amount
+//            totalSpentG = totalSpentG + amount
             
             //Used for confirmation toast
             savedBudget = selectedBudget
@@ -388,7 +392,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
                 "budgetHistoryDate": budgetHistoryDateG,
                 "budgetHistoryTime": budgetHistoryTimeG,
                 "budgetRemaining": budgetRemainingG,
-                "totalSpent": totalSpentG,
+//                "totalSpent": totalSpentG,
                 "subscribedUser": subscribedUser
             ]) { err in
                 if let err = err {
@@ -399,7 +403,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
                     budgetHistoryDateG = self.tempBudgetHistoryDateG
                     budgetHistoryTimeG = self.tempBudgetHistoryTimeG
                     budgetRemainingG = self.tempBudgetRemainingG
-                    totalSpentG = self.tempTotalSpentG
+//                    totalSpentG = self.tempTotalSpentG
                     
                     showToast = true
                     toastSuccess = false
@@ -434,7 +438,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
             budgetNoteG.removeValue(forKey: budgetNameTemp)
         }
      
-        totalSpentG = totalSpentG - totalSpentTemp
+//        totalSpentG = totalSpentG - totalSpentTemp
         toastOverride = true
         saveToFireStore()
 

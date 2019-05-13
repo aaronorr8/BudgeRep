@@ -47,6 +47,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     let hiddenTitleColor = UIColor.clear
     let visibleTitleColor = UIColor.black
     var hideNav = Bool()
+    var totalSpentAllBudgets = Double()
     
     //MARK: PROGRESS BAR SCALE
     let xScale = CGFloat(1.0)
@@ -214,7 +215,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
             
             
             //MARK: HEADER PROGRESS BAR
-            let progress = totalSpentG/totalBudgetsAllocation
+            let progress = totalSpentAllBudgets/totalBudgetsAllocation
             
             headerView.wavyProgress.trackColor = colorTrackH
             
@@ -228,7 +229,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
             
            //MARK: HEADER PROGRESS BAR LABELS
             
-            let headerSpentTotal = String(convertDoubleToCurency(amount: totalSpentG))
+            let headerSpentTotal = String(convertDoubleToCurency(amount: totalSpentAllBudgets))
             let headerTotalAvailable = String(convertDoubleToCurency(amount: totalBudgetsAllocation))
             
             headerView.progressSpentLabel.text = "\(headerSpentTotal) spent"
@@ -329,11 +330,14 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
 
         let array = Array(budgetHistoryAmountG.values)
         let flatArray = array.flatMap {$0}
-        let history = flatArray.reduce(0, +)
+        totalSpentAllBudgets = flatArray.reduce(0, +)
         let budgets = budgetAmountG.reduce(0, +)
-        totalBudgetsAvailable = budgets - history
+        totalBudgetsAvailable = budgets - totalSpentAllBudgets
+        
     
     }
+    
+  
     
     func calculateTotalAllocation() {
         
@@ -427,7 +431,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
                 "budgetHistoryDate": budgetHistoryDateG,
                 "budgetHistoryTime": budgetHistoryTimeG,
                 "budgetRemaining": budgetRemainingG,
-                "totalSpent": totalSpentG,
+//                "totalSpent": totalSpentG,
                 "subscribedUser": subscribedUser
             ]) { err in
                 if let err = err {
@@ -460,7 +464,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
                     budgetHistoryDateG = document.get("budgetHistoryDate") as! [String : [String]]
                     budgetHistoryTimeG = document.get("budgetHistoryTime") as! [String : [String]]
                     budgetRemainingG = document.get("budgetRemaining") as! [Double]
-                    totalSpentG = document.get("totalSpent") as! Double
+//                    totalSpentG = document.get("totalSpent") as! Double
                     subscribedUser = document.get("subscribedUser") as! Bool
                    
                     self.collectionView.reloadData()
@@ -488,7 +492,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         budgetHistoryDateG.removeAll()
         budgetHistoryTimeG.removeAll()
         budgetRemainingG.removeAll()
-        totalSpentG = 0.0
+//        totalSpentG = 0.0
     }
     
    

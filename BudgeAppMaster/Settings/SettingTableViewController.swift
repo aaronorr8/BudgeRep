@@ -281,7 +281,7 @@ class SettingTableViewController: UITableViewController {
         print("Reset Budgets, No Rollover")
         resetBudgets()
         budgetRemainingG = budgetAmountG
-        totalSpentG = 0.0
+//        totalSpentG = 0.0
         rolloverTotalG = 0.0
         
         if budgetNameG.contains("Rollover") {
@@ -295,7 +295,7 @@ class SettingTableViewController: UITableViewController {
         
         if budgetNameG.contains("Rollover") {
             resetBudgets()
-            totalSpentG = 0.0
+//            totalSpentG = 0.0
             
             //Find Index of Rollover Budget and set rollover budget
             let indexOfRollover = budgetNameG.index(of: "Rollover")
@@ -306,7 +306,7 @@ class SettingTableViewController: UITableViewController {
             resetBudgets()
             addRolloverBudget()
             budgetRemainingG = budgetAmountG
-            totalSpentG = 0.0
+//            totalSpentG = 0.0
         }
     }
     
@@ -511,7 +511,7 @@ class SettingTableViewController: UITableViewController {
                 "budgetHistoryDate": budgetHistoryDateG,
                 "budgetHistoryTime": budgetHistoryTimeG,
                 "budgetRemaining": budgetRemainingG,
-                "totalSpent": totalSpentG,
+//                "totalSpent": totalSpentG,
                 "subscribedUser": subscribedUser
             ]) { err in
                 if let err = err {

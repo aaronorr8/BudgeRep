@@ -71,7 +71,8 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "\(budgetName) History"
+//        self.title = "\(budgetName) History"
+        self.title = "Spend Record"
       
     }
     
@@ -96,6 +97,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         let saveRefund = UIAlertAction(title: "Save as Refund", style: .default) { (_) in
             
             //getting the input values from user
+            let tempAmount = budgetHistoryAmountG[self.budgetName]![self.historyIndex]
             let amount = Double(self.amt/100) + Double(self.amt%100)/100
             self.amt = 0
             print("Update it")
@@ -104,11 +106,12 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             self.tableView.reloadData()
             
-            //UPDATE TOTAL SPENT
+            //UPDATE TOTAL REMAINING IN BUDGET
             let totalSpent = (budgetHistoryAmountG[self.budgetName]?.reduce(0, +))!
             budgetRemainingG[myIndexG] = (budgetAmountG[myIndexG] - totalSpent)
             
-            totalSpentG = totalSpent
+            //UPDATE TOTAL SPENT IN ALL BUDGETS
+//            totalSpentG = (totalSpentG - tempAmount) + amount
             
             self.saveToFireStore()
 
@@ -119,6 +122,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             
             //getting the input values from user
+            let tempAmount = budgetHistoryAmountG[self.budgetName]![self.historyIndex]
             let amount = Double(self.amt/100) + Double(self.amt%100)/100
             self.amt = 0
             print("Update it")
@@ -127,11 +131,12 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             self.tableView.reloadData()
             
-            //UPDATE TOTAL SPENT
+            //UPDATE TOTAL REMAINING IN BUDGET
             let totalSpent = (budgetHistoryAmountG[self.budgetName]?.reduce(0, +))!
             budgetRemainingG[myIndexG] = (budgetAmountG[myIndexG] - totalSpent)
             
-            totalSpentG = totalSpent
+            //UPDATE TOTAL SPENT IN ALL BUDGETS
+//            totalSpentG = (totalSpentG - tempAmount) + amount
             
             self.saveToFireStore()
             
@@ -160,6 +165,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         alertController.addAction(saveRefund)
         alertController.addAction(cancelAction)
         
+        
         //finally presenting the dialog box
         self.present(alertController, animated: true, completion: nil)
     }
@@ -181,7 +187,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             budgetNoteG[self.budgetName]?.remove(at: self.historyIndex)
             budgetHistoryTimeG[self.budgetName]?.remove(at: self.historyIndex)
             
-            totalSpentG = (totalSpentG - amountToDelete)
+//            totalSpentG = (totalSpentG - amountToDelete)
             
             budgetRemainingG[myIndexG] = budgetAmountG[myIndexG] - (budgetHistoryAmountG[self.budgetName]?.reduce(0, +))!
             
@@ -241,6 +247,13 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         return false
     }
     
+    //Use this function to open the AddSpend view
+    func editSpend() {
+        presetAmountG = budgetHistoryAmountG[budgetName]?[historyIndex] ?? 0.0
+        presetNote = budgetNoteG[budgetName]?[historyIndex] ?? ""
+        self.performSegue(withIdentifier: "EditSpend", sender: self)
+    }
+    
     
     //MARK: Save to FireStore
     func saveToFireStore() {
@@ -255,7 +268,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                 "budgetHistoryDate": budgetHistoryDateG,
                 "budgetHistoryTime": budgetHistoryTimeG,
                 "budgetRemaining": budgetRemainingG,
-                "totalSpent": totalSpentG,
+//                "totalSpent": totalSpentG,
                 "subscribedUser": subscribedUser
                 
             ]) { err in
@@ -289,7 +302,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                     budgetHistoryDateG = document.get("budgetHistoryDate") as! [String : [String]]
                     budgetHistoryTimeG = document.get("budgetHistoryTime") as! [String : [String]]
                     budgetRemainingG = document.get("budgetRemaining") as! [Double]
-                    totalSpentG = document.get("totalSpent") as! Double
+//                    totalSpentG = document.get("totalSpent") as! Double
                     
                     print("Current data: \(data)")
                     
