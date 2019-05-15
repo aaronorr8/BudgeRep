@@ -17,8 +17,7 @@ class SettingTableViewController: UITableViewController {
 
 
     @IBOutlet weak var monthlyResetSwitch: UISwitch!
-    
-    
+    @IBOutlet weak var subscribeButtonOutlet: UIButton!
     
     
     var amt: Int = 0
@@ -44,12 +43,16 @@ class SettingTableViewController: UITableViewController {
         return .default
     }
     
+
+    
     override func viewDidAppear(_ animated: Bool) {
         UIApplication.shared.applicationIconBadgeNumber = 0
         print("clear badge")
         
         //Load Notification Items
         loadItems()
+        
+        
     }
     
     
@@ -57,7 +60,10 @@ class SettingTableViewController: UITableViewController {
         super.viewDidLoad()
         
         db = Firestore.firestore()
+        fireStoreListener()
         getUserDefaults()
+        
+        
         
     }
     
@@ -133,6 +139,7 @@ class SettingTableViewController: UITableViewController {
             }
         }
     }
+    
     
     @IBAction func subscribeButton(_ sender: Any) {
         hideCloseButton = false
@@ -593,13 +600,65 @@ class SettingTableViewController: UITableViewController {
     }
     
     @IBAction func linkToAnotherDevice(_ sender: Any) {
-        let email = Auth.auth().currentUser?.email
+        let email = Auth.auth().currentUser!.email!
         
         
-        let alert = UIAlertController(title: "To link your budget with another device simply login on the other device with the same email and password you used to set up this account.", message: "\(email ?? "")!", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Link to another phone", message: "To link to another phone, simply login with same email (\(String(describing: email))) and password as the original phone.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func subscribeButtonTitle() {
+        print("Title, Subscribed: \(subscribedUser)")
+        if subscribedUser == false {
+            subscribeButtonOutlet.setTitle("Subscribe", for: .normal)
+        } else {
+            subscribeButtonOutlet.setTitle("Subscribed", for: .disabled)
+        }
+    }
+    
+    //MARK: FireStore Listener
+    func fireStoreListener() {
+        if let userID = Auth.auth().currentUser?.uid {
+            db.collection("budgets").document(userID)
+                .addSnapshotListener { documentSnapshot, error in
+                    guard let document = documentSnapshot else {
+                        print("Error fetching document: \(error!)")
+                        return
+                    }
+                    guard let data = document.data() else {
+                        print("Document data was empty.")
+                        return
+                    }
+//                    budgetNameG = document.get("budgetName") as! [String]
+//                    budgetAmountG = document.get("budgetAmount") as! [Double]
+//                    budgetHistoryAmountG = document.get("budgetHistoryAmount") as! [String : [Double]]
+//                    budgetNoteG = document.get("budgetNote") as! [String : [String]]
+//                    budgetHistoryDateG = document.get("budgetHistoryDate") as! [String : [String]]
+//                    budgetHistoryTimeG = document.get("budgetHistoryTime") as! [String : [String]]
+//                    budgetRemainingG = document.get("budgetRemaining") as! [Double]
+                    //                    totalSpentG = document.get("totalSpent") as! Double
+                    subscribedUser = document.get("subscribedUser") as! Bool
+                    print("From Firestore, subscribedUser = \(subscribedUser)")
+                    
+                    if subscribedUser == true {
+                        self.subscribeButtonOutlet.setTitle("Subscribed Already!", for: .normal)
+                        self.subscribeButtonOutlet.isEnabled = false
+                        self.subscribeButtonOutlet.setTitleColor(.lightGray, for: .normal)
+                    } else {
+                        self.subscribeButtonOutlet.setTitle("Subscribe", for: .normal)
+                        self.subscribeButtonOutlet.isEnabled = true
+                        self.subscribeButtonOutlet.setTitleColor(.black, for: .normal)
+                    }
+                    
+                    
+            }
+        }
+        
+        
+    }
+    
+    
     
     
     

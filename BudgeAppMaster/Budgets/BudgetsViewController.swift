@@ -91,9 +91,8 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       
         fireStoreListener()
-        
+       
     }
     
     
@@ -107,7 +106,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         
         showConfirmationToast()
         
-        showIAP()
+        
        
       
 
@@ -431,7 +430,6 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
                 "budgetHistoryDate": budgetHistoryDateG,
                 "budgetHistoryTime": budgetHistoryTimeG,
                 "budgetRemaining": budgetRemainingG,
-//                "totalSpent": totalSpentG,
                 "subscribedUser": subscribedUser
             ]) { err in
                 if let err = err {
@@ -464,17 +462,18 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
                     budgetHistoryDateG = document.get("budgetHistoryDate") as! [String : [String]]
                     budgetHistoryTimeG = document.get("budgetHistoryTime") as! [String : [String]]
                     budgetRemainingG = document.get("budgetRemaining") as! [Double]
-//                    totalSpentG = document.get("totalSpent") as! Double
                     subscribedUser = document.get("subscribedUser") as! Bool
-                   
+                    
                     self.collectionView.reloadData()
                     self.calculateTotalAvailable()
                     self.calculateTotalAllocation()
                     
+                    self.showIAP()
+                    
             }
         }
         
-       
+        
     }
     
     @objc func loadList(){
@@ -492,13 +491,12 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         budgetHistoryDateG.removeAll()
         budgetHistoryTimeG.removeAll()
         budgetRemainingG.removeAll()
-//        totalSpentG = 0.0
     }
     
    
     
     func showIAP() {
-        subscribedUser = defaults.bool(forKey: "SubscribedUser")
+//        subscribedUser = defaults.bool(forKey: "SubscribedUser")
 //        registeredDate = defaults.object(forKey: "RegisteredDate") as! Date
         if defaults.object(forKey: "RegisteredDate") != nil {
             registeredDate = defaults.object(forKey: "RegisteredDate") as! Date
@@ -513,6 +511,9 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         print("iapDate: \(iapDate)")
         print("difference is \(components.minute ?? 0) minutes")
         print("SubscribedUser: \(subscribedUser)")
+        
+        print("minutes: \(minutes)")
+        print("subscribed: \(subscribedUser)")
         
         if minutes > 10080 && subscribedUser == false {  //Minutes should be 10080 for 1 week
             self.performSegue(withIdentifier: "goToIAP", sender: self)

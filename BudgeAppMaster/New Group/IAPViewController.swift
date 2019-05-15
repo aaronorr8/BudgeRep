@@ -9,6 +9,7 @@
 import UIKit
 import StoreKit
 import Firebase
+import SystemConfiguration
 
 class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
@@ -18,7 +19,7 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
     @IBOutlet weak var benefitView: UIView!
     @IBOutlet weak var closeButton: UIButton!
     
-    
+    let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     var list = [SKProduct]()
     var p = SKProduct()
     var product = SKProduct()
@@ -78,6 +79,17 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
     }
     
     @IBAction func subscribeButton(_ sender: Any) {
+        
+        startSpinner()
+        
+        //Check internet connection
+        if checkNetworkConnection() {
+            stopSpinner()
+            print("You are connected, YEET!")
+        } else {
+            stopSpinner()
+            self.Alert(Message: "Your device is not connected to the internet. Please try again.")
+        }
         
         for product in list {
             let ProdID = product.productIdentifier
@@ -143,6 +155,7 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
             case .purchased:
                 print("Purchased! Unlock app")
                 print(p.productIdentifier)
+                stopSpinner()
                 unlockApp()
                 closeIAPScreen()
                 
@@ -150,6 +163,7 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
                 switch prodID {
                 case "budge.subscription":
                     print("Subscribed")
+                    stopSpinner()
                     unlockApp()
                     closeIAPScreen()
                 default:
@@ -159,11 +173,13 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
                 
             case .restored:
                 print("Restore app purchase now!")
+                stopSpinner()
                 unlockApp()
                 showRestoredAlert()
                 
             case .failed:
                 print("buy error")
+                stopSpinner()
                 queue.finishTransaction(trans)
                 break
             default:
@@ -185,9 +201,8 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
         
         SKPaymentQueue.default().add(self)
         SKPaymentQueue.default().restoreCompletedTransactions()
-        print("something")
-        
-//        unlockApp()
+        stopSpinner()
+        unlockApp()
         
 
         
@@ -249,7 +264,7 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
     func unlockApp() {
         subscribedUser = true
         saveToFireStore()
-        defaults.set(subscribedUser, forKey: "SubscribedUser")
+//        defaults.set(subscribedUser, forKey: "SubscribedUser")
     }
     
     func closeIAPScreen() {
@@ -278,7 +293,6 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
                 "budgetHistoryDate": budgetHistoryDateG,
                 "budgetHistoryTime": budgetHistoryTimeG,
                 "budgetRemaining": budgetRemainingG,
-//                "totalSpent": totalSpentG,
                 "subscribedUser": subscribedUser
             ]) { err in
                 if let err = err {
@@ -299,6 +313,55 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
         }))
     
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    func startSpinner() {
+        activityIndicator.center = self.view.center
+        activityIndicator.startAnimating()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.gray
+        view.addSubview(activityIndicator)
+        UIApplication.shared.beginIgnoringInteractionEvents()
+    }
+    
+    func stopSpinner() {
+        activityIndicator.stopAnimating()
+        UIApplication.shared.endIgnoringInteractionEvents()
+    }
+    
+    func checkNetworkConnection() -> Bool {
+        var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+            }
+        }
+        
+        var flags: SCNetworkReachabilityFlags = SCNetworkReachabilityFlags(rawValue: 0)
+        if SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) == false {
+            return false
+        }
+        
+        
+        // Working for Cellular and WIFI
+        let isReachable = (flags.rawValue & UInt32(kSCNetworkFlagsReachable)) != 0
+        let needsConnection = (flags.rawValue & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+        let ret = (isReachable && !needsConnection)
+        
+        return ret
+    }
+    
+    func Alert (Message: String){
+        
+        let alert = UIAlertController(title: "No Internet Connection", message: Message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
+        
     }
         
     
