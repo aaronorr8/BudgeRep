@@ -8,17 +8,6 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Signika-Light.ttf">
-            <string>Signika-Light</string>
-        </array>
-        <array key="Signika-Regular.ttf">
-            <string>Signika-Regular</string>
-        </array>
-        <array key="Signika-Semibold.ttf">
-            <string>Signika-Semibold</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Tab Bar Controller-->
         <scene sceneID="fph-ZP-xtg">
@@ -68,7 +57,7 @@
                                     <rect key="frame" x="0.0" y="123" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlusButton" translatesAutoresizingMaskIntoConstraints="NO" id="eIr-Jg-gH0">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlusButton2" translatesAutoresizingMaskIntoConstraints="NO" id="eIr-Jg-gH0">
                                             <rect key="frame" x="13" y="9.5" width="25" height="25"/>
                                             <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
@@ -76,13 +65,13 @@
                                                 <constraint firstAttribute="height" constant="25" id="urJ-dg-nf8"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add New Reminder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5su-na-F7E">
-                                            <rect key="frame" x="51" y="12.5" width="140" height="19"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Add New Reminder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5su-na-F7E">
+                                            <rect key="frame" x="43" y="12.5" width="140" height="19"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="140" id="eD8-0P-L1p"/>
                                                 <constraint firstAttribute="height" constant="19" id="thY-NP-6Jw"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -131,7 +120,7 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="25" id="foC-IS-HSj"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -142,7 +131,7 @@
                                                                 <constraint firstAttribute="width" constant="120" id="4fc-TP-i4v"/>
                                                                 <constraint firstAttribute="height" constant="25" id="afl-MS-eId"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -152,7 +141,7 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="25" id="NdJ-fb-HFs"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="13"/>
+                                                            <fontDescription key="fontDescription" name="Avenir-BookOblique" family="Avenir" pointSize="13"/>
                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -163,7 +152,7 @@
                                                                 <constraint firstAttribute="width" constant="80" id="LFr-Rm-0XJ"/>
                                                                 <constraint firstAttribute="height" constant="25" id="iU2-Ob-26P"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
                                                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -214,8 +203,8 @@
                                     <constraint firstAttribute="height" constant="21" id="0lt-YW-wNf"/>
                                     <constraint firstAttribute="width" constant="160" id="Wbo-vo-B10"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="13"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -261,12 +250,12 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="636"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgx-az-Fug">
-                                                <rect key="frame" x="16" y="10" width="41" height="21"/>
+                                                <rect key="frame" x="16" y="10" width="71" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="HFl-TE-qsB"/>
-                                                    <constraint firstAttribute="width" constant="41" id="gND-3E-XXT"/>
+                                                    <constraint firstAttribute="width" constant="71" id="gND-3E-XXT"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -277,16 +266,16 @@
                                                 </constraints>
                                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" smartDashesType="no" smartInsertDeleteType="no"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WpR-3U-HFd">
-                                                <rect key="frame" x="16" y="75" width="54" height="21"/>
+                                                <rect key="frame" x="16" y="75" width="98" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="Tau-Cx-SZF"/>
-                                                    <constraint firstAttribute="width" constant="54" id="sJ2-Ay-G3S"/>
+                                                    <constraint firstAttribute="width" constant="98" id="sJ2-Ay-G3S"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -297,16 +286,16 @@
                                                 </constraints>
                                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Budget" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vDz-mp-023">
-                                                <rect key="frame" x="16" y="140" width="54" height="21"/>
+                                                <rect key="frame" x="16" y="140" width="111" height="21"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="54" id="29h-MZ-Q6U"/>
+                                                    <constraint firstAttribute="width" constant="111" id="29h-MZ-Q6U"/>
                                                     <constraint firstAttribute="height" constant="21" id="nVI-Vz-7An"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -316,19 +305,19 @@
                                                     <constraint firstAttribute="height" constant="32" id="5cG-70-sqK"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="T32-U2-0X2" id="Lo1-n9-yPV"/>
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeat each month?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sev-ab-hDf">
-                                                <rect key="frame" x="16" y="209" width="180" height="24"/>
+                                                <rect key="frame" x="16" y="209" width="239" height="24"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="180" id="6Mk-G4-dY6"/>
+                                                    <constraint firstAttribute="width" constant="239" id="6Mk-G4-dY6"/>
                                                     <constraint firstAttribute="height" constant="24" id="Jvt-B3-7CU"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -348,7 +337,7 @@
                                                     <constraint firstAttribute="width" constant="239" id="LDb-ro-nJw"/>
                                                     <constraint firstAttribute="height" constant="24" id="UkF-dC-gxH"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -370,7 +359,7 @@
                                                 </constraints>
                                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="T32-U2-0X2" id="Pbg-qy-CAQ"/>
@@ -382,7 +371,7 @@
                                                     <constraint firstAttribute="width" constant="148" id="9LF-oG-cPi"/>
                                                     <constraint firstAttribute="height" constant="30" id="Kle-fn-9x0"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -531,8 +520,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="0fP-Lp-w3U"/>
                                 </constraints>
-                                <color key="textColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAP-OJ-tAd">
@@ -541,7 +530,7 @@
                                     <constraint firstAttribute="width" constant="109.5" id="Jvc-pT-NH2"/>
                                     <constraint firstAttribute="height" constant="21" id="ZW6-5F-rYQ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -551,7 +540,7 @@
                                     <constraint firstAttribute="width" constant="161" id="0dG-bZ-UiB"/>
                                     <constraint firstAttribute="height" constant="21" id="swl-cY-Rye"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -560,8 +549,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="GZA-C5-OpF"/>
                                 </constraints>
-                                <color key="textColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" textContentType="name"/>
                             </textField>
                         </subviews>
@@ -609,7 +598,7 @@
                                     <constraint firstAttribute="height" constant="49" id="jmA-8W-oIV"/>
                                 </constraints>
                                 <color key="textColor" red="0.25490196078431371" green="0.45882352941176469" blue="0.019607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartInsertDeleteType="no" smartQuotesType="no"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -629,7 +618,7 @@
                                     <constraint firstAttribute="width" constant="343" id="Yra-TK-Dl9"/>
                                     <constraint firstAttribute="height" constant="50" id="vYF-U7-Dtd"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Save">
                                     <color key="titleColor" red="0.25490196078431371" green="0.45882352941176469" blue="0.019607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -654,7 +643,7 @@
                                     <constraint firstAttribute="width" constant="191" id="aKP-Iq-aCx"/>
                                     <constraint firstAttribute="height" constant="49" id="gCE-6V-1wa"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="21"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -664,7 +653,7 @@
                                     <constraint firstAttribute="height" constant="36" id="AxP-lm-M3M"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MCp-4g-X3d">
@@ -690,6 +679,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qec-RS-88f">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                         <connections>
                                             <segue destination="daq-p7-PWs" kind="show" id="KkM-bK-EwF"/>
                                         </connections>
@@ -783,7 +773,7 @@
                                                         <constraint firstAttribute="height" constant="38" id="s8I-Gi-BVi"/>
                                                         <constraint firstAttribute="width" constant="232" id="zSg-VO-xVJ"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlusButton" translatesAutoresizingMaskIntoConstraints="NO" id="ITS-rV-hZ4">
@@ -837,14 +827,14 @@
                                                     <rect key="frame" x="265" y="33" width="85" height="85"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nkX-II-feG">
-                                                            <rect key="frame" x="8" y="32" width="69" height="21"/>
-                                                            <fontDescription key="fontDescription" name="Signika-Regular" family="Signika" pointSize="18"/>
+                                                            <rect key="frame" x="8" y="30" width="69" height="25"/>
+                                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                             <color key="textColor" red="0.2343659401" green="0.32935160400000002" blue="0.40815091129999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="remaining" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mo3-DC-dzz">
-                                                            <rect key="frame" x="20.5" y="53" width="44" height="12"/>
-                                                            <fontDescription key="fontDescription" name="Signika-Regular" family="Signika" pointSize="10"/>
+                                                            <rect key="frame" x="20.5" y="55" width="44.5" height="14"/>
+                                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="10"/>
                                                             <color key="textColor" red="0.2343659401" green="0.32935160400000002" blue="0.40815091129999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -861,20 +851,19 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4B-YF-0GE">
-                                                    <rect key="frame" x="7" y="37.5" width="256" height="56"/>
+                                                    <rect key="frame" x="7" y="35.5" width="256" height="60.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Budget Name" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Zfy-1f-WAc">
-                                                            <rect key="frame" x="0.0" y="6" width="256" height="26"/>
-                                                            <fontDescription key="fontDescription" name="Signika-Regular" family="Signika" pointSize="22"/>
-                                                            <color key="textColor" red="0.25490196078431371" green="0.45882352941176469" blue="0.019607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <rect key="frame" x="0.0" y="6" width="256" height="30.5"/>
+                                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8HM-pC-LY9">
-                                                            <rect key="frame" x="0.0" y="33" width="256" height="17"/>
+                                                            <rect key="frame" x="0.0" y="37.5" width="256" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="17" id="MFs-Cd-vTL"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="Signika-Regular" family="Signika" pointSize="13"/>
+                                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="13"/>
                                                             <color key="textColor" red="0.2343659401" green="0.32935160400000002" blue="0.40815091129999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -941,7 +930,7 @@
                                                 <constraint firstAttribute="height" constant="15" id="DWr-Wa-DBx"/>
                                                 <constraint firstAttribute="width" constant="148" id="Poh-JX-bfR"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Signika-Light" family="Signika" pointSize="12"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hK-01-DYv">
@@ -952,7 +941,7 @@
                                                 <constraint firstAttribute="height" constant="21" id="ZVB-YC-0Tx"/>
                                                 <constraint firstAttribute="width" constant="155" id="dud-c7-AaD"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Signika-Light" family="Signika" pointSize="12"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </label>
                                         <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="qyG-ko-S6K" customClass="WavyProgressView" customModule="BudgeAppMaster" customModuleProvider="target">
@@ -969,8 +958,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="57" id="ZyH-zO-7ml"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Signika-Semibold" family="Signika" pointSize="59"/>
-                                            <color key="textColor" red="0.25490196078431371" green="0.45882352941176469" blue="0.019607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="59"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="left to spend" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBO-hC-Gbf">
@@ -980,7 +968,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="9Ib-d5-1ip"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Signika-Light" family="Signika" pointSize="16"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -1028,7 +1016,7 @@
                                                 <constraint firstAttribute="width" constant="204" id="Eoj-fX-bEb"/>
                                                 <constraint firstAttribute="height" constant="21" id="Rr0-FY-YqV"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlusButton" translatesAutoresizingMaskIntoConstraints="NO" id="BfM-gi-mRC">
@@ -1103,7 +1091,7 @@
                                                         <constraint firstAttribute="width" constant="57" id="2PU-Uj-hmB"/>
                                                         <constraint firstAttribute="height" constant="33" id="lz7-gy-Hyl"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                     <state key="normal" title="Reset">
                                                         <color key="titleColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
@@ -1117,7 +1105,7 @@
                                                         <constraint firstAttribute="height" constant="21" id="OMQ-sM-c34"/>
                                                         <constraint firstAttribute="width" constant="119" id="inG-AR-K19"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1143,7 +1131,7 @@
                                                         <constraint firstAttribute="height" constant="32.5" id="Ckl-X8-IB6"/>
                                                         <constraint firstAttribute="width" constant="57" id="IsB-KY-Mys"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                     <state key="normal" title="Reset">
                                                         <color key="titleColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
@@ -1157,7 +1145,7 @@
                                                         <constraint firstAttribute="height" constant="32" id="RDa-PR-FWB"/>
                                                         <constraint firstAttribute="width" constant="174" id="csS-Mz-G6M"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1187,7 +1175,7 @@
                                                         <constraint firstAttribute="width" constant="249" id="c0q-wZ-jgm"/>
                                                         <constraint firstAttribute="height" constant="51" id="uQh-iK-OVb"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1197,6 +1185,7 @@
                                                         <constraint firstAttribute="width" constant="47" id="O5M-Ve-jbD"/>
                                                         <constraint firstAttribute="height" constant="31" id="Xmo-By-WiO"/>
                                                     </constraints>
+                                                    <color key="onTintColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>
                                                         <action selector="monthlyResetSwitch:" destination="NBk-tc-AHQ" eventType="valueChanged" id="m95-2k-HrS"/>
                                                     </connections>
@@ -1227,7 +1216,7 @@
                                                         <constraint firstAttribute="height" constant="33" id="C6H-4R-adm"/>
                                                         <constraint firstAttribute="width" constant="273" id="k5w-lc-UJ5"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                     <state key="normal" title="Link Budget with Another Phone">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
@@ -1255,7 +1244,7 @@
                                                         <constraint firstAttribute="width" constant="162" id="VlA-hb-xC5"/>
                                                         <constraint firstAttribute="height" constant="33" id="r4M-XA-Wp8"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                     <state key="normal" title="Sign Out">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
@@ -1283,7 +1272,7 @@
                                                         <constraint firstAttribute="width" constant="266" id="FfK-M3-9BD"/>
                                                         <constraint firstAttribute="height" constant="30" id="O0G-Ee-N7S"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                     <state key="normal" title="Subscribe">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
@@ -1312,7 +1301,7 @@
                                                         <constraint firstAttribute="height" constant="34" id="OI3-9m-XUx"/>
                                                         <constraint firstAttribute="width" constant="163" id="Q52-bT-2X2"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                     <state key="normal" title="Restore Purchase">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
@@ -1340,7 +1329,7 @@
                                                         <constraint firstAttribute="height" constant="30" id="RmT-8B-769"/>
                                                         <constraint firstAttribute="width" constant="212" id="Vbg-gq-lNg"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                     <state key="normal" title="Delete Account">
                                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
@@ -1414,8 +1403,8 @@
                                     <constraint firstAttribute="width" constant="178" id="5pZ-YY-cui"/>
                                     <constraint firstAttribute="height" constant="21" id="IHj-rn-fNu"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="14"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Avenir-BookOblique" family="Avenir" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oNw-W0-ZIM">
@@ -1430,26 +1419,26 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="uac-NU-leD">
-                                                    <rect key="frame" x="15" y="33" width="88" height="24"/>
+                                                    <rect key="frame" x="15" y="33" width="134" height="24"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="88" id="6fN-8z-GnX"/>
+                                                        <constraint firstAttribute="width" constant="134" id="6fN-8z-GnX"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note:" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="7" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="We6-Fs-7oc">
-                                                    <rect key="frame" x="167" y="34" width="193" height="21.5"/>
+                                                    <rect key="frame" x="167" y="33" width="193" height="23.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gx7-ux-r9n">
-                                                    <rect key="frame" x="15" y="61" width="27" height="22"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gx7-ux-r9n">
+                                                    <rect key="frame" x="15" y="61" width="111" height="22"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1457,7 +1446,7 @@
                                             <constraints>
                                                 <constraint firstItem="We6-Fs-7oc" firstAttribute="centerY" secondItem="Lug-Kc-PbG" secondAttribute="centerY" id="0H1-SK-vbZ"/>
                                                 <constraint firstAttribute="trailing" secondItem="We6-Fs-7oc" secondAttribute="trailing" constant="15" id="2eC-ln-GeN"/>
-                                                <constraint firstItem="We6-Fs-7oc" firstAttribute="leading" secondItem="uac-NU-leD" secondAttribute="trailing" constant="64" id="6ye-UG-7xy"/>
+                                                <constraint firstItem="We6-Fs-7oc" firstAttribute="leading" secondItem="uac-NU-leD" secondAttribute="trailing" constant="18" id="6ye-UG-7xy"/>
                                                 <constraint firstAttribute="bottom" secondItem="gx7-ux-r9n" secondAttribute="bottom" constant="6.5" id="Cjr-jw-vCR"/>
                                                 <constraint firstItem="uac-NU-leD" firstAttribute="centerY" secondItem="Lug-Kc-PbG" secondAttribute="centerY" id="KLW-VR-EFF"/>
                                                 <constraint firstItem="uac-NU-leD" firstAttribute="leading" secondItem="Lug-Kc-PbG" secondAttribute="leading" constant="15" id="MDo-Wg-CzO"/>
@@ -1496,7 +1485,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9OA-28-Pj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5802" y="2441"/>
+            <point key="canvasLocation" x="5800.8000000000002" y="2440.9295352323838"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="atb-ed-Osy">
@@ -1510,11 +1499,11 @@
                                 <rect key="frame" x="0.0" y="219.5" width="375" height="292"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep track of your spending with Budge App. A no fluff, no nonsense,  bare-bones, simple-minded way to manage your money." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12C-hH-pe0">
-                                        <rect key="frame" x="26" y="117" width="323" height="102"/>
+                                        <rect key="frame" x="26" y="114" width="323" height="120"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="102" id="GPC-Hi-mQx"/>
+                                            <constraint firstAttribute="height" constant="120" id="GPC-Hi-mQx"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1531,7 +1520,7 @@
                                             <constraint firstAttribute="width" constant="158" id="0gs-si-izK"/>
                                             <constraint firstAttribute="height" constant="43" id="tXO-Af-znh"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
                                         <state key="normal" title="Get Started">
                                             <color key="titleColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -1550,7 +1539,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="QpP-Ot-hws" firstAttribute="top" secondItem="12C-hH-pe0" secondAttribute="bottom" constant="25.5" id="E25-JP-gsM"/>
+                                    <constraint firstItem="QpP-Ot-hws" firstAttribute="top" secondItem="12C-hH-pe0" secondAttribute="bottom" constant="10.5" id="E25-JP-gsM"/>
                                     <constraint firstItem="NUs-KE-DRy" firstAttribute="top" secondItem="0cj-C5-KoI" secondAttribute="top" id="NHf-ZS-4i0"/>
                                     <constraint firstItem="21p-qm-cgV" firstAttribute="top" secondItem="NUs-KE-DRy" secondAttribute="bottom" constant="8" id="bpf-QM-HfM"/>
                                     <constraint firstItem="12C-hH-pe0" firstAttribute="leading" secondItem="0cj-C5-KoI" secondAttribute="leading" constant="26" id="dcC-E9-ZVY"/>
@@ -1559,7 +1548,7 @@
                                     <constraint firstItem="QpP-Ot-hws" firstAttribute="centerX" secondItem="0cj-C5-KoI" secondAttribute="centerX" id="jKq-Du-ilo"/>
                                     <constraint firstAttribute="height" constant="292" id="rXg-Wz-S7i"/>
                                     <constraint firstItem="21p-qm-cgV" firstAttribute="centerX" secondItem="0cj-C5-KoI" secondAttribute="centerX" id="vjh-4K-wes"/>
-                                    <constraint firstItem="12C-hH-pe0" firstAttribute="top" secondItem="21p-qm-cgV" secondAttribute="bottom" constant="21" id="w2A-On-M1H"/>
+                                    <constraint firstItem="12C-hH-pe0" firstAttribute="top" secondItem="21p-qm-cgV" secondAttribute="bottom" constant="18" id="w2A-On-M1H"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="APr-Rg-bhz">
@@ -1568,9 +1557,9 @@
                                     <constraint firstAttribute="width" constant="140" id="3Nj-KB-OuV"/>
                                     <constraint firstAttribute="height" constant="38" id="Jdn-u6-SFw"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Login to Budge">
-                                    <color key="titleColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="loginButton:" destination="M0a-wv-vxZ" eventType="touchUpInside" id="wHy-gx-qMa"/>
@@ -1609,20 +1598,20 @@
                                 <rect key="frame" x="0.0" y="141" width="375" height="449"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Try Budge FREE for one week—no credit card required. Just $0.99/mo thereafter if you choose to subscribe." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCS-Km-a9Y">
-                                        <rect key="frame" x="10" y="272" width="355" height="71"/>
+                                        <rect key="frame" x="10" y="275" width="355" height="71"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="71" id="ctY-i9-R7H"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lA4-R8-dFl">
-                                        <rect key="frame" x="10" y="58" width="355" height="220"/>
+                                        <rect key="frame" x="10" y="43" width="355" height="235"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAu-UT-Z0r">
-                                                <rect key="frame" x="0.0" y="0.0" width="355" height="220"/>
+                                                <rect key="frame" x="0.0" y="-7" width="355" height="247"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -1630,9 +1619,9 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="bAu-UT-Z0r" secondAttribute="trailing" id="1OI-5y-kuB"/>
-                                            <constraint firstItem="bAu-UT-Z0r" firstAttribute="top" secondItem="lA4-R8-dFl" secondAttribute="top" id="CW2-0p-xCG"/>
-                                            <constraint firstAttribute="bottom" secondItem="bAu-UT-Z0r" secondAttribute="bottom" id="TM3-NL-26a"/>
-                                            <constraint firstAttribute="height" constant="220" id="WWu-fb-jvi"/>
+                                            <constraint firstItem="bAu-UT-Z0r" firstAttribute="top" secondItem="lA4-R8-dFl" secondAttribute="top" constant="-7" id="CW2-0p-xCG"/>
+                                            <constraint firstAttribute="bottom" secondItem="bAu-UT-Z0r" secondAttribute="bottom" constant="-5" id="TM3-NL-26a"/>
+                                            <constraint firstAttribute="height" constant="235" id="WWu-fb-jvi"/>
                                             <constraint firstItem="bAu-UT-Z0r" firstAttribute="leading" secondItem="lA4-R8-dFl" secondAttribute="leading" id="y5b-g5-8mt"/>
                                         </constraints>
                                     </view>
@@ -1642,16 +1631,16 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="41" id="l9g-Eb-kic"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="24"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="24"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5M-oc-J0T">
-                                        <rect key="frame" x="87" y="370" width="201" height="43"/>
+                                        <rect key="frame" x="87" y="376" width="201" height="43"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="43" id="KYs-M4-bCd"/>
                                             <constraint firstAttribute="width" constant="201" id="mxI-LH-Nai"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
                                         <state key="normal" title="Try Now for FREE">
                                             <color key="titleColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -1662,7 +1651,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="o5M-oc-J0T" firstAttribute="top" secondItem="bCS-Km-a9Y" secondAttribute="bottom" constant="27" id="1CK-sI-b4N"/>
+                                    <constraint firstItem="o5M-oc-J0T" firstAttribute="top" secondItem="bCS-Km-a9Y" secondAttribute="bottom" constant="30" id="1CK-sI-b4N"/>
                                     <constraint firstItem="G5a-1P-giP" firstAttribute="top" secondItem="Flh-3V-0CW" secondAttribute="top" id="9ad-Vy-ths"/>
                                     <constraint firstAttribute="trailing" secondItem="bCS-Km-a9Y" secondAttribute="trailing" constant="10" id="DAf-01-BRo"/>
                                     <constraint firstAttribute="trailing" secondItem="G5a-1P-giP" secondAttribute="trailing" constant="8" id="FRg-l0-LRD"/>
@@ -1670,9 +1659,9 @@
                                     <constraint firstAttribute="height" constant="449" id="Nic-Q0-DkU"/>
                                     <constraint firstItem="o5M-oc-J0T" firstAttribute="centerX" secondItem="Flh-3V-0CW" secondAttribute="centerX" id="XeQ-Bv-Idy"/>
                                     <constraint firstItem="bCS-Km-a9Y" firstAttribute="leading" secondItem="Flh-3V-0CW" secondAttribute="leading" constant="10" id="ZAc-Me-Lia"/>
-                                    <constraint firstItem="lA4-R8-dFl" firstAttribute="top" secondItem="G5a-1P-giP" secondAttribute="bottom" constant="17" id="iPE-L6-3Db"/>
+                                    <constraint firstItem="lA4-R8-dFl" firstAttribute="top" secondItem="G5a-1P-giP" secondAttribute="bottom" constant="2" id="iPE-L6-3Db"/>
                                     <constraint firstAttribute="trailing" secondItem="lA4-R8-dFl" secondAttribute="trailing" constant="10" id="jxY-cW-xLy"/>
-                                    <constraint firstItem="bCS-Km-a9Y" firstAttribute="top" secondItem="lA4-R8-dFl" secondAttribute="bottom" constant="-6" id="lZ7-Zb-IIX"/>
+                                    <constraint firstItem="bCS-Km-a9Y" firstAttribute="top" secondItem="lA4-R8-dFl" secondAttribute="bottom" constant="-3" id="lZ7-Zb-IIX"/>
                                     <constraint firstItem="lA4-R8-dFl" firstAttribute="leading" secondItem="Flh-3V-0CW" secondAttribute="leading" constant="10" id="rde-6q-dWE"/>
                                 </constraints>
                             </view>
@@ -1716,7 +1705,7 @@
                                             <constraint firstAttribute="height" constant="50" id="JB3-46-tKN"/>
                                             <constraint firstAttribute="width" constant="339" id="f2b-VL-Phj"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-BookOblique" family="Avenir" pointSize="22"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" smartQuotesType="no" textContentType="email"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1744,7 +1733,7 @@
                                             <constraint firstAttribute="width" constant="343" id="5IE-xt-18o"/>
                                             <constraint firstAttribute="height" constant="50" id="NTd-qp-bXi"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-BookOblique" family="Avenir" pointSize="22"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" secureTextEntry="YES" textContentType="password"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1778,8 +1767,8 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKN-R8-hAG">
-                                <rect key="frame" x="131.5" y="518" width="112" height="34"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
+                                <rect key="frame" x="127" y="518" width="121" height="37"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                 <state key="normal" title="Signup Instead">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -1799,7 +1788,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create an account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="STn-sH-GZO">
                                         <rect key="frame" x="0.0" y="12" width="223" height="31"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="26"/>
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
                                 </subviews>
@@ -1825,12 +1814,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTh-Lt-ObT">
-                                <rect key="frame" x="16" y="430" width="109" height="28"/>
+                                <rect key="frame" x="16" y="430" width="116" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="TxV-Vs-qB2"/>
-                                    <constraint firstAttribute="width" constant="109" id="zle-hc-aa0"/>
+                                    <constraint firstAttribute="width" constant="116" id="zle-hc-aa0"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                                 <state key="normal" title="Forgot Password?">
                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -1959,7 +1948,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="71" id="rzK-hY-GBc"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M9X-lN-zVT">
@@ -1968,7 +1957,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSI-mn-S3A">
                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="195"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -1988,7 +1977,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="41" id="Cwx-yJ-HFE"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="24"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="24"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4eK-cC-fjP">
@@ -1997,7 +1986,7 @@
                                             <constraint firstAttribute="height" constant="43" id="IfF-7t-nsM"/>
                                             <constraint firstAttribute="width" constant="201" id="Xf5-tJ-YKs"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
                                         <state key="normal" title="Subscribe Now">
                                             <color key="titleColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -2028,6 +2017,7 @@
                                     <constraint firstAttribute="width" constant="121" id="8Eb-d2-kMy"/>
                                     <constraint firstAttribute="height" constant="30" id="QFF-H8-zOY"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Restore Purchase">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -2036,11 +2026,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCf-Ba-pdD">
-                                <rect key="frame" x="16" y="36" width="74" height="30"/>
+                                <rect key="frame" x="16" y="36" width="83" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="3H6-pC-8Xh"/>
-                                    <constraint firstAttribute="width" constant="74" id="kiO-RS-NbU"/>
+                                    <constraint firstAttribute="width" constant="83" id="kiO-RS-NbU"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                 <state key="normal" title="No Thanks">
                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -2085,6 +2076,7 @@
         <image name="NextButton" width="52" height="52"/>
         <image name="PigRight" width="1352" height="749"/>
         <image name="PlusButton" width="60" height="60"/>
+        <image name="PlusButton2" width="60" height="60"/>
         <image name="Right Arrow" width="19" height="36"/>
         <image name="SettingsOutline" width="25" height="25"/>
         <image name="SettingsSolid" width="25" height="25"/>

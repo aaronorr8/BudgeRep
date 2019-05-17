@@ -63,6 +63,8 @@ class SettingTableViewController: UITableViewController {
         fireStoreListener()
         getUserDefaults()
         
+        monthlyResetSwitch.onTintColor = colorGreenC
+        
         
         
     }
