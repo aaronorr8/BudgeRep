@@ -644,7 +644,7 @@ class SettingTableViewController: UITableViewController {
                     print("From Firestore, subscribedUser = \(subscribedUser)")
                     
                     if subscribedUser == true {
-                        self.subscribeButtonOutlet.setTitle("Subscribed Already!", for: .normal)
+                        self.subscribeButtonOutlet.setTitle("Subscribed", for: .normal)
                         self.subscribeButtonOutlet.isEnabled = false
                         self.subscribeButtonOutlet.setTitleColor(.lightGray, for: .normal)
                     } else {
