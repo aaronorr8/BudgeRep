@@ -15,6 +15,7 @@ let defaults = UserDefaults.standard
 var myIndexG = 0
 var editModeG = false
 var closeAllG = false
+var goToSettings = false
 
 
 //SETTINGS

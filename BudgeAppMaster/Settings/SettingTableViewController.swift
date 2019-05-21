@@ -46,6 +46,9 @@ class SettingTableViewController: UITableViewController {
 
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        goToSettings = false
+        
         UIApplication.shared.applicationIconBadgeNumber = 0
         print("clear badge")
         
@@ -77,11 +80,7 @@ class SettingTableViewController: UITableViewController {
         
     }
     
-    @IBAction func restorePurchase(_ sender: Any) {
-        
-        
-       
-    }
+    
     
 //
 //

@@ -98,6 +98,10 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidAppear(_ animated: Bool) {
         
+        if goToSettings == true {
+            self.tabBarController?.selectedIndex = 2
+        }
+        
         calculateTotalAvailable()
         calculateTotalAllocation()
         
@@ -468,8 +472,6 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
                     self.calculateTotalAvailable()
                     self.calculateTotalAllocation()
                     
-                    self.showIAP()
-                    
             }
         }
         
@@ -494,32 +496,6 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
    
-    
-    func showIAP() {
-//        subscribedUser = defaults.bool(forKey: "SubscribedUser")
-//        registeredDate = defaults.object(forKey: "RegisteredDate") as! Date
-        if defaults.object(forKey: "RegisteredDate") != nil {
-            registeredDate = defaults.object(forKey: "RegisteredDate") as! Date
-        }
-        
-        iapDate = Date()
-        
-        let components = Calendar.current.dateComponents([.minute], from: registeredDate, to: iapDate)
-        let minutes = components.minute ?? 0
-        
-        print("RegisteredDate: \(registeredDate)")
-        print("iapDate: \(iapDate)")
-        print("difference is \(components.minute ?? 0) minutes")
-        print("SubscribedUser: \(subscribedUser)")
-        
-        print("minutes: \(minutes)")
-        print("subscribed: \(subscribedUser)")
-        
-        if minutes > 10080 && subscribedUser == false {  //Minutes should be 10080 for 1 week
-            self.performSegue(withIdentifier: "goToIAP", sender: self)
-        }
-    }
-    
     
     func receiptValidation() {
         let SUBSCRIPTION_SECRET = "yourpasswordift"

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3UM-1s-xEN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3UM-1s-xEN">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -576,6 +576,7 @@
                         <outlet property="budgetAmountField" destination="0ta-Vh-oJJ" id="VhJ-TT-XtN"/>
                         <outlet property="budgetNameField" destination="5ug-D9-8MF" id="mPA-EA-Sq4"/>
                         <outlet property="navigationTitle" destination="ydT-hx-h5W" id="uDb-L0-n1s"/>
+                        <segue destination="roH-Po-2Uh" kind="presentation" identifier="goToIAP" id="tWj-T2-lMP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ir-p6-P9d" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -736,6 +737,7 @@
                         <outlet property="spendAmount" destination="8vu-mZ-ZN0" id="Mtl-g4-f0l"/>
                         <outlet property="spendNoteField" destination="kUx-xT-OjT" id="9x1-Jl-e0N"/>
                         <outlet property="viewHistoryOutlet" destination="Bav-E8-e0a" id="VQV-ja-X2g"/>
+                        <segue destination="roH-Po-2Uh" kind="presentation" identifier="goToIAP" id="szh-Vo-IQD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sfh-jj-yeD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1358,7 +1360,6 @@
                         <outlet property="monthlyResetSwitch" destination="AFL-Xb-kQT" id="baC-tI-1IJ"/>
                         <outlet property="subscribeButtonOutlet" destination="64j-eJ-whA" id="lKg-CQ-oqo"/>
                         <segue destination="fBD-do-PNd" kind="presentation" identifier="goToLogin" id="MAD-z3-gm7"/>
-                        <segue destination="eXN-CN-4TQ" kind="presentation" identifier="goToIAP" id="cEw-DZ-yRc"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wnl-9g-fpe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2252,7 +2253,7 @@
                                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="closeButton:" destination="eXN-CN-4TQ" eventType="touchUpInside" id="zb0-I2-MIG"/>
+                                                    <action selector="closeButton:" destination="roH-Po-2Uh" eventType="touchUpInside" id="6Yx-U4-10U"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Continue using Budge!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9d-OQ-R3v">
@@ -2291,28 +2292,50 @@
                                                     <color key="titleColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="subscribeButton:" destination="eXN-CN-4TQ" eventType="touchUpInside" id="LJQ-ur-8YB"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Viq-lX-BWB">
-                                                <rect key="frame" x="127" y="466" width="121" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                                                <state key="normal" title="Restore Purchase">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="restorePurchase:" destination="eXN-CN-4TQ" eventType="touchUpInside" id="EL8-FC-2CN"/>
+                                                    <action selector="subscribeButton:" destination="roH-Po-2Uh" eventType="touchUpInside" id="aDc-O6-OQP"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gr9-7o-Y0n">
-                                                <rect key="frame" x="10" y="518" width="355" height="134"/>
+                                                <rect key="frame" x="10" y="525" width="355" height="134"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <string key="text">Payment will be charged to your Apple ID account at the confirmation of purchase. The subscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period. You can manage and cancel your subscriptions by going to your App Store account settings after purchase.</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="13"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZmZ-sV-Lyl">
+                                                <rect key="frame" x="255" y="667" width="110" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="13"/>
+                                                <state key="normal" title="Privacy Policy">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="privacyButton:" destination="roH-Po-2Uh" eventType="touchUpInside" id="cq1-Ox-vr1"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8i-nG-gFC">
+                                                <rect key="frame" x="15" y="667" width="110" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="13"/>
+                                                <state key="normal" title="Terms of Use">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="termsButton:" destination="roH-Po-2Uh" eventType="touchUpInside" id="BW8-zC-Ujl"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Viq-lX-BWB">
+                                                <rect key="frame" x="104" y="476" width="170" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="13"/>
+                                                <state key="normal" title="Already a subscriber? Sign in.">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="alreadyASubscriberButton:" destination="roH-Po-2Uh" eventType="touchUpInside" id="Bwj-5i-Q0P"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -2370,8 +2393,8 @@
         <image name="star" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cEw-DZ-yRc"/>
-        <segue reference="FiT-xg-Q5X"/>
+        <segue reference="szh-Vo-IQD"/>
+        <segue reference="MAD-z3-gm7"/>
         <segue reference="AEH-d4-PVL"/>
         <segue reference="8MC-0u-7HE"/>
     </inferredMetricsTieBreakers>

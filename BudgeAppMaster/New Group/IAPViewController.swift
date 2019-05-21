@@ -66,12 +66,12 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
     }
     
     override func viewDidLayoutSubviews() {
-        //Show or hide close button
-        if hideCloseButton == true {
-            closeButton.isHidden = true
-        } else {
-            closeButton.isHidden = false
-        }
+//        //Show or hide close button
+//        if hideCloseButton == true {
+//            closeButton.isHidden = true
+//        } else {
+//            closeButton.isHidden = false
+//        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -197,16 +197,30 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
     }
     
     
-    @IBAction func restorePurchase(_ sender: Any) {
-        
-        SKPaymentQueue.default().add(self)
-        SKPaymentQueue.default().restoreCompletedTransactions()
-        stopSpinner()
-        unlockApp()
-        
-
-        
+    @IBAction func alreadyASubscriberButton(_ sender: Any) {
+        signOutAlert()
     }
+    
+    //    @IBAction func restorePurchase(_ sender: Any) {
+//
+//        SKPaymentQueue.default().add(self)
+//        SKPaymentQueue.default().restoreCompletedTransactions()
+//        stopSpinner()
+//        unlockApp()
+//
+//    }
+    
+    @IBAction func termsButton(_ sender: Any) {
+        guard let url = URL(string: "https://budgeapp.wixsite.com/budge/terms-of-use") else { return }
+        UIApplication.shared.open(url)
+    }
+    
+    
+    @IBAction func privacyButton(_ sender: Any) {
+        guard let url = URL(string: "https://budgeapp.wixsite.com/budge/privacy-policy") else { return }
+        UIApplication.shared.open(url)
+    }
+    
     
     
     
@@ -363,10 +377,21 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
         
         
     }
+    
+    func signOutAlert() {
+        let alert = UIAlertController(title: "Already a subscriber?", message: "You need to sign in with your subscriber account. First signout from Settings, then sign in with your subscriber account.", preferredStyle: .alert)
         
-    
-    
-    
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        alert.addAction(UIAlertAction(title: "Go to Settings", style: .default, handler: {action in
+            goToSettings = true
+            self.dismiss(animated: true, completion: nil)
+            
+            
+        }))
+        
+        self.present(alert, animated: true)
+    }
     
     
     

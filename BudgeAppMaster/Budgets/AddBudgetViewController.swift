@@ -41,6 +41,12 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if goToSettings == true {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -77,98 +83,102 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
     
     @IBAction func addButton(_ sender: Any) {
         
-        if editModeG == false {
-        
-            
-//SAVE AS NEW BUDGET ITEM
-            if budgetNameField.text != "" {
-                budgetNameG.append(budgetNameField.text!)
-                let amount = Double(amt/100) + Double(amt%100)/100
-                budgetAmountG.append(amount)
-                budgetHistoryAmountG[budgetNameField.text!] = []
-                budgetNoteG[budgetNameField.text!] = []
-                budgetHistoryDateG[budgetNameField.text!] = []
-                budgetHistoryTimeG[budgetNameField.text!] = []
-                let totalSpent = budgetHistoryAmountG[budgetNameField.text!]?.reduce(0, +)
-                budgetRemainingG.append(amount - totalSpent!)
-                
-                saveToFireStore()
-                
-                self.dismiss(animated: true, completion: nil)
-                
-            } else {
-                print("EMPTY")
-                emptyTextAlert()
-            }
+        if showIAP() == true {
+            self.performSegue(withIdentifier: "goToIAP", sender: self)
         } else {
             
-//EDIT BUDGET
-            
-            
-            //RETURN TO BUDGET VIEW
-            if editModeG == true {
+            if editModeG == false {
                 
+                
+                //SAVE AS NEW BUDGET ITEM
                 if budgetNameField.text != "" {
-                    
-                    //UPDATE BUDGET DATA
-                    let oldName = budgetNameG[myIndexG]
-                    
-                    budgetNameG[myIndexG] = budgetNameField.text!
-                    
-                    
-                    //Set Ammount if not edited
-                    
-                    var amount = Double(amt/100) + Double(amt%100)/100
-                    
-                    if amount == 0.0 {
-                        amt = Int(budgetAmountG[myIndexG] * 100)
-                        amount = Double(amt/100) + Double(amt%100)/100
-                        budgetAmountG[myIndexG] = amount
-                    } else {
-                        budgetAmountG[myIndexG] = amount
-                    }
-                    
-                    //Update Budget Name for History Dictionary
-                    
-                    //save values temperarily
-                    let tempAmount = budgetHistoryAmountG[oldName]
-                    let tempDate = budgetHistoryDateG[oldName]
-                    let tempTime = budgetHistoryTimeG[oldName]
-                    let tempNote = budgetNoteG[oldName]
-                    let newName = budgetNameField.text!
-                    
-                    //remove key:value pair
-                    budgetHistoryAmountG.removeValue(forKey: oldName)
-                    budgetHistoryDateG.removeValue(forKey: oldName)
-                    budgetHistoryTimeG.removeValue(forKey: oldName)
-                    budgetNoteG.removeValue(forKey: oldName)
-                    
-                    //save values to new key
-                    budgetHistoryAmountG[newName] = tempAmount
-                    budgetHistoryDateG[newName] = tempDate
-                    budgetHistoryTimeG[newName] = tempTime
-                    budgetNoteG[newName] = tempNote
-                    
-                    
+                    budgetNameG.append(budgetNameField.text!)
+                    let amount = Double(amt/100) + Double(amt%100)/100
+                    budgetAmountG.append(amount)
+                    budgetHistoryAmountG[budgetNameField.text!] = []
+                    budgetNoteG[budgetNameField.text!] = []
+                    budgetHistoryDateG[budgetNameField.text!] = []
+                    budgetHistoryTimeG[budgetNameField.text!] = []
                     let totalSpent = budgetHistoryAmountG[budgetNameField.text!]?.reduce(0, +)
-                    budgetRemainingG[myIndexG] = (amount - totalSpent!)
+                    budgetRemainingG.append(amount - totalSpent!)
                     
                     saveToFireStore()
-                    
-                    closeAllG = true
-                    editModeG = false
                     
                     self.dismiss(animated: true, completion: nil)
                     
                 } else {
+                    print("EMPTY")
                     emptyTextAlert()
                 }
-
+            } else {
+                
+                //EDIT BUDGET
+                
+                
+                //RETURN TO BUDGET VIEW
+                if editModeG == true {
+                    
+                    if budgetNameField.text != "" {
+                        
+                        //UPDATE BUDGET DATA
+                        let oldName = budgetNameG[myIndexG]
+                        
+                        budgetNameG[myIndexG] = budgetNameField.text!
+                        
+                        
+                        //Set Ammount if not edited
+                        
+                        var amount = Double(amt/100) + Double(amt%100)/100
+                        
+                        if amount == 0.0 {
+                            amt = Int(budgetAmountG[myIndexG] * 100)
+                            amount = Double(amt/100) + Double(amt%100)/100
+                            budgetAmountG[myIndexG] = amount
+                        } else {
+                            budgetAmountG[myIndexG] = amount
+                        }
+                        
+                        //Update Budget Name for History Dictionary
+                        
+                        //save values temperarily
+                        let tempAmount = budgetHistoryAmountG[oldName]
+                        let tempDate = budgetHistoryDateG[oldName]
+                        let tempTime = budgetHistoryTimeG[oldName]
+                        let tempNote = budgetNoteG[oldName]
+                        let newName = budgetNameField.text!
+                        
+                        //remove key:value pair
+                        budgetHistoryAmountG.removeValue(forKey: oldName)
+                        budgetHistoryDateG.removeValue(forKey: oldName)
+                        budgetHistoryTimeG.removeValue(forKey: oldName)
+                        budgetNoteG.removeValue(forKey: oldName)
+                        
+                        //save values to new key
+                        budgetHistoryAmountG[newName] = tempAmount
+                        budgetHistoryDateG[newName] = tempDate
+                        budgetHistoryTimeG[newName] = tempTime
+                        budgetNoteG[newName] = tempNote
+                        
+                        
+                        let totalSpent = budgetHistoryAmountG[budgetNameField.text!]?.reduce(0, +)
+                        budgetRemainingG[myIndexG] = (amount - totalSpent!)
+                        
+                        saveToFireStore()
+                        
+                        closeAllG = true
+                        editModeG = false
+                        
+                        self.dismiss(animated: true, completion: nil)
+                        
+                    } else {
+                        emptyTextAlert()
+                    }
+                    
+                }
             }
+            
+            
         }
-        
-        
-        
         
     }
     
@@ -289,6 +299,39 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
 //        budgetAmountField.becomeFirstResponder()
         return true
     }
+    
+    func showIAP() -> Bool {
+        
+        var showIAPScreen = Bool()
+        
+        //        subscribedUser = defaults.bool(forKey: "SubscribedUser")
+        //        registeredDate = defaults.object(forKey: "RegisteredDate") as! Date
+        if defaults.object(forKey: "RegisteredDate") != nil {
+            registeredDate = defaults.object(forKey: "RegisteredDate") as! Date
+        }
+        
+        iapDate = Date()
+        
+        let components = Calendar.current.dateComponents([.minute], from: registeredDate, to: iapDate)
+        let minutes = components.minute ?? 0
+        
+        print("RegisteredDate: \(registeredDate)")
+        print("iapDate: \(iapDate)")
+        print("difference is \(components.minute ?? 0) minutes")
+        print("SubscribedUser: \(subscribedUser)")
+        
+        print("minutes: \(minutes)")
+        print("subscribed: \(subscribedUser)")
+        
+        if minutes > 1 && subscribedUser == false {  //Minutes should be 10080 for 1 week
+            //            self.performSegue(withIdentifier: "goToIAP", sender: self)
+            showIAPScreen = true
+        } else {
+            showIAPScreen = false
+        }
+        print("showIAPScreen: \(showIAPScreen)")
+        return showIAPScreen
+    }
 
 }
 
@@ -303,4 +346,6 @@ extension UITextField {
         self.layer.addSublayer(border)
         self.layer.masksToBounds = true
     }
+    
+    
 }

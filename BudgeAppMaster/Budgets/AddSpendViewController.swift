@@ -234,6 +234,10 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
     
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        if goToSettings == true {
+            self.dismiss(animated: true, completion: nil)
+        }
       
         print("editModeG: \(editModeG)")
         print("closeallG: \(closeAllG)")
@@ -305,80 +309,84 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
 //SAVE BUTTON
     @IBAction func SaveButton(_ sender: Any) {
         
-        if spendAmount.text != "" {
-            
-            //DISMISS KEYBOARD
-            view.endEditing(true)
-            
-            
-            //FORMAT DATE AND TIME
-            let formatterDate = DateFormatter()
-            let formatterTime = DateFormatter()
-            formatterDate.locale = Locale(identifier: "en_US_POSIX")
-            formatterTime.locale = Locale(identifier: "en_US_POSIX")
-            formatterDate.dateFormat = "MMMM dd"
-            formatterTime.dateFormat = "h:mma"
-            //"h:mm a 'on' MMMM dd, yyyy"
-            formatterTime.amSymbol = "am"
-            formatterTime.pmSymbol = "pm"
-            
-            let dateString = formatterDate.string(from: Date())
-            let timeString = formatterTime.string(from: Date())
-            print(dateString)
-            print(timeString)
-            // "4:44 PM on June 23, 2016\n"
-            //"h:mm a 'on' MMMM dd, yyyy"
-            
-            //SAVE AS REFUND IF TOGGLE IS TRUE
-            var amount = Double(amt/100) + Double(amt%100)/100
-            
-            if saveAsRefundToggle == true {
-                amount = 0 - amount
-            } else {
-                amount = abs(amount)
-            }
-            
-            //SET SPEND NOTE IF EMPTY
-            if spendNoteField.text == "" {
-                spendNote = ""
-            } else {
-                spendNote = spendNoteField.text!
-            }
-            
-            
-            
-            //ADD SPEND HISTORY TO BEGINNING OF ARRAY
-            budgetHistoryAmountG[selectedBudget]?.insert(amount, at: 0)
-            budgetNoteG[selectedBudget]?.insert(spendNote, at:0)
-            budgetHistoryDateG[selectedBudget]?.insert(dateString, at: 0)
-            budgetHistoryTimeG[selectedBudget]?.insert(timeString, at: 0)
-            
-            //CALCULATE REMAINING BUDGET
-            totalSpentTemp = (budgetHistoryAmountG[selectedBudget]?.reduce(0, +))!
-            budgetRemainingG[myIndexG] = (budgetAmountG[myIndexG] - totalSpentTemp)
-            
-            //print("\(month)/\(day)")
-            //print("\(hour):\(minutes)")
-            
-//            totalSpentG = totalSpentG + amount
-            
-            //Used for confirmation toast
-            savedBudget = selectedBudget
-            savedAmount = convertDoubleToCurency(amount: amount)
-            
-            
-            saveToFireStore()
-            self.dismiss(animated: true, completion: nil)
-            
-            
-            //USED TO SUPPORT REMINDERS WITH LINKED BUDGETS
-            presetAmountG = 0.0
-            
+        if showIAP() == true {
+            self.performSegue(withIdentifier: "goToIAP", sender: self)
         } else {
-            emptyTextAlert()
+            
+            if spendAmount.text != "" {
+                
+                //DISMISS KEYBOARD
+                view.endEditing(true)
+                
+                
+                //FORMAT DATE AND TIME
+                let formatterDate = DateFormatter()
+                let formatterTime = DateFormatter()
+                formatterDate.locale = Locale(identifier: "en_US_POSIX")
+                formatterTime.locale = Locale(identifier: "en_US_POSIX")
+                formatterDate.dateFormat = "MMMM dd"
+                formatterTime.dateFormat = "h:mma"
+                //"h:mm a 'on' MMMM dd, yyyy"
+                formatterTime.amSymbol = "am"
+                formatterTime.pmSymbol = "pm"
+                
+                let dateString = formatterDate.string(from: Date())
+                let timeString = formatterTime.string(from: Date())
+                print(dateString)
+                print(timeString)
+                // "4:44 PM on June 23, 2016\n"
+                //"h:mm a 'on' MMMM dd, yyyy"
+                
+                //SAVE AS REFUND IF TOGGLE IS TRUE
+                var amount = Double(amt/100) + Double(amt%100)/100
+                
+                if saveAsRefundToggle == true {
+                    amount = 0 - amount
+                } else {
+                    amount = abs(amount)
+                }
+                
+                //SET SPEND NOTE IF EMPTY
+                if spendNoteField.text == "" {
+                    spendNote = ""
+                } else {
+                    spendNote = spendNoteField.text!
+                }
+                
+                
+                
+                //ADD SPEND HISTORY TO BEGINNING OF ARRAY
+                budgetHistoryAmountG[selectedBudget]?.insert(amount, at: 0)
+                budgetNoteG[selectedBudget]?.insert(spendNote, at:0)
+                budgetHistoryDateG[selectedBudget]?.insert(dateString, at: 0)
+                budgetHistoryTimeG[selectedBudget]?.insert(timeString, at: 0)
+                
+                //CALCULATE REMAINING BUDGET
+                totalSpentTemp = (budgetHistoryAmountG[selectedBudget]?.reduce(0, +))!
+                budgetRemainingG[myIndexG] = (budgetAmountG[myIndexG] - totalSpentTemp)
+                
+                //print("\(month)/\(day)")
+                //print("\(hour):\(minutes)")
+                
+                //            totalSpentG = totalSpentG + amount
+                
+                //Used for confirmation toast
+                savedBudget = selectedBudget
+                savedAmount = convertDoubleToCurency(amount: amount)
+                
+                
+                saveToFireStore()
+                self.dismiss(animated: true, completion: nil)
+                
+                
+                //USED TO SUPPORT REMINDERS WITH LINKED BUDGETS
+                presetAmountG = 0.0
+                
+            } else {
+                emptyTextAlert()
+            }
+            
         }
-        
-
         
     }
     
@@ -520,6 +528,39 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         self.present(viewController, animated: true)
         
         print("tap")
+    }
+    
+    func showIAP() -> Bool {
+        
+        var showIAPScreen = Bool()
+        
+        //        subscribedUser = defaults.bool(forKey: "SubscribedUser")
+        //        registeredDate = defaults.object(forKey: "RegisteredDate") as! Date
+        if defaults.object(forKey: "RegisteredDate") != nil {
+            registeredDate = defaults.object(forKey: "RegisteredDate") as! Date
+        }
+        
+        iapDate = Date()
+        
+        let components = Calendar.current.dateComponents([.minute], from: registeredDate, to: iapDate)
+        let minutes = components.minute ?? 0
+        
+        print("RegisteredDate: \(registeredDate)")
+        print("iapDate: \(iapDate)")
+        print("difference is \(components.minute ?? 0) minutes")
+        print("SubscribedUser: \(subscribedUser)")
+        
+        print("minutes: \(minutes)")
+        print("subscribed: \(subscribedUser)")
+        
+        if minutes > 1 && subscribedUser == false {  //Minutes should be 10080 for 1 week
+            //            self.performSegue(withIdentifier: "goToIAP", sender: self)
+            showIAPScreen = true
+        } else {
+            showIAPScreen = false
+        }
+        print("showIAPScreen: \(showIAPScreen)")
+        return showIAPScreen
     }
     
     
