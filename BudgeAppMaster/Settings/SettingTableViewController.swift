@@ -19,6 +19,13 @@ class SettingTableViewController: UITableViewController {
     @IBOutlet weak var monthlyResetSwitch: UISwitch!
     @IBOutlet weak var subscribeButtonOutlet: UIButton!
     
+    @IBOutlet weak var pigCredit: UILabel!
+    
+    //For Credits
+    let creditText = "Icons made by Freepic from www.flaticon.com"
+    let pigArtist = "Freepic"
+    let flatIcon = "www.flaticon.com"
+    
     
     var amt: Int = 0
     var referenceNote = 0
@@ -60,6 +67,8 @@ class SettingTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupView()
         
         db = Firestore.firestore()
         fireStoreListener()
@@ -673,12 +682,100 @@ class SettingTableViewController: UITableViewController {
     
     
     
+    //For Credits
+    func setupView() {
+        pigCredit.text = creditText
+        
+        let formattedText = String.format(strings: [pigArtist, flatIcon],
+//                                          boldFont: UIFont.boldSystemFont(ofSize: 15),
+                                          boldColor: UIColor.darkGray,
+                                          inString: creditText,
+//                                          font: UIFont.systemFont(ofSize: 15),
+                                          color: UIColor.black)
+        pigCredit.attributedText = formattedText
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTermTapped))
+        pigCredit.addGestureRecognizer(tap)
+        pigCredit.isUserInteractionEnabled = true
+        
+    }
     
+    //For Credits
+    @objc func handleTermTapped(gesture: UITapGestureRecognizer) {
+        let termString = creditText as NSString
+        let termRange = termString.range(of: pigArtist)
+        let policyRange = termString.range(of: flatIcon)
+        
+        let tapLocation = gesture.location(in: pigCredit)
+        let index = pigCredit.indexOfAttributedTextCharacterAtPoint(point: tapLocation)
+        
+        if checkRange(termRange, contain: index) == true {
+            handleViewTermOfUse()
+            return
+        }
+        
+        if checkRange(policyRange, contain: index) {
+            handleViewPrivacy()
+            return
+        }
+    }
     
+    //For Credits
+    func handleViewTermOfUse() {
+        guard let url = URL(string: "https://www.freepik.com/") else { return }
+        UIApplication.shared.open(url)
+    }
+    
+    //For Credits
+    func handleViewPrivacy() {
+        guard let url = URL(string: "https://www.flaticon.com") else { return }
+        UIApplication.shared.open(url)
+    }
+    
+    //For Credits
+    func checkRange(_ range: NSRange, contain index: Int) -> Bool {
+        return index > range.location && index < range.location + range.length
+    }
     
     
     
 }
 
+//For Credits
+extension UILabel {
+    func indexOfAttributedTextCharacterAtPoint(point: CGPoint) -> Int {
+        assert(self.attributedText != nil, "This method is developed for attributed string")
+        let textStorage = NSTextStorage(attributedString: self.attributedText!)
+        let layoutManager = NSLayoutManager()
+        textStorage.addLayoutManager(layoutManager)
+        let textContainer = NSTextContainer(size: self.frame.size)
+        textContainer.lineFragmentPadding = 0
+        textContainer.maximumNumberOfLines = self.numberOfLines
+        textContainer.lineBreakMode = self.lineBreakMode
+        layoutManager.addTextContainer(textContainer)
+        
+        let index = layoutManager.characterIndex(for: point, in: textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
+        return index
+    }
+}
 
+//For Credits
+extension String {
+    static func format(strings: [String],
+                       boldFont: UIFont = UIFont.boldSystemFont(ofSize: 14),
+                       boldColor: UIColor = UIColor.blue,
+                       inString string: String,
+                       font: UIFont = UIFont.systemFont(ofSize: 14),
+                       color: UIColor = UIColor.black) -> NSAttributedString {
+        let attributedString =
+            NSMutableAttributedString(string: string,
+                                      attributes: [
+                                        NSAttributedString.Key.font: font,
+                                        NSAttributedString.Key.foregroundColor: color])
+        let boldFontAttribute = [NSAttributedString.Key.font: boldFont, NSAttributedString.Key.foregroundColor: boldColor]
+        for bold in strings {
+            attributedString.addAttributes(boldFontAttribute, range: (string as NSString).range(of: bold))
+        }
+        return attributedString
+    }
+}
 

@@ -1203,7 +1203,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="ACCOUNT" id="HZ4-OF-6wd">
+                            <tableViewSection headerTitle="ACCOUNT" footerTitle=" " id="HZ4-OF-6wd">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="51" id="fZc-4H-W0J">
                                         <rect key="frame" x="0.0" y="346" width="375" height="51"/>
@@ -1320,6 +1320,34 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="CREDITS" footerTitle=" " id="Rkq-4E-mkz">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="51" id="c2D-6v-nGe">
+                                        <rect key="frame" x="0.0" y="606" width="375" height="51"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c2D-6v-nGe" id="rgP-uv-gLd">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pig" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9wy-9C-MvQ">
+                                                    <rect key="frame" x="16" y="8" width="351" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="35" id="LRU-bY-9f8"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="9wy-9C-MvQ" firstAttribute="centerY" secondItem="rgP-uv-gLd" secondAttribute="centerY" id="6P2-ga-PMK"/>
+                                                <constraint firstItem="9wy-9C-MvQ" firstAttribute="leading" secondItem="rgP-uv-gLd" secondAttribute="leading" constant="16" id="Nau-9Z-LwK"/>
+                                                <constraint firstAttribute="trailing" secondItem="9wy-9C-MvQ" secondAttribute="trailing" constant="8" id="T0X-bH-eBz"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="NBk-tc-AHQ" id="GLx-CM-TZm"/>
@@ -1329,6 +1357,7 @@
                     <navigationItem key="navigationItem" title="SETTINGS" id="CPj-mW-3dD"/>
                     <connections>
                         <outlet property="monthlyResetSwitch" destination="AFL-Xb-kQT" id="baC-tI-1IJ"/>
+                        <outlet property="pigCredit" destination="9wy-9C-MvQ" id="mRL-c8-rxh"/>
                         <outlet property="subscribeButtonOutlet" destination="64j-eJ-whA" id="lKg-CQ-oqo"/>
                         <segue destination="fBD-do-PNd" kind="presentation" identifier="goToLogin" id="MAD-z3-gm7"/>
                     </connections>
