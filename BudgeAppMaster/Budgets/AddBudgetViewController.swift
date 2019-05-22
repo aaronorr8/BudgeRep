@@ -41,11 +41,6 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
 
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        if goToSettings == true {
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -98,10 +98,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidAppear(_ animated: Bool) {
         
-        if goToSettings == true {
-            self.tabBarController?.selectedIndex = 2
-        }
-        
+       
         calculateTotalAvailable()
         calculateTotalAllocation()
         

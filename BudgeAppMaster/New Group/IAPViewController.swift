@@ -196,19 +196,15 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
         SKPaymentQueue.default().add(pay as SKPayment)
     }
     
+
     
-    @IBAction func alreadyASubscriberButton(_ sender: Any) {
-        signOutAlert()
+    @IBAction func restorePurchase(_ sender: Any) {
+        
+        SKPaymentQueue.default().add(self)
+        SKPaymentQueue.default().restoreCompletedTransactions()
+        print("Restore")
+        
     }
-    
-    //    @IBAction func restorePurchase(_ sender: Any) {
-//
-//        SKPaymentQueue.default().add(self)
-//        SKPaymentQueue.default().restoreCompletedTransactions()
-//        stopSpinner()
-//        unlockApp()
-//
-//    }
     
     @IBAction func termsButton(_ sender: Any) {
         guard let url = URL(string: "https://budgeapp.wixsite.com/budge/terms-of-use") else { return }
@@ -384,7 +380,7 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         alert.addAction(UIAlertAction(title: "Go to Settings", style: .default, handler: {action in
-            goToSettings = true
+            
             self.dismiss(animated: true, completion: nil)
             
             

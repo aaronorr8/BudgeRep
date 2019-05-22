@@ -235,10 +235,6 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
     
     override func viewDidAppear(_ animated: Bool) {
         
-        if goToSettings == true {
-            self.dismiss(animated: true, completion: nil)
-        }
-      
         print("editModeG: \(editModeG)")
         print("closeallG: \(closeAllG)")
         print("budgetNameG: \(budgetNameG)")
