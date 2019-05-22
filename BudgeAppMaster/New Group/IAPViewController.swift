@@ -374,21 +374,6 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
         
     }
     
-    func signOutAlert() {
-        let alert = UIAlertController(title: "Already a subscriber?", message: "You need to sign in with your subscriber account. First signout from Settings, then sign in with your subscriber account.", preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        alert.addAction(UIAlertAction(title: "Go to Settings", style: .default, handler: {action in
-            
-            self.dismiss(animated: true, completion: nil)
-            
-            
-        }))
-        
-        self.present(alert, animated: true)
-    }
-    
     
     
 }
