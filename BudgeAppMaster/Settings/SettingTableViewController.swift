@@ -75,7 +75,7 @@ class SettingTableViewController: UITableViewController {
     
     //MARK: SignOut
     @IBAction func signOutButton(_ sender: Any) {
-        signOut()
+        signOutAlert()
         
     }
     
@@ -603,7 +603,7 @@ class SettingTableViewController: UITableViewController {
         let email = Auth.auth().currentUser!.email!
         
         
-        let alert = UIAlertController(title: "Link to another phone", message: "To link to another phone, simply login with same email (\(String(describing: email))) and password as the original phone.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Sync with Another Device", message: "To sync with another device, simply login with same email (\(String(describing: email))) and password as the original device.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
@@ -616,6 +616,19 @@ class SettingTableViewController: UITableViewController {
             subscribeButtonOutlet.setTitle("Subscribed", for: .disabled)
         }
     }
+    
+    func signOutAlert() {
+        let alert = UIAlertController(title: "Sign out?", message: "Reminders are deleted when signing out, but your budgets and spending are saved and will here when you sign back in.", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        alert.addAction(UIAlertAction(title: "Sign Out", style: .default, handler: { action in
+            self.signOut()
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     
     //MARK: FireStore Listener
     func fireStoreListener() {
