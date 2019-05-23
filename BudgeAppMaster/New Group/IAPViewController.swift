@@ -13,11 +13,10 @@ import SystemConfiguration
 
 class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
-    @IBOutlet weak var benefitList: UILabel!
     @IBOutlet weak var subscribeButton: UIButton!
     @IBOutlet weak var tryForFreeLabel: UILabel!
-    @IBOutlet weak var benefitView: UIView!
     @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var legalText: UILabel!
     
     let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     var list = [SKProduct]()
@@ -45,24 +44,13 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
-        
-        
-        
-        
         //Add rounded outline to save button
         subscribeButton.backgroundColor = .clear
         subscribeButton.layer.cornerRadius = 6
         subscribeButton.layer.borderWidth = 2
         subscribeButton.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
         
-        let arrayString = [
-            "Easily create your own budgets and track spending.",
-            "Sync your budget with anyone you choose. Makes sharing a budget super easy!",
-            "Set reminders so you never miss a bill's due date."
-        ]
         
-        benefitList.attributedText = add(stringList: arrayString, font: benefitList.font, bullet: "\u{2022}")
-        self.benefitView.addSubview(benefitList)
     }
     
     override func viewDidLayoutSubviews() {
@@ -122,7 +110,9 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
                 list.append(product)
         }
             
-             tryForFreeLabel.text = "Only \(product.localizedPrice) a month. You spend more than that in a gumball machine!"
+             tryForFreeLabel.text = "Then only \(product.localizedPrice)/month"
+            
+            legalText.text = "After the 1 week free trial this subscription automatically renews for \(product.localizedPrice) per month unless it is canceled at least 24 hours before the end of the trial period. You can manage and cancel your subscriptions by going to your App Store account settings after purchase. The subscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period."
             
     }
         
@@ -218,53 +208,7 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
     }
     
     
-    
-    
-    func add(stringList: [String],
-             font: UIFont,
-             bullet: String = "\u{2022}",
-             indentation: CGFloat = 20,
-             lineSpacing: CGFloat = 2,
-             paragraphSpacing: CGFloat = 12,
-             textColor: UIColor = .black,
-             bulletColor: UIColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)) -> NSAttributedString {
-        
-        let textAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: textColor]
-        let bulletAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: bulletColor]
-        
-        let paragraphStyle = NSMutableParagraphStyle()
-        let nonOptions = [NSTextTab.OptionKey: Any]()
-        paragraphStyle.tabStops = [
-            NSTextTab(textAlignment: .left, location: indentation, options: nonOptions)]
-        paragraphStyle.defaultTabInterval = indentation
-        //paragraphStyle.firstLineHeadIndent = 0
-        //paragraphStyle.headIndent = 20
-        //paragraphStyle.tailIndent = 1
-        paragraphStyle.lineSpacing = lineSpacing
-        paragraphStyle.paragraphSpacing = paragraphSpacing
-        paragraphStyle.headIndent = indentation
-        
-        let bulletList = NSMutableAttributedString()
-        for string in stringList {
-            let formattedString = "\(bullet)\t\(string)\n"
-            let attributedString = NSMutableAttributedString(string: formattedString)
-            
-            attributedString.addAttributes(
-                [NSAttributedString.Key.paragraphStyle : paragraphStyle],
-                range: NSMakeRange(0, attributedString.length))
-            
-            attributedString.addAttributes(
-                textAttributes,
-                range: NSMakeRange(0, attributedString.length))
-            
-            let string:NSString = NSString(string: formattedString)
-            let rangeForBullet:NSRange = string.range(of: bullet)
-            attributedString.addAttributes(bulletAttributes, range: rangeForBullet)
-            bulletList.append(attributedString)
-        }
-        
-        return bulletList
-    }
+
     
     
     @IBAction func closeButton(_ sender: Any) {
