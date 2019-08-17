@@ -1499,7 +1499,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cj-C5-KoI">
                                 <rect key="frame" x="0.0" y="219.5" width="375" height="292"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep track of your spending with Budge. A no fluff, no nonsense, bare-bones, simple-minded way to manage your money." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12C-hH-pe0">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep track of your spending with Budge. A no fluff, no nonsense, bare-bones, simple way to manage your money." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12C-hH-pe0">
                                         <rect key="frame" x="26" y="114" width="323" height="120"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="GPC-Hi-mQx"/>
@@ -1626,7 +1626,7 @@
                                             <constraint firstItem="bAu-UT-Z0r" firstAttribute="leading" secondItem="lA4-R8-dFl" secondAttribute="leading" id="y5b-g5-8mt"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Budge let's you:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G5a-1P-giP">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Budge lets you:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G5a-1P-giP">
                                         <rect key="frame" x="8" y="0.0" width="359" height="41"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1642,7 +1642,7 @@
                                             <constraint firstAttribute="width" constant="201" id="mxI-LH-Nai"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
-                                        <state key="normal" title="Try Now for FREE">
+                                        <state key="normal" title="NEXT">
                                             <color key="titleColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -2452,7 +2452,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="szh-Vo-IQD"/>
         <segue reference="FiT-xg-Q5X"/>
-        <segue reference="AEH-d4-PVL"/>
+        <segue reference="VgK-Dy-3zS"/>
         <segue reference="8MC-0u-7HE"/>
     </inferredMetricsTieBreakers>
 </document>
