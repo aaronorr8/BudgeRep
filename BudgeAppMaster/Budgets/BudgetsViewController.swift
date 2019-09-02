@@ -30,6 +30,9 @@ import AudioToolbox
     var toastSuccess = true
     var savedBudget = String()
     var savedAmount = String()
+    
+    //MINUTES BEFORE SHOWING IAP
+    let freeMinutes = 10080
  
     
 class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {

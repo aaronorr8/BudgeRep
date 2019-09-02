@@ -318,7 +318,7 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
         print("minutes: \(minutes)")
         print("subscribed: \(subscribedUser)")
         
-        if minutes >= 0 && subscribedUser == false {  //Minutes should be 10080 for 1 week
+        if minutes >= freeMinutes && subscribedUser == false {  //Minutes should be 10080 for 1 week
             //            self.performSegue(withIdentifier: "goToIAP", sender: self)
             showIAPScreen = true
         } else {
