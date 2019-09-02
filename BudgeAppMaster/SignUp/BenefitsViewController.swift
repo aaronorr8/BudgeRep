@@ -39,9 +39,9 @@ class BenefitsViewController: UIViewController {
         //Displace text about price
         
         if localizedPriceString != "" {
-            tryForFreeLabel.text = "Try Budge FREE for one week, then just \(localizedPriceString)/month."
+            tryForFreeLabel.text = "Try Budge FREE for one week, then just \(localizedPriceString)/month. No credit card needed."
         } else {
-            tryForFreeLabel.text = "Try Budge FREE for one week, then just pennies a month."
+            tryForFreeLabel.text = "Try Budge FREE for one week, then just pennies a month. No credit card needed."
         }
     }
     

@@ -1598,7 +1598,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Flh-3V-0CW">
                                 <rect key="frame" x="0.0" y="141" width="375" height="449"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Try Budge FREE for one week, then just $0.99 per month." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCS-Km-a9Y">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Try Budge FREE for one week, then just $0.99 per month. No credit card needed to try!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCS-Km-a9Y">
                                         <rect key="frame" x="10" y="275" width="355" height="71"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="71" id="ctY-i9-R7H"/>
@@ -2452,7 +2452,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="szh-Vo-IQD"/>
         <segue reference="FiT-xg-Q5X"/>
-        <segue reference="VgK-Dy-3zS"/>
+        <segue reference="AEH-d4-PVL"/>
         <segue reference="8MC-0u-7HE"/>
     </inferredMetricsTieBreakers>
 </document>
