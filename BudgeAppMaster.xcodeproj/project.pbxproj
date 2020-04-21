@@ -34,6 +34,7 @@
 		0DBF296D2293256400778D01 /* IAP2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF296C2293256400778D01 /* IAP2ViewController.swift */; };
 		0DBF296F22932A9700778D01 /* IAPCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF296E22932A9700778D01 /* IAPCollectionViewCell.swift */; };
 		25A933E7C5DAD6DF2D222780 /* Pods_BudgeAppMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C778C86DABD18BCB8E509DC /* Pods_BudgeAppMaster.framework */; };
+		4303DC4C244F2D9D00ACEADB /* IAPForcedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4303DC4B244F2D9D00ACEADB /* IAPForcedViewController.swift */; };
 		4326BF34223347D4002B501D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326BF33223347D4002B501D /* ViewController.swift */; };
 		4351D753224EF245007ED47E /* BenefitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4351D752224EF245007ED47E /* BenefitsViewController.swift */; };
 		436D9D412286269B0020F924 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436D9D402286269B0020F924 /* StoreKit.framework */; };
@@ -54,7 +55,6 @@
 		0DA4370E22332E5300110700 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0DA4371422332EA400110700 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		0DA43716223331AB00110700 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		0DA4371B223332CB00110700 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0DA437332233336E00110700 /* BudgetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetsViewController.swift; sourceTree = "<group>"; };
 		0DA437362233339E00110700 /* BudgetCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetCollectionViewCell.swift; sourceTree = "<group>"; };
 		0DA43738223333AD00110700 /* BudgetCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -73,6 +73,7 @@
 		0DACD958225FC1A3008EDF4B /* IAPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPViewController.swift; sourceTree = "<group>"; };
 		0DBF296C2293256400778D01 /* IAP2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAP2ViewController.swift; sourceTree = "<group>"; };
 		0DBF296E22932A9700778D01 /* IAPCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPCollectionViewCell.swift; sourceTree = "<group>"; };
+		4303DC4B244F2D9D00ACEADB /* IAPForcedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPForcedViewController.swift; sourceTree = "<group>"; };
 		4326BF33223347D4002B501D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4351D752224EF245007ED47E /* BenefitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitsViewController.swift; sourceTree = "<group>"; };
 		436D9D402286269B0020F924 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -132,10 +133,10 @@
 			isa = PBXGroup;
 			children = (
 				43C7B2182256826D00F1FC0B /* BudgeAppMaster.entitlements */,
+				0DA4370222332E5200110700 /* AppDelegate.swift */,
 				43ECFE86224E620C000BC957 /* SignUp */,
 				0DACD957225FC16B008EDF4B /* IAP */,
 				0D5AC20E224001480047BB48 /* Toast */,
-				0DA4370222332E5200110700 /* AppDelegate.swift */,
 				0DA4371A223332CA00110700 /* Data Model */,
 				0DA4371C223332ED00110700 /* Views */,
 				0DA437352233337300110700 /* Budgets */,
@@ -153,7 +154,6 @@
 			children = (
 				0DA437552233354100110700 /* ReminderItem.swift */,
 				4326BF33223347D4002B501D /* ViewController.swift */,
-				0DA4371B223332CB00110700 /* ViewController.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -214,6 +214,7 @@
 		0DACD957225FC16B008EDF4B /* IAP */ = {
 			isa = PBXGroup;
 			children = (
+				4303DC4B244F2D9D00ACEADB /* IAPForcedViewController.swift */,
 				0DACD958225FC1A3008EDF4B /* IAPViewController.swift */,
 				0DBF296C2293256400778D01 /* IAP2ViewController.swift */,
 				0DBF296E22932A9700778D01 /* IAPCollectionViewCell.swift */,
@@ -283,6 +284,7 @@
 				TargetAttributes = {
 					0DA436FE22332E5200110700 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1130;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -404,6 +406,7 @@
 				0DA43739223333AD00110700 /* BudgetCollectionReusableView.swift in Sources */,
 				43FE6F9C2257B581007C21BF /* SettingTableViewController.swift in Sources */,
 				0D5AC2172240015C0047BB48 /* ToastWindow.swift in Sources */,
+				4303DC4C244F2D9D00ACEADB /* IAPForcedViewController.swift in Sources */,
 				0DA4374C2233343000110700 /* RemindersTableViewCell.swift in Sources */,
 				0D5AC2142240015C0047BB48 /* ToastView.swift in Sources */,
 				0DA4373D223333D200110700 /* CircularProgressView.swift in Sources */,
@@ -559,6 +562,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = BudgeAppMaster/BudgeAppMaster.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CC6KPH6NEB;
 				INFOPLIST_FILE = BudgeAppMaster/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -566,9 +570,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.icecream.BudgeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -580,6 +585,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = BudgeAppMaster/BudgeAppMaster.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CC6KPH6NEB;
 				INFOPLIST_FILE = BudgeAppMaster/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -587,9 +593,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.icecream.BudgeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

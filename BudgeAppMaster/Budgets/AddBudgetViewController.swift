@@ -175,6 +175,8 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
             
         }
         
+        reloadBudgetViewCC = true
+        
     }
     
     func switchKey<T, U>(_ myDict: inout [T:U], fromKey: T, toKey: T) {

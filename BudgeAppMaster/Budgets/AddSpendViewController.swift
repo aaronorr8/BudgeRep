@@ -8,8 +8,10 @@
 
 import UIKit
 import Firebase
+import StoreKit
 
 var toastOverride = false //used to not show toast when deleting
+
 
 
 //GRADIENT SUPPORT
@@ -59,6 +61,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
     var selectedIndex = 0
     var selectedBudget = budgetNameG[myIndexG]
     var spendNote = String()
+    
     
     //Create temperary arrays
     let tempBudgetHistoryAmountG = budgetHistoryAmountG
@@ -302,7 +305,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
     }
     
     
-//SAVE BUTTON
+//MARK: SAVE BUTTON
     @IBAction func SaveButton(_ sender: Any) {
         
         if showIAP() == true {
@@ -384,7 +387,13 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
             
         }
         
+        
+        askForReview()
+        
     }
+    
+    
+
     
     func saveToFireStore() {
         
@@ -558,6 +567,27 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         print("showIAPScreen: \(showIAPScreen)")
         return showIAPScreen
     }
+    
+ 
+    
+    //MARK: App Review
+      func askForReview() {
+        
+        var spendEntry = defaults.integer(forKey: "SpendEntry")
+        
+        print("SpendEntry: \(spendEntry)")
+        
+        spendEntry = spendEntry + 1
+        
+        print("SpendEntry: \(spendEntry)")
+        
+        defaults.set(spendEntry, forKey: "SpendEntry")
+        
+        
+        if spendEntry > 5{
+              SKStoreReviewController.requestReview()
+          }
+      }
     
     
 

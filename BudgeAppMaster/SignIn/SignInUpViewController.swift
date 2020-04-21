@@ -111,7 +111,11 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                         defaults.set(registeredDate, forKey: "RegisteredDate")
                         self.stopSpinner()
                         goToMain = true
-                        self.dismiss(animated: true, completion: nil)
+                        
+                        // 4/21/2020 change to force IAP
+//                        self.dismiss(animated: true, completion: nil)
+                        self.performSegue(withIdentifier: "forceIAP", sender: self)
+                        
                         print("Signup Successful!")
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
                     }
@@ -131,7 +135,15 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                         defaults.set(registeredDate, forKey: "RegisteredDate")
                         self.stopSpinner()
                         goToMain = true
-                        self.dismiss(animated: true, completion: nil)
+                        
+                        // 4/21/2020 change to force IAP
+                        if subscribedUser == false {
+                            self.performSegue(withIdentifier: "forceIAP", sender: self)
+                        } else {
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                        
+//                        self.dismiss(animated: true, completion: nil)
                         print("Login successful!!")
                     }
                 }

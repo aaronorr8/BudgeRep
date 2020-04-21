@@ -314,7 +314,7 @@ class SettingTableViewController: UITableViewController {
 //            totalSpentG = 0.0
             
             //Find Index of Rollover Budget and set rollover budget
-            let indexOfRollover = budgetNameG.index(of: "Rollover")
+            let indexOfRollover = budgetNameG.firstIndex(of: "Rollover")
             budgetAmountG[indexOfRollover!] = rolloverTotalG
             budgetRemainingG = budgetAmountG
             
@@ -328,7 +328,7 @@ class SettingTableViewController: UITableViewController {
     
     func deleteRolloverBudget() {
         print("Delete Rollover Budget")
-        let indexOfRollover = budgetNameG.index(of: "Rollover")
+        let indexOfRollover = budgetNameG.firstIndex(of: "Rollover")
         budgetNameG.remove(at: indexOfRollover!)
         budgetAmountG.remove(at: indexOfRollover!)
         budgetRemainingG.remove(at: indexOfRollover!)

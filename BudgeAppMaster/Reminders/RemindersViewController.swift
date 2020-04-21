@@ -132,7 +132,7 @@ class RemindersViewController: UIViewController, UITableViewDelegate, UITableVie
                 
                 alert.addAction(UIAlertAction(title: "Yes, record in budget", style: UIAlertAction.Style.default, handler: { _ in
                    //MARK: NDM
-                    myIndexG = budgetNameG.index(of: reminderArray[indexPath.row].linkedBudget)!
+                    myIndexG = budgetNameG.firstIndex(of: reminderArray[indexPath.row].linkedBudget)!
                     presetAmountG = reminderArray[indexPath.row].amount
                     self.switchViewToAddSpend()
                 }))
@@ -160,7 +160,7 @@ class RemindersViewController: UIViewController, UITableViewDelegate, UITableVie
                 }))
                 
                 alert.addAction(UIAlertAction(title: "Adjust budget", style: UIAlertAction.Style.default, handler: { _ in
-                    myIndexG = budgetNameG.index(of: reminderArray[indexPath.row].linkedBudget)!
+                    myIndexG = budgetNameG.firstIndex(of: reminderArray[indexPath.row].linkedBudget)!
                     presetAmountG = reminderArray[indexPath.row].amount
                     presetRefundG = true
                     self.switchViewToAddSpend()
