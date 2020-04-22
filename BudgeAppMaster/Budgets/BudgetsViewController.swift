@@ -32,7 +32,7 @@ import AudioToolbox
     var savedAmount = String()
     
     //MINUTES BEFORE SHOWING IAP
-    let freeMinutes = 10080
+    let freeMinutes = 4320 //4320 3 days
     
     //Cross Controls
     var reloadBudgetViewCC = false

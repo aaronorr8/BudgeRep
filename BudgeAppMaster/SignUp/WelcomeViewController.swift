@@ -13,9 +13,11 @@ var localizedPriceString = String()
 
 class WelcomeViewController: UIViewController, SKProductsRequestDelegate {
     
+    @IBOutlet weak var textWithPrice: UILabel!
     @IBOutlet weak var getStartedButton: UIButton!
     
     var product = SKProduct()
+    var price = ""
     
     
     override func viewDidLayoutSubviews() {
@@ -30,10 +32,6 @@ class WelcomeViewController: UIViewController, SKProductsRequestDelegate {
     override func viewWillAppear(_ animated: Bool) {
         //Hide navigation bar
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
         //IAP Code
         if(SKPaymentQueue.canMakePayments()) {
@@ -43,10 +41,27 @@ class WelcomeViewController: UIViewController, SKProductsRequestDelegate {
             request.delegate = self
             request.start()
             
+            
+            
         } else {
             print("please enable IAP")
         }
+        
+        
+    }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        if price == "" {
+            textWithPrice.text = "Try for FREE with no credit card. Then just $0.99/month if you like it."
+        } else {
+            textWithPrice.text = "Try for FREE with no credit card. Then just \(price)/month if you like it."
+        }
         
     }
     
@@ -73,13 +88,18 @@ class WelcomeViewController: UIViewController, SKProductsRequestDelegate {
                 print(product.localizedTitle)
                 print(product.localizedDescription)
                 print(product.price)
+                print("price: \(price)")
                 
-                localizedPriceString = ("\(product.localizedPrice)")
+                
+                
+                //                localizedPriceString = ("\(product.localizedPrice)")
                 
             }
-            
+            price = product.localizedPrice
+            print("price: \(price)")
             
         }
+        
     }
     
 

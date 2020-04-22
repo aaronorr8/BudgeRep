@@ -33,19 +33,7 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
             let request: SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
             request.delegate = self
             request.start()
-            
-            if price == "" {
-                tryForFreeLabel.text = "Then only $0.99/month"
-                
-                legalText.text = "After the 1 week free trial this subscription automatically renews for $0.99 per month unless it is canceled at least 24 hours before the end of the trial period. You can manage and cancel your subscriptions by going to your App Store account settings after purchase. The subscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period."
-            } else {
-                tryForFreeLabel.text = "Then only \(price)/month"
-                
-                legalText.text = "After the 1 week free trial this subscription automatically renews for \(price) per month unless it is canceled at least 24 hours before the end of the trial period. You can manage and cancel your subscriptions by going to your App Store account settings after purchase. The subscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period."
-            }
-            
-            
-            
+           
         } else {
             print("please enable IAP")
         }
@@ -64,9 +52,18 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
         subscribeButton.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
         
         
-        
-        
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if price == "" {
+            tryForFreeLabel.text = "Then only $0.99/month"
+            
+            legalText.text = "After the 1 week free trial this subscription automatically renews for $0.99 per month unless it is canceled at least 24 hours before the end of the trial period. You can manage and cancel your subscriptions by going to your App Store account settings after purchase. The subscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period."
+        } else {
+            tryForFreeLabel.text = "Then only \(price)/month"
+            
+            legalText.text = "After the 1 week free trial this subscription automatically renews for \(price) per month unless it is canceled at least 24 hours before the end of the trial period. You can manage and cancel your subscriptions by going to your App Store account settings after purchase. The subscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period."
+        }
     }
     
 
