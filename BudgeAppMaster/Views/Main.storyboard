@@ -1537,7 +1537,7 @@
                                             <constraint firstAttribute="width" constant="145" id="dRY-3J-RaD"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Try for FREE with no credit card. Then just $0.99/month if you like it." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ckq-eS-JA5">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Try FREE for one week. No credit card needed. Then just $0.99/month if you like it. Zero risk." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ckq-eS-JA5">
                                         <rect key="frame" x="16" y="203" width="343" height="59"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="59" id="TAF-j6-BE4"/>
@@ -2258,7 +2258,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qom-mx-1pW">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Then only $0.99/month" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ffw-pg-xjj">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Only $0.99 a month" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ffw-pg-xjj">
                                                 <rect key="frame" x="0.0" y="371" width="359" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="31" id="kkF-7y-9la"/>
@@ -2285,7 +2285,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="179" id="G42-Pk-JFK"/>
                                                 </constraints>
-                                                <string key="text">After the 1 week free trial this subscription automatically renews for $0.99 per month unless it is canceled at least 24 hours before the end of the trial period. You can manage and cancel your subscriptions by going to your App Store account settings after purchase. The subscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period. </string>
+                                                <string key="text">You can manage and cancel your subscriptions by going to your App Store account settings after purchase. The subscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period. </string>
                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="13"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -2332,7 +2332,7 @@
                                                     <action selector="restorePurchase:" destination="roH-Po-2Uh" eventType="touchUpInside" id="NnA-vS-uoj"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get an additional week FREE!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MmG-9P-Fk4">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep budgeting with Budge" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MmG-9P-Fk4">
                                                 <rect key="frame" x="6" y="331" width="359" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="aSi-fg-paf"/>
@@ -2371,7 +2371,7 @@
                                                     <action selector="closeButton:" destination="roH-Po-2Uh" eventType="touchUpInside" id="6Yx-U4-10U"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Special Offer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9d-OQ-R3v">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your trial period has ended." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="T9d-OQ-R3v">
                                                 <rect key="frame" x="8" y="131" width="359" height="30"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>

@@ -58,9 +58,9 @@ class WelcomeViewController: UIViewController, SKProductsRequestDelegate {
     override func viewDidAppear(_ animated: Bool) {
         
         if price == "" {
-            textWithPrice.text = "Try for FREE with no credit card. Then just $0.99/month if you like it."
+            textWithPrice.text = "Try FREE for one week. No credit card needed. Then just $0.99/month if you like it. Zero risk."
         } else {
-            textWithPrice.text = "Try for FREE with no credit card. Then just \(price)/month if you like it."
+            textWithPrice.text = "Try FREE for one week. No credit card needed. Then just \(price)/month if you like it. Zero risk."
         }
         
     }
