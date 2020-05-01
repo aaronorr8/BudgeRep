@@ -89,44 +89,7 @@ class SettingTableViewController: UITableViewController {
     }
     
     
-    
-//
-//
-//
-//
-//
-//
-//    @IBAction func testItButton(_ sender: Any) {
-//
-//        if let userID = Auth.auth().currentUser?.uid {
-//            db.collection("budgets").document(userID)
-//                .addSnapshotListener { documentSnapshot, error in
-//                    guard let document = documentSnapshot else {
-//                        print("Error fetching document: \(error!)")
-//                        return
-//                    }
-//                    guard let data = document.data() else {
-//                        print("Document data was empty.")
-//                        return
-//                    }
-//                    budgetNameG = document.get("budgetName") as! [String]
-//                    budgetAmountG = document.get("budgetAmount") as! [Double]
-//                    budgetHistoryAmountG = document.get("budgetHistoryAmount") as! [String : [Double]]
-//                    budgetNoteG = document.get("budgetNote") as! [String : [String]]
-//                    budgetHistoryDateG = document.get("budgetHistoryDate") as! [String : [String]]
-//                    budgetHistoryTimeG = document.get("budgetHistoryTime") as! [String : [String]]
-//                    budgetRemainingG = document.get("budgetRemaining") as! [Double]
-//
-//                    print("Current data: \(data)")
-//
-//            }
-//
-//
-//        }
-//
-//
-//    }
-//
+ 
     
     
     //MARK: FireStore Listen for Data
@@ -652,14 +615,6 @@ class SettingTableViewController: UITableViewController {
                         print("Document data was empty.")
                         return
                     }
-//                    budgetNameG = document.get("budgetName") as! [String]
-//                    budgetAmountG = document.get("budgetAmount") as! [Double]
-//                    budgetHistoryAmountG = document.get("budgetHistoryAmount") as! [String : [Double]]
-//                    budgetNoteG = document.get("budgetNote") as! [String : [String]]
-//                    budgetHistoryDateG = document.get("budgetHistoryDate") as! [String : [String]]
-//                    budgetHistoryTimeG = document.get("budgetHistoryTime") as! [String : [String]]
-//                    budgetRemainingG = document.get("budgetRemaining") as! [Double]
-                    //                    totalSpentG = document.get("totalSpent") as! Double
                     subscribedUser = document.get("subscribedUser") as! Bool
                     print("From Firestore, subscribedUser = \(subscribedUser)")
                     
@@ -671,9 +626,7 @@ class SettingTableViewController: UITableViewController {
                         self.subscribeButtonOutlet.setTitle("Subscribe", for: .normal)
                         self.subscribeButtonOutlet.isEnabled = true
                         self.subscribeButtonOutlet.setTitleColor(.black, for: .normal)
-                    }
-                    
-                    
+                    }     
             }
         }
         

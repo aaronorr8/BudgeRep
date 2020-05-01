@@ -30,17 +30,28 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLayoutSubviews() {
         
+       
+        
         //Add underline to text fields
         emailField.setUnderLine()
         passwordField.setUnderLine()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //If users is logged in but not subscribed
+        if Auth.auth().currentUser?.uid != nil {
+            self.navigationController!.popToRootViewController(animated: true)
+        }
+    }
+    
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setModeText()
        
-     
+    
         
         //Keyboard Shift (1/3)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -112,10 +123,11 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                         self.stopSpinner()
                         goToMain = true
                    
-                        self.dismiss(animated: true, completion: nil)
+//                        self.dismiss(animated: true, completion: nil)
                         
                         print("Signup Successful!")
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+                        self.performSegue(withIdentifier: "goToIAP", sender: self)
                     }
                 }
             } else {
@@ -134,18 +146,27 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                         self.stopSpinner()
                         goToMain = true
                         
-                        self.dismiss(animated: true, completion: nil)
+                        
+//                        self.dismiss(animated: true, completion: nil)
                         
                         print("Login successful!!")
+                        self.fireStoreListener()
+                        
+                        
+                        
                     }
                 }
                 
                 self.view.endEditing(true)
+                
             }
         } else {
             stopSpinner()
             emptyEmailFieldAlert()
         }
+        
+        
+        
     }
     
     
@@ -275,6 +296,37 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: testStr)
     }
+    
+    
+    //MARK: FireStore Listener
+    func fireStoreListener() {
+        if let userID = Auth.auth().currentUser?.uid {
+            db.collection("budgets").document(userID)
+                .addSnapshotListener { documentSnapshot, error in
+                    guard let document = documentSnapshot else {
+                        print("Error fetching document: \(error!)")
+                        return
+                    }
+                    guard let data = document.data() else {
+                        print("Document data was empty.")
+                        print("User isn't subscribed, to to IAP")
+                        self.performSegue(withIdentifier: "goToIAP", sender: self)
+                        return
+                    }
+                    subscribedUser = document.get("subscribedUser") as! Bool
+                    print("From Firestore, subscribedUser = \(subscribedUser)")
+                    if subscribedUser == true {
+                        print("User is subscribed, go to budgets!!")
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        
+                    }
+            }
+        }
+    }
+    
+    
+   
     
   
     

@@ -105,6 +105,7 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
         
     }
     
+    //MARK: Product Request
     
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         print("product request")
@@ -123,6 +124,25 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
             price = product.localizedPrice
             print("localized price: \(price)")
             
+        
+        
+            
+            
+            
+            // Get the receipt if it's available
+            if let appStoreReceiptURL = Bundle.main.appStoreReceiptURL,
+                FileManager.default.fileExists(atPath: appStoreReceiptURL.path) {
+
+                do {
+                    let receiptData = try Data(contentsOf: appStoreReceiptURL, options: .alwaysMapped)
+                    print(receiptData)
+
+                    let receiptString = receiptData.base64EncodedString(options: [])
+
+                    // Read receiptData
+                }
+                catch { print("Couldn't read receipt data with error: " + error.localizedDescription) }
+            }
 
             
     }
@@ -328,6 +348,63 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
         
         
     }
+    
+    
+    
+    
+//    func receiptValidation() {
+//        let SUBSCRIPTION_SECRET = "yourpasswordift"
+//        let receiptPath = Bundle.main.appStoreReceiptURL?.path
+//        if FileManager.default.fileExists(atPath: receiptPath!){
+//            var receiptData:NSData?
+//            do{
+//                receiptData = try NSData(contentsOf: Bundle.main.appStoreReceiptURL!, options: NSData.ReadingOptions.alwaysMapped)
+//            }
+//            catch{
+//                print("ERROR: " + error.localizedDescription)
+//            }
+//            //let receiptString = receiptData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+//            let base64encodedReceipt = receiptData?.base64EncodedString(options: NSData.Base64EncodingOptions.endLineWithCarriageReturn)
+//
+//            print(base64encodedReceipt!)
+//
+//
+//            let requestDictionary = ["receipt-data":base64encodedReceipt!,"password":SUBSCRIPTION_SECRET]
+//
+//            guard JSONSerialization.isValidJSONObject(requestDictionary) else {  print("requestDictionary is not valid JSON");  return }
+//            do {
+//                let requestData = try JSONSerialization.data(withJSONObject: requestDictionary)
+//                let validationURLString = "https://sandbox.itunes.apple.com/verifyReceipt"  // this works but as noted above it's best to use your own trusted server
+//                guard let validationURL = URL(string: validationURLString) else { print("the validation url could not be created, unlikely error"); return }
+//                let session = URLSession(configuration: URLSessionConfiguration.default)
+//                var request = URLRequest(url: validationURL)
+//                request.httpMethod = "POST"
+//                request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringCacheData
+//                let task = session.uploadTask(with: request, from: requestData) { (data, response, error) in
+//                    if let data = data , error == nil {
+//                        do {
+//                            let appReceiptJSON = try JSONSerialization.jsonObject(with: data)
+//                            print("success. here is the json representation of the app receipt: \(appReceiptJSON)")
+//                            // if you are using your server this will be a json representation of whatever your server provided
+//                        } catch let error as NSError {
+//                            print("json serialization failed with error: \(error)")
+//                        }
+//                    } else {
+//                        print("the upload task returned an error: \(error)")
+//                    }
+//                }
+//                task.resume()
+//            } catch let error as NSError {
+//                print("json serialization failed with error: \(error)")
+//            }
+//
+//
+//
+//        }
+//    }
+//
+    
+    
     
     
     

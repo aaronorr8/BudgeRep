@@ -8,6 +8,7 @@
 
 import UIKit
 import StoreKit
+import Firebase
 
 var localizedPriceString = String()
 
@@ -15,6 +16,8 @@ class WelcomeViewController: UIViewController, SKProductsRequestDelegate {
     
     @IBOutlet weak var textWithPrice: UILabel!
     @IBOutlet weak var getStartedButton: UIButton!
+    @IBOutlet weak var loginButtonOutlet: UIButton!
+    
     
     var product = SKProduct()
     var price = ""
@@ -30,10 +33,18 @@ class WelcomeViewController: UIViewController, SKProductsRequestDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //Hide navigation bar
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
         
-        //IAP Code
+        
+        if Auth.auth().currentUser?.uid == nil {
+            loginButtonOutlet.isHidden = false
+        } else {
+            loginButtonOutlet.isHidden = true
+        }
+        
+        //Hide navigation bar
+//        self.navigationController?.setNavigationBarHidden(true, animated: false)
+//        
+//        //IAP Code
         if(SKPaymentQueue.canMakePayments()) {
             print("IAP is enabled, loading")
             let productID: NSSet = NSSet(objects: "budge.subscription")
@@ -53,6 +64,8 @@ class WelcomeViewController: UIViewController, SKProductsRequestDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -68,11 +81,24 @@ class WelcomeViewController: UIViewController, SKProductsRequestDelegate {
     
     @IBAction func getStartedButton(_ sender: Any) {
         
+        signUpMode = true
+        
+        if Auth.auth().currentUser?.uid == nil {
+            self.performSegue(withIdentifier: "goToSignUp", sender: self)
+        } else {
+            self.performSegue(withIdentifier: "goToIAP", sender: self)
+        }
+        
+       
+        
+            
+        
 
     }
     
 
     @IBAction func loginButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "goToSignUp", sender: self)
         signUpMode = false
         
 

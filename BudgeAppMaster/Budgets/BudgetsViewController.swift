@@ -10,32 +10,32 @@ import UIKit
 import Firebase
 import AudioToolbox
 
-    //COLORS
-    let colorTrackH = #colorLiteral(red: 0.5741485357, green: 0.5741624236, blue: 0.574154973, alpha: 1)
-    let colorRedH = #colorLiteral(red: 0.9568627451, green: 0.262745098, blue: 0.2117647059, alpha: 1)
-    let colorGreenH = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
-    
-    let colorTrackC = #colorLiteral(red: 0.9058823529, green: 0.9058823529, blue: 0.9058823529, alpha: 1)
-    let colorRedC = #colorLiteral(red: 0.9568627451, green: 0.262745098, blue: 0.2117647059, alpha: 1)
-    let colorGreenC = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
-    
-    let bgColorSolid = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-    let bgColorGradient1 = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-    let bgColorGradient2 = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-    
-    let cellBackground = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-    
-    //Save Spend Alert
-    var showToast = false
-    var toastSuccess = true
-    var savedBudget = String()
-    var savedAmount = String()
-    
-    //MINUTES BEFORE SHOWING IAP
-    let freeMinutes = 10080 //7 days
-    
-    //Cross Controls
-    var reloadBudgetViewCC = false
+//    //COLORS
+//    let colorTrackH = #colorLiteral(red: 0.5741485357, green: 0.5741624236, blue: 0.574154973, alpha: 1)
+//    let colorRedH = #colorLiteral(red: 0.9568627451, green: 0.262745098, blue: 0.2117647059, alpha: 1)
+//    let colorGreenH = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
+//    
+//    let colorTrackC = #colorLiteral(red: 0.9058823529, green: 0.9058823529, blue: 0.9058823529, alpha: 1)
+//    let colorRedC = #colorLiteral(red: 0.9568627451, green: 0.262745098, blue: 0.2117647059, alpha: 1)
+//    let colorGreenC = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
+//    
+//    let bgColorSolid = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+//    let bgColorGradient1 = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+//    let bgColorGradient2 = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+//    
+//    let cellBackground = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+//    
+//    //Save Spend Alert
+//    var showToast = false
+//    var toastSuccess = true
+//    var savedBudget = String()
+//    var savedAmount = String()
+//    
+//    //MINUTES BEFORE SHOWING IAP
+//    let freeMinutes = 10080 //7 days
+//    
+//    //Cross Controls
+//    var reloadBudgetViewCC = false
  
     
 class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -60,6 +60,12 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     let yScale = CGFloat(3.0)
     
     
+    
+    override func viewDidLayoutSubviews() {
+        
+       
+        
+    }
 
     
     
@@ -74,6 +80,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
        
         //Show login screen if user isn't logged in
         let currentUser = Auth.auth().currentUser
+
         if currentUser == nil {
             self.performSegue(withIdentifier: "goToLogin", sender: self)
             print("Show Login Screen")
@@ -87,7 +94,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         
         
         
-        receiptValidation()
+//        receiptValidation()
         
         timeToResetAlert()
         
@@ -511,56 +518,56 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     
    
     
-    func receiptValidation() {
-        let SUBSCRIPTION_SECRET = "yourpasswordift"
-        let receiptPath = Bundle.main.appStoreReceiptURL?.path
-        if FileManager.default.fileExists(atPath: receiptPath!){
-            var receiptData:NSData?
-            do{
-                receiptData = try NSData(contentsOf: Bundle.main.appStoreReceiptURL!, options: NSData.ReadingOptions.alwaysMapped)
-            }
-            catch{
-                print("ERROR: " + error.localizedDescription)
-            }
-            //let receiptString = receiptData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
-            let base64encodedReceipt = receiptData?.base64EncodedString(options: NSData.Base64EncodingOptions.endLineWithCarriageReturn)
-            
-            print(base64encodedReceipt!)
-            
-            
-            let requestDictionary = ["receipt-data":base64encodedReceipt!,"password":SUBSCRIPTION_SECRET]
-            
-            guard JSONSerialization.isValidJSONObject(requestDictionary) else {  print("requestDictionary is not valid JSON");  return }
-            do {
-                let requestData = try JSONSerialization.data(withJSONObject: requestDictionary)
-                let validationURLString = "https://sandbox.itunes.apple.com/verifyReceipt"  // this works but as noted above it's best to use your own trusted server
-                guard let validationURL = URL(string: validationURLString) else { print("the validation url could not be created, unlikely error"); return }
-                let session = URLSession(configuration: URLSessionConfiguration.default)
-                var request = URLRequest(url: validationURL)
-                request.httpMethod = "POST"
-                request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringCacheData
-                let task = session.uploadTask(with: request, from: requestData) { (data, response, error) in
-                    if let data = data , error == nil {
-                        do {
-                            let appReceiptJSON = try JSONSerialization.jsonObject(with: data)
-                            print("success. here is the json representation of the app receipt: \(appReceiptJSON)")
-                            // if you are using your server this will be a json representation of whatever your server provided
-                        } catch let error as NSError {
-                            print("json serialization failed with error: \(error)")
-                        }
-                    } else {
-                        print("the upload task returned an error: \(error)")
-                    }
-                }
-                task.resume()
-            } catch let error as NSError {
-                print("json serialization failed with error: \(error)")
-            }
-            
-            
-            
-        }
-    }
+//    func receiptValidation() {
+//        let SUBSCRIPTION_SECRET = "yourpasswordift"
+//        let receiptPath = Bundle.main.appStoreReceiptURL?.path
+//        if FileManager.default.fileExists(atPath: receiptPath!){
+//            var receiptData:NSData?
+//            do{
+//                receiptData = try NSData(contentsOf: Bundle.main.appStoreReceiptURL!, options: NSData.ReadingOptions.alwaysMapped)
+//            }
+//            catch{
+//                print("ERROR: " + error.localizedDescription)
+//            }
+//            //let receiptString = receiptData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+//            let base64encodedReceipt = receiptData?.base64EncodedString(options: NSData.Base64EncodingOptions.endLineWithCarriageReturn)
+//            
+//            print(base64encodedReceipt!)
+//            
+//            
+//            let requestDictionary = ["receipt-data":base64encodedReceipt!,"9508e678719b4253bc6c7ae9fb430df1":SUBSCRIPTION_SECRET]
+//            
+//            guard JSONSerialization.isValidJSONObject(requestDictionary) else {  print("requestDictionary is not valid JSON");  return }
+//            do {
+//                let requestData = try JSONSerialization.data(withJSONObject: requestDictionary)
+//                let validationURLString = "https://sandbox.itunes.apple.com/verifyReceipt"  // this works but as noted above it's best to use your own trusted server
+//                guard let validationURL = URL(string: validationURLString) else { print("the validation url could not be created, unlikely error"); return }
+//                let session = URLSession(configuration: URLSessionConfiguration.default)
+//                var request = URLRequest(url: validationURL)
+//                request.httpMethod = "POST"
+//                request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringCacheData
+//                let task = session.uploadTask(with: request, from: requestData) { (data, response, error) in
+//                    if let data = data , error == nil {
+//                        do {
+//                            let appReceiptJSON = try JSONSerialization.jsonObject(with: data)
+//                            print("success. here is the json representation of the app receipt: \(appReceiptJSON)")
+//                            // if you are using your server this will be a json representation of whatever your server provided
+//                        } catch let error as NSError {
+//                            print("json serialization failed with error: \(error)")
+//                        }
+//                    } else {
+//                        print("the upload task returned an error: \(error)")
+//                    }
+//                }
+//                task.resume()
+//            } catch let error as NSError {
+//                print("json serialization failed with error: \(error)")
+//            }
+//            
+//            
+//            
+//        }
+//    }
     
     func timeToResetAlert() {
         //Get date
