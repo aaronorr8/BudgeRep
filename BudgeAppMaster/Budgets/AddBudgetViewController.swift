@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-var db:Firestore!
+
 
 class AddBudgetViewController: ViewController, UITextFieldDelegate {
     
@@ -301,8 +301,6 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
         
         var showIAPScreen = Bool()
         
-        //        subscribedUser = defaults.bool(forKey: "SubscribedUser")
-        //        registeredDate = defaults.object(forKey: "RegisteredDate") as! Date
         if defaults.object(forKey: "RegisteredDate") != nil {
             registeredDate = defaults.object(forKey: "RegisteredDate") as! Date
         }

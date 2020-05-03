@@ -539,8 +539,6 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         
         var showIAPScreen = Bool()
         
-        //        subscribedUser = defaults.bool(forKey: "SubscribedUser")
-        //        registeredDate = defaults.object(forKey: "RegisteredDate") as! Date
         if defaults.object(forKey: "RegisteredDate") != nil {
             registeredDate = defaults.object(forKey: "RegisteredDate") as! Date
         }

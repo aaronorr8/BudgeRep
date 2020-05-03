@@ -39,6 +39,7 @@
 		4329DD23245C53560045E952 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4329DD22245C53560045E952 /* GlobalConstants.swift */; };
 		4351D753224EF245007ED47E /* BenefitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4351D752224EF245007ED47E /* BenefitsViewController.swift */; };
 		436D9D412286269B0020F924 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436D9D402286269B0020F924 /* StoreKit.framework */; };
+		43935690245DC9C000CBAFF1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4393568F245DC9C000CBAFF1 /* TabBarController.swift */; };
 		4393F83F2233FBA8004CD359 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4393F83E2233FBA8004CD359 /* Assets.xcassets */; };
 		43ECFE85224E61FC000BC957 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ECFE84224E61FC000BC957 /* WelcomeViewController.swift */; };
 		43FE6F9C2257B581007C21BF /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FE6F9B2257B581007C21BF /* SettingTableViewController.swift */; };
@@ -79,6 +80,7 @@
 		4329DD22245C53560045E952 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		4351D752224EF245007ED47E /* BenefitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitsViewController.swift; sourceTree = "<group>"; };
 		436D9D402286269B0020F924 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		4393568F245DC9C000CBAFF1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4393F83E2233FBA8004CD359 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43C7B2182256826D00F1FC0B /* BudgeAppMaster.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BudgeAppMaster.entitlements; sourceTree = "<group>"; };
 		43ECFE84224E61FC000BC957 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 		0DA437352233337300110700 /* Budgets */ = {
 			isa = PBXGroup;
 			children = (
+				4393568F245DC9C000CBAFF1 /* TabBarController.swift */,
 				0DA437332233336E00110700 /* BudgetsViewController.swift */,
 				0DA43740223333F100110700 /* AddBudgetViewController.swift */,
 				0DA43741223333F200110700 /* AddSpendViewController.swift */,
@@ -381,6 +384,7 @@
 				0DA4373F223333E000110700 /* FooterBudgetCollectionView.swift in Sources */,
 				4326BF34223347D4002B501D /* ViewController.swift in Sources */,
 				0DACD959225FC1A3008EDF4B /* IAPViewController.swift in Sources */,
+				43935690245DC9C000CBAFF1 /* TabBarController.swift in Sources */,
 				0DA4374B2233343000110700 /* AddReminderViewController.swift in Sources */,
 				0DA43742223333F200110700 /* AddBudgetViewController.swift in Sources */,
 				0DA4373B223333C000110700 /* WavyProgressView.swift in Sources */,

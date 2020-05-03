@@ -72,6 +72,7 @@ class SettingTableViewController: UITableViewController {
         
         db = Firestore.firestore()
         fireStoreListener()
+       
         getUserDefaults()
         
         monthlyResetSwitch.onTintColor = colorGreenC
@@ -546,7 +547,7 @@ class SettingTableViewController: UITableViewController {
     
     func getUserDefaults() {
         monthlyResetSetting = defaults.bool(forKey: "MonthlyResetSetting")
-        subscribedUser = defaults.bool(forKey: "SubscribedUser")
+//        subscribedUser = defaults.bool(forKey: "SubscribedUser")
         
         if defaults.object(forKey: "RegisteredDate") != nil {
             registeredDate = defaults.object(forKey: "RegisteredDate") as! Date
@@ -564,6 +565,7 @@ class SettingTableViewController: UITableViewController {
             try firebaseAuth.signOut()
             deleteReminders()
             subscribedUser = false
+            currentUserG = ""
             setUserDefaults()
             self.performSegue(withIdentifier: "goToLogin", sender: self)
         } catch let signOutError as NSError {

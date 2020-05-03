@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 //COLORS
 let colorTrackH = #colorLiteral(red: 0.5741485357, green: 0.5741624236, blue: 0.574154973, alpha: 1)
@@ -37,4 +39,10 @@ let freeMinutes = 10080 //7 days
 var reloadBudgetViewCC = false
 
 
+//User Attributes
+var currentUserG = ""
 
+
+
+//Database
+var db:Firestore!

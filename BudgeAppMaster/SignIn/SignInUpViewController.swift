@@ -39,7 +39,9 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         //If users is logged in but not subscribed
-        if Auth.auth().currentUser?.uid != nil {
+        if currentUserG != "" {
+            //notification to load login buttons
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SignInOutButtons"), object: nil)
             self.navigationController!.popToRootViewController(animated: true)
         }
     }
@@ -95,6 +97,8 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
         passwordField.resignFirstResponder()
     }
     
+             
+    
     
     //MARK: SignIn Button Tapped
     @IBAction func signInButtonTapped(_ sender: Any) {
@@ -104,8 +108,8 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
         startSpinner()
         
         if isValidEmail(testStr: email!) == true {
-        
-//        if emailField.text != "" {
+            
+            //        if emailField.text != "" {
             
             if signUpMode == true {
                 //*SIGNUP MODE*
@@ -120,10 +124,16 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                         //SUCCESS STATE
                         registeredDate = Auth.auth().currentUser?.metadata.creationDate! ?? Date()
                         defaults.set(registeredDate, forKey: "RegisteredDate")
+                        
                         self.stopSpinner()
                         goToMain = true
-                   
-//                        self.dismiss(animated: true, completion: nil)
+                        
+                        if Auth.auth().currentUser?.uid != nil {
+                            print("UserID: \(Auth.auth().currentUser?.uid)")
+                            currentUserG = Auth.auth().currentUser!.uid
+                            print("currentUserG: \(currentUserG)")
+                        }
+                        //                        self.dismiss(animated: true, completion: nil)
                         
                         print("Signup Successful!")
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
@@ -146,8 +156,14 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                         self.stopSpinner()
                         goToMain = true
                         
+                        if Auth.auth().currentUser?.uid != nil {
+                            print("UserID: \(Auth.auth().currentUser?.uid)")
+                            currentUserG = Auth.auth().currentUser!.uid
+                            print("currentUserG: \(currentUserG)")
+                        }
                         
-//                        self.dismiss(animated: true, completion: nil)
+                        
+                        //                        self.dismiss(animated: true, completion: nil)
                         
                         print("Login successful!!")
                         self.fireStoreListener()
@@ -167,7 +183,14 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
         
         
         
+        
     }
+    
+    func getUserData() {
+       
+    }
+    
+    
     
     
     @IBAction func switchModes(_ sender: Any) {

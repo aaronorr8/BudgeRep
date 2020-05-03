@@ -36,9 +36,10 @@ class WelcomeViewController: UIViewController, SKProductsRequestDelegate {
         
         
         if Auth.auth().currentUser?.uid == nil {
-            loginButtonOutlet.isHidden = false
+            loginButtonOutlet.setTitle("Login to Budge", for: .normal)
         } else {
-            loginButtonOutlet.isHidden = true
+            currentUserG = Auth.auth().currentUser!.uid
+            loginButtonOutlet.setTitle("Sign Out", for: .normal)
         }
         
         //Hide navigation bar
@@ -53,7 +54,6 @@ class WelcomeViewController: UIViewController, SKProductsRequestDelegate {
             request.start()
             
             
-            
         } else {
             print("please enable IAP")
         }
@@ -65,6 +65,12 @@ class WelcomeViewController: UIViewController, SKProductsRequestDelegate {
         super.viewDidLoad()
         
         
+       
+        
+       
+       
+        //listen to notification to show/hide login/signout buttons
+       NotificationCenter.default.addObserver(self, selector: #selector(setSignInOutButtons), name: NSNotification.Name(rawValue: "SignInOutButtons"), object: nil)
         
     }
     
@@ -79,6 +85,13 @@ class WelcomeViewController: UIViewController, SKProductsRequestDelegate {
     }
     
     
+    
+    @objc func setSignInOutButtons() {
+        print("set login and sign out buttons")
+        loginButtonOutlet.setTitle("Login to Budge", for: .normal)
+    }
+    
+    
     @IBAction func getStartedButton(_ sender: Any) {
         
         signUpMode = true
@@ -88,21 +101,38 @@ class WelcomeViewController: UIViewController, SKProductsRequestDelegate {
         } else {
             self.performSegue(withIdentifier: "goToIAP", sender: self)
         }
-        
-       
-        
-            
-        
+         
 
     }
     
 
     @IBAction func loginButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "goToSignUp", sender: self)
-        signUpMode = false
         
-
+        if Auth.auth().currentUser?.uid == nil {
+            signUpMode = false
+            self.performSegue(withIdentifier: "goToSignUp", sender: self)
+        } else {
+            let firebaseAuth = Auth.auth()
+            do {
+                try firebaseAuth.signOut()
+                loginButtonOutlet.isHidden = false
+                self.navigationItem.rightBarButtonItem = nil
+                currentUserG = ""
+                loginButtonOutlet.setTitle("Login to Budge", for: .normal)
+            } catch let signOutError as NSError {
+                print ("Error signing out: %@", signOutError)
+            }
+        }
+        
+        
+        
     }
+    
+    
+    @IBAction func signOutButton(_ sender: Any) {
+        
+    }
+    
     
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         print("product request")
@@ -115,11 +145,7 @@ class WelcomeViewController: UIViewController, SKProductsRequestDelegate {
                 print(product.localizedDescription)
                 print(product.price)
                 print("price: \(price)")
-                
-                
-                
-                //                localizedPriceString = ("\(product.localizedPrice)")
-                
+               
             }
             price = product.localizedPrice
             print("price: \(price)")
