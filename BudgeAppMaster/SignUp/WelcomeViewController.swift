@@ -118,6 +118,11 @@ class WelcomeViewController: UIViewController, SKProductsRequestDelegate {
                 loginButtonOutlet.isHidden = false
                 self.navigationItem.rightBarButtonItem = nil
                 currentUserG = ""
+                subscribedUser = false
+                
+                defaults.set(false, forKey: "SubscribedUser")
+                defaults.set("", forKey: "CurrentUserG")
+                
                 loginButtonOutlet.setTitle("Login to Budge", for: .normal)
             } catch let signOutError as NSError {
                 print ("Error signing out: %@", signOutError)

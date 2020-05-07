@@ -231,11 +231,13 @@ class IAPForcedViewController: UIViewController, SKProductsRequestDelegate, SKPa
         func unlockApp() {
             subscribedUser = true
             saveToFireStore()
-    //        defaults.set(subscribedUser, forKey: "SubscribedUser")
+            print("set subscribedUser defaults to true")
+            defaults.set(true, forKey: "SubscribedUser")
         }
         
         func closeIAPScreen() {
-            self.dismiss(animated: true, completion: nil)
+//            self.dismiss(animated: true, completion: nil)
+            self.performSegue(withIdentifier: "goToBudgets", sender: self)
         }
         
         func convertDoubleToCurency(amount: Double) -> String {

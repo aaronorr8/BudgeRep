@@ -112,7 +112,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
             //        if emailField.text != "" {
             
             if signUpMode == true {
-                //*SIGNUP MODE*
+                //MARK: SIGNUP MODE
                 Auth.auth().createUser(withEmail: email!, password: password!) { (user, error) in
                     if error != nil {
                         //ERROR STATE
@@ -132,8 +132,10 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                             print("UserID: \(Auth.auth().currentUser?.uid)")
                             currentUserG = Auth.auth().currentUser!.uid
                             print("currentUserG: \(currentUserG)")
+                            
+                            print("set currentUserG defaults to \(currentUserG)")
+                            defaults.set(currentUserG, forKey: "CurrentUserG")
                         }
-                        //                        self.dismiss(animated: true, completion: nil)
                         
                         print("Signup Successful!")
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
@@ -141,7 +143,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                     }
                 }
             } else {
-                //*LOGIN MODE*
+                //MARK: LOGIN MODE
                 Auth.auth().signIn(withEmail: email!, password: password!) { (user, error) in
                     if error != nil {
                         //ERROR STATE
@@ -160,13 +162,16 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                             print("UserID: \(Auth.auth().currentUser?.uid)")
                             currentUserG = Auth.auth().currentUser!.uid
                             print("currentUserG: \(currentUserG)")
+                            
+                            print("set currentUserG defaults to \(currentUserG)")
+                            defaults.set(currentUserG, forKey: "CurrentUserG")
                         }
-                        
-                        
-                        //                        self.dismiss(animated: true, completion: nil)
+                     
                         
                         print("Login successful!!")
-                        self.fireStoreListener()
+//                        self.fireStoreListener()
+//                        self.getFirestoreData()
+                        self.newGetFireStoreData()
                         
                         
                         
@@ -259,18 +264,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
     
     func loginAlert() {
         let alert = UIAlertController(title: errorText, message: nil, preferredStyle: .alert)
-        
-//        alert.addAction(UIAlertAction(title: "Forgot password? Reset it now.", style: UIAlertAction.Style.default, handler: { _ in
-//
-//            let email = self.emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-//            Auth.auth().sendPasswordReset(withEmail: email!) { error in
-//                if error == nil {
-//                    self.resetPasswordAlert()
-//                } else {
-//                    print("reset password error: \(String(describing: error))")
-//                }
-//            }
-//        }))
+
 
         alert.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
@@ -320,32 +314,83 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
         return emailTest.evaluate(with: testStr)
     }
     
+  
     
-    //MARK: FireStore Listener
-    func fireStoreListener() {
+    //MARK: Get Firestore Data
+    func getFirestoreData () {
+        
+        db = Firestore.firestore()
+        
         if let userID = Auth.auth().currentUser?.uid {
-            db.collection("budgets").document(userID)
-                .addSnapshotListener { documentSnapshot, error in
-                    guard let document = documentSnapshot else {
-                        print("Error fetching document: \(error!)")
-                        return
-                    }
-                    guard let data = document.data() else {
-                        print("Document data was empty.")
-                        print("User isn't subscribed, to to IAP")
-                        self.performSegue(withIdentifier: "goToIAP", sender: self)
-                        return
-                    }
+            currentUserG = Auth.auth().currentUser!.uid
+            print("AppDelegate: currentUserG: \(currentUserG)")
+            
+            let docRef = db.collection("budgets").document(userID)
+            
+            // Force the SDK to fetch the document from the cache. Could also specify
+            // FirestoreSource.server or FirestoreSource.default.
+            docRef.getDocument(source: .cache) { (document, error) in
+                if let document = document {
+                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                    print("AppDelegate: Cached document data: \(dataDescription)")
                     subscribedUser = document.get("subscribedUser") as! Bool
-                    print("From Firestore, subscribedUser = \(subscribedUser)")
+                    print("AppDelegate: subscribedUser: \(subscribedUser)")
                     if subscribedUser == true {
-                        print("User is subscribed, go to budgets!!")
+                        print("set subscribedUser defaults to true")
+//                        defaults.set(true, forKey: "SubscribedUser")
+                        self.performSegue(withIdentifier: "goToBudgets", sender: self)
                         self.dismiss(animated: true, completion: nil)
                     } else {
-                        
+                        self.performSegue(withIdentifier: "goToIAP", sender: self)
                     }
+                } else {
+                    print("AppDelegate: Document does not exist in cache")
+                    self.performSegue(withIdentifier: "goToIAP", sender: self)
+                }
             }
+        } else {
+            print("AppDelegate: No UserID Found")
+            currentUserG = ""
         }
+        
+    }
+    
+    
+    func newGetFireStoreData() {
+        db = Firestore.firestore()
+        
+         if Auth.auth().currentUser?.uid != nil {
+             currentUserG = Auth.auth().currentUser!.uid
+             print("AppDelegate: currentUserG: \(currentUserG)")
+             
+             let docRef = db.collection("budgets").document(currentUserG)
+             
+             docRef.getDocument(source: .cache) { (document, error) in
+                 if let document = document {
+                     let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                     print("Cached document data: \(dataDescription)")
+                     
+                     if let subStatusFromDoc = document.get("subscribedUser") {
+                         subscribedUser = subStatusFromDoc as! Bool
+                         print("LogIn screen: subscribedUser: \(subscribedUser)")
+                     } else {
+                         print("Login screen: Couldn't get subscriber status")
+                     }
+                 } else {
+                     print("Login screen: Document does not exist in cache")
+                 }
+                 
+                 if subscribedUser == true {
+                    self.performSegue(withIdentifier: "goToBudgets", sender: self)
+                 } else {
+                    self.performSegue(withIdentifier: "goToIAP", sender: self)
+                 }
+                 
+                 
+             }
+         } else {
+             print("Login screen: Could not get userID")
+         }
     }
     
     

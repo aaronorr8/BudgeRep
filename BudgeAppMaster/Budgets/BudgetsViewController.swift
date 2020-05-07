@@ -39,11 +39,26 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         
         
     }
+    
+    
+    func checkSubsciptionStatus() {
+        if currentUserG == "" || subscribedUser == false {
+            print("BudgetsVC: Send user to login")
+            self.performSegue(withIdentifier: "goToLogin", sender: self)
+        } else {
+            print("BudgetsVC: User is subscribed, don't send to login")
+        }
+    }
+    
+    
+    
 
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        checkSubsciptionStatus()
         
         //Reset view for new users. Notification is posted when new users sign up
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
@@ -445,7 +460,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
                         return
                     }
                     guard let data = document.data() else {
-                        print("Document data was empty.")
+                        print("BudgetsVC Document data was empty.")
                         return
                     }
                     budgetNameG = document.get("budgetName") as! [String]

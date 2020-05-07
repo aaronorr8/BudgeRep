@@ -11,7 +11,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="fph-ZP-xtg">
             <objects>
-                <tabBarController id="3UM-1s-xEN" customClass="TabBarController" customModule="BudgeAppMaster" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" modalPresentationStyle="fullScreen" id="3UM-1s-xEN" customClass="TabBarController" customModule="BudgeAppMaster" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jvk-TS-x8E" colorLabel="IBBuiltInLabel-Red">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1873,6 +1873,7 @@
                         <outlet property="signInButtonOutlet" destination="cub-D6-c5p" id="0BJ-3q-FJO"/>
                         <outlet property="switchModes" destination="wKN-R8-hAG" id="gHg-Vy-lpD"/>
                         <segue destination="aX5-id-CCQ" kind="show" identifier="goToIAP" id="bnP-NX-ouJ"/>
+                        <segue destination="3UM-1s-xEN" kind="presentation" identifier="goToBudgets" modalTransitionStyle="flipHorizontal" id="7OZ-UO-SCw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pHD-Ke-huZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1907,7 +1908,7 @@
         <!--Navigation Controller-->
         <scene sceneID="VfM-NE-KKD">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="fBD-do-PNd" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="WelcomeFlow" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="fBD-do-PNd" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="guh-H3-kum">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -2624,6 +2625,7 @@
                         <outlet property="legalText" destination="FhD-Rv-RcX" id="zRv-89-VpF"/>
                         <outlet property="subscribeButton" destination="P2L-sk-uDG" id="3OB-v2-4yf"/>
                         <outlet property="tryForFreeLabel" destination="RV2-Lb-Rl4" id="QNw-oj-mcA"/>
+                        <segue destination="3UM-1s-xEN" kind="presentation" identifier="goToBudgets" modalTransitionStyle="flipHorizontal" id="OfY-ZK-uGO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lmk-9p-qrG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2653,5 +2655,6 @@
         <segue reference="szh-Vo-IQD"/>
         <segue reference="rYF-tH-GT3"/>
         <segue reference="8MC-0u-7HE"/>
+        <segue reference="OfY-ZK-uGO"/>
     </inferredMetricsTieBreakers>
 </document>

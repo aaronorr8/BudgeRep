@@ -556,7 +556,13 @@ class SettingTableViewController: UITableViewController {
     
     func setUserDefaults() {
         defaults.set(monthlyResetSetting, forKey: "MonthlyResetSetting")
-        defaults.set(subscribedUser, forKey: "SubscribedUser")
+        
+        
+    }
+    
+    func setUserDefaultsSignOut() {
+        defaults.set(false, forKey: "SubscribedUser")
+        defaults.set("", forKey: "CurrentUserG")
     }
     
     func signOut() {
@@ -566,7 +572,8 @@ class SettingTableViewController: UITableViewController {
             deleteReminders()
             subscribedUser = false
             currentUserG = ""
-            setUserDefaults()
+            defaults.set(false, forKey: "SubscribedUser")
+            defaults.set("", forKey: "CurrentUserG")
             self.performSegue(withIdentifier: "goToLogin", sender: self)
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)

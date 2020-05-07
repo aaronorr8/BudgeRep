@@ -31,8 +31,102 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
+        
+//        if defaults.object(forKey: "SubscribedUser") != nil {
+//            print("Set subscribedUser defaults: \(defaults.object(forKey: "SubscribedUser") as? Bool ?? false)")
+//            subscribedUser = defaults.object(forKey: "SubscribedUser") as? Bool ?? false
+//        } else {
+//            print("subscribedUser defaults are nil")
+//        }
+//
+//        if defaults.object(forKey: "CurrentUserG") != nil {
+//            print("Set currentUserG defaults: \(defaults.object(forKey: "CurrentUserG") as? String ?? "")")
+//            currentUserG = defaults.object(forKey: "CurrentUserG") as? String ?? ""
+//        } else {
+//            print("currentUserG defaults are nil")
+//        }
+
+
+
+        db = Firestore.firestore()
+       
+        if Auth.auth().currentUser?.uid != nil {
+            currentUserG = Auth.auth().currentUser!.uid
+            print("AppDelegate: currentUserG: \(currentUserG)")
+            
+            let docRef = db.collection("budgets").document(currentUserG)
+            
+            docRef.getDocument(source: .cache) { (document, error) in
+                if let document = document {
+                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                    print("Cached document data: \(dataDescription)")
+                    
+                    if let subStatusFromDoc = document.get("subscribedUser") {
+                        subscribedUser = subStatusFromDoc as! Bool
+                        print("AppDelegate: subscribedUser: \(subscribedUser)")
+                    } else {
+                        print("AppDelegate: Couldn't get subscriber status")
+                    }
+                } else {
+                    print("Document does not exist in cache")
+                }
+                
+                if subscribedUser == true {
+                   self.sendToBudgets()
+                } else {
+                    self.sendToLogin()
+                }
+                
+                
+            }
+        } else {
+            print("AppDeletage: Could not get userID")
+            self.sendToLogin()
+        }
+ 
+        
         return true
     }
+    
+    
+    
+    func sendToLogin() {
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "WelcomeFlow")
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
+    }
+    
+    func sendToBudgets() {
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
+    }
+    
+    
+    func setInitialView() {
+        //MARK: Set Initial View
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        if subscribedUser == true {
+            print("currentUserG: \(currentUserG), subscribedUser: \(subscribedUser), Send to TabBarController")
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+        } else {
+            print("currentUserG: \(currentUserG), subscribedUser: \(subscribedUser), Send to WelcomeFlow")
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "WelcomeFlow")
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+        }
+    }
+    
+    
+ 
     
         
   
