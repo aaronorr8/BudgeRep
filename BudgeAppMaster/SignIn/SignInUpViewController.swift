@@ -30,7 +30,11 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLayoutSubviews() {
         
-       
+       //Add rounded outline to save button
+       signInButtonOutlet.backgroundColor = .clear
+       signInButtonOutlet.layer.cornerRadius = 6
+       signInButtonOutlet.layer.borderWidth = 2
+       signInButtonOutlet.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
         
         //Add underline to text fields
         emailField.setUnderLine()
@@ -295,11 +299,13 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
     
     func setModeText() {
         if signUpMode == true {
+            signInButtonOutlet.setTitle("Sign Up", for: .normal)
             instructionLabel.text = "Create an Account"
             switchModes.setTitle("Login Instead", for: .normal)
             pigImage.image = #imageLiteral(resourceName: "PigRight")
             forgotPasswordOutlet.isHidden = true
         } else {
+            signInButtonOutlet.setTitle("Login", for: .normal)
             instructionLabel.text = "Login to Budge"
             switchModes.setTitle("SignUp Instead", for: .normal)
             pigImage.image = #imageLiteral(resourceName: "PigLeft")

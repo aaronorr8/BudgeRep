@@ -120,22 +120,7 @@ class SettingTableViewController: UITableViewController {
     }
     
     
-    
-    
-    
-//    @IBAction func notifyMeButton(_ sender: Any) {
-//        let center = UNUserNotificationCenter.current()
-//        center.getPendingNotificationRequests { (notifications) in
-//            print("################## Count: \(notifications.count)")
-//            for item in notifications {
-//                print(item.content.title)
-//                print(item.identifier)
-//                print(item.trigger)
-//                print("- - - - - - - - - -")
-//            }
-//        }
-//    }
-    
+
     
     
     @IBAction func resetAllBudgets(_ sender: Any) {
