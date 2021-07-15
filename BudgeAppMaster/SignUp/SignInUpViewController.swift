@@ -41,16 +41,6 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
         passwordField.setUnderLine()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        //If users is logged in but not subscribed
-        if currentUserG != "" {
-            //notification to load login buttons
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SignInOutButtons"), object: nil)
-            self.navigationController!.popToRootViewController(animated: true)
-        }
-    }
-    
-  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,6 +92,9 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
     }
     
              
+    @IBAction func closeButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     
     //MARK: SignIn Button Tapped
@@ -179,6 +172,8 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                         
                         
                         
+                        
+                        
                     }
                 }
                 
@@ -189,6 +184,8 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
             stopSpinner()
             emptyEmailFieldAlert()
         }
+        
+    
         
         
         
@@ -347,11 +344,11 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                         self.performSegue(withIdentifier: "goToBudgets", sender: self)
                         self.dismiss(animated: true, completion: nil)
                     } else {
-                        self.performSegue(withIdentifier: "goToIAP", sender: self)
+                        self.performSegue(withIdentifier: "goToBudgets", sender: self)
                     }
                 } else {
                     print("AppDelegate: Document does not exist in cache")
-                    self.performSegue(withIdentifier: "goToIAP", sender: self)
+                    self.performSegue(withIdentifier: "goToBudgets", sender: self)
                 }
             }
         } else {
@@ -387,7 +384,8 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                  }
                  
                  if subscribedUser == true {
-                    self.performSegue(withIdentifier: "goToBudgets", sender: self)
+//                    self.performSegue(withIdentifier: "goToBudgets", sender: self)
+                    self.dismiss(animated: true, completion: nil)
                  } else {
                     self.performSegue(withIdentifier: "goToIAP", sender: self)
                  }

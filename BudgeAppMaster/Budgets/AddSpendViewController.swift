@@ -68,7 +68,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
     let tempBudgetNoteG = budgetNoteG
     let tempBudgetHistoryDateG = budgetHistoryDateG
     let tempBudgetHistoryTimeG = budgetHistoryTimeG
-    let tempBudgetRemainingG = budgetRemainingG
+//    let tempBudgetRemainingG = budgetRemainingG
 //    let tempTotalSpentG = totalSpentG
     
     override func viewDidLayoutSubviews() {
@@ -87,7 +87,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         
-        print("Temp....\(tempBudgetRemainingG)")
+//        print("Temp....\(tempBudgetRemainingG)")
         
         super.viewDidLoad()
         
@@ -308,9 +308,9 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
 //MARK: SAVE BUTTON
     @IBAction func SaveButton(_ sender: Any) {
         
-        if showIAP() == true {
-            self.performSegue(withIdentifier: "goToIAP", sender: self)
-        } else {
+//        if showIAP() == true {
+//            self.performSegue(withIdentifier: "goToIAP", sender: self)
+//        } else {
             
             if spendAmount.text != "" {
                 
@@ -362,7 +362,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
                 
                 //CALCULATE REMAINING BUDGET
                 totalSpentTemp = (budgetHistoryAmountG[selectedBudget]?.reduce(0, +))!
-                budgetRemainingG[myIndexG] = (budgetAmountG[myIndexG] - totalSpentTemp)
+//                budgetRemainingG[myIndexG] = (budgetAmountG[myIndexG] - totalSpentTemp)
                 
                 //print("\(month)/\(day)")
                 //print("\(hour):\(minutes)")
@@ -373,8 +373,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
                 savedBudget = selectedBudget
                 savedAmount = convertDoubleToCurency(amount: amount)
                 
-                
-                saveToFireStore()
+                save()
                 self.dismiss(animated: true, completion: nil)
                 
                 
@@ -385,7 +384,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
                 emptyTextAlert()
             }
             
-        }
+//        }
         
         
         askForReview()
@@ -393,8 +392,18 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
     }
     
     
-
+    //MARK:SAVE
+    func save() {
+        if subscribedUser == true {
+            saveToFireStore()
+            print("Save to FireStore")
+        } else {
+            setUserDefaults()
+            print("Save to UserDefaults")
+        }
+    }
     
+    //MARK: Save to FireStore
     func saveToFireStore() {
         
         if let userID = Auth.auth().currentUser?.uid {
@@ -405,7 +414,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
                 "budgetNote": budgetNoteG,
                 "budgetHistoryDate": budgetHistoryDateG,
                 "budgetHistoryTime": budgetHistoryTimeG,
-                "budgetRemaining": budgetRemainingG,
+//                "budgetRemaining": budgetRemainingG,
 //                "totalSpent": totalSpentG,
                 "subscribedUser": subscribedUser
             ]) { err in
@@ -416,7 +425,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
                     budgetNoteG = self.tempBudgetNoteG
                     budgetHistoryDateG = self.tempBudgetHistoryDateG
                     budgetHistoryTimeG = self.tempBudgetHistoryTimeG
-                    budgetRemainingG = self.tempBudgetRemainingG
+//                    budgetRemainingG = self.tempBudgetRemainingG
 //                    totalSpentG = self.tempTotalSpentG
                     
                     showToast = true
@@ -433,6 +442,18 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
     }
     
     
+    //MARK: Save to UserDefaults
+    func setUserDefaults() {
+        defaults.set(budgetNameG, forKey: "budgetNameUD")
+        defaults.set(budgetAmountG, forKey: "budgetAmountUD")
+//        defaults.set(budgetRemainingG, forKey: "budgetRemainingUD")
+        defaults.set(budgetHistoryAmountG, forKey: "budgetHistoryAmountUD")
+        defaults.set(budgetHistoryDateG, forKey: "budgetHistoryDateUD")
+        defaults.set(budgetHistoryTimeG, forKey: "budgetHistoryTimeUD")
+        defaults.set(budgetNoteG, forKey: "budgetNoteUD")
+    }
+    
+    
 
 //DELETE BUDGET
     func deleteBudget() {
@@ -445,7 +466,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         if budgetHistoryAmountG[budgetNameG[myIndexG]] != nil {
             budgetNameG.remove(at: myIndexG)
             budgetAmountG.remove(at: myIndexG)
-            budgetRemainingG.remove(at: myIndexG)
+//            budgetRemainingG.remove(at: myIndexG)
             budgetHistoryAmountG.removeValue(forKey: budgetNameTemp)
             budgetHistoryDateG.removeValue(forKey: budgetNameTemp)
             budgetHistoryTimeG.removeValue(forKey: budgetNameTemp)
@@ -454,7 +475,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
      
 //        totalSpentG = totalSpentG - totalSpentTemp
         toastOverride = true
-        saveToFireStore()
+        save()
 
     
     }

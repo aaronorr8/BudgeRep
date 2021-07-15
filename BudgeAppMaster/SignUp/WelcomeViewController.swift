@@ -35,12 +35,12 @@ class WelcomeViewController: UIViewController, SKProductsRequestDelegate {
     override func viewWillAppear(_ animated: Bool) {
         
         
-        if Auth.auth().currentUser?.uid == nil {
-            loginButtonOutlet.setTitle("Login to Budge", for: .normal)
-        } else {
-            currentUserG = Auth.auth().currentUser!.uid
-            loginButtonOutlet.setTitle("Sign Out", for: .normal)
-        }
+//        if Auth.auth().currentUser?.uid == nil {
+//            loginButtonOutlet.setTitle("Login to Budge", for: .normal)
+//        } else {
+//            currentUserG = Auth.auth().currentUser!.uid
+//            loginButtonOutlet.setTitle("Sign Out", for: .normal)
+//        }
         
         //Hide navigation bar
 //        self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -64,14 +64,7 @@ class WelcomeViewController: UIViewController, SKProductsRequestDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-       
-        
-       
-       
-        //listen to notification to show/hide login/signout buttons
-       NotificationCenter.default.addObserver(self, selector: #selector(setSignInOutButtons), name: NSNotification.Name(rawValue: "SignInOutButtons"), object: nil)
-        
+   
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -86,57 +79,54 @@ class WelcomeViewController: UIViewController, SKProductsRequestDelegate {
     
     
     
-    @objc func setSignInOutButtons() {
-        print("set login and sign out buttons")
-        loginButtonOutlet.setTitle("Login to Budge", for: .normal)
-    }
+
     
     
     @IBAction func getStartedButton(_ sender: Any) {
         
-        signUpMode = true
-        
-        if Auth.auth().currentUser?.uid == nil {
-            self.performSegue(withIdentifier: "goToSignUp", sender: self)
-        } else {
-            self.performSegue(withIdentifier: "goToIAP", sender: self)
-        }
+//        signUpMode = true
+//
+//        if Auth.auth().currentUser?.uid == nil {
+//            self.performSegue(withIdentifier: "goToSignUp", sender: self)
+//        } else {
+//            self.performSegue(withIdentifier: "goToIAP", sender: self)
+//        }
          
 
     }
     
 
-    @IBAction func loginButton(_ sender: Any) {
-        
-        if Auth.auth().currentUser?.uid == nil {
-            signUpMode = false
-            self.performSegue(withIdentifier: "goToSignUp", sender: self)
-        } else {
-            let firebaseAuth = Auth.auth()
-            do {
-                try firebaseAuth.signOut()
-                loginButtonOutlet.isHidden = false
-                self.navigationItem.rightBarButtonItem = nil
-                currentUserG = ""
-                subscribedUser = false
-                
-                defaults.set(false, forKey: "SubscribedUser")
-                defaults.set("", forKey: "CurrentUserG")
-                
-                loginButtonOutlet.setTitle("Login to Budge", for: .normal)
-            } catch let signOutError as NSError {
-                print ("Error signing out: %@", signOutError)
-            }
-        }
-        
-        
-        
-    }
-    
-    
-    @IBAction func signOutButton(_ sender: Any) {
-        
-    }
+//    @IBAction func loginButton(_ sender: Any) {
+//        
+//        if Auth.auth().currentUser?.uid == nil {
+//            signUpMode = false
+//            self.performSegue(withIdentifier: "goToSignUp", sender: self)
+//        } else {
+//            let firebaseAuth = Auth.auth()
+//            do {
+//                try firebaseAuth.signOut()
+//                loginButtonOutlet.isHidden = false
+//                self.navigationItem.rightBarButtonItem = nil
+//                currentUserG = ""
+//                subscribedUser = false
+//                
+//                defaults.set(false, forKey: "SubscribedUser")
+//                defaults.set("", forKey: "CurrentUserG")
+//                
+//                loginButtonOutlet.setTitle("Login to Budge", for: .normal)
+//            } catch let signOutError as NSError {
+//                print ("Error signing out: %@", signOutError)
+//            }
+//        }
+//        
+//        
+//        
+//    }
+//    
+//    
+//    @IBAction func signOutButton(_ sender: Any) {
+//        
+//    }
     
     
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {

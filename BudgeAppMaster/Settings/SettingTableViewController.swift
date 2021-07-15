@@ -128,25 +128,35 @@ class SettingTableViewController: UITableViewController {
     }
     
     func resetAllBudgets() {
-        let remainingAvailable = budgetRemainingG.reduce(0, +)
+        var spentArray = [Double]()
+        for (_,value) in budgetHistoryAmountG {
+            spentArray.append(value.reduce(0, +))
+        }
+        let totalSpent = spentArray.reduce(0, +)
+        let totalBudgeted = budgetAmountG.reduce(0, +)
+        rolloverTotalG = totalBudgeted - totalSpent
         
-        if remainingAvailable > 0.0 {
+    
+        
+        
+        if rolloverTotalG > 0.0 {
             //alert with rollover option
             
             let alert = UIAlertController(title: "You have unspent money!" , message: "Do you want to rollover your unspent money into a \"Rollover\" budget?", preferredStyle: UIAlertController.Style.alert)
             
             alert.addAction(UIAlertAction(title: "Yes! Rollover my money", style: UIAlertAction.Style.default, handler: { _ in
                 self.rolloverToRolloverBudget()
-                self.saveToFireStore()
+                self.save()
                 self.tabBarController?.selectedIndex = 0
             }))
             alert.addAction(UIAlertAction(title: "No. Just reset my budgets", style: UIAlertAction.Style.default, handler: { _ in
                 self.resetBudgetsNoRollover()
-                self.saveToFireStore()
+                self.save()
                 self.tabBarController?.selectedIndex = 0
             }))
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: { _ in
                 print("Cancel")
+                
             }))
             
             self.present(alert, animated: true, completion: nil)
@@ -162,7 +172,7 @@ class SettingTableViewController: UITableViewController {
             
             alert.addAction(UIAlertAction(title: "Reset", style: UIAlertAction.Style.default, handler: { _ in
                 self.resetBudgetsNoRollover()
-                self.saveToFireStore()
+                self.save()
                 self.tabBarController?.selectedIndex = 0
             }))
             
@@ -244,34 +254,36 @@ class SettingTableViewController: UITableViewController {
     func resetBudgetsNoRollover() {
         //RESET BUDGETS
         print("Reset Budgets, No Rollover")
+        var tempRolloverAmount = 0.0
+        
+        if budgetNameG.contains("Rollover") {
+            let index = budgetNameG.firstIndex(of: "Rollover")
+            tempRolloverAmount = budgetAmountG[index!]
+        }
+        
         resetBudgets()
-        budgetRemainingG = budgetAmountG
-//        totalSpentG = 0.0
         rolloverTotalG = 0.0
         
         if budgetNameG.contains("Rollover") {
-            deleteRolloverBudget()
+            let index = budgetNameG.firstIndex(of: "Rollover")
+            budgetAmountG[index!] = tempRolloverAmount
         }
     }
     
     func rolloverToRolloverBudget() {
         print("Reset Budgets and Rollover")
-        rolloverTotalG = budgetRemainingG.reduce(0, +)
         
         if budgetNameG.contains("Rollover") {
             resetBudgets()
-//            totalSpentG = 0.0
+
             
             //Find Index of Rollover Budget and set rollover budget
             let indexOfRollover = budgetNameG.firstIndex(of: "Rollover")
             budgetAmountG[indexOfRollover!] = rolloverTotalG
-            budgetRemainingG = budgetAmountG
             
         } else {
             resetBudgets()
             addRolloverBudget()
-            budgetRemainingG = budgetAmountG
-//            totalSpentG = 0.0
         }
     }
     
@@ -280,7 +292,7 @@ class SettingTableViewController: UITableViewController {
         let indexOfRollover = budgetNameG.firstIndex(of: "Rollover")
         budgetNameG.remove(at: indexOfRollover!)
         budgetAmountG.remove(at: indexOfRollover!)
-        budgetRemainingG.remove(at: indexOfRollover!)
+//        budgetRemainingG.remove(at: indexOfRollover!)
         budgetHistoryAmountG.removeValue(forKey: "Rollover")
         budgetHistoryDateG.removeValue(forKey: "Rollover")
         budgetHistoryTimeG.removeValue(forKey: "Rollover")
@@ -298,7 +310,7 @@ class SettingTableViewController: UITableViewController {
         budgetHistoryDateG["Rollover"] = []
         budgetHistoryTimeG["Rollover"] = []
         let totalSpent = budgetHistoryAmountG["Rollover"]?.reduce(0, +)
-        budgetRemainingG.append(amount - totalSpent!)
+//        budgetRemainingG.append(amount - totalSpent!)
     }
     
     
@@ -375,11 +387,11 @@ class SettingTableViewController: UITableViewController {
             scheduleResetNotification()
             monthlyResetSetting = true
             setMonthlyResetLastMonth()
-            setUserDefaults()
+            setUserDefaultsResetSetting()
         } else {
             cancelResetNotification()
             monthlyResetSetting = false
-            setUserDefaults()
+            setUserDefaultsResetSetting()
         }
         
     }
@@ -464,6 +476,28 @@ class SettingTableViewController: UITableViewController {
         }
     }
     
+   
+    //MARK: SAVE
+    func save() {
+        if subscribedUser == true {
+            saveToFireStore()
+            print("Save to FireStore")
+        } else {
+            setUserDefaults()
+            print("Save to UserDefaults")
+        }
+    }
+
+    //MARK: Save to UserDefaults
+    func setUserDefaults() {
+        defaults.set(budgetNameG, forKey: "budgetNameUD")
+        defaults.set(budgetAmountG, forKey: "budgetAmountUD")
+        defaults.set(budgetHistoryAmountG, forKey: "budgetHistoryAmountUD")
+        defaults.set(budgetHistoryDateG, forKey: "budgetHistoryDateUD")
+        defaults.set(budgetHistoryTimeG, forKey: "budgetHistoryTimeUD")
+        defaults.set(budgetNoteG, forKey: "budgetNoteUD")
+    }
+    
     //MARK: Save to FireStore
     func saveToFireStore() {
         
@@ -475,7 +509,7 @@ class SettingTableViewController: UITableViewController {
                 "budgetNote": budgetNoteG,
                 "budgetHistoryDate": budgetHistoryDateG,
                 "budgetHistoryTime": budgetHistoryTimeG,
-                "budgetRemaining": budgetRemainingG,
+//                "budgetRemaining": budgetRemainingG,
 //                "totalSpent": totalSpentG,
                 "subscribedUser": subscribedUser
             ]) { err in
@@ -527,7 +561,7 @@ class SettingTableViewController: UITableViewController {
         
         //Turn of monthly reset switch
         monthlyResetSetting = false
-        setUserDefaults()
+        setUserDefaultsResetSetting()
     }
     
     func getUserDefaults() {
@@ -539,7 +573,7 @@ class SettingTableViewController: UITableViewController {
         }
     }
     
-    func setUserDefaults() {
+    func setUserDefaultsResetSetting() {
         defaults.set(monthlyResetSetting, forKey: "MonthlyResetSetting")
         
         
@@ -552,13 +586,16 @@ class SettingTableViewController: UITableViewController {
     
     func signOut() {
         let firebaseAuth = Auth.auth()
+        setUserDefaultsSignOut()
+        subscribedUser = false
+        currentUserG = ""
         do {
             try firebaseAuth.signOut()
             deleteReminders()
             subscribedUser = false
             currentUserG = ""
-            defaults.set(false, forKey: "SubscribedUser")
-            defaults.set("", forKey: "CurrentUserG")
+//            defaults.set(false, forKey: "SubscribedUser")
+//            defaults.set("", forKey: "CurrentUserG")
             self.performSegue(withIdentifier: "goToLogin", sender: self)
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)

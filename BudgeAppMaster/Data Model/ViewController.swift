@@ -49,7 +49,7 @@ var notificationUniqueID = 0
 
 var budgetNameG = [String]() //array of budget names e.g., [grocery, clothing, etc]
 var budgetAmountG = [Double]() //array of the budget amounts [grocery budget, clothing budget, etc]
-var budgetRemainingG = [Double]() //array of the remaining amount in each budget
+//var budgetRemainingG = [Double]() //array of the remaining amount in each budget
 var budgetHistoryAmountG = [String: [Double]]()
 var budgetHistoryDateG = [String: [String]]()
 var budgetHistoryTimeG = [String: [String]]()
@@ -57,6 +57,7 @@ var budgetNoteG = [String: [String]]()
 //var totalSpentG = Double() //a running total of money spent from all budgets
 var rolloverG = Bool()
 var rolloverTotalG = Double()
+
 
 
 func convertDoubleToCurency(amount: Double) -> String {

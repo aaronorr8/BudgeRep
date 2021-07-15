@@ -17,13 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
 
-    
-
-
-    
-    
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
@@ -71,17 +64,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     print("Document does not exist in cache")
                 }
                 
-                if subscribedUser == true {
+//                if subscribedUser == true {
+                if currentUserG != "" {
+                    print("AppDelegate - send to budgets")
                    self.sendToBudgets()
                 } else {
-                    self.sendToLogin()
+                    print("AppDelegate - send to login")
+                    self.sendToBudgets()
                 }
                 
                 
             }
         } else {
             print("AppDeletage: Could not get userID")
-            self.sendToLogin()
+            self.sendToBudgets()
         }
  
         

@@ -108,12 +108,12 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             //UPDATE TOTAL REMAINING IN BUDGET
             let totalSpent = (budgetHistoryAmountG[self.budgetName]?.reduce(0, +))!
-            budgetRemainingG[myIndexG] = (budgetAmountG[myIndexG] - totalSpent)
+//            budgetRemainingG[myIndexG] = (budgetAmountG[myIndexG] - totalSpent)
             
             //UPDATE TOTAL SPENT IN ALL BUDGETS
 //            totalSpentG = (totalSpentG - tempAmount) + amount
             
-            self.saveToFireStore()
+            self.save()
 
             
         }
@@ -133,12 +133,12 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             //UPDATE TOTAL REMAINING IN BUDGET
             let totalSpent = (budgetHistoryAmountG[self.budgetName]?.reduce(0, +))!
-            budgetRemainingG[myIndexG] = (budgetAmountG[myIndexG] - totalSpent)
+//            budgetRemainingG[myIndexG] = (budgetAmountG[myIndexG] - totalSpent)
             
             //UPDATE TOTAL SPENT IN ALL BUDGETS
 //            totalSpentG = (totalSpentG - tempAmount) + amount
             
-            self.saveToFireStore()
+            self.save()
             
             
         }
@@ -189,9 +189,9 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             
 //            totalSpentG = (totalSpentG - amountToDelete)
             
-            budgetRemainingG[myIndexG] = budgetAmountG[myIndexG] - (budgetHistoryAmountG[self.budgetName]?.reduce(0, +))!
+//            budgetRemainingG[myIndexG] = budgetAmountG[myIndexG] - (budgetHistoryAmountG[self.budgetName]?.reduce(0, +))!
             
-            self.saveToFireStore()
+            self.save()
             self.tableView.reloadData()
 
         }
@@ -255,6 +255,28 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     
+    
+    //MARK: SAVE
+    func save() {
+        if subscribedUser == true {
+            saveToFireStore()
+            print("Save to FireStore")
+        } else {
+            setUserDefaults()
+            print("Save to UserDefaults")
+        }
+    }
+    
+    //MARK: Save to UserDefaults
+    func setUserDefaults() {
+        defaults.set(budgetNameG, forKey: "budgetNameUD")
+        defaults.set(budgetAmountG, forKey: "budgetAmountUD")
+        defaults.set(budgetHistoryAmountG, forKey: "budgetHistoryAmountUD")
+        defaults.set(budgetHistoryDateG, forKey: "budgetHistoryDateUD")
+        defaults.set(budgetHistoryTimeG, forKey: "budgetHistoryTimeUD")
+        defaults.set(budgetNoteG, forKey: "budgetNoteUD")
+    }
+    
     //MARK: Save to FireStore
     func saveToFireStore() {
         
@@ -267,7 +289,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                 "budgetNote": budgetNoteG,
                 "budgetHistoryDate": budgetHistoryDateG,
                 "budgetHistoryTime": budgetHistoryTimeG,
-                "budgetRemaining": budgetRemainingG,
+//                "budgetRemaining": budgetRemainingG,
 //                "totalSpent": totalSpentG,
                 "subscribedUser": subscribedUser
                 
@@ -301,7 +323,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                     budgetNoteG = document.get("budgetNote") as! [String : [String]]
                     budgetHistoryDateG = document.get("budgetHistoryDate") as! [String : [String]]
                     budgetHistoryTimeG = document.get("budgetHistoryTime") as! [String : [String]]
-                    budgetRemainingG = document.get("budgetRemaining") as! [Double]
+//                    budgetRemainingG = document.get("budgetRemaining") as! [Double]
 //                    totalSpentG = document.get("totalSpent") as! Double
                     
                     print("Current data: \(data)")

@@ -35,6 +35,9 @@ var savedAmount = String()
 //MINUTES BEFORE SHOWING IAP
 let freeMinutes = 10080 //7 days
 
+//Number of free budgets
+let freeBudgets = 3
+
 //Cross Controls
 var reloadBudgetViewCC = false
 

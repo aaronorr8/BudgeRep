@@ -35,6 +35,7 @@
 		0DBF296F22932A9700778D01 /* IAPCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF296E22932A9700778D01 /* IAPCollectionViewCell.swift */; };
 		25A933E7C5DAD6DF2D222780 /* Pods_BudgeAppMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C778C86DABD18BCB8E509DC /* Pods_BudgeAppMaster.framework */; };
 		4303DC4C244F2D9D00ACEADB /* IAPForcedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4303DC4B244F2D9D00ACEADB /* IAPForcedViewController.swift */; };
+		43101444264C1E3000737DA1 /* To Do's.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43101443264C1E3000737DA1 /* To Do's.swift */; };
 		4326BF34223347D4002B501D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326BF33223347D4002B501D /* ViewController.swift */; };
 		4329DD23245C53560045E952 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4329DD22245C53560045E952 /* GlobalConstants.swift */; };
 		4351D753224EF245007ED47E /* BenefitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4351D752224EF245007ED47E /* BenefitsViewController.swift */; };
@@ -76,6 +77,7 @@
 		0DBF296C2293256400778D01 /* IAP2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAP2ViewController.swift; sourceTree = "<group>"; };
 		0DBF296E22932A9700778D01 /* IAPCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPCollectionViewCell.swift; sourceTree = "<group>"; };
 		4303DC4B244F2D9D00ACEADB /* IAPForcedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPForcedViewController.swift; sourceTree = "<group>"; };
+		43101443264C1E3000737DA1 /* To Do's.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "To Do's.swift"; sourceTree = "<group>"; };
 		4326BF33223347D4002B501D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4329DD22245C53560045E952 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		4351D752224EF245007ED47E /* BenefitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitsViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		0DA4370122332E5200110700 /* BudgeAppMaster */ = {
 			isa = PBXGroup;
 			children = (
+				43101443264C1E3000737DA1 /* To Do's.swift */,
 				43C7B2182256826D00F1FC0B /* BudgeAppMaster.entitlements */,
 				0DA4370222332E5200110700 /* AppDelegate.swift */,
 				4329DD22245C53560045E952 /* GlobalConstants.swift */,
@@ -212,7 +215,6 @@
 		0DA43754223334CB00110700 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
-				0DA43752223334C700110700 /* SignInUpViewController.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -232,6 +234,7 @@
 		43ECFE86224E620C000BC957 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				0DA43752223334C700110700 /* SignInUpViewController.swift */,
 				43ECFE84224E61FC000BC957 /* WelcomeViewController.swift */,
 				4351D752224EF245007ED47E /* BenefitsViewController.swift */,
 			);
@@ -267,7 +270,7 @@
 				0DA436FB22332E5200110700 /* Sources */,
 				0DA436FC22332E5200110700 /* Frameworks */,
 				0DA436FD22332E5200110700 /* Resources */,
-				33D155BFEAA607B5FED5D86B /* [CP] Embed Pods Frameworks */,
+				D10D7C69395CAC235823DCB1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -335,23 +338,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		33D155BFEAA607B5FED5D86B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BudgeAppMaster/Pods-BudgeAppMaster-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BudgeAppMaster/Pods-BudgeAppMaster-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BudgeAppMaster/Pods-BudgeAppMaster-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		65245ABF5FB5C971571A193F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -372,6 +358,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D10D7C69395CAC235823DCB1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BudgeAppMaster/Pods-BudgeAppMaster-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BudgeAppMaster/Pods-BudgeAppMaster-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BudgeAppMaster/Pods-BudgeAppMaster-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -408,6 +411,7 @@
 				4329DD23245C53560045E952 /* GlobalConstants.swift in Sources */,
 				0D5AC2162240015C0047BB48 /* ToastCenter.swift in Sources */,
 				0DA4370322332E5200110700 /* AppDelegate.swift in Sources */,
+				43101444264C1E3000737DA1 /* To Do's.swift in Sources */,
 				0D5AC2152240015C0047BB48 /* Toast.swift in Sources */,
 				0DA437372233339E00110700 /* BudgetCollectionViewCell.swift in Sources */,
 				0DA4374D2233343000110700 /* RemindersViewController.swift in Sources */,
@@ -479,7 +483,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -534,7 +538,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -551,15 +555,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = BudgeAppMaster/BudgeAppMaster.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CC6KPH6NEB;
 				INFOPLIST_FILE = BudgeAppMaster/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.icecream.BudgeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -574,15 +578,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = BudgeAppMaster/BudgeAppMaster.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CC6KPH6NEB;
 				INFOPLIST_FILE = BudgeAppMaster/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.icecream.BudgeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

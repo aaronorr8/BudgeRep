@@ -243,7 +243,8 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
     
     
     @IBAction func closeButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+//        self.dismiss(animated: true, completion: nil)
+        self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
     func unlockApp() {
@@ -277,7 +278,7 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
                 "budgetNote": budgetNoteG,
                 "budgetHistoryDate": budgetHistoryDateG,
                 "budgetHistoryTime": budgetHistoryTimeG,
-                "budgetRemaining": budgetRemainingG,
+//                "budgetRemaining": budgetRemainingG,
                 "subscribedUser": subscribedUser
             ]) { err in
                 if let err = err {
