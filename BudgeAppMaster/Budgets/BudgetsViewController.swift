@@ -47,7 +47,6 @@
         override func viewDidLoad() {
             super.viewDidLoad()
             
-            loadUserDefaults()
             
             
             
@@ -79,8 +78,14 @@
         
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
-            fireStoreListener()
-            loadUserDefaults()
+            
+            if subscribedUser == true {
+                fireStoreListener()
+            } else {
+                loadUserDefaultsBudgets()
+            }
+            
+            
           
         }
         
@@ -401,11 +406,8 @@
             } else if budgetNameG.count < freeBudgets {
                 performSegue(withIdentifier: "goToAddBudget", sender: self)
             } else {
-                if currentUserG == "" {
-                    self.performSegue(withIdentifier: "goToSignUp", sender: self)
-                } else {
-                    self.performSegue(withIdentifier: "goToIAP", sender: self)
-                }
+                self.performSegue(withIdentifier: "goToIAP", sender: self)
+                
             }
         }
         
@@ -490,7 +492,7 @@
         }
         
         //MARK: Load User Defaults
-        func loadUserDefaults() {
+        func loadUserDefaultsBudgets() {
             if defaults.value(forKey: "budgetNameUD") != nil {budgetNameG = defaults.value(forKey: "budgetNameUD") as! [String]}
             if defaults.value(forKey: "budgetAmountUD") != nil {budgetAmountG = defaults.value(forKey: "budgetAmountUD") as! [Double]}
 //            if defaults.value(forKey: "budgetRemainingUD") != nil {budgetRemainingG = defaults.value(forKey: "budgetRemainingUD") as! [Double]}
