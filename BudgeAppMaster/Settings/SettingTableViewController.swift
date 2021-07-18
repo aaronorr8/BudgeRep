@@ -596,19 +596,23 @@ class SettingTableViewController: UITableViewController {
             currentUserG = ""
 //            defaults.set(false, forKey: "SubscribedUser")
 //            defaults.set("", forKey: "CurrentUserG")
-            self.performSegue(withIdentifier: "goToLogin", sender: self)
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
     }
     
     @IBAction func linkToAnotherDevice(_ sender: Any) {
-        let email = Auth.auth().currentUser!.email!
         
+        if currentUserG == "" {
+            performSegue(withIdentifier: "goToSignUp", sender: self)
+        } else {
+            let email = Auth.auth().currentUser!.email!
+            
+            let alert = UIAlertController(title: "Sync with Another Device", message: "To sync with another device, simply login with same email (\(String(describing: email))) and password as the original device.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
         
-        let alert = UIAlertController(title: "Sync with Another Device", message: "To sync with another device, simply login with same email (\(String(describing: email))) and password as the original device.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
     }
     
     func subscribeButtonTitle() {

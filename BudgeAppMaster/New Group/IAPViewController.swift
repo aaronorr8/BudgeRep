@@ -78,28 +78,28 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
     
     @IBAction func subscribeButton(_ sender: Any) {
         
-        startSpinner()
+        closeIAPScreen()
         
-        //Check internet connection
-        if checkNetworkConnection() {
-            stopSpinner()
-            print("You are connected, YEET!")
-        } else {
-            stopSpinner()
-            self.Alert(Message: "Your device is not connected to the internet. Please try again.")
-        }
+//        startSpinner()
+//
+//        //Check internet connection
+//        if checkNetworkConnection() {
+//            stopSpinner()
+//            print("You are connected, YEET!")
+//        } else {
+//            stopSpinner()
+//            self.Alert(Message: "Your device is not connected to the internet. Please try again.")
+//        }
+//
+//        for product in list {
+//            let ProdID = product.productIdentifier
+//            if(ProdID == "budge.subscription") {
+//                p = product
+//                buyProduct()
+//            }
+//        }
         
-        for product in list {
-            let ProdID = product.productIdentifier
-            if(ProdID == "budge.subscription") {
-                p = product
-                buyProduct()
-            }
-        }
-        
-        
-//        self.dismiss(animated: true, completion: nil)
-        
+
     
         
         
@@ -254,7 +254,8 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
     }
     
     func closeIAPScreen() {
-        self.dismiss(animated: true, completion: nil)
+//        self.dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "goToSignUp", sender: self)
     }
     
     func convertDoubleToCurency(amount: Double) -> String {

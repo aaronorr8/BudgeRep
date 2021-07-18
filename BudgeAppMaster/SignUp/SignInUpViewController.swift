@@ -136,7 +136,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                         
                         print("Signup Successful!")
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
-                        self.performSegue(withIdentifier: "goToIAP", sender: self)
+                        self.goToSyncInstruction()
                     }
                 }
             } else {
@@ -383,13 +383,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                      print("Login screen: Document does not exist in cache")
                  }
                  
-                 if subscribedUser == true {
-//                    self.performSegue(withIdentifier: "goToBudgets", sender: self)
-                    self.dismiss(animated: true, completion: nil)
-                 } else {
-                    self.performSegue(withIdentifier: "goToIAP", sender: self)
-                 }
-                 
+                self.goToSyncInstruction()
                  
              }
          } else {
@@ -398,7 +392,14 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-   
+  
+    func goToSyncInstruction() {
+        if subscribedUser == true {
+           self.performSegue(withIdentifier: "goToSyncInstructions", sender: self)
+        } else {
+           self.performSegue(withIdentifier: "goToSyncInstructions", sender: self)
+        }
+    }
     
   
     
