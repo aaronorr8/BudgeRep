@@ -78,7 +78,10 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
     
     @IBAction func subscribeButton(_ sender: Any) {
         
-        closeIAPScreen()
+        
+        closeIAPScreen() //remove this before releasing
+        
+        #warning("Uncomment all this for real testing, this is just bypassing the purchase to test on the simulator")
         
 //        startSpinner()
 //
@@ -254,9 +257,17 @@ class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentT
     }
     
     func closeIAPScreen() {
-//        self.dismiss(animated: true, completion: nil)
-        performSegue(withIdentifier: "goToSignUp", sender: self)
+        self.dismiss(animated: true, completion: nil)
+        showSignUpAndSync()
+//        performSegue(withIdentifier: "goToSignUp", sender: self)
     }
+    
+    
+    func showSignUpAndSync() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ShowSignUpAndSync"), object: nil)
+    }
+    
+    
     
     func convertDoubleToCurency(amount: Double) -> String {
         

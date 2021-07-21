@@ -1060,6 +1060,8 @@
                         <outlet property="collectionView" destination="lZp-W0-yOm" id="vHX-hN-w6k"/>
                         <segue destination="V4j-wU-ZpU" kind="presentation" identifier="goToAddBudget" id="7l1-j4-geS"/>
                         <segue destination="mGY-3L-LiV" kind="show" identifier="goToIAP" id="Nrg-ws-b06"/>
+                        <segue destination="dth-ut-w83" kind="presentation" identifier="goToSignUp" id="IbI-2h-leB"/>
+                        <segue destination="OMJ-XC-hcT" kind="presentation" identifier="goToSyncInstructions" id="fhv-y0-Y0x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O72-jK-KfL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1280,7 +1282,6 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="subscribeButton:" destination="NBk-tc-AHQ" eventType="touchUpInside" id="vx4-ab-72p"/>
-                                                        <segue destination="mGY-3L-LiV" kind="show" id="drl-vR-DBD"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1359,7 +1360,8 @@
                         <outlet property="monthlyResetSwitch" destination="AFL-Xb-kQT" id="baC-tI-1IJ"/>
                         <outlet property="pigCredit" destination="9wy-9C-MvQ" id="mRL-c8-rxh"/>
                         <outlet property="subscribeButtonOutlet" destination="64j-eJ-whA" id="lKg-CQ-oqo"/>
-                        <segue destination="fBD-do-PNd" kind="show" identifier="goToSignUp" id="xrc-kl-1MF"/>
+                        <segue destination="fBD-do-PNd" kind="show" identifier="goToSubscribeAndSignUpFlow" id="xrc-kl-1MF"/>
+                        <segue destination="OMJ-XC-hcT" kind="presentation" identifier="goToSyncInstructions" id="aNj-kr-njE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wnl-9g-fpe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1685,13 +1687,13 @@
         <!--Sign In Up View Controller-->
         <scene sceneID="bZB-oi-7m4">
             <objects>
-                <viewController id="dth-ut-w83" customClass="SignInUpViewController" customModule="BudgeAppMaster" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="dth-ut-w83" customClass="SignInUpViewController" customModule="BudgeAppMaster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ctX-Qg-RfE">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6CC-1G-uPU">
-                                <rect key="frame" x="0.0" y="354" width="375" height="141"/>
+                                <rect key="frame" x="0.0" y="356.66666666666669" width="375" height="141"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="24" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="No1-Ro-aXH">
                                         <rect key="frame" x="18" y="9" width="339" height="50"/>
@@ -1763,7 +1765,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKN-R8-hAG">
-                                <rect key="frame" x="127" y="577" width="121" height="37"/>
+                                <rect key="frame" x="127" y="579.66666666666663" width="121" height="37"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                 <state key="normal" title="Signup Instead">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1773,14 +1775,14 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PigRight" translatesAutoresizingMaskIntoConstraints="NO" id="ucs-br-bMt">
-                                <rect key="frame" x="137.66666666666666" y="242" width="100" height="51"/>
+                                <rect key="frame" x="137.66666666666666" y="244.66666666666663" width="100" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="FdZ-8z-s6F"/>
                                     <constraint firstAttribute="height" constant="51" id="gQK-bf-lxx"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jl6-oi-dnQ">
-                                <rect key="frame" x="76" y="298" width="223" height="50"/>
+                                <rect key="frame" x="76" y="300.66666666666669" width="223" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create an account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="STn-sH-GZO">
                                         <rect key="frame" x="0.0" y="12" width="223" height="31"/>
@@ -1799,7 +1801,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTh-Lt-ObT">
-                                <rect key="frame" x="16" y="489" width="116" height="28"/>
+                                <rect key="frame" x="16" y="491.66666666666669" width="116" height="28.000000000000057"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="TxV-Vs-qB2"/>
                                     <constraint firstAttribute="width" constant="116" id="zle-hc-aa0"/>
@@ -1813,7 +1815,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cub-D6-c5p">
-                                <rect key="frame" x="108.66666666666669" y="525" width="158" height="43"/>
+                                <rect key="frame" x="108.66666666666669" y="527.66666666666663" width="158" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="CB4-kd-5Ha"/>
                                     <constraint firstAttribute="width" constant="158" id="OPF-5o-c1d"/>
@@ -1827,7 +1829,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ITj-YM-J6l">
-                                <rect key="frame" x="329" y="104" width="30" height="30"/>
+                                <rect key="frame" x="329" y="60" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="76Y-7k-yXs"/>
                                     <constraint firstAttribute="width" constant="30" id="sEn-nm-uBp"/>
@@ -1873,7 +1875,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pHD-Ke-huZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1526" y="3455"/>
+            <point key="canvasLocation" x="-7555" y="2531"/>
         </scene>
         <!--Budgets-->
         <scene sceneID="dFf-dz-Tp9">
@@ -1958,6 +1960,9 @@
                                 <rect key="frame" x="76" y="407" width="239" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Buy more budgets and remove ads"/>
+                                <connections>
+                                    <segue destination="Edp-rI-tzy" kind="show" id="cKt-gS-Cw4"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Perks and salesy stuff" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qxo-tO-KcH">
                                 <rect key="frame" x="93" y="229" width="167" height="21"/>
@@ -2162,7 +2167,6 @@
                         <outlet property="legalText" destination="VhC-nn-KT2" id="tuE-lK-0Aa"/>
                         <outlet property="subscribeButton" destination="tLs-dL-bZy" id="8bw-xo-4TT"/>
                         <outlet property="tryForFreeLabel" destination="vRx-kH-RUL" id="PFN-O7-bph"/>
-                        <segue destination="dth-ut-w83" kind="show" identifier="goToSignUp" id="PCp-V2-oK1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dFO-nC-NfX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2191,7 +2195,7 @@
         <!--View Controller-->
         <scene sceneID="JgY-bF-gAR">
             <objects>
-                <viewController id="OMJ-XC-hcT" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="OMJ-XC-hcT" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Wp-mq-XRd">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2211,11 +2215,43 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UAy-FZ-nXk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2449" y="3455"/>
+            <point key="canvasLocation" x="-6755" y="2531"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="uYT-0r-KSC">
+            <objects>
+                <viewController id="Edp-rI-tzy" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MJN-cH-aAD">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qG-aV-Xyu">
+                                <rect key="frame" x="63" y="264" width="265" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Get unlimited budgets and remove ads"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VmM-oS-HRC">
+                                <rect key="frame" x="66" y="498" width="259" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Subscribe for all that plus budge sync"/>
+                                <connections>
+                                    <segue destination="eJF-8z-42K" kind="show" id="yt8-yc-80t"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2HH-S4-jlm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Qtn-ah-r4C"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dzg-Sd-QBm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="475" y="2524"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="drl-vR-DBD"/>
+        <segue reference="aNj-kr-njE"/>
+        <segue reference="Jo1-Nl-HJR"/>
         <segue reference="7l1-j4-geS"/>
     </inferredMetricsTieBreakers>
     <resources>

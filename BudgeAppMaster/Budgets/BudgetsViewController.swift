@@ -60,6 +60,7 @@
             
             //Reset view for new users. Notification is posted when new users sign up
             NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(showSignUpAndSync), name: NSNotification.Name(rawValue: "ShowSignUpAndSync"), object: nil)
             
             
             db = Firestore.firestore()
@@ -529,6 +530,17 @@
             budgetHistoryDateG.removeAll()
             budgetHistoryTimeG.removeAll()
 //            budgetRemainingG.removeAll()
+        }
+        
+        
+        
+        @objc func showSignUpAndSync() {
+            if currentUserG == "" {
+                self.performSegue(withIdentifier: "goToSignUp", sender: self)
+            } else {
+                self.performSegue(withIdentifier: "goToSyncInstructions", sender: self)
+            }
+            
         }
         
       

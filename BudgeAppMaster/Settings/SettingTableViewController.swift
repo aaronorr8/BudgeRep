@@ -115,6 +115,8 @@ class SettingTableViewController: UITableViewController {
     
     
     @IBAction func subscribeButton(_ sender: Any) {
+        subscribedUser = true //remove this before releasing
+        print("user is subscribed")
         hideCloseButton = false
         
     }
@@ -603,15 +605,17 @@ class SettingTableViewController: UITableViewController {
     
     @IBAction func linkToAnotherDevice(_ sender: Any) {
         
-        if currentUserG == "" {
-            performSegue(withIdentifier: "goToSignUp", sender: self)
+        if subscribedUser == true && currentUserG != "" {
+            performSegue(withIdentifier: "goToSyncInstructions", sender: self)
         } else {
-            let email = Auth.auth().currentUser!.email!
-            
-            let alert = UIAlertController(title: "Sync with Another Device", message: "To sync with another device, simply login with same email (\(String(describing: email))) and password as the original device.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            performSegue(withIdentifier: "goToSubscribeAndSignUpFlow", sender: self)
         }
+        
+        
+        //            let email = Auth.auth().currentUser!.email!
+        //            let alert = UIAlertController(title: "Sync with Another Device", message: "To sync with another device, simply login with same email (\(String(describing: email))) and password as the original device.", preferredStyle: .alert)
+        //            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        //            self.present(alert, animated: true, completion: nil)
         
     }
     
