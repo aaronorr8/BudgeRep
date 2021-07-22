@@ -11,7 +11,7 @@ import StoreKit
 import Firebase
 import SystemConfiguration
 
-class IAPViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
     @IBOutlet weak var subscribeButton: UIButton!
     @IBOutlet weak var tryForFreeLabel: UILabel!
