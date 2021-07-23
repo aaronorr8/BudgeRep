@@ -24,7 +24,7 @@ var monthlyResetLastMonth = 0
 //IAP
 var registeredDate = Date()
 var iapDate = Date().addingTimeInterval(12345678)
-var subscribedUser = Bool()
+
 
 
 

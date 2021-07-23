@@ -76,6 +76,8 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
         hideCloseButton = true
     }
     
+    
+    //MARK: SUBSCRIBE BUTTON
     @IBAction func subscribeButton(_ sender: Any) {
         
         
@@ -253,7 +255,7 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
     func unlockApp() {
         subscribedUser = true
         saveToFireStore()
-//        defaults.set(subscribedUser, forKey: "SubscribedUser")
+        saveToDefaults()
     }
     
     func closeIAPScreen() {
@@ -281,7 +283,6 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
     
     //MARK: Save to FireStore
     func saveToFireStore() {
-        
         if let userID = Auth.auth().currentUser?.uid {
             db.collection("budgets").document(userID).setData([
                 "budgetName": budgetNameG,
@@ -302,6 +303,12 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
             }
         }
     }
+    
+    //MARK: SAVE TO DEFAULTS
+    func saveToDefaults() {
+        defaults.set(subscribedUser, forKey: "SubscribedUser")
+    }
+    
     
     func showRestoredAlert() {
         let alert = UIAlertController(title: "Budge Subscription Restored!", message:

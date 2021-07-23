@@ -34,7 +34,7 @@ class IAPNon_ConsumableViewController: UIViewController, SKProductsRequestDelega
     }
     
     
-    
+    //MARK: BUY NOW BUTTON
     @IBAction func buyButton(_ sender: Any) {
         guard let myProduct = myProduct else {
             return
@@ -100,7 +100,15 @@ class IAPNon_ConsumableViewController: UIViewController, SKProductsRequestDelega
     
     func unlockApp() {
         print("Purchase complete, unlock app")
-        #warning("add logic and save to defaults")
+        unlimitedUser = true
+        setUserDefaults()
+        
+    }
+    
+    
+    //MARK: Save to UserDefaults
+    func setUserDefaults() {
+        defaults.set(unlimitedUser, forKey: "unlimitedUser")
     }
 
 }

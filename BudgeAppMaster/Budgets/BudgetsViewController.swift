@@ -46,22 +46,12 @@
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            
-            
-            
-            
-            print("USER DEFAULTS START")
-            for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
-                print("\(key) = \(value) \n")
-            }
-            print("USER DEFAULTS END")
-//
+   
 //            checkLoginStatus()
             
             //Reset view for new users. Notification is posted when new users sign up
             NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(showSignUpAndSync), name: NSNotification.Name(rawValue: "ShowSignUpAndSync"), object: nil)
-            
             
             db = Firestore.firestore()
             
@@ -70,9 +60,8 @@
             let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(BudgetsViewController.handleLongGesture))
             self.collectionView.addGestureRecognizer(longPressGesture)
             
-        
-            
             timeToResetAlert()
+            loadUserDefaultsUserAttributes()
             
         }
         
@@ -402,7 +391,7 @@
         //MARK: BUTTONS
         
         @IBAction func addNewBudgetButton(_ sender: Any) {
-            if subscribedUser == true {
+            if subscribedUser == true || unlimitedUser == true {
                 performSegue(withIdentifier: "goToAddBudget", sender: self)
             } else if budgetNameG.count < freeBudgets {
                 performSegue(withIdentifier: "goToAddBudget", sender: self)
@@ -496,20 +485,25 @@
         func loadUserDefaultsBudgets() {
             if defaults.value(forKey: "budgetNameUD") != nil {budgetNameG = defaults.value(forKey: "budgetNameUD") as! [String]}
             if defaults.value(forKey: "budgetAmountUD") != nil {budgetAmountG = defaults.value(forKey: "budgetAmountUD") as! [Double]}
-//            if defaults.value(forKey: "budgetRemainingUD") != nil {budgetRemainingG = defaults.value(forKey: "budgetRemainingUD") as! [Double]}
             if defaults.value(forKey: "budgetHistoryAmountUD") != nil {budgetHistoryAmountG = defaults.value(forKey: "budgetHistoryAmountUD") as! [String : [Double]]}
             if defaults.value(forKey: "budgetHistoryDateUD") != nil {budgetHistoryDateG = defaults.value(forKey: "budgetHistoryDateUD") as! [String: [String]]}
             if defaults.value(forKey: "budgetHistoryTimeUD") != nil {budgetHistoryTimeG = defaults.value(forKey: "budgetHistoryTimeUD") as! [String: [String]]}
             if defaults.value(forKey: "budgetNoteUD") != nil {budgetNoteG = defaults.value(forKey: "budgetNoteUD") as! [String: [String]]}
-            
             print("budgetNameG: \(budgetNameG)")
             print("budgetAmountG: \(budgetAmountG)")
-//            print("budgetRemainingG: \(budgetRemainingG)")
             print("budgetHistoryAmountG: \(budgetHistoryAmountG)")
             print("budgetHistoryDateG: \(budgetHistoryDateG)")
             print("budgetHistoryTimeG: \(budgetHistoryTimeG)")
             print("budgetNoteG: \(budgetNoteG)")
-            
+        }
+        
+        func loadUserDefaultsUserAttributes() {
+            if defaults.value(forKey: "currentUserG") != nil {currentUserG = defaults.value(forKey: "currentUserG") as! String}
+            if defaults.value(forKey: "subscribedUser") != nil {subscribedUser = defaults.value(forKey: "subscribedUser") as! Bool}
+            if defaults.value(forKey: "unlimitedUser") != nil {unlimitedUser = defaults.value(forKey: "unlimitedUser") as! Bool}
+            print("currentUserG: \(currentUserG)")
+            print("subscribedUser: \(subscribedUser)")
+            print("unlimitedUser: \(unlimitedUser)")
         }
         
         

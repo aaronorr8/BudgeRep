@@ -130,8 +130,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                             currentUserG = Auth.auth().currentUser!.uid
                             print("currentUserG: \(currentUserG)")
                             
-                            print("set currentUserG defaults to \(currentUserG)")
-                            defaults.set(currentUserG, forKey: "CurrentUserG")
+                            self.saveToDefaults()
                         }
                         
                         print("Signup Successful!")
@@ -160,8 +159,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                             currentUserG = Auth.auth().currentUser!.uid
                             print("currentUserG: \(currentUserG)")
                             
-                            print("set currentUserG defaults to \(currentUserG)")
-                            defaults.set(currentUserG, forKey: "CurrentUserG")
+                            self.saveToDefaults()
                         }
                      
                         
@@ -399,6 +397,12 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
         } else {
            self.performSegue(withIdentifier: "goToSyncInstructions", sender: self)
         }
+    }
+    
+    
+    //MARK: SAVE TO DEFAULTS
+    func saveToDefaults() {
+        defaults.set(currentUserG, forKey: "CurrentUserG")
     }
     
   
