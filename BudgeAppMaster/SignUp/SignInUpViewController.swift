@@ -54,7 +54,12 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
-        
+        if sceneLogInOnly == true {
+            switchModes.isHidden = true
+            signUpMode = false
+            signInButtonOutlet.setTitle("Login", for: .normal)
+            forgotPasswordOutlet.isHidden = false
+        }
         
     }
     
@@ -168,9 +173,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
 //                        self.getFirestoreData()
                         self.newGetFireStoreData()
                         
-                        
-                        
-                        
+                       
                         
                     }
                 }
@@ -381,7 +384,12 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                      print("Login screen: Document does not exist in cache")
                  }
                  
-                self.goToSyncInstruction()
+                if sceneLogInOnly == true {
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    self.goToSyncInstruction()
+                }
+                
                  
              }
          } else {

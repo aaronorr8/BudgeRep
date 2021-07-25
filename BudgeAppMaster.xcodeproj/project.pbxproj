@@ -36,12 +36,12 @@
 		43101444264C1E3000737DA1 /* To Do's.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43101443264C1E3000737DA1 /* To Do's.swift */; };
 		4326BF34223347D4002B501D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326BF33223347D4002B501D /* ViewController.swift */; };
 		4329DD23245C53560045E952 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4329DD22245C53560045E952 /* GlobalConstants.swift */; };
+		435771EF26ADB3A100383CE7 /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435771EE26ADB3A100383CE7 /* WelcomeScreenViewController.swift */; };
 		435B276726A1BFD10002C368 /* IAPPerksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435B276626A1BFD10002C368 /* IAPPerksViewController.swift */; };
 		436D9D412286269B0020F924 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436D9D402286269B0020F924 /* StoreKit.framework */; };
 		43935690245DC9C000CBAFF1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4393568F245DC9C000CBAFF1 /* TabBarController.swift */; };
 		4393F83F2233FBA8004CD359 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4393F83E2233FBA8004CD359 /* Assets.xcassets */; };
 		43B3BD1426A9A1F90074D47D /* IAPNon-ConsumableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B3BD1326A9A1F90074D47D /* IAPNon-ConsumableViewController.swift */; };
-		43ECFE85224E61FC000BC957 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ECFE84224E61FC000BC957 /* WelcomeViewController.swift */; };
 		43FE6F9C2257B581007C21BF /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FE6F9B2257B581007C21BF /* SettingTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,13 +77,13 @@
 		43101443264C1E3000737DA1 /* To Do's.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "To Do's.swift"; sourceTree = "<group>"; };
 		4326BF33223347D4002B501D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4329DD22245C53560045E952 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
+		435771EE26ADB3A100383CE7 /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
 		435B276626A1BFD10002C368 /* IAPPerksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPPerksViewController.swift; sourceTree = "<group>"; };
 		436D9D402286269B0020F924 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4393568F245DC9C000CBAFF1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4393F83E2233FBA8004CD359 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43B3BD1326A9A1F90074D47D /* IAPNon-ConsumableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IAPNon-ConsumableViewController.swift"; sourceTree = "<group>"; };
 		43C7B2182256826D00F1FC0B /* BudgeAppMaster.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BudgeAppMaster.entitlements; sourceTree = "<group>"; };
-		43ECFE84224E61FC000BC957 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		43FE6F9B2257B581007C21BF /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		4DAF6C3356B20D0714001DF0 /* Pods-BudgeAppMaster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BudgeAppMaster.release.xcconfig"; path = "Pods/Target Support Files/Pods-BudgeAppMaster/Pods-BudgeAppMaster.release.xcconfig"; sourceTree = "<group>"; };
 		6C778C86DABD18BCB8E509DC /* Pods_BudgeAppMaster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BudgeAppMaster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -233,7 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				0DA43752223334C700110700 /* SignInUpViewController.swift */,
-				43ECFE84224E61FC000BC957 /* WelcomeViewController.swift */,
+				435771EE26ADB3A100383CE7 /* WelcomeScreenViewController.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -389,7 +389,6 @@
 				0DA4374B2233343000110700 /* AddReminderViewController.swift in Sources */,
 				0DA43742223333F200110700 /* AddBudgetViewController.swift in Sources */,
 				0DA4373B223333C000110700 /* WavyProgressView.swift in Sources */,
-				43ECFE85224E61FC000BC957 /* WelcomeViewController.swift in Sources */,
 				0DA437472233340A00110700 /* HistoryViewController.swift in Sources */,
 				0DA43739223333AD00110700 /* BudgetCollectionReusableView.swift in Sources */,
 				43FE6F9C2257B581007C21BF /* SettingTableViewController.swift in Sources */,
@@ -404,6 +403,7 @@
 				0DA437342233336E00110700 /* BudgetsViewController.swift in Sources */,
 				0DA43743223333F200110700 /* AddSpendViewController.swift in Sources */,
 				0DA437462233340A00110700 /* HistoryTableViewCell.swift in Sources */,
+				435771EF26ADB3A100383CE7 /* WelcomeScreenViewController.swift in Sources */,
 				4329DD23245C53560045E952 /* GlobalConstants.swift in Sources */,
 				0D5AC2162240015C0047BB48 /* ToastCenter.swift in Sources */,
 				0DA4370322332E5200110700 /* AppDelegate.swift in Sources */,

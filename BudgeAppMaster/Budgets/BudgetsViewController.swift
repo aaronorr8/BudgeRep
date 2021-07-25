@@ -63,19 +63,17 @@
             timeToResetAlert()
             loadUserDefaultsUserAttributes()
             
+            if currentUserG == "" {
+                performSegue(withIdentifier: "goToWelcomeScreen", sender: self)
+            }
+            
         }
         
         
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             
-            if subscribedUser == true {
-                fireStoreListener()
-            } else {
-                loadUserDefaultsBudgets()
-            }
-            
-            
+            loadBudgetData()
           
         }
         
@@ -102,6 +100,17 @@
             print("Number of budgets = \(budgetNameG.count)")
             
             
+        }
+        
+        
+        func loadBudgetData() {
+            if currentUserG != "" {
+                print("Load data from Firebase")
+                fireStoreListener()
+            } else {
+                print("Load data from Defaults")
+                loadUserDefaultsBudgets()
+            }
         }
         
     

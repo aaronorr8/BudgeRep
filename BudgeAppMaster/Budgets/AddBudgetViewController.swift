@@ -181,7 +181,7 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
     
     //MARK: SAVE
     func save() {
-        if subscribedUser == true {
+        if currentUserG != "" {
             saveToFireStore()
             print("Save to FireStore")
         } else {

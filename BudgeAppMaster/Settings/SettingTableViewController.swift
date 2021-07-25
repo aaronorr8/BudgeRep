@@ -18,6 +18,7 @@ class SettingTableViewController: UITableViewController {
 
     @IBOutlet weak var monthlyResetSwitch: UISwitch!
     @IBOutlet weak var subscribeButtonOutlet: UIButton!
+    @IBOutlet weak var signOutButtonOutlet: UIButton!
     
     @IBOutlet weak var pigCredit: UILabel!
     
@@ -39,9 +40,9 @@ class SettingTableViewController: UITableViewController {
             tabBarController?.selectedIndex = 0
             goToMain = false
         }
-        
-        
         monthlyResetSwitch.isOn = monthlyResetSetting
+        
+        
     }
     
     
@@ -62,6 +63,13 @@ class SettingTableViewController: UITableViewController {
         loadItems()
         
         
+        
+        
+        if currentUserG == "" {
+            signOutButtonOutlet.setTitle("Not signed in", for: .normal)
+        } else {
+            signOutButtonOutlet.setTitle("Sign Out \(currentUserG)", for: .normal)
+        }
     }
     
     
@@ -76,8 +84,7 @@ class SettingTableViewController: UITableViewController {
         getUserDefaults()
         
         monthlyResetSwitch.onTintColor = colorGreenC
-        
-        
+      
         
     }
     

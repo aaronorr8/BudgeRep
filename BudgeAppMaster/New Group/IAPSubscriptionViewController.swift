@@ -126,8 +126,8 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
                 list.append(product)
         }
             
-            price = product.localizedPrice
-            print("localized price: \(price)")
+//            price = product.localizedPrice
+//            print("localized price: \(price)")
             
         
         
@@ -281,7 +281,7 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
         
     }
     
-    //MARK: Save to FireStore
+    //MARK: SAVE TO FIREBASE
     func saveToFireStore() {
         if let userID = Auth.auth().currentUser?.uid {
             db.collection("budgets").document(userID).setData([
