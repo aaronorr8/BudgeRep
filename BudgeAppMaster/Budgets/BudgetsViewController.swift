@@ -532,7 +532,6 @@
             budgetNoteG.removeAll()
             budgetHistoryDateG.removeAll()
             budgetHistoryTimeG.removeAll()
-//            budgetRemainingG.removeAll()
         }
         
         

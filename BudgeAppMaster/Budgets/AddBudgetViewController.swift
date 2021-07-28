@@ -153,7 +153,7 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
                     let totalSpent = budgetHistoryAmountG[budgetNameField.text!]?.reduce(0, +)
 //                    budgetRemainingG[myIndexG] = (amount - totalSpent!)
                     
-                    saveToFireStore()
+                    save()
                     
                     closeAllG = true
                     editModeG = false
@@ -185,13 +185,13 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
             saveToFireStore()
             print("Save to FireStore")
         } else {
-            setUserDefaults()
+            saveToDefaults()
             print("Save to UserDefaults")
         }
     }
     
     //MARK: Save to UserDefaults
-    func setUserDefaults() {
+    func saveToDefaults() {
         defaults.set(budgetNameG, forKey: "budgetNameUD")
         defaults.set(budgetAmountG, forKey: "budgetAmountUD")
         defaults.set(budgetHistoryAmountG, forKey: "budgetHistoryAmountUD")
@@ -203,9 +203,7 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
     
     //MARK: Save to FireStore
     func saveToFireStore() {
-        
         if let userID = Auth.auth().currentUser?.uid {
-            
         db.collection("budgets").document(userID).setData([
             "budgetName": budgetNameG,
             "budgetAmount": budgetAmountG,
@@ -213,8 +211,6 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
             "budgetNote": budgetNoteG,
             "budgetHistoryDate": budgetHistoryDateG,
             "budgetHistoryTime": budgetHistoryTimeG,
-//            "budgetRemaining": budgetRemainingG,
-//            "totalSpent": totalSpentG,
             "subscribedUser": subscribedUser
             
             ]) { err in
@@ -227,8 +223,6 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
                     budgetNoteG = self.tempBudgetNoteG
                     budgetHistoryDateG = self.tempBudgetHistoryDateG
                     budgetHistoryTimeG = self.tempBudgetHistoryTimeG
-//                    budgetRemainingG = self.tempBudgetRemainingG
-//                    totalSpentG = self.tempTotalSpentG
                     subscribedUser = self.tempSubscribedUser
                 } else {
                     print("Document successfully written!")

@@ -606,7 +606,9 @@ class SettingTableViewController: UITableViewController {
             currentUserG = ""
 //            defaults.set(false, forKey: "SubscribedUser")
 //            defaults.set("", forKey: "CurrentUserG")
-            clearAllBudgets()
+//            clearAllBudgets()
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
             self.tabBarController?.selectedIndex = 0
             
         } catch let signOutError as NSError {
@@ -615,14 +617,7 @@ class SettingTableViewController: UITableViewController {
     }
     
     
-    func clearAllBudgets() {
-        budgetNameG = []
-        budgetAmountG = []
-        budgetHistoryAmountG = [:]
-        budgetHistoryDateG = [:]
-        budgetHistoryTimeG = [:]
-        budgetNoteG = [:]
-    }
+ 
     
     @IBAction func linkToAnotherDevice(_ sender: Any) {
         

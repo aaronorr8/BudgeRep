@@ -128,17 +128,17 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                         defaults.set(registeredDate, forKey: "RegisteredDate")
                         
                         self.stopSpinner()
+                        
                         goToMain = true
                         
                         if Auth.auth().currentUser?.uid != nil {
                             print("UserID: \(Auth.auth().currentUser?.uid)")
                             currentUserG = Auth.auth().currentUser!.uid
                             print("currentUserG: \(currentUserG)")
-                            
-                            self.saveToDefaults()
                         }
                         
                         print("Signup Successful!")
+                        self.transferData()
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
                         self.goToSyncInstruction()
                     }
@@ -157,6 +157,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                         registeredDate = Auth.auth().currentUser?.metadata.creationDate! ?? Date()
                         defaults.set(registeredDate, forKey: "RegisteredDate")
                         self.stopSpinner()
+                        
                         goToMain = true
                         
                         if Auth.auth().currentUser?.uid != nil {
@@ -164,13 +165,10 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                             currentUserG = Auth.auth().currentUser!.uid
                             print("currentUserG: \(currentUserG)")
                             
-                            self.saveToDefaults()
                         }
                      
                         
                         print("Login successful!!")
-//                        self.fireStoreListener()
-//                        self.getFirestoreData()
                         self.newGetFireStoreData()
                         
                        
@@ -198,6 +196,44 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    //MARK: MOVE DEFAULTS TO FIRESTORE
+    func transferData() {
+        if let userID = Auth.auth().currentUser?.uid {
+        db.collection("budgets").document(userID).setData([
+            "budgetName": budgetNameG,
+            "budgetAmount": budgetAmountG,
+            "budgetHistoryAmount": budgetHistoryAmountG,
+            "budgetNote": budgetNoteG,
+            "budgetHistoryDate": budgetHistoryDateG,
+            "budgetHistoryTime": budgetHistoryTimeG,
+            "subscribedUser": subscribedUser
+            ]) { err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                } else {
+                    print("Document successfully written!")
+                    self.clearDefaults()
+                }
+            }
+        }
+    }
+    
+    func clearDefaults() {
+        budgetNameG.removeAll()
+        budgetAmountG.removeAll()
+        budgetHistoryAmountG.removeAll()
+        budgetHistoryDateG.removeAll()
+        budgetHistoryTimeG.removeAll()
+        budgetNoteG.removeAll()
+        
+        defaults.set(budgetNameG, forKey: "budgetNameUD")
+        defaults.set(budgetAmountG, forKey: "budgetAmountUD")
+        defaults.set(budgetHistoryAmountG, forKey: "budgetHistoryAmountUD")
+        defaults.set(budgetHistoryDateG, forKey: "budgetHistoryDateUD")
+        defaults.set(budgetHistoryTimeG, forKey: "budgetHistoryTimeUD")
+        defaults.set(budgetNoteG, forKey: "budgetNoteUD")
+    }
+
     
     
     @IBAction func switchModes(_ sender: Any) {
@@ -408,10 +444,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    //MARK: SAVE TO DEFAULTS
-    func saveToDefaults() {
-        defaults.set(currentUserG, forKey: "CurrentUserG")
-    }
+    
     
   
     

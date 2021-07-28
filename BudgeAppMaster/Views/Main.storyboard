@@ -1777,6 +1777,7 @@
                         <outlet property="signInButtonOutlet" destination="cub-D6-c5p" id="0BJ-3q-FJO"/>
                         <outlet property="switchModes" destination="wKN-R8-hAG" id="gHg-Vy-lpD"/>
                         <segue destination="xIA-8a-g1Z" kind="show" identifier="goToSyncInstructions" id="EFs-Pg-YJi"/>
+                        <segue destination="OMJ-XC-hcT" kind="show" identifier="goToSyncInstructions" id="U4k-HL-GH8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pHD-Ke-huZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2073,6 +2074,7 @@
                         <outlet property="legalText" destination="VhC-nn-KT2" id="tuE-lK-0Aa"/>
                         <outlet property="subscribeButton" destination="tLs-dL-bZy" id="8bw-xo-4TT"/>
                         <outlet property="tryForFreeLabel" destination="vRx-kH-RUL" id="PFN-O7-bph"/>
+                        <segue destination="dth-ut-w83" kind="show" identifier="goToSignUp" id="xqb-Cl-u3r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dFO-nC-NfX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2103,7 +2105,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="OMJ-XC-hcT" customClass="SyncInstructionsViewController" customModule="BudgeAppMaster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Wp-mq-XRd">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How to sync with another device" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2U-TC-ReW">
@@ -2214,7 +2216,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="k8D-wC-WdI"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MfG-sX-j6r">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2224,12 +2226,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cPM-oc-0VT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4628" y="3603"/>
+            <point key="canvasLocation" x="-4626" y="3603"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aNj-kr-njE"/>
-        <segue reference="4QQ-pE-U08"/>
+        <segue reference="EFs-Pg-YJi"/>
+        <segue reference="U4k-HL-GH8"/>
+        <segue reference="xqb-Cl-u3r"/>
         <segue reference="7l1-j4-geS"/>
     </inferredMetricsTieBreakers>
     <resources>
