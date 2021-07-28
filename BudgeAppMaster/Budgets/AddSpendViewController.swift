@@ -394,12 +394,12 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
     
     //MARK:SAVE
     func save() {
-        if currentUserG != "" {
-            saveToFireStore()
-            print("Save to FireStore")
+        if currentUserG == "" {
+            saveToDefaults()
+            print("Saved to UserDefaults")
         } else {
-            setUserDefaults()
-            print("Save to UserDefaults")
+            saveToFireStore()
+            print("Saved to FireStore")
         }
     }
     
@@ -414,8 +414,6 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
                 "budgetNote": budgetNoteG,
                 "budgetHistoryDate": budgetHistoryDateG,
                 "budgetHistoryTime": budgetHistoryTimeG,
-//                "budgetRemaining": budgetRemainingG,
-//                "totalSpent": totalSpentG,
                 "subscribedUser": subscribedUser
             ]) { err in
                 if let err = err {
@@ -425,8 +423,6 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
                     budgetNoteG = self.tempBudgetNoteG
                     budgetHistoryDateG = self.tempBudgetHistoryDateG
                     budgetHistoryTimeG = self.tempBudgetHistoryTimeG
-//                    budgetRemainingG = self.tempBudgetRemainingG
-//                    totalSpentG = self.tempTotalSpentG
                     
                     showToast = true
                     toastSuccess = false
@@ -443,10 +439,9 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
     
     
     //MARK: Save to UserDefaults
-    func setUserDefaults() {
+    func saveToDefaults() {
         defaults.set(budgetNameG, forKey: "budgetNameUD")
         defaults.set(budgetAmountG, forKey: "budgetAmountUD")
-//        defaults.set(budgetRemainingG, forKey: "budgetRemainingUD")
         defaults.set(budgetHistoryAmountG, forKey: "budgetHistoryAmountUD")
         defaults.set(budgetHistoryDateG, forKey: "budgetHistoryDateUD")
         defaults.set(budgetHistoryTimeG, forKey: "budgetHistoryTimeUD")

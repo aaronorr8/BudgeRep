@@ -28,6 +28,7 @@
         let visibleTitleColor = UIColor.black
         var hideNav = Bool()
         var totalSpentAllBudgets = Double()
+        var needToShowWelcomeScreen = true
         
         //MARK: PROGRESS BAR SCALE
         let xScale = CGFloat(1.0)
@@ -52,6 +53,7 @@
             //Reset view for new users. Notification is posted when new users sign up
             NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(showSignUpAndSync), name: NSNotification.Name(rawValue: "ShowSignUpAndSync"), object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(showWelcomeScreen), name: NSNotification.Name(rawValue: "showWelcomeScreen"), object: nil)
             
             db = Firestore.firestore()
             
@@ -63,9 +65,7 @@
             timeToResetAlert()
             loadUserDefaultsUserAttributes()
             
-            if currentUserG == "" {
-                performSegue(withIdentifier: "goToWelcomeScreen", sender: self)
-            }
+            
             
         }
         
@@ -74,6 +74,9 @@
             super.viewWillAppear(animated)
             
             loadBudgetData()
+            showWelcomeScreen()
+            
+
           
         }
         
@@ -507,7 +510,7 @@
         }
         
         func loadUserDefaultsUserAttributes() {
-            if defaults.value(forKey: "currentUserG") != nil {currentUserG = defaults.value(forKey: "currentUserG") as! String}
+//            if defaults.value(forKey: "currentUserG") != nil {currentUserG = defaults.value(forKey: "currentUserG") as! String}
             if defaults.value(forKey: "subscribedUser") != nil {subscribedUser = defaults.value(forKey: "subscribedUser") as! Bool}
             if defaults.value(forKey: "unlimitedUser") != nil {unlimitedUser = defaults.value(forKey: "unlimitedUser") as! Bool}
             print("currentUserG: \(currentUserG)")
@@ -543,6 +546,14 @@
                 self.performSegue(withIdentifier: "goToSyncInstructions", sender: self)
             }
             
+        }
+        
+        
+        @objc func showWelcomeScreen() {
+            if currentUserG == "" && budgetNameG.count == 0 && needToShowWelcomeScreen == true {
+                performSegue(withIdentifier: "goToWelcomeScreen", sender: self)
+            }
+            needToShowWelcomeScreen = false
         }
         
       

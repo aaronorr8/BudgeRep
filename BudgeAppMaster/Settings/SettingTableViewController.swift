@@ -602,13 +602,9 @@ class SettingTableViewController: UITableViewController {
         do {
             try firebaseAuth.signOut()
             deleteReminders()
-//            subscribedUser = false
             currentUserG = ""
-//            defaults.set(false, forKey: "SubscribedUser")
-//            defaults.set("", forKey: "CurrentUserG")
-//            clearAllBudgets()
-            
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showWelcomeScreen"), object: nil)
             self.tabBarController?.selectedIndex = 0
             
         } catch let signOutError as NSError {

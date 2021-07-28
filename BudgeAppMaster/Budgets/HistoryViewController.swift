@@ -187,10 +187,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             budgetNoteG[self.budgetName]?.remove(at: self.historyIndex)
             budgetHistoryTimeG[self.budgetName]?.remove(at: self.historyIndex)
             
-//            totalSpentG = (totalSpentG - amountToDelete)
-            
-//            budgetRemainingG[myIndexG] = budgetAmountG[myIndexG] - (budgetHistoryAmountG[self.budgetName]?.reduce(0, +))!
-            
             self.save()
             self.tableView.reloadData()
 
@@ -256,32 +252,21 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     
-    //MARK: SAVE
+    //MARK:SAVE
     func save() {
-        if subscribedUser == true {
-            saveToFireStore()
-            print("Save to FireStore")
+        if currentUserG == "" {
+            saveToDefaults()
+            print("Saved to UserDefaults")
         } else {
-            setUserDefaults()
-            print("Save to UserDefaults")
+            saveToFireStore()
+            print("Saved to FireStore")
         }
-    }
-    
-    //MARK: Save to UserDefaults
-    func setUserDefaults() {
-        defaults.set(budgetNameG, forKey: "budgetNameUD")
-        defaults.set(budgetAmountG, forKey: "budgetAmountUD")
-        defaults.set(budgetHistoryAmountG, forKey: "budgetHistoryAmountUD")
-        defaults.set(budgetHistoryDateG, forKey: "budgetHistoryDateUD")
-        defaults.set(budgetHistoryTimeG, forKey: "budgetHistoryTimeUD")
-        defaults.set(budgetNoteG, forKey: "budgetNoteUD")
     }
     
     //MARK: Save to FireStore
     func saveToFireStore() {
         
         if let userID = Auth.auth().currentUser?.uid {
-            
             db.collection("budgets").document(userID).setData([
                 "budgetName": budgetNameG,
                 "budgetAmount": budgetAmountG,
@@ -289,18 +274,31 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                 "budgetNote": budgetNoteG,
                 "budgetHistoryDate": budgetHistoryDateG,
                 "budgetHistoryTime": budgetHistoryTimeG,
-//                "budgetRemaining": budgetRemainingG,
-//                "totalSpent": totalSpentG,
                 "subscribedUser": subscribedUser
-                
             ]) { err in
                 if let err = err {
                     print("Error writing document: \(err)")
+                    showToast = true
+                    toastSuccess = false
                 } else {
                     print("Document successfully written!")
+                    showToast = true
+                    toastSuccess = true
+                    
                 }
             }
         }
+    }
+    
+    
+    //MARK: Save to UserDefaults
+    func saveToDefaults() {
+        defaults.set(budgetNameG, forKey: "budgetNameUD")
+        defaults.set(budgetAmountG, forKey: "budgetAmountUD")
+        defaults.set(budgetHistoryAmountG, forKey: "budgetHistoryAmountUD")
+        defaults.set(budgetHistoryDateG, forKey: "budgetHistoryDateUD")
+        defaults.set(budgetHistoryTimeG, forKey: "budgetHistoryTimeUD")
+        defaults.set(budgetNoteG, forKey: "budgetNoteUD")
     }
     
     

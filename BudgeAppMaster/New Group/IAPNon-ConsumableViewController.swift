@@ -102,6 +102,7 @@ class IAPNon_ConsumableViewController: UIViewController, SKProductsRequestDelega
         print("Purchase complete, unlock app")
         unlimitedUser = true
         setUserDefaults()
+        self.dismiss(animated: true, completion: nil)
         
     }
     

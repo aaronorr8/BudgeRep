@@ -37,6 +37,25 @@ class RemindersViewController: UIViewController, UITableViewDelegate, UITableVie
         loadItems()
         print(dataFilePath)
     }
+    
+    
+    
+    @IBAction func printDefaultsButton(_ sender: Any) {
+        print("user defaults")
+        if defaults.value(forKey: "budgetNameUD") != nil {budgetNameG = defaults.value(forKey: "budgetNameUD") as! [String]}
+        if defaults.value(forKey: "budgetAmountUD") != nil {budgetAmountG = defaults.value(forKey: "budgetAmountUD") as! [Double]}
+        if defaults.value(forKey: "budgetHistoryAmountUD") != nil {budgetHistoryAmountG = defaults.value(forKey: "budgetHistoryAmountUD") as! [String : [Double]]}
+        if defaults.value(forKey: "budgetHistoryDateUD") != nil {budgetHistoryDateG = defaults.value(forKey: "budgetHistoryDateUD") as! [String: [String]]}
+        if defaults.value(forKey: "budgetHistoryTimeUD") != nil {budgetHistoryTimeG = defaults.value(forKey: "budgetHistoryTimeUD") as! [String: [String]]}
+        if defaults.value(forKey: "budgetNoteUD") != nil {budgetNoteG = defaults.value(forKey: "budgetNoteUD") as! [String: [String]]}
+        print("budgetNameG: \(budgetNameG)")
+        print("budgetAmountG: \(budgetAmountG)")
+        print("budgetHistoryAmountG: \(budgetHistoryAmountG)")
+        print("budgetHistoryDateG: \(budgetHistoryDateG)")
+        print("budgetHistoryTimeG: \(budgetHistoryTimeG)")
+        print("budgetNoteG: \(budgetNoteG)")
+    }
+    
 
     
     
