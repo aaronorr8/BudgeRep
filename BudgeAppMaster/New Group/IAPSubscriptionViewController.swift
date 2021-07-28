@@ -80,29 +80,24 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
     //MARK: SUBSCRIBE BUTTON
     @IBAction func subscribeButton(_ sender: Any) {
         
-        
-        closeIAPScreen() //remove this before releasing
-        
-        #warning("Uncomment all this for real testing, this is just bypassing the purchase to test on the simulator")
-        
-//        startSpinner()
-//
-//        //Check internet connection
-//        if checkNetworkConnection() {
-//            stopSpinner()
-//            print("You are connected, YEET!")
-//        } else {
-//            stopSpinner()
-//            self.Alert(Message: "Your device is not connected to the internet. Please try again.")
-//        }
-//
-//        for product in list {
-//            let ProdID = product.productIdentifier
-//            if(ProdID == "budge.subscription") {
-//                p = product
-//                buyProduct()
-//            }
-//        }
+        startSpinner()
+
+        //Check internet connection
+        if checkNetworkConnection() {
+            stopSpinner()
+            print("You are connected, YEET!")
+        } else {
+            stopSpinner()
+            self.Alert(Message: "Your device is not connected to the internet. Please try again.")
+        }
+
+        for product in list {
+            let ProdID = product.productIdentifier
+            if(ProdID == "budge.subscription") {
+                p = product
+                buyProduct()
+            }
+        }
         
 
     
@@ -254,8 +249,7 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
     
     func unlockApp() {
         subscribedUser = true
-        saveToFireStore()
-        saveToDefaults()
+        save()
     }
     
     func closeIAPScreen() {
@@ -279,6 +273,18 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
         
         return numberFormatter.string(from: NSNumber(value: amount))!
         
+    }
+    
+    
+    //MARK: SAVE
+    func save() {
+        if currentUserG != "" {
+            saveToFireStore()
+            print("Save to FireStore")
+        } else {
+            saveToDefaults()
+            print("Save to UserDefaults")
+        }
     }
     
     //MARK: SAVE TO FIREBASE

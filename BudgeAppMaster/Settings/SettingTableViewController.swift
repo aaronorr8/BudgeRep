@@ -34,6 +34,7 @@ class SettingTableViewController: UITableViewController {
     
     
     
+    
     override func viewWillAppear(_ animated: Bool) {
         
         if goToMain == true {
@@ -601,20 +602,35 @@ class SettingTableViewController: UITableViewController {
         do {
             try firebaseAuth.signOut()
             deleteReminders()
-            subscribedUser = false
+//            subscribedUser = false
             currentUserG = ""
 //            defaults.set(false, forKey: "SubscribedUser")
 //            defaults.set("", forKey: "CurrentUserG")
+            clearAllBudgets()
+            self.tabBarController?.selectedIndex = 0
+            
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
     }
     
+    
+    func clearAllBudgets() {
+        budgetNameG = []
+        budgetAmountG = []
+        budgetHistoryAmountG = [:]
+        budgetHistoryDateG = [:]
+        budgetHistoryTimeG = [:]
+        budgetNoteG = [:]
+    }
+    
     @IBAction func linkToAnotherDevice(_ sender: Any) {
         
         if subscribedUser == true && currentUserG != "" {
+            print("goToSyncInstructions")
             performSegue(withIdentifier: "goToSyncInstructions", sender: self)
         } else {
+            print("goToSubscribeAndSignUpFlow")
             performSegue(withIdentifier: "goToSubscribeAndSignUpFlow", sender: self)
         }
         

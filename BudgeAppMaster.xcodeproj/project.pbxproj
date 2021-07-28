@@ -34,10 +34,12 @@
 		0DBF296F22932A9700778D01 /* IAPCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF296E22932A9700778D01 /* IAPCollectionViewCell.swift */; };
 		25A933E7C5DAD6DF2D222780 /* Pods_BudgeAppMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C778C86DABD18BCB8E509DC /* Pods_BudgeAppMaster.framework */; };
 		43101444264C1E3000737DA1 /* To Do's.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43101443264C1E3000737DA1 /* To Do's.swift */; };
+		431CFEAB26B19C2D0056A3A9 /* SyncInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431CFEAA26B19C2D0056A3A9 /* SyncInstructionsViewController.swift */; };
+		431CFEAD26B19E880056A3A9 /* PerksSubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431CFEAC26B19E880056A3A9 /* PerksSubscriptionViewController.swift */; };
 		4326BF34223347D4002B501D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326BF33223347D4002B501D /* ViewController.swift */; };
 		4329DD23245C53560045E952 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4329DD22245C53560045E952 /* GlobalConstants.swift */; };
 		435771EF26ADB3A100383CE7 /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435771EE26ADB3A100383CE7 /* WelcomeScreenViewController.swift */; };
-		435B276726A1BFD10002C368 /* IAPPerksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435B276626A1BFD10002C368 /* IAPPerksViewController.swift */; };
+		435B276726A1BFD10002C368 /* PerksUnlimitedBudgetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435B276626A1BFD10002C368 /* PerksUnlimitedBudgetsViewController.swift */; };
 		436D9D412286269B0020F924 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436D9D402286269B0020F924 /* StoreKit.framework */; };
 		43935690245DC9C000CBAFF1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4393568F245DC9C000CBAFF1 /* TabBarController.swift */; };
 		4393F83F2233FBA8004CD359 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4393F83E2233FBA8004CD359 /* Assets.xcassets */; };
@@ -75,10 +77,12 @@
 		0DACD958225FC1A3008EDF4B /* IAPSubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPSubscriptionViewController.swift; sourceTree = "<group>"; };
 		0DBF296E22932A9700778D01 /* IAPCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPCollectionViewCell.swift; sourceTree = "<group>"; };
 		43101443264C1E3000737DA1 /* To Do's.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "To Do's.swift"; sourceTree = "<group>"; };
+		431CFEAA26B19C2D0056A3A9 /* SyncInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncInstructionsViewController.swift; sourceTree = "<group>"; };
+		431CFEAC26B19E880056A3A9 /* PerksSubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerksSubscriptionViewController.swift; sourceTree = "<group>"; };
 		4326BF33223347D4002B501D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4329DD22245C53560045E952 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		435771EE26ADB3A100383CE7 /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
-		435B276626A1BFD10002C368 /* IAPPerksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPPerksViewController.swift; sourceTree = "<group>"; };
+		435B276626A1BFD10002C368 /* PerksUnlimitedBudgetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerksUnlimitedBudgetsViewController.swift; sourceTree = "<group>"; };
 		436D9D402286269B0020F924 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4393568F245DC9C000CBAFF1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4393F83E2233FBA8004CD359 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 				4329DD22245C53560045E952 /* GlobalConstants.swift */,
 				43ECFE86224E620C000BC957 /* SignUp */,
 				0DACD957225FC16B008EDF4B /* IAP */,
+				431CFEA926B19C090056A3A9 /* Instructions */,
 				0D5AC20E224001480047BB48 /* Toast */,
 				0DA4371A223332CA00110700 /* Data Model */,
 				0DA4371C223332ED00110700 /* Views */,
@@ -220,13 +225,22 @@
 		0DACD957225FC16B008EDF4B /* IAP */ = {
 			isa = PBXGroup;
 			children = (
-				435B276626A1BFD10002C368 /* IAPPerksViewController.swift */,
 				0DACD958225FC1A3008EDF4B /* IAPSubscriptionViewController.swift */,
 				0DBF296E22932A9700778D01 /* IAPCollectionViewCell.swift */,
 				43B3BD1326A9A1F90074D47D /* IAPNon-ConsumableViewController.swift */,
 			);
 			name = IAP;
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		431CFEA926B19C090056A3A9 /* Instructions */ = {
+			isa = PBXGroup;
+			children = (
+				435B276626A1BFD10002C368 /* PerksUnlimitedBudgetsViewController.swift */,
+				431CFEAA26B19C2D0056A3A9 /* SyncInstructionsViewController.swift */,
+				431CFEAC26B19E880056A3A9 /* PerksSubscriptionViewController.swift */,
+			);
+			path = Instructions;
 			sourceTree = "<group>";
 		};
 		43ECFE86224E620C000BC957 /* SignUp */ = {
@@ -390,8 +404,10 @@
 				0DA43742223333F200110700 /* AddBudgetViewController.swift in Sources */,
 				0DA4373B223333C000110700 /* WavyProgressView.swift in Sources */,
 				0DA437472233340A00110700 /* HistoryViewController.swift in Sources */,
+				431CFEAD26B19E880056A3A9 /* PerksSubscriptionViewController.swift in Sources */,
 				0DA43739223333AD00110700 /* BudgetCollectionReusableView.swift in Sources */,
 				43FE6F9C2257B581007C21BF /* SettingTableViewController.swift in Sources */,
+				431CFEAB26B19C2D0056A3A9 /* SyncInstructionsViewController.swift in Sources */,
 				0D5AC2172240015C0047BB48 /* ToastWindow.swift in Sources */,
 				0DA4374C2233343000110700 /* RemindersTableViewCell.swift in Sources */,
 				0D5AC2142240015C0047BB48 /* ToastView.swift in Sources */,
@@ -399,7 +415,7 @@
 				0DA437562233354100110700 /* ReminderItem.swift in Sources */,
 				0DBF296F22932A9700778D01 /* IAPCollectionViewCell.swift in Sources */,
 				0DA43753223334C800110700 /* SignInUpViewController.swift in Sources */,
-				435B276726A1BFD10002C368 /* IAPPerksViewController.swift in Sources */,
+				435B276726A1BFD10002C368 /* PerksUnlimitedBudgetsViewController.swift in Sources */,
 				0DA437342233336E00110700 /* BudgetsViewController.swift in Sources */,
 				0DA43743223333F200110700 /* AddSpendViewController.swift in Sources */,
 				0DA437462233340A00110700 /* HistoryTableViewCell.swift in Sources */,

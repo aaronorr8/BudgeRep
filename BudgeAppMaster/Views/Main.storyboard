@@ -28,7 +28,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HRU-US-TLt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4333.8461538461534" y="1766.5876777251185"/>
+            <point key="canvasLocation" x="-7565" y="1700"/>
         </scene>
         <!--Reminders-->
         <scene sceneID="MP9-Ew-eAF">
@@ -234,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lvf-z9-aWX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3480" y="2531"/>
+            <point key="canvasLocation" x="-6105" y="933"/>
         </scene>
         <!--ADD NEW BILL-->
         <scene sceneID="YbS-f9-bCH">
@@ -474,7 +474,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pBN-Gz-71b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3467" y="3222"/>
+            <point key="canvasLocation" x="-5385" y="934"/>
         </scene>
         <!--Welcome Screen View Controller-->
         <scene sceneID="rkF-c9-HlZ">
@@ -532,7 +532,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HCa-Ff-Gml" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5386.1538461538457" y="1766.5876777251185"/>
+            <point key="canvasLocation" x="-749.23076923076917" y="3602.8436018957345"/>
         </scene>
         <!--Add Budget View Controller-->
         <scene sceneID="FM6-MA-tBi">
@@ -633,7 +633,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ir-p6-P9d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4406" y="3274"/>
+            <point key="canvasLocation" x="-5785" y="2524"/>
         </scene>
         <!--Add Spend View Controller-->
         <scene sceneID="m3Y-1O-tF9">
@@ -792,7 +792,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sfh-jj-yeD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3506" y="4110"/>
+            <point key="canvasLocation" x="-9622" y="2524"/>
         </scene>
         <!--Budgets-->
         <scene sceneID="HMw-J2-A0g">
@@ -1119,13 +1119,13 @@
                         <segue destination="V4j-wU-ZpU" kind="presentation" identifier="goToAddBudget" id="7l1-j4-geS"/>
                         <segue destination="mGY-3L-LiV" kind="show" identifier="goToIAP" id="Nrg-ws-b06"/>
                         <segue destination="dth-ut-w83" kind="presentation" identifier="goToSignUp" id="IbI-2h-leB"/>
-                        <segue destination="OMJ-XC-hcT" kind="presentation" identifier="goToSyncInstructions" id="fhv-y0-Y0x"/>
+                        <segue destination="xIA-8a-g1Z" kind="presentation" identifier="goToSyncInstructions" id="fhv-y0-Y0x"/>
                         <segue destination="GUO-Yk-gI5" kind="presentation" identifier="goToWelcomeScreen" modalPresentationStyle="fullScreen" id="1xh-nk-13d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O72-jK-KfL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4405" y="2524"/>
+            <point key="canvasLocation" x="-6746" y="2524"/>
         </scene>
         <!--SETTINGS-->
         <scene sceneID="9qm-DX-qAh">
@@ -1420,13 +1420,13 @@
                         <outlet property="pigCredit" destination="9wy-9C-MvQ" id="mRL-c8-rxh"/>
                         <outlet property="signOutButtonOutlet" destination="lTb-KF-hqv" id="AGP-UZ-CXo"/>
                         <outlet property="subscribeButtonOutlet" destination="64j-eJ-whA" id="lKg-CQ-oqo"/>
-                        <segue destination="fBD-do-PNd" kind="show" identifier="goToSubscribeAndSignUpFlow" id="xrc-kl-1MF"/>
-                        <segue destination="OMJ-XC-hcT" kind="presentation" identifier="goToSyncInstructions" id="aNj-kr-njE"/>
+                        <segue destination="xIA-8a-g1Z" kind="presentation" identifier="goToSyncInstructions" id="aNj-kr-njE"/>
+                        <segue destination="fBD-do-PNd" kind="presentation" identifier="goToSubscribeAndSignUpFlow" id="mth-7a-90k"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wnl-9g-fpe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2540" y="2531"/>
+            <point key="canvasLocation" x="-3668" y="1700"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EIi-8Q-rbh">
@@ -1442,7 +1442,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="McJ-4V-dsV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4322" y="4110"/>
+            <point key="canvasLocation" x="-10360" y="2524"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="A8i-mM-Irf">
@@ -1548,12 +1548,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9OA-28-Pj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2637" y="4108"/>
+            <point key="canvasLocation" x="-8788" y="2524"/>
         </scene>
-        <!--Welcome View Controller-->
+        <!--Perks Subscription View Controller-->
         <scene sceneID="atb-ed-Osy">
             <objects>
-                <viewController id="M0a-wv-vxZ" customClass="WelcomeViewController" customModule="BudgeAppMaster" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="M0a-wv-vxZ" customClass="PerksSubscriptionViewController" customModule="BudgeAppMaster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Ea-Y7-VLu">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1566,7 +1566,6 @@
                                     <color key="titleColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="getStartedButton:" destination="M0a-wv-vxZ" eventType="touchUpInside" id="flC-M6-Fto"/>
                                     <segue destination="eJF-8z-42K" kind="show" id="Jo1-Nl-HJR"/>
                                 </connections>
                             </button>
@@ -1575,7 +1574,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Already have an account, go to sign in"/>
                                 <connections>
-                                    <segue destination="dth-ut-w83" kind="show" id="yfq-4q-Cwq"/>
+                                    <action selector="goToLoginButton:" destination="M0a-wv-vxZ" eventType="touchUpInside" id="EDX-xJ-oYp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1584,111 +1583,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="UWD-qK-rjm"/>
                     <connections>
-                        <outlet property="getStartedButton" destination="QpP-Ot-hws" id="dS9-b8-F3W"/>
+                        <segue destination="dth-ut-w83" kind="show" identifier="goToLogin" id="4QQ-pE-U08"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFC-2P-C62" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-328" y="3455"/>
-        </scene>
-        <!--Benefits View Controller-->
-        <scene sceneID="zBD-lS-Zzq">
-            <objects>
-                <viewController id="vKy-eZ-aCQ" customClass="BenefitsViewController" customModule="BudgeAppMaster" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="FJl-1h-0M8">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Flh-3V-0CW">
-                                <rect key="frame" x="0.0" y="202.66666666666663" width="390" height="449"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Try Budge FREE for one week, then just $0.99 per month. No credit card needed to try!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCS-Km-a9Y">
-                                        <rect key="frame" x="10" y="275" width="370" height="71"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="71" id="ctY-i9-R7H"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lA4-R8-dFl">
-                                        <rect key="frame" x="10" y="43" width="370" height="235"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAu-UT-Z0r">
-                                                <rect key="frame" x="0.0" y="-7" width="370" height="247"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="bAu-UT-Z0r" secondAttribute="trailing" id="1OI-5y-kuB"/>
-                                            <constraint firstItem="bAu-UT-Z0r" firstAttribute="top" secondItem="lA4-R8-dFl" secondAttribute="top" constant="-7" id="CW2-0p-xCG"/>
-                                            <constraint firstAttribute="bottom" secondItem="bAu-UT-Z0r" secondAttribute="bottom" constant="-5" id="TM3-NL-26a"/>
-                                            <constraint firstAttribute="height" constant="235" id="WWu-fb-jvi"/>
-                                            <constraint firstItem="bAu-UT-Z0r" firstAttribute="leading" secondItem="lA4-R8-dFl" secondAttribute="leading" id="y5b-g5-8mt"/>
-                                        </constraints>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Budge lets you:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G5a-1P-giP">
-                                        <rect key="frame" x="8" y="0.0" width="374" height="41"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="41" id="l9g-Eb-kic"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="24"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o5M-oc-J0T">
-                                        <rect key="frame" x="94.666666666666686" y="376" width="201" height="43"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="43" id="KYs-M4-bCd"/>
-                                            <constraint firstAttribute="width" constant="201" id="mxI-LH-Nai"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
-                                        <state key="normal" title="NEXT">
-                                            <color key="titleColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="nextButton:" destination="vKy-eZ-aCQ" eventType="touchUpInside" id="x0I-sq-KvM"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="o5M-oc-J0T" firstAttribute="top" secondItem="bCS-Km-a9Y" secondAttribute="bottom" constant="30" id="1CK-sI-b4N"/>
-                                    <constraint firstItem="G5a-1P-giP" firstAttribute="top" secondItem="Flh-3V-0CW" secondAttribute="top" id="9ad-Vy-ths"/>
-                                    <constraint firstAttribute="trailing" secondItem="bCS-Km-a9Y" secondAttribute="trailing" constant="10" id="DAf-01-BRo"/>
-                                    <constraint firstAttribute="trailing" secondItem="G5a-1P-giP" secondAttribute="trailing" constant="8" id="FRg-l0-LRD"/>
-                                    <constraint firstItem="G5a-1P-giP" firstAttribute="leading" secondItem="Flh-3V-0CW" secondAttribute="leading" constant="8" id="JYv-S4-ibn"/>
-                                    <constraint firstAttribute="height" constant="449" id="Nic-Q0-DkU"/>
-                                    <constraint firstItem="o5M-oc-J0T" firstAttribute="centerX" secondItem="Flh-3V-0CW" secondAttribute="centerX" id="XeQ-Bv-Idy"/>
-                                    <constraint firstItem="bCS-Km-a9Y" firstAttribute="leading" secondItem="Flh-3V-0CW" secondAttribute="leading" constant="10" id="ZAc-Me-Lia"/>
-                                    <constraint firstItem="lA4-R8-dFl" firstAttribute="top" secondItem="G5a-1P-giP" secondAttribute="bottom" constant="2" id="iPE-L6-3Db"/>
-                                    <constraint firstAttribute="trailing" secondItem="lA4-R8-dFl" secondAttribute="trailing" constant="10" id="jxY-cW-xLy"/>
-                                    <constraint firstItem="bCS-Km-a9Y" firstAttribute="top" secondItem="lA4-R8-dFl" secondAttribute="bottom" constant="-3" id="lZ7-Zb-IIX"/>
-                                    <constraint firstItem="lA4-R8-dFl" firstAttribute="leading" secondItem="Flh-3V-0CW" secondAttribute="leading" constant="10" id="rde-6q-dWE"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="iKG-Qi-bpA"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Flh-3V-0CW" firstAttribute="leading" secondItem="iKG-Qi-bpA" secondAttribute="leading" id="K8j-Zh-KLf"/>
-                            <constraint firstItem="Flh-3V-0CW" firstAttribute="trailing" secondItem="iKG-Qi-bpA" secondAttribute="trailing" id="XT7-sZ-arC"/>
-                            <constraint firstItem="Flh-3V-0CW" firstAttribute="centerY" secondItem="iKG-Qi-bpA" secondAttribute="centerY" id="Z6p-2I-ogA"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="benefitList" destination="bAu-UT-Z0r" id="PFF-7J-Fbt"/>
-                        <outlet property="benefitView" destination="lA4-R8-dFl" id="vt5-hY-lmO"/>
-                        <outlet property="signUpButton" destination="o5M-oc-J0T" id="FX7-aA-Vto"/>
-                        <outlet property="tryForFreeLabel" destination="bCS-Km-a9Y" id="N76-7w-JwO"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="m5e-DF-eVb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="529.23076923076917" y="1842.654028436019"/>
+            <point key="canvasLocation" x="-1678" y="2620"/>
         </scene>
         <!--Sign In Up View Controller-->
         <scene sceneID="bZB-oi-7m4">
@@ -1876,12 +1776,12 @@
                         <outlet property="pigImage" destination="ucs-br-bMt" id="m8O-8I-H6s"/>
                         <outlet property="signInButtonOutlet" destination="cub-D6-c5p" id="0BJ-3q-FJO"/>
                         <outlet property="switchModes" destination="wKN-R8-hAG" id="gHg-Vy-lpD"/>
-                        <segue destination="OMJ-XC-hcT" kind="show" identifier="goToSyncInstructions" id="EFs-Pg-YJi"/>
+                        <segue destination="xIA-8a-g1Z" kind="show" identifier="goToSyncInstructions" id="EFs-Pg-YJi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pHD-Ke-huZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7760" y="2387"/>
+            <point key="canvasLocation" x="56.92307692307692" y="3602.8436018957345"/>
         </scene>
         <!--Budgets-->
         <scene sceneID="dFf-dz-Tp9">
@@ -1906,7 +1806,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gPJ-iW-6gp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5263" y="2531"/>
+            <point key="canvasLocation" x="-7566" y="2524"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VfM-NE-KKD">
@@ -1933,7 +1833,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nv2-U7-Ra8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1151" y="3455"/>
+            <point key="canvasLocation" x="-2489" y="2620"/>
         </scene>
         <!--Settings-->
         <scene sceneID="lxt-CI-9hf">
@@ -1952,12 +1852,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cXh-o1-Blg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1610.7692307692307" y="1766.5876777251185"/>
+            <point key="canvasLocation" x="-4425" y="1700"/>
         </scene>
-        <!--Perks View Controller-->
+        <!--Perks Unlimited Budgets View Controller-->
         <scene sceneID="G3q-3U-tcZ">
             <objects>
-                <viewController id="gix-sw-wvj" customClass="IAPPerksViewController" customModule="BudgeAppMaster" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gix-sw-wvj" customClass="PerksUnlimitedBudgetsViewController" customModule="BudgeAppMaster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DNc-N1-Pv0">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1991,7 +1891,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B9c-XY-tWk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-400" y="2524"/>
+            <point key="canvasLocation" x="-6737" y="3603"/>
         </scene>
         <!--Subscription View Controller-->
         <scene sceneID="m3i-cu-Tgz">
@@ -2177,7 +2077,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dFO-nC-NfX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="637" y="3455"/>
+            <point key="canvasLocation" x="-872" y="2620"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NNE-58-Ufo">
@@ -2196,14 +2096,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uIV-f6-LV0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1242" y="2524"/>
+            <point key="canvasLocation" x="-7566" y="3603"/>
         </scene>
-        <!--View Controller-->
+        <!--Sync Instructions View Controller-->
         <scene sceneID="JgY-bF-gAR">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="OMJ-XC-hcT" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="OMJ-XC-hcT" customClass="SyncInstructionsViewController" customModule="BudgeAppMaster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Wp-mq-XRd">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How to sync with another device" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2U-TC-ReW">
@@ -2217,11 +2117,17 @@
                         <viewLayoutGuide key="safeArea" id="Unb-Sb-kK0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="m2e-KF-xA0"/>
+                    <navigationItem key="navigationItem" id="m2e-KF-xA0">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="Irr-ib-XF1">
+                            <connections>
+                                <action selector="doneButton:" destination="OMJ-XC-hcT" id="U95-X5-rBM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UAy-FZ-nXk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-182" y="4280"/>
+            <point key="canvasLocation" x="-3746" y="3603"/>
         </scene>
         <!--Non Consumable View Controller-->
         <scene sceneID="uYT-0r-KSC">
@@ -2281,7 +2187,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dzg-Sd-QBm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="473.84615384615381" y="2523.6966824644551"/>
+            <point key="canvasLocation" x="-5857" y="3603"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="D7w-Zc-OCN">
@@ -2299,12 +2205,31 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gwb-jQ-DsI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6315.3846153846152" y="1766.5876777251185"/>
+            <point key="canvasLocation" x="-1560" y="3602.8436018957345"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="KZe-1A-Tmb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xIA-8a-g1Z" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="k8D-wC-WdI"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MfG-sX-j6r">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="OMJ-XC-hcT" kind="relationship" relationship="rootViewController" id="hoX-fM-Dlu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cPM-oc-0VT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4628" y="3603"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="EFs-Pg-YJi"/>
-        <segue reference="rQm-e1-kpV"/>
+        <segue reference="aNj-kr-njE"/>
+        <segue reference="4QQ-pE-U08"/>
         <segue reference="7l1-j4-geS"/>
     </inferredMetricsTieBreakers>
     <resources>

@@ -6,6 +6,10 @@
 //  Copyright © 2019 Icecream. All rights reserved.
 //
 
+
+
+//Next - need to clear firebase cache when logging out
+
 import UIKit
 
 let defaults = UserDefaults.standard
