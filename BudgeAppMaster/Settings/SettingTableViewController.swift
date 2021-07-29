@@ -588,15 +588,10 @@ class SettingTableViewController: UITableViewController {
         
         
     }
-    
-    func setUserDefaultsSignOut() {
-        defaults.set(false, forKey: "SubscribedUser")
-        defaults.set("", forKey: "CurrentUserG")
-    }
+   
     
     func signOut() {
         let firebaseAuth = Auth.auth()
-        setUserDefaultsSignOut()
         subscribedUser = false
         currentUserG = ""
         do {
@@ -604,7 +599,8 @@ class SettingTableViewController: UITableViewController {
             deleteReminders()
             currentUserG = ""
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showWelcomeScreen"), object: nil)
+//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showWelcomeScreen"), object: nil)
+            needToShowWelcomeScreen = true
             self.tabBarController?.selectedIndex = 0
             
         } catch let signOutError as NSError {

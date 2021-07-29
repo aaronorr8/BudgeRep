@@ -10,7 +10,7 @@
     import Firebase
     import AudioToolbox
     
-    
+    var needToShowWelcomeScreen = true
     
     class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
         
@@ -28,7 +28,7 @@
         let visibleTitleColor = UIColor.black
         var hideNav = Bool()
         var totalSpentAllBudgets = Double()
-        var needToShowWelcomeScreen = true
+        
         
         //MARK: PROGRESS BAR SCALE
         let xScale = CGFloat(1.0)
@@ -47,12 +47,14 @@
         
         override func viewDidLoad() {
             super.viewDidLoad()
+            
+            loadUserDefaultsUserAttributes()
    
 //            checkLoginStatus()
             
             //Reset view for new users. Notification is posted when new users sign up
             NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
-            NotificationCenter.default.addObserver(self, selector: #selector(showSignUpAndSync), name: NSNotification.Name(rawValue: "ShowSignUpAndSync"), object: nil)
+//            NotificationCenter.default.addObserver(self, selector: #selector(showSignUpAndSync), name: NSNotification.Name(rawValue: "ShowSignUpAndSync"), object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(showWelcomeScreen), name: NSNotification.Name(rawValue: "showWelcomeScreen"), object: nil)
             
             db = Firestore.firestore()
@@ -418,7 +420,7 @@
         
         //MARK: SAVE
         func save() {
-            if subscribedUser == true {
+            if subscribedUser == true && currentUserG != "" {
                 saveToFireStore()
                 print("Save to FireStore")
             } else {
@@ -510,10 +512,8 @@
         }
         
         func loadUserDefaultsUserAttributes() {
-//            if defaults.value(forKey: "currentUserG") != nil {currentUserG = defaults.value(forKey: "currentUserG") as! String}
-            if defaults.value(forKey: "subscribedUser") != nil {subscribedUser = defaults.value(forKey: "subscribedUser") as! Bool}
+            if defaults.value(forKey: "SubscribedUser") != nil {subscribedUser = defaults.value(forKey: "SubscribedUser") as! Bool}
             if defaults.value(forKey: "unlimitedUser") != nil {unlimitedUser = defaults.value(forKey: "unlimitedUser") as! Bool}
-            print("currentUserG: \(currentUserG)")
             print("subscribedUser: \(subscribedUser)")
             print("unlimitedUser: \(unlimitedUser)")
         }
@@ -539,14 +539,14 @@
         
         
         
-        @objc func showSignUpAndSync() {
-            if currentUserG == "" {
-                self.performSegue(withIdentifier: "goToSignUp", sender: self)
-            } else {
-                self.performSegue(withIdentifier: "goToSyncInstructions", sender: self)
-            }
-            
-        }
+//        @objc func showSignUpAndSync() {
+//            if currentUserG == "" {
+//                self.performSegue(withIdentifier: "goToSignUp", sender: self)
+//            } else {
+//                self.performSegue(withIdentifier: "goToSyncInstructions", sender: self)
+//            }
+//
+//        }
         
         
         @objc func showWelcomeScreen() {

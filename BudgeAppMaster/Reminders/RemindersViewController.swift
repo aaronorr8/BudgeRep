@@ -48,12 +48,14 @@ class RemindersViewController: UIViewController, UITableViewDelegate, UITableVie
         if defaults.value(forKey: "budgetHistoryDateUD") != nil {budgetHistoryDateG = defaults.value(forKey: "budgetHistoryDateUD") as! [String: [String]]}
         if defaults.value(forKey: "budgetHistoryTimeUD") != nil {budgetHistoryTimeG = defaults.value(forKey: "budgetHistoryTimeUD") as! [String: [String]]}
         if defaults.value(forKey: "budgetNoteUD") != nil {budgetNoteG = defaults.value(forKey: "budgetNoteUD") as! [String: [String]]}
+        if defaults.value(forKey: "SubscribedUser") != nil {subscribedUser = defaults.value(forKey: "SubscribedUser") as! Bool}
         print("budgetNameG: \(budgetNameG)")
         print("budgetAmountG: \(budgetAmountG)")
         print("budgetHistoryAmountG: \(budgetHistoryAmountG)")
         print("budgetHistoryDateG: \(budgetHistoryDateG)")
         print("budgetHistoryTimeG: \(budgetHistoryTimeG)")
         print("budgetNoteG: \(budgetNoteG)")
+        print("SubscribedUser: \(subscribedUser)")
     }
     
 

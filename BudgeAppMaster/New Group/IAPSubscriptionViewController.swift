@@ -157,7 +157,7 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
                 case "budge.subscription":
                     print("Subscribe")
                     unlockApp()
-                    closeIAPScreen()
+//                    closeIAPScreen()
                 default:
                     print("IAP not found")
                 }
@@ -250,18 +250,19 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
     func unlockApp() {
         subscribedUser = true
         save()
+        closeIAPScreen()
     }
     
     func closeIAPScreen() {
-        self.dismiss(animated: true, completion: nil)
-        showSignUpAndSync()
-//        performSegue(withIdentifier: "goToSignUp", sender: self)
+//        self.dismiss(animated: true, completion: nil)
+//        showSignUpAndSync()
+        performSegue(withIdentifier: "goToSignUp", sender: self)
     }
     
     
-    func showSignUpAndSync() {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ShowSignUpAndSync"), object: nil)
-    }
+//    func showSignUpAndSync() {
+//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ShowSignUpAndSync"), object: nil)
+//    }
     
     
     
