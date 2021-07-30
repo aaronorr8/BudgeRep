@@ -658,7 +658,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$0.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8vu-mZ-ZN0">
-                                <rect key="frame" x="224" y="148" width="150" height="49"/>
+                                <rect key="frame" x="27.666666666666686" y="148" width="150" height="49"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="ch8-Uj-aem"/>
@@ -680,7 +680,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itS-FW-iYR">
-                                <rect key="frame" x="16" y="272" width="358" height="50"/>
+                                <rect key="frame" x="16" y="272" width="161.66666666666666" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="Yra-TK-Dl9"/>
                                     <constraint firstAttribute="height" constant="50" id="vYF-U7-Dtd"/>
@@ -715,7 +715,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add a note (optional)" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="kUx-xT-OjT">
-                                <rect key="frame" x="16" y="213" width="358" height="36"/>
+                                <rect key="frame" x="16" y="213" width="161.66666666666666" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="AxP-lm-M3M"/>
                                 </constraints>
@@ -723,17 +723,17 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MCp-4g-X3d">
-                                <rect key="frame" x="0.0" y="88" width="390" height="40"/>
+                                <rect key="frame" x="0.0" y="88" width="193.66666666666666" height="40"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Right Arrow" translatesAutoresizingMaskIntoConstraints="NO" id="wiI-q1-eV4">
-                                        <rect key="frame" x="364" y="9" width="18" height="22"/>
+                                        <rect key="frame" x="167.66666666666666" y="9" width="18" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="Q8k-Rr-6eY"/>
                                             <constraint firstAttribute="width" constant="18" id="SaX-MJ-e8U"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bav-E8-e0a">
-                                        <rect key="frame" x="227" y="5" width="139" height="30"/>
+                                        <rect key="frame" x="30.666666666666686" y="5" width="139" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="139" id="Do9-na-SUY"/>
                                             <constraint firstAttribute="height" constant="30" id="Rcw-Lv-y9r"/>
@@ -744,7 +744,7 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qec-RS-88f">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="193.66666666666666" height="40"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                         <connections>
                                             <segue destination="daq-p7-PWs" kind="show" id="KkM-bK-EwF"/>
@@ -1433,8 +1433,8 @@
                         <outlet property="pigCredit" destination="9wy-9C-MvQ" id="mRL-c8-rxh"/>
                         <outlet property="signOutButtonOutlet" destination="lTb-KF-hqv" id="AGP-UZ-CXo"/>
                         <outlet property="subscribeButtonOutlet" destination="64j-eJ-whA" id="lKg-CQ-oqo"/>
-                        <segue destination="fBD-do-PNd" kind="presentation" identifier="goToSubscribeAndSignUpFlow" id="mth-7a-90k"/>
                         <segue destination="OMJ-XC-hcT" kind="presentation" identifier="goToSyncInstructions" modalPresentationStyle="currentContext" modalTransitionStyle="coverVertical" id="O7o-mW-TWq"/>
+                        <segue destination="jmj-We-s0t" kind="presentation" identifier="goToSubscription" modalPresentationStyle="fullScreen" id="JcN-XB-7Xc"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wnl-9g-fpe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1562,52 +1562,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9OA-28-Pj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-8788" y="2524"/>
-        </scene>
-        <!--Perks Subscription View Controller-->
-        <scene sceneID="atb-ed-Osy">
-            <objects>
-                <viewController id="M0a-wv-vxZ" customClass="PerksSubscriptionViewController" customModule="BudgeAppMaster" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="6Ea-Y7-VLu">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QpP-Ot-hws">
-                                <rect key="frame" x="116" y="569" width="158" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
-                                <state key="normal" title="Get Started">
-                                    <color key="titleColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="getStartedButton:" destination="M0a-wv-vxZ" eventType="touchUpInside" id="dot-K0-hq8"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Salesy stuff encouraging a subscription" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKb-E2-CyY">
-                                <rect key="frame" x="45" y="308" width="301" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Cct-eJ-jKd"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="UWD-qK-rjm">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="S7T-qh-FdZ">
-                            <connections>
-                                <action selector="cancelButton:" destination="M0a-wv-vxZ" id="eq9-iE-SIh"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <segue destination="dth-ut-w83" kind="show" identifier="goToSignUp" id="dR9-jo-lny"/>
-                        <segue destination="eJF-8z-42K" kind="show" identifier="goToSubscription" id="hvx-GM-gsg"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lFC-2P-C62" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2858" y="2618"/>
         </scene>
         <!--Sign In Up View Controller-->
         <scene sceneID="bZB-oi-7m4">
@@ -1827,33 +1781,6 @@
             </objects>
             <point key="canvasLocation" x="-7566" y="2524"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="VfM-NE-KKD">
-            <objects>
-                <navigationController storyboardIdentifier="WelcomeFlow" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="fBD-do-PNd" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="kTh-CE-7GT"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="guh-H3-kum">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </textAttributes>
-                        <textAttributes key="largeTitleTextAttributes">
-                            <color key="textColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="M0a-wv-vxZ" kind="relationship" relationship="rootViewController" id="FdT-mY-CIx"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nv2-U7-Ra8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3669" y="2618"/>
-        </scene>
         <!--Settings-->
         <scene sceneID="lxt-CI-9hf">
             <objects>
@@ -1929,7 +1856,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGh-Kf-yxc">
                                                 <rect key="frame" x="0.0" y="0.0" width="390" height="420"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your trial period has ended." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aiE-b4-B5C">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subscribe to get Sync and Unlimited budgets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aiE-b4-B5C">
                                                         <rect key="frame" x="16" y="40" width="358" height="30"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -2087,7 +2014,13 @@
                             <constraint firstItem="yBE-lq-fBC" firstAttribute="top" secondItem="CLA-xu-i0j" secondAttribute="top" id="xU8-rD-6Lb"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="cXa-8s-Htg"/>
+                    <navigationItem key="navigationItem" id="cXa-8s-Htg">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="2gy-Pn-jwq">
+                            <connections>
+                                <action selector="cancelButton:" destination="eJF-8z-42K" id="UNB-81-lng"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="legalText" destination="VhC-nn-KT2" id="tuE-lK-0Aa"/>
                         <outlet property="subscribeButton" destination="tLs-dL-bZy" id="8bw-xo-4TT"/>
@@ -2097,7 +2030,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dFO-nC-NfX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2052" y="2618"/>
+            <point key="canvasLocation" x="-3669" y="2602"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NNE-58-Ufo">
@@ -2227,10 +2160,28 @@
             </objects>
             <point key="canvasLocation" x="-3669" y="3603"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="DAU-oX-EF9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jmj-We-s0t" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5AN-EQ-JLm">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="eJF-8z-42K" kind="relationship" relationship="rootViewController" id="EX8-Nn-XGe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="88K-1G-WEx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4426" y="2602"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="h9B-bc-q6v"/>
-        <segue reference="rQm-e1-kpV"/>
+        <segue reference="qrR-9q-Sg8"/>
         <segue reference="7l1-j4-geS"/>
     </inferredMetricsTieBreakers>
     <resources>

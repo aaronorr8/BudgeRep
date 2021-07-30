@@ -19,6 +19,7 @@ let defaults = UserDefaults.standard
 var myIndexG = 0
 var editModeG = false
 var closeAllG = false
+var showSyncInstructions = false
 
 
 //SETTINGS

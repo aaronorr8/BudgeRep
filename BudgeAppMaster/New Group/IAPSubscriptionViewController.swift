@@ -240,13 +240,14 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
     
     
 
-    
-    
-    @IBAction func closeButton(_ sender: Any) {
-//        self.dismiss(animated: true, completion: nil)
-        self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
+    @IBAction func cancelButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
+    
+
+    
+    //MARK: UNLOCK APP
     func unlockApp() {
         subscribedUser = true
         save()
@@ -254,9 +255,14 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
     }
     
     func closeIAPScreen() {
-//        self.dismiss(animated: true, completion: nil)
-//        showSignUpAndSync()
-        performSegue(withIdentifier: "goToSignUp", sender: self)
+        //not subscribed, not signed in -> intro>subscribe>signup>instructions
+        if currentUserG == "" {
+            performSegue(withIdentifier: "goToSignUp", sender: self)
+        } else {
+            performSegue(withIdentifier: "goToSyncInstructions", sender: self)
+        }
+        
+        
     }
     
     

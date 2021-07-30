@@ -610,8 +610,30 @@ class SettingTableViewController: UITableViewController {
     
     
  
-    
+    //MARK:SYNC BUTTON
     @IBAction func linkToAnotherDevice(_ sender: Any) {
+        
+        //not subscribed, not signed in -> intro>subscribe>signup>instructions
+        if subscribedUser == false && currentUserG != "" {
+            signUpMode = true
+            showSyncInstructions = true
+            performSegue(withIdentifier: "goToSubscription", sender: self)
+        }
+        
+        //subscribed, not signed in -> login/signup>instructions
+        if subscribedUser == true && currentUserG == "" {
+            signUpMode == true
+            showSyncInstructions == true
+            performSegue(withIdentifier: "goToSignUp", sender: self)
+        }
+        
+        //not subscribed, signed in -> intro>subscribe>instructions
+        
+        
+        //subscribed, signed in -> instructions
+        
+        
+        
         
         if subscribedUser == true && currentUserG != "" {
             print("goToSyncInstructions")

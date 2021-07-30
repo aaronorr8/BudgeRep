@@ -35,7 +35,6 @@
 		25A933E7C5DAD6DF2D222780 /* Pods_BudgeAppMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C778C86DABD18BCB8E509DC /* Pods_BudgeAppMaster.framework */; };
 		43101444264C1E3000737DA1 /* To Do's.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43101443264C1E3000737DA1 /* To Do's.swift */; };
 		431CFEAB26B19C2D0056A3A9 /* SyncInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431CFEAA26B19C2D0056A3A9 /* SyncInstructionsViewController.swift */; };
-		431CFEAD26B19E880056A3A9 /* PerksSubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431CFEAC26B19E880056A3A9 /* PerksSubscriptionViewController.swift */; };
 		4326BF34223347D4002B501D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326BF33223347D4002B501D /* ViewController.swift */; };
 		4329DD23245C53560045E952 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4329DD22245C53560045E952 /* GlobalConstants.swift */; };
 		435771EF26ADB3A100383CE7 /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435771EE26ADB3A100383CE7 /* WelcomeScreenViewController.swift */; };
@@ -78,7 +77,6 @@
 		0DBF296E22932A9700778D01 /* IAPCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPCollectionViewCell.swift; sourceTree = "<group>"; };
 		43101443264C1E3000737DA1 /* To Do's.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "To Do's.swift"; sourceTree = "<group>"; };
 		431CFEAA26B19C2D0056A3A9 /* SyncInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncInstructionsViewController.swift; sourceTree = "<group>"; };
-		431CFEAC26B19E880056A3A9 /* PerksSubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerksSubscriptionViewController.swift; sourceTree = "<group>"; };
 		4326BF33223347D4002B501D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4329DD22245C53560045E952 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		435771EE26ADB3A100383CE7 /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
@@ -238,7 +236,6 @@
 			children = (
 				435B276626A1BFD10002C368 /* PerksUnlimitedBudgetsViewController.swift */,
 				431CFEAA26B19C2D0056A3A9 /* SyncInstructionsViewController.swift */,
-				431CFEAC26B19E880056A3A9 /* PerksSubscriptionViewController.swift */,
 			);
 			path = Instructions;
 			sourceTree = "<group>";
@@ -404,7 +401,6 @@
 				0DA43742223333F200110700 /* AddBudgetViewController.swift in Sources */,
 				0DA4373B223333C000110700 /* WavyProgressView.swift in Sources */,
 				0DA437472233340A00110700 /* HistoryViewController.swift in Sources */,
-				431CFEAD26B19E880056A3A9 /* PerksSubscriptionViewController.swift in Sources */,
 				0DA43739223333AD00110700 /* BudgetCollectionReusableView.swift in Sources */,
 				43FE6F9C2257B581007C21BF /* SettingTableViewController.swift in Sources */,
 				431CFEAB26B19C2D0056A3A9 /* SyncInstructionsViewController.swift in Sources */,

@@ -377,9 +377,8 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                     print("AppDelegate: subscribedUser: \(subscribedUser)")
                     if subscribedUser == true {
                         print("set subscribedUser defaults to true")
-//                        defaults.set(true, forKey: "SubscribedUser")
-                        self.performSegue(withIdentifier: "goToBudgets", sender: self)
-                        self.dismiss(animated: true, completion: nil)
+                        defaults.set(true, forKey: "SubscribedUser")
+                        self.goToNextScreen()
                     } else {
                         self.performSegue(withIdentifier: "goToBudgets", sender: self)
                     }
@@ -419,14 +418,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                  } else {
                      print("Login screen: Document does not exist in cache")
                  }
-                 
-                if sceneLogInOnly == true {
-                    self.dismiss(animated: true, completion: nil)
-                } else {
-                    self.goToSyncInstruction()
-                }
-                
-                 
+                self.goToNextScreen()
              }
          } else {
              print("Login screen: Could not get userID")
@@ -435,11 +427,12 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
     
     
   
-    func goToSyncInstruction() {
-        if subscribedUser == true {
-           self.performSegue(withIdentifier: "goToSyncInstructions", sender: self)
+    func goToNextScreen() {
+        if showSyncInstructions == true {
+            showSyncInstructions = false
+            performSegue(withIdentifier: "goToSyncInstructions", sender: self)
         } else {
-           self.performSegue(withIdentifier: "goToSyncInstructions", sender: self)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
