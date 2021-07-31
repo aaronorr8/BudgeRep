@@ -11,13 +11,11 @@ import UserNotifications
 import Firebase
 
 var goToMain = false
-var hideCloseButton = true
 
 class SettingTableViewController: UITableViewController {
 
 
     @IBOutlet weak var monthlyResetSwitch: UISwitch!
-    @IBOutlet weak var subscribeButtonOutlet: UIButton!
     @IBOutlet weak var signOutButtonOutlet: UIButton!
     
     @IBOutlet weak var pigCredit: UILabel!
@@ -121,16 +119,6 @@ class SettingTableViewController: UITableViewController {
         }
     }
     
-    
-    @IBAction func subscribeButton(_ sender: Any) {
-        subscribedUser = true //remove this before releasing
-        print("user is subscribed")
-        hideCloseButton = false
-        
-    }
-    
-    
-
     
     
     @IBAction func resetAllBudgets(_ sender: Any) {
@@ -614,7 +602,7 @@ class SettingTableViewController: UITableViewController {
     @IBAction func linkToAnotherDevice(_ sender: Any) {
         
         //not subscribed, not signed in -> intro>subscribe>signup>instructions
-        if subscribedUser == false && currentUserG != "" {
+        if subscribedUser == false && currentUserG == "" {
             signUpMode = true
             showSyncInstructions = true
             performSegue(withIdentifier: "goToSubscription", sender: self)
@@ -622,8 +610,8 @@ class SettingTableViewController: UITableViewController {
         
         //subscribed, not signed in -> login/signup>instructions
         if subscribedUser == true && currentUserG == "" {
-            signUpMode == true
-            showSyncInstructions == true
+            signUpMode = true
+            showSyncInstructions = true
             performSegue(withIdentifier: "goToSignUp", sender: self)
         }
         
@@ -635,13 +623,6 @@ class SettingTableViewController: UITableViewController {
         
         
         
-        if subscribedUser == true && currentUserG != "" {
-            print("goToSyncInstructions")
-            performSegue(withIdentifier: "goToSyncInstructions", sender: self)
-        } else {
-            print("goToSubscribeAndSignUpFlow")
-            performSegue(withIdentifier: "goToSubscribeAndSignUpFlow", sender: self)
-        }
         
         
         //            let email = Auth.auth().currentUser!.email!
@@ -651,14 +632,6 @@ class SettingTableViewController: UITableViewController {
         
     }
     
-    func subscribeButtonTitle() {
-        print("Title, Subscribed: \(subscribedUser)")
-        if subscribedUser == false {
-            subscribeButtonOutlet.setTitle("Subscribe", for: .normal)
-        } else {
-            subscribeButtonOutlet.setTitle("Subscribed", for: .disabled)
-        }
-    }
     
     func signOutAlert() {
         let alert = UIAlertController(title: "Sign out?", message: "Reminders are deleted when signing out, but your budgets and spending are saved and will here when you sign back in.", preferredStyle: .alert)
@@ -682,22 +655,13 @@ class SettingTableViewController: UITableViewController {
                         print("Error fetching document: \(error!)")
                         return
                     }
-                    guard let data = document.data() else {
+                    guard document.data() != nil else {
                         print("Document data was empty.")
                         return
                     }
                     subscribedUser = document.get("subscribedUser") as! Bool
                     print("From Firestore, subscribedUser = \(subscribedUser)")
                     
-                    if subscribedUser == true {
-                        self.subscribeButtonOutlet.setTitle("Subscribed", for: .normal)
-                        self.subscribeButtonOutlet.isEnabled = false
-                        self.subscribeButtonOutlet.setTitleColor(.lightGray, for: .normal)
-                    } else {
-                        self.subscribeButtonOutlet.setTitle("Subscribe", for: .normal)
-                        self.subscribeButtonOutlet.isEnabled = true
-                        self.subscribeButtonOutlet.setTitleColor(.black, for: .normal)
-                    }     
             }
         }
         

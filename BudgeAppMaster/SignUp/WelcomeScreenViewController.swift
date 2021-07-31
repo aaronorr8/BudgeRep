@@ -34,7 +34,7 @@ class WelcomeScreenViewController: UIViewController {
     
     @IBAction func LoginButton(_ sender: Any) {
         sceneLogInOnly = true
-        performSegue(withIdentifier: "goToSignIn", sender: self)
+        performSegue(withIdentifier: "goToSignUp", sender: self)
         
     }
 }

@@ -20,6 +20,7 @@ var myIndexG = 0
 var editModeG = false
 var closeAllG = false
 var showSyncInstructions = false
+var hideBackButton = false
 
 
 //SETTINGS

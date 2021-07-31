@@ -68,14 +68,6 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
         }
     }
     
-
-    
-    
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        hideCloseButton = true
-    }
-    
     
     //MARK: SUBSCRIBE BUTTON
     @IBAction func subscribeButton(_ sender: Any) {
@@ -156,8 +148,7 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
                 switch prodID {
                 case "budge.subscription":
                     print("Subscribe")
-                    unlockApp()
-//                    closeIAPScreen()
+//                    unlockApp()
                 default:
                     print("IAP not found")
                 }
@@ -170,23 +161,16 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
         
         for transaction: AnyObject in transactions {
             let trans = transaction as! SKPaymentTransaction
-            print(trans.error)
+            print(trans.error as Any)
             
             switch trans.transactionState {
             case .purchased:
-                print("Purchased! Unlock app")
-                print(p.productIdentifier)
-                stopSpinner()
-                unlockApp()
-                closeIAPScreen()
-                
                 let prodID = p.productIdentifier
                 switch prodID {
                 case "budge.subscription":
                     print("Subscribed")
                     stopSpinner()
                     unlockApp()
-                    closeIAPScreen()
                 default:
                     print("IAP not found")
                 }
@@ -255,8 +239,10 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
     }
     
     func closeIAPScreen() {
+        print("closeIAPScreen called")
         //not subscribed, not signed in -> intro>subscribe>signup>instructions
         if currentUserG == "" {
+            hideBackButton = true
             performSegue(withIdentifier: "goToSignUp", sender: self)
         } else {
             performSegue(withIdentifier: "goToSyncInstructions", sender: self)
@@ -327,7 +313,7 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
         let alert = UIAlertController(title: "Budge Subscription Restored!", message:
         "You now have full access to the app", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: { _ in
-            self.closeIAPScreen()
+//            self.unlockApp()
         }))
     
         self.present(alert, animated: true, completion: nil)

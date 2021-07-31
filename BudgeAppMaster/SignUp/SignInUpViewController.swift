@@ -45,6 +45,8 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         setModeText()
        
     
@@ -61,6 +63,13 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
             forgotPasswordOutlet.isHidden = false
         }
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if hideBackButton == true {
+            hideBackButton = false
+            self.navigationItem.setHidesBackButton(true, animated: true)
+        }
     }
     
     //Keyboard Shift (2/3)
@@ -140,7 +149,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                         print("Signup Successful!")
                         self.transferData()
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
-                        self.goToSyncInstruction()
+                        
                     }
                 }
             } else {
