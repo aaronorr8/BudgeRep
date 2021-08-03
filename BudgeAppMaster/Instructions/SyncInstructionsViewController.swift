@@ -14,6 +14,7 @@ class SyncInstructionsViewController: UIViewController {
         super.viewDidLoad()
 
         self.title = "How to Sync"
+        self.navigationItem.setHidesBackButton(true, animated: true)
     }
     
 

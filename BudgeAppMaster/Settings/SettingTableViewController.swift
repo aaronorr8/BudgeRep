@@ -616,9 +616,17 @@ class SettingTableViewController: UITableViewController {
         }
         
         //not subscribed, signed in -> intro>subscribe>instructions
+        if subscribedUser == false && currentUserG != "" {
+            showSyncInstructions = true
+            performSegue(withIdentifier: "goToSubscription", sender: self)
+        }
         
         
         //subscribed, signed in -> instructions
+        if subscribedUser == true && currentUserG != "" {
+            showSyncInstructions = true
+            performSegue(withIdentifier: "goToSyncInstructions", sender: self)
+        }
         
         
         

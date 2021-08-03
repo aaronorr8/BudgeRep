@@ -1414,6 +1414,7 @@
                         <outlet property="signOutButtonOutlet" destination="lTb-KF-hqv" id="AGP-UZ-CXo"/>
                         <segue destination="jmj-We-s0t" kind="presentation" identifier="goToSubscription" modalPresentationStyle="fullScreen" id="JcN-XB-7Xc"/>
                         <segue destination="d8b-nw-57S" kind="show" identifier="goToSignUp" id="6OR-gc-DNz"/>
+                        <segue destination="lCB-Bv-Yh5" kind="presentation" identifier="goToSyncInstructions" modalPresentationStyle="fullScreen" id="AC5-cC-uoC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wnl-9g-fpe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1728,6 +1729,7 @@
                         <outlet property="pigImage" destination="ucs-br-bMt" id="m8O-8I-H6s"/>
                         <outlet property="signInButtonOutlet" destination="cub-D6-c5p" id="0BJ-3q-FJO"/>
                         <outlet property="switchModes" destination="wKN-R8-hAG" id="gHg-Vy-lpD"/>
+                        <segue destination="OMJ-XC-hcT" kind="show" identifier="goToSyncInstructions" id="FUk-xE-JoA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pHD-Ke-huZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2004,6 +2006,7 @@
                         <outlet property="subscribeButton" destination="tLs-dL-bZy" id="8bw-xo-4TT"/>
                         <outlet property="tryForFreeLabel" destination="vRx-kH-RUL" id="PFN-O7-bph"/>
                         <segue destination="dth-ut-w83" kind="show" identifier="goToSignUp" id="NI5-5B-zxb"/>
+                        <segue destination="OMJ-XC-hcT" kind="show" identifier="goToSyncInstructions" id="Bot-YV-NxM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dFO-nC-NfX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2058,7 +2061,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UAy-FZ-nXk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1908" y="2524"/>
+            <point key="canvasLocation" x="-363.07692307692304" y="2537.9146919431278"/>
         </scene>
         <!--Non Consumable View Controller-->
         <scene sceneID="uYT-0r-KSC">
@@ -2175,10 +2178,29 @@
             </objects>
             <point key="canvasLocation" x="-1292.3076923076922" y="3602.8436018957345"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Chx-7B-zY3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lCB-Bv-Yh5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rbY-oa-P0v">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="OMJ-XC-hcT" kind="relationship" relationship="rootViewController" id="w5X-QK-15R"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6VZ-Jr-qh8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1292.3076923076922" y="2537.9146919431278"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="6OR-gc-DNz"/>
-        <segue reference="Mh5-fk-KUP"/>
+        <segue reference="Bot-YV-NxM"/>
+        <segue reference="NI5-5B-zxb"/>
         <segue reference="7l1-j4-geS"/>
     </inferredMetricsTieBreakers>
     <resources>

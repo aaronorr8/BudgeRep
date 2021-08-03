@@ -149,6 +149,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                         print("Signup Successful!")
                         self.transferData()
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+                        self.goToNextScreen()
                         
                     }
                 }
@@ -175,12 +176,12 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                             print("currentUserG: \(currentUserG)")
                             
                         }
-                     
+                        
                         
                         print("Login successful!!")
                         self.newGetFireStoreData()
+                        self.goToNextScreen()
                         
-                       
                         
                     }
                 }
@@ -192,11 +193,6 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
             stopSpinner()
             emptyEmailFieldAlert()
         }
-        
-    
-        
-        
-        
         
     }
     
@@ -387,13 +383,10 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                     if subscribedUser == true {
                         print("set subscribedUser defaults to true")
                         defaults.set(true, forKey: "SubscribedUser")
-                        self.goToNextScreen()
                     } else {
-                        self.performSegue(withIdentifier: "goToBudgets", sender: self)
                     }
                 } else {
                     print("AppDelegate: Document does not exist in cache")
-                    self.performSegue(withIdentifier: "goToBudgets", sender: self)
                 }
             }
         } else {
@@ -427,7 +420,6 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                  } else {
                      print("Login screen: Document does not exist in cache")
                  }
-                self.goToNextScreen()
              }
          } else {
              print("Login screen: Could not get userID")
