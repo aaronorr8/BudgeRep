@@ -49,7 +49,15 @@ class IAPNon_ConsumableViewController: UIViewController, SKProductsRequestDelega
     
     
     @IBAction func restorePurchaseButton(_ sender: Any) {
+        guard let myProduct = myProduct else {
+            return
+        }
         
+        if SKPaymentQueue.canMakePayments() {
+            let payment = SKPayment(product: myProduct)
+            SKPaymentQueue.default().add(self)
+            SKPaymentQueue.default().restoreCompletedTransactions()
+        }
         
     }
     
@@ -97,6 +105,8 @@ class IAPNon_ConsumableViewController: UIViewController, SKProductsRequestDelega
         }
     }
     
+
+  
     
     func unlockApp() {
         print("Purchase complete, unlock app")
