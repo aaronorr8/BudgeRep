@@ -34,6 +34,15 @@
 		0DBF296F22932A9700778D01 /* IAPCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF296E22932A9700778D01 /* IAPCollectionViewCell.swift */; };
 		25A933E7C5DAD6DF2D222780 /* Pods_BudgeAppMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C778C86DABD18BCB8E509DC /* Pods_BudgeAppMaster.framework */; };
 		43101444264C1E3000737DA1 /* To Do's.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43101443264C1E3000737DA1 /* To Do's.swift */; };
+		43166D4A26C013FE00408E56 /* Outfit-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 43166D4426C0136E00408E56 /* Outfit-Black.otf */; };
+		43166D4B26C0140200408E56 /* Outfit-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 43166D4726C0137000408E56 /* Outfit-Bold.otf */; };
+		43166D4C26C0140500408E56 /* Outfit-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 43166D4326C0136D00408E56 /* Outfit-ExtraBold.otf */; };
+		43166D4D26C0140700408E56 /* Outfit-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 43166D4526C0136E00408E56 /* Outfit-ExtraLight.otf */; };
+		43166D4E26C0140A00408E56 /* Outfit-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 43166D4926C0137100408E56 /* Outfit-Light.otf */; };
+		43166D4F26C0140D00408E56 /* Outfit-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 43166D4226C0136C00408E56 /* Outfit-Medium.otf */; };
+		43166D5026C0141000408E56 /* Outfit-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 43166D4126C0136B00408E56 /* Outfit-Regular.otf */; };
+		43166D5126C0141300408E56 /* Outfit-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 43166D4626C0136F00408E56 /* Outfit-SemiBold.otf */; };
+		43166D5226C0141900408E56 /* Outfit-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 43166D4826C0137000408E56 /* Outfit-Thin.otf */; };
 		431CFEAB26B19C2D0056A3A9 /* SyncInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431CFEAA26B19C2D0056A3A9 /* SyncInstructionsViewController.swift */; };
 		4326BF34223347D4002B501D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326BF33223347D4002B501D /* ViewController.swift */; };
 		4329DD23245C53560045E952 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4329DD22245C53560045E952 /* GlobalConstants.swift */; };
@@ -56,7 +65,7 @@
 		0DA4370222332E5200110700 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DA4370C22332E5300110700 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0DA4370E22332E5300110700 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0DA4371422332EA400110700 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		0DA4371422332EA400110700 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "BudgeAppMaster/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		0DA43716223331AB00110700 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0DA437332233336E00110700 /* BudgetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetsViewController.swift; sourceTree = "<group>"; };
 		0DA437362233339E00110700 /* BudgetCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -76,6 +85,15 @@
 		0DACD958225FC1A3008EDF4B /* IAPSubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPSubscriptionViewController.swift; sourceTree = "<group>"; };
 		0DBF296E22932A9700778D01 /* IAPCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPCollectionViewCell.swift; sourceTree = "<group>"; };
 		43101443264C1E3000737DA1 /* To Do's.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "To Do's.swift"; sourceTree = "<group>"; };
+		43166D4126C0136B00408E56 /* Outfit-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Regular.otf"; sourceTree = "<group>"; };
+		43166D4226C0136C00408E56 /* Outfit-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Medium.otf"; sourceTree = "<group>"; };
+		43166D4326C0136D00408E56 /* Outfit-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-ExtraBold.otf"; sourceTree = "<group>"; };
+		43166D4426C0136E00408E56 /* Outfit-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Black.otf"; sourceTree = "<group>"; };
+		43166D4526C0136E00408E56 /* Outfit-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-ExtraLight.otf"; sourceTree = "<group>"; };
+		43166D4626C0136F00408E56 /* Outfit-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-SemiBold.otf"; sourceTree = "<group>"; };
+		43166D4726C0137000408E56 /* Outfit-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Bold.otf"; sourceTree = "<group>"; };
+		43166D4826C0137000408E56 /* Outfit-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Thin.otf"; sourceTree = "<group>"; };
+		43166D4926C0137100408E56 /* Outfit-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Outfit-Light.otf"; sourceTree = "<group>"; };
 		431CFEAA26B19C2D0056A3A9 /* SyncInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncInstructionsViewController.swift; sourceTree = "<group>"; };
 		4326BF33223347D4002B501D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4329DD22245C53560045E952 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
@@ -138,6 +156,8 @@
 		0DA4370122332E5200110700 /* BudgeAppMaster */ = {
 			isa = PBXGroup;
 			children = (
+				0DA4370E22332E5300110700 /* Info.plist */,
+				0DA4371422332EA400110700 /* GoogleService-Info.plist */,
 				43101443264C1E3000737DA1 /* To Do's.swift */,
 				43C7B2182256826D00F1FC0B /* BudgeAppMaster.entitlements */,
 				0DA4370222332E5200110700 /* AppDelegate.swift */,
@@ -152,8 +172,7 @@
 				0DA4374E2233343500110700 /* Reminders */,
 				0DA437512233349800110700 /* Settings */,
 				0DA43754223334CB00110700 /* SignIn */,
-				0DA4370E22332E5300110700 /* Info.plist */,
-				0DA4371422332EA400110700 /* GoogleService-Info.plist */,
+				43166D4026C0136000408E56 /* Font */,
 			);
 			path = BudgeAppMaster;
 			sourceTree = "<group>";
@@ -229,6 +248,22 @@
 			);
 			name = IAP;
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		43166D4026C0136000408E56 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				43166D4426C0136E00408E56 /* Outfit-Black.otf */,
+				43166D4726C0137000408E56 /* Outfit-Bold.otf */,
+				43166D4326C0136D00408E56 /* Outfit-ExtraBold.otf */,
+				43166D4526C0136E00408E56 /* Outfit-ExtraLight.otf */,
+				43166D4926C0137100408E56 /* Outfit-Light.otf */,
+				43166D4226C0136C00408E56 /* Outfit-Medium.otf */,
+				43166D4126C0136B00408E56 /* Outfit-Regular.otf */,
+				43166D4626C0136F00408E56 /* Outfit-SemiBold.otf */,
+				43166D4826C0137000408E56 /* Outfit-Thin.otf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		431CFEA926B19C090056A3A9 /* Instructions */ = {
@@ -336,10 +371,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43166D4D26C0140700408E56 /* Outfit-ExtraLight.otf in Resources */,
 				0DA4370D22332E5300110700 /* LaunchScreen.storyboard in Resources */,
 				0DA43717223331AB00110700 /* Main.storyboard in Resources */,
+				43166D4F26C0140D00408E56 /* Outfit-Medium.otf in Resources */,
+				43166D5226C0141900408E56 /* Outfit-Thin.otf in Resources */,
 				0DA4371522332EA400110700 /* GoogleService-Info.plist in Resources */,
+				43166D5126C0141300408E56 /* Outfit-SemiBold.otf in Resources */,
+				43166D5026C0141000408E56 /* Outfit-Regular.otf in Resources */,
+				43166D4E26C0140A00408E56 /* Outfit-Light.otf in Resources */,
+				43166D4B26C0140200408E56 /* Outfit-Bold.otf in Resources */,
 				4393F83F2233FBA8004CD359 /* Assets.xcassets in Resources */,
+				43166D4C26C0140500408E56 /* Outfit-ExtraBold.otf in Resources */,
+				43166D4A26C013FE00408E56 /* Outfit-Black.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

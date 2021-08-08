@@ -105,6 +105,7 @@
             print("Number of budgets = \(budgetNameG.count)")
             
             
+            
         }
         
         
@@ -551,9 +552,11 @@
         
         @objc func showWelcomeScreen() {
             if currentUserG == "" && budgetNameG.count == 0 && needToShowWelcomeScreen == true {
+                UIView.setAnimationsEnabled(false) //turn off animation so the welcome screen shows without sliding
                 performSegue(withIdentifier: "goToWelcomeScreen", sender: self)
             }
             needToShowWelcomeScreen = false
+        
         }
         
       

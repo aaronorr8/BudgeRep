@@ -43,5 +43,17 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Outfit-Black.otf</string>
+		<string>Outfit-Bold.otf</string>
+		<string>Outfit-ExtraBold.otf</string>
+		<string>Outfit-ExtraLight.otf</string>
+		<string>Outfit-Light.otf</string>
+		<string>Outfit-Medium.otf</string>
+		<string>Outfit-Regular.otf</string>
+		<string>Outfit-SemiBold.otf</string>
+		<string>Outfit-Thin.otf</string>
+	</array>
 </dict>
 </plist>
