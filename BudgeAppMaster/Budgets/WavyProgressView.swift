@@ -87,7 +87,7 @@ class WavyProgressView: UIView {
         
         trackLayer.path = wavyLine.cgPath
         trackLayer.fillColor = UIColor.clear.cgColor
-        trackLayer.strokeColor = trackColor.cgColor
+        trackLayer.strokeColor = #colorLiteral(red: 0, green: 0.5241034031, blue: 0.3747756481, alpha: 1).cgColor
         trackLayer.lineWidth = 2.0
         trackLayer.strokeEnd = 1.0
         trackLayer.lineCap = CAShapeLayerLineCap.round

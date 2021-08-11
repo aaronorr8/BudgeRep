@@ -24,7 +24,11 @@ let bgColorSolid = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
 let bgColorGradient1 = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 let bgColorGradient2 = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 
-let cellBackground = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+let cellBackground = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.8482870504)
+
+//new color scheme
+let colorLightText = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+
 
 //Save Spend Alert
 var showToast = false

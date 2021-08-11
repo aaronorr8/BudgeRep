@@ -91,7 +91,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         
         super.viewDidLoad()
         
-        
+      
         
         //Keyboard Shift (1/3)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)

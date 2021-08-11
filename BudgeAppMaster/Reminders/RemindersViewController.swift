@@ -36,6 +36,8 @@ class RemindersViewController: UIViewController, UITableViewDelegate, UITableVie
   
         loadItems()
         print(dataFilePath)
+        
+    
     }
     
     
@@ -56,6 +58,7 @@ class RemindersViewController: UIViewController, UITableViewDelegate, UITableVie
         print("budgetHistoryTimeG: \(budgetHistoryTimeG)")
         print("budgetNoteG: \(budgetNoteG)")
         print("SubscribedUser: \(subscribedUser)")
+        
     }
     
 

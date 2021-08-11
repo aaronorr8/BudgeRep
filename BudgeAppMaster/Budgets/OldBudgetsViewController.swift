@@ -1,5 +1,5 @@
     //
-    //  BudgetsViewController.swift
+    //  OldBudgetsViewController.swift
     //  Budget App
     //
     //  Created by Aaron Orr on 7/10/18.
@@ -10,9 +10,9 @@
     import Firebase
     import AudioToolbox
     
-    var needToShowWelcomeScreen = true
+
     
-    class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    class OldBudgetsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
         
         @IBOutlet weak var collectionView: UICollectionView!
         
@@ -68,6 +68,8 @@
             loadUserDefaultsUserAttributes()
             
             applybackgroundColor()
+            
+            
             
             
         }
@@ -206,6 +208,28 @@
                 
 
                 
+                
+                //MARK: HEADER PROGRESS BAR
+                let progress = totalSpentAllBudgets/totalBudgetsAllocation
+                
+                headerView.wavyProgress.trackColor = colorTrackH
+                
+                if progress <= 1 {
+                    headerView.wavyProgress.progressColor = colorGreenH
+                } else if progress > 1 {
+                    headerView.wavyProgress.progressColor = colorRedH
+                }
+                
+                headerView.wavyProgress.setProgressWithAnimation(duration: 1.0, value: Float(progress))
+                
+                //MARK: HEADER PROGRESS BAR LABELS
+                
+                let headerSpentTotal = String(convertDoubleToCurency(amount: totalSpentAllBudgets))
+                let headerTotalAvailable = String(convertDoubleToCurency(amount: totalBudgetsAllocation))
+                
+                headerView.progressSpentLabel.text = "\(headerSpentTotal) spent"
+                headerView.progressTotalLabel.text = "\(headerTotalAvailable) total budgets"
+                
                 return headerView
                 
             //MARK: COLLECTION FOOTER
@@ -243,12 +267,12 @@
             let emptyCell = collectionView.dequeueReusableCell(withReuseIdentifier: "emptyCell", for: indexPath) as! BudgetCollectionViewCell
             
             //Set cell border
-//            cell.contentView.layer.borderWidth = 1.0
-//            cell.contentView.layer.cornerRadius = 0.0
-//            cell.contentView.layer.borderColor = UIColor.darkGray.cgColor
-//            emptyCell.contentView.layer.borderWidth = 1.0
-//            emptyCell.contentView.layer.cornerRadius = 8.0
-//            emptyCell.contentView.layer.borderColor = UIColor.darkGray.cgColor
+            cell.contentView.layer.borderWidth = 1.0
+            cell.contentView.layer.cornerRadius = 0.0
+            cell.contentView.layer.borderColor = UIColor.darkGray.cgColor
+            emptyCell.contentView.layer.borderWidth = 1.0
+            emptyCell.contentView.layer.cornerRadius = 8.0
+            emptyCell.contentView.layer.borderColor = UIColor.darkGray.cgColor
             
             
             if budgetNameG.count == 0 {
@@ -273,24 +297,22 @@
                     amountSpentInd = 0
                 }
                 
-//                cell.progressTotalLabel.text = "\(String(convertDoubleToCurency(amount: amountSpentInd!))) of \(String(convertDoubleToCurency(amount: budgetAmountG[indexPath.row]))) spent"
+                cell.progressTotalLabel.text = "\(String(convertDoubleToCurency(amount: amountSpentInd!))) of \(String(convertDoubleToCurency(amount: budgetAmountG[indexPath.row]))) spent"
                 
-                cell.progressTotalLabel.text = "\(String(convertDoubleToCurency(amount: amountSpentInd!)))" + " / " +  "\(String(convertDoubleToCurency(amount: budgetAmountG[indexPath.row])))"
+                cell.progressCircle.trackColor = colorTrackC
                 
-//                cell.progressCircle.trackColor = colorTrackC
-//
-//                let cellProgress = Float(amountSpentInd!/budgetAmountG[indexPath.row])
-//
-//                if cellProgress <= 1 {
-//                    cell.progressCircle.progressColor = colorGreenC
-//                } else if cellProgress > 1 {
-//                    cell.progressCircle.progressColor = colorRedC
-//                }
-//
-//                cell.progressCircle.setProgressWithAnimation(duration: 0.5, value: cellProgress)
-//
-//
-//
+                let cellProgress = Float(amountSpentInd!/budgetAmountG[indexPath.row])
+                
+                if cellProgress <= 1 {
+                    cell.progressCircle.progressColor = colorGreenC
+                } else if cellProgress > 1 {
+                    cell.progressCircle.progressColor = colorRedC
+                }
+                
+                cell.progressCircle.setProgressWithAnimation(duration: 0.5, value: cellProgress)
+                
+                
+                
                 
                 return cell
                 

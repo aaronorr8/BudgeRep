@@ -51,7 +51,7 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
         subscribeButton.layer.borderWidth = 2
         subscribeButton.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
         
-        
+      
     }
     
     override func viewDidAppear(_ animated: Bool) {

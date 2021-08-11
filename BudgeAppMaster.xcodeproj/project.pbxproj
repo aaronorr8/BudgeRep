@@ -46,8 +46,10 @@
 		431CFEAB26B19C2D0056A3A9 /* SyncInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431CFEAA26B19C2D0056A3A9 /* SyncInstructionsViewController.swift */; };
 		4326BF34223347D4002B501D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4326BF33223347D4002B501D /* ViewController.swift */; };
 		4329DD23245C53560045E952 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4329DD22245C53560045E952 /* GlobalConstants.swift */; };
+		435168CC26C2BA9D007B0BA7 /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435168CB26C2BA9D007B0BA7 /* BackgroundViewController.swift */; };
 		435771EF26ADB3A100383CE7 /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435771EE26ADB3A100383CE7 /* WelcomeScreenViewController.swift */; };
 		435B276726A1BFD10002C368 /* PerksUnlimitedBudgetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435B276626A1BFD10002C368 /* PerksUnlimitedBudgetsViewController.swift */; };
+		4363D67726C32456002E8158 /* OldBudgetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4363D67626C32456002E8158 /* OldBudgetsViewController.swift */; };
 		436D9D412286269B0020F924 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436D9D402286269B0020F924 /* StoreKit.framework */; };
 		43935690245DC9C000CBAFF1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4393568F245DC9C000CBAFF1 /* TabBarController.swift */; };
 		4393F83F2233FBA8004CD359 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4393F83E2233FBA8004CD359 /* Assets.xcassets */; };
@@ -97,8 +99,10 @@
 		431CFEAA26B19C2D0056A3A9 /* SyncInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncInstructionsViewController.swift; sourceTree = "<group>"; };
 		4326BF33223347D4002B501D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4329DD22245C53560045E952 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
+		435168CB26C2BA9D007B0BA7 /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
 		435771EE26ADB3A100383CE7 /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
 		435B276626A1BFD10002C368 /* PerksUnlimitedBudgetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerksUnlimitedBudgetsViewController.swift; sourceTree = "<group>"; };
+		4363D67626C32456002E8158 /* OldBudgetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldBudgetsViewController.swift; sourceTree = "<group>"; };
 		436D9D402286269B0020F924 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4393568F245DC9C000CBAFF1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4393F83E2233FBA8004CD359 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -210,6 +214,8 @@
 				0DA4373E223333E000110700 /* FooterBudgetCollectionView.swift */,
 				0DA437442233340900110700 /* HistoryTableViewCell.swift */,
 				0DA437452233340A00110700 /* HistoryViewController.swift */,
+				435168CB26C2BA9D007B0BA7 /* BackgroundViewController.swift */,
+				4363D67626C32456002E8158 /* OldBudgetsViewController.swift */,
 			);
 			path = Budgets;
 			sourceTree = "<group>";
@@ -460,10 +466,12 @@
 				0DA43743223333F200110700 /* AddSpendViewController.swift in Sources */,
 				0DA437462233340A00110700 /* HistoryTableViewCell.swift in Sources */,
 				435771EF26ADB3A100383CE7 /* WelcomeScreenViewController.swift in Sources */,
+				435168CC26C2BA9D007B0BA7 /* BackgroundViewController.swift in Sources */,
 				4329DD23245C53560045E952 /* GlobalConstants.swift in Sources */,
 				0D5AC2162240015C0047BB48 /* ToastCenter.swift in Sources */,
 				0DA4370322332E5200110700 /* AppDelegate.swift in Sources */,
 				43101444264C1E3000737DA1 /* To Do's.swift in Sources */,
+				4363D67726C32456002E8158 /* OldBudgetsViewController.swift in Sources */,
 				0D5AC2152240015C0047BB48 /* Toast.swift in Sources */,
 				0DA437372233339E00110700 /* BudgetCollectionViewCell.swift in Sources */,
 				0DA4374D2233343000110700 /* RemindersViewController.swift in Sources */,
