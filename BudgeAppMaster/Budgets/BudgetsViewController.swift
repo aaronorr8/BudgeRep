@@ -275,19 +275,22 @@
                 
 //                cell.progressTotalLabel.text = "\(String(convertDoubleToCurency(amount: amountSpentInd!))) of \(String(convertDoubleToCurency(amount: budgetAmountG[indexPath.row]))) spent"
                 
-                cell.progressTotalLabel.text = "\(String(convertDoubleToCurency(amount: amountSpentInd!)))" + " / " +  "\(String(convertDoubleToCurency(amount: budgetAmountG[indexPath.row])))"
+                //cell.progressTotalLabel.text = "\(String(convertDoubleToCurency(amount: amountSpentInd!)))" + " / " +  "\(String(convertDoubleToCurency(amount: budgetAmountG[indexPath.row])))"
+                //cell.progressTotalLabel.text = "Spent \(String(convertDoubleToCurency(amount: amountSpentInd!))) of \(String(convertDoubleToCurency(amount: budgetAmountG[indexPath.row])))"
+                //cell.progressTotalLabel.text = "Spent \(String(convertDoubleToCurency(amount: amountSpentInd!)))" + "/" +  "\(String(convertDoubleToCurency(amount: budgetAmountG[indexPath.row])))"
+                cell.progressTotalLabel.text = "Spent \(String(convertDoubleToCurency(amount: amountSpentInd!)))"
                 
-//                cell.progressCircle.trackColor = colorTrackC
-//
-//                let cellProgress = Float(amountSpentInd!/budgetAmountG[indexPath.row])
-//
-//                if cellProgress <= 1 {
-//                    cell.progressCircle.progressColor = colorGreenC
-//                } else if cellProgress > 1 {
-//                    cell.progressCircle.progressColor = colorRedC
-//                }
-//
-//                cell.progressCircle.setProgressWithAnimation(duration: 0.5, value: cellProgress)
+                cell.progressCircle.trackColor = colorTrackC
+
+                let cellProgress = Float(amountSpentInd!/budgetAmountG[indexPath.row])
+
+                if cellProgress <= 1 {
+                    cell.progressCircle.progressColor = colorGreenC
+                } else if cellProgress > 1 {
+                    cell.progressCircle.progressColor = colorRedC
+                }
+
+                cell.progressCircle.setProgressWithAnimation(duration: 0.5, value: cellProgress)
 //
 //
 //

@@ -55,5 +55,7 @@
 		<string>Outfit-SemiBold.otf</string>
 		<string>Outfit-Thin.otf</string>
 	</array>
+	<key>FirebaseAutomaticScreenReportingEnabled</key>
+	<string>NO</string>
 </dict>
 </plist>
