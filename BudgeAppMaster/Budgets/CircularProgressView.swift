@@ -38,19 +38,29 @@ class CircularProgressView: UIView {
     fileprivate func createCircularPath() {
         self.backgroundColor = UIColor.clear
 //        self.layer.cornerRadius = self.frame.size.width/2
+        self.layer.cornerRadius = 0
+
 //        let circlePath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width/2, y: frame.size.height/2), radius: (frame.size.width - 1.5)/2, startAngle: CGFloat(-0.5 * .pi), endAngle: CGFloat(1.5 * .pi), clockwise: true)
-        let circlePath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width/2, y: frame.size.height/2), radius: (frame.size.width - 1.5)/2, startAngle: CGFloat(-0.75 * .pi), endAngle: CGFloat(0.75 * .pi), clockwise: true)
+
+//        let circlePath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width/2, y: frame.size.height/2), radius: (frame.size.width - 1.5)/2, startAngle: CGFloat(-0.75 * .pi), endAngle: CGFloat(0.75 * .pi), clockwise: true)
+        
+        let circlePath = UIBezierPath()
+        circlePath.move(to: CGPoint(x: 0, y: frame.size.height/2))
+        circlePath.addLine(to: CGPoint(x: frame.size.width, y: frame.size.height/2))
+        
+        
+        
         trackLayer.path = circlePath.cgPath
         trackLayer.fillColor = UIColor.clear.cgColor
         trackLayer.strokeColor = trackColor.cgColor
-        trackLayer.lineWidth = 3.0
+        trackLayer.lineWidth = frame.height //3.0
 //        trackLayer.strokeEnd = 1.0
         layer.addSublayer(trackLayer)
         
         progressLayer.path = circlePath.cgPath
         progressLayer.fillColor = UIColor.clear.cgColor
         progressLayer.strokeColor = progressColor.cgColor
-        progressLayer.lineWidth = 6.0
+        progressLayer.lineWidth = frame.height //6.0
 //        progressLayer.strokeEnd = 1.0
         layer.addSublayer(progressLayer)
     }
@@ -63,7 +73,7 @@ class CircularProgressView: UIView {
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         progressLayer.strokeEnd = CGFloat(value)
         progressLayer.add(animation, forKey: "animateprogress")
-        progressLayer.lineCap = CAShapeLayerLineCap.round
+//        progressLayer.lineCap = CAShapeLayerLineCap.round
     }
 
 }
