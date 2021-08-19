@@ -276,9 +276,9 @@
 //                cell.progressTotalLabel.text = "\(String(convertDoubleToCurency(amount: amountSpentInd!))) of \(String(convertDoubleToCurency(amount: budgetAmountG[indexPath.row]))) spent"
                 
                 //cell.progressTotalLabel.text = "\(String(convertDoubleToCurency(amount: amountSpentInd!)))" + " / " +  "\(String(convertDoubleToCurency(amount: budgetAmountG[indexPath.row])))"
-                //cell.progressTotalLabel.text = "Spent \(String(convertDoubleToCurency(amount: amountSpentInd!))) of \(String(convertDoubleToCurency(amount: budgetAmountG[indexPath.row])))"
+                cell.progressTotalLabel.text = "Spent \(String(convertDoubleToCurency(amount: amountSpentInd!))) of \(String(convertDoubleToCurency(amount: budgetAmountG[indexPath.row])))"
                 //cell.progressTotalLabel.text = "Spent \(String(convertDoubleToCurency(amount: amountSpentInd!)))" + "/" +  "\(String(convertDoubleToCurency(amount: budgetAmountG[indexPath.row])))"
-                cell.progressTotalLabel.text = "Spent \(String(convertDoubleToCurency(amount: amountSpentInd!)))"
+                //cell.progressTotalLabel.text = "Spent \(String(convertDoubleToCurency(amount: amountSpentInd!)))"
                 
                 cell.progressCircle.trackColor = colorTrackC
 
