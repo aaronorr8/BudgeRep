@@ -12,11 +12,11 @@
     
     var needToShowWelcomeScreen = true
     
-    class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout  {
         
         @IBOutlet weak var collectionView: UICollectionView!
         
-        var gradientLayer: CAGradientLayer!
+//        var gradientLayer: CAGradientLayer!
         var roundButton = UIButton()
         var totalBudgetsAllocation = 0.0
         var totalBudgetsAvailable = 0.0
@@ -28,6 +28,7 @@
         let visibleTitleColor = UIColor.black
         var hideNav = Bool()
         var totalSpentAllBudgets = Double()
+        
         
         
         //MARK: PROGRESS BAR SCALE
@@ -47,6 +48,8 @@
         
         override func viewDidLoad() {
             super.viewDidLoad()
+            
+            
             
             loadUserDefaultsUserAttributes()
    
@@ -110,13 +113,14 @@
         
         
         func applybackgroundColor() {
-            let color1 = #colorLiteral(red: 0, green: 0.5241034031, blue: 0.3747756481, alpha: 1).cgColor
-            let color2 = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1).cgColor
             let gradientLayer = CAGradientLayer()
             gradientLayer.frame = self.view.bounds
-            gradientLayer.colors = [color1, color2]
+            gradientLayer.colors = [
+                colorBackground1.cgColor,
+                colorBackground2.cgColor
+                ]
             gradientLayer.startPoint = CGPoint(x: 0,y: 0)
-            gradientLayer.endPoint = CGPoint(x: 1,y: 1)
+            gradientLayer.endPoint = CGPoint(x: 0,y: 1)
             self.view.layer.insertSublayer(gradientLayer, at: 0)
         }
         
@@ -202,7 +206,9 @@
                 let amount = Double(amt/100) + Double(amt%100)/100
                 headerView.totalRemainingBudget.text = String(convertDoubleToCurency(amount: totalBudgetsAvailable))
                 self.navigationItem.title = String(convertDoubleToCurency(amount: totalBudgetsAvailable))
-                headerView.totalRemainingBudget.textColor = colorLightText
+                headerView.totalRemainingBudget.textColor = colorTotalBudgetRemaining
+                headerView.remainingLabel.textColor = colorTotalBudgetRemaining
+                headerView.summarySpentBudgetedLabel.textColor = colorTotalBudgetRemaining
                 
 
                 
@@ -251,18 +257,37 @@
 //            emptyCell.contentView.layer.borderColor = UIColor.darkGray.cgColor
             
             
+            //Shaddow
+//            cell.contentView.layer.cornerRadius = 2.0
+//            cell.contentView.layer.borderWidth = 1.0
+//            cell.contentView.layer.borderColor = UIColor.clear.cgColor
+//            cell.contentView.layer.masksToBounds = true
+//
+//            cell.layer.shadowColor = UIColor.black.cgColor
+//            cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+//            cell.layer.shadowRadius = 2.0
+//            cell.layer.shadowOpacity = 0.5
+//            cell.layer.masksToBounds = false
+//            cell.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
+            
+            
             if budgetNameG.count == 0 {
                 return emptyCell
             } else {
                 
                 
                 //MARK: CELL DESIGN
-                cell.backgroundColor = cellBackground
+                cell.backgroundColor = colorCellBackground
                 
                 //MARK: CELL VIEW LABELS
                 cell.budgetNameLabel.text = budgetNameG[indexPath.row]
 //                cell.budgetRemainingLabel.text = "\(String(convertDoubleToCurency(amount: budgetRemainingG[indexPath.row])))"
                 cell.budgetRemainingLabel.text = (String(convertDoubleToCurency(amount: budgetAmountG[indexPath.row] - budgetHistoryAmountG[budgetNameG[indexPath.row]]!.reduce(0, +))))
+                cell.budgetNameLabel.textColor = colorCellText
+                cell.budgetRemainingLabel.textColor = colorCellText
+                cell.progressTotalLabel.textColor = colorCellText
+                cell.remainingLabel.textColor = colorCellText
+                
                 
                 
                 //MARK: PROGRESS BAR LABELS
