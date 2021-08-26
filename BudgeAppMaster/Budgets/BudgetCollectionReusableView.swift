@@ -16,7 +16,7 @@ class BudgetCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var wavyProgress: WavyProgressView!
     @IBOutlet weak var remainingLabel: UILabel!
     @IBOutlet weak var summarySpentBudgetedLabel: UILabel!
-    
+    @IBOutlet weak var totalProgressBar: TotalProgressBar!
     
         
 }

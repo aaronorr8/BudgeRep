@@ -209,6 +209,9 @@
                 headerView.totalRemainingBudget.textColor = colorTotalBudgetRemaining
                 headerView.remainingLabel.textColor = colorTotalBudgetRemaining
                 headerView.summarySpentBudgetedLabel.textColor = colorTotalBudgetRemaining
+                headerView.summarySpentBudgetedLabel.text = "Spent \(convertDoubleToCurency(amount: totalSpentAllBudgets)) of \(convertDoubleToCurency(amount: totalBudgetsAllocation)) budgeted"
+                let percentSpent = totalSpentAllBudgets/totalBudgetsAllocation
+                headerView.totalProgressBar.setProgressWithAnimation(duration: 1.0, value: Float(percentSpent))
                 
 
                 

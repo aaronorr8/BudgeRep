@@ -56,7 +56,6 @@
 		43B3BD1426A9A1F90074D47D /* IAPNon-ConsumableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B3BD1326A9A1F90074D47D /* IAPNon-ConsumableViewController.swift */; };
 		43C0B97626D6716D000906E6 /* TotalProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C0B97526D6716D000906E6 /* TotalProgressBar.swift */; };
 		43C3C3ED26C41EE900BBF095 /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C3C3EC26C41EE900BBF095 /* TestingViewController.swift */; };
-		43C3C3F126C41FAC00BBF095 /* PlainHorizontalProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C3C3F026C41FAC00BBF095 /* PlainHorizontalProgressBar.swift */; };
 		43FE6F9C2257B581007C21BF /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FE6F9B2257B581007C21BF /* SettingTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -112,7 +111,6 @@
 		43B3BD1326A9A1F90074D47D /* IAPNon-ConsumableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IAPNon-ConsumableViewController.swift"; sourceTree = "<group>"; };
 		43C0B97526D6716D000906E6 /* TotalProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalProgressBar.swift; sourceTree = "<group>"; };
 		43C3C3EC26C41EE900BBF095 /* TestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
-		43C3C3F026C41FAC00BBF095 /* PlainHorizontalProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainHorizontalProgressBar.swift; sourceTree = "<group>"; };
 		43C7B2182256826D00F1FC0B /* BudgeAppMaster.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BudgeAppMaster.entitlements; sourceTree = "<group>"; };
 		43FE6F9B2257B581007C21BF /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		4DAF6C3356B20D0714001DF0 /* Pods-BudgeAppMaster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BudgeAppMaster.release.xcconfig"; path = "Pods/Target Support Files/Pods-BudgeAppMaster/Pods-BudgeAppMaster.release.xcconfig"; sourceTree = "<group>"; };
@@ -292,7 +290,6 @@
 			isa = PBXGroup;
 			children = (
 				43C3C3EC26C41EE900BBF095 /* TestingViewController.swift */,
-				43C3C3F026C41FAC00BBF095 /* PlainHorizontalProgressBar.swift */,
 				43C0B97526D6716D000906E6 /* TotalProgressBar.swift */,
 			);
 			path = Testing;
@@ -471,7 +468,6 @@
 				0DA43739223333AD00110700 /* BudgetCollectionReusableView.swift in Sources */,
 				43FE6F9C2257B581007C21BF /* SettingTableViewController.swift in Sources */,
 				431CFEAB26B19C2D0056A3A9 /* SyncInstructionsViewController.swift in Sources */,
-				43C3C3F126C41FAC00BBF095 /* PlainHorizontalProgressBar.swift in Sources */,
 				0D5AC2172240015C0047BB48 /* ToastWindow.swift in Sources */,
 				0DA4374C2233343000110700 /* RemindersTableViewCell.swift in Sources */,
 				43C3C3ED26C41EE900BBF095 /* TestingViewController.swift in Sources */,
