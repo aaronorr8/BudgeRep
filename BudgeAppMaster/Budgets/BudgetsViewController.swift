@@ -211,6 +211,18 @@
                 headerView.summarySpentBudgetedLabel.textColor = Colors.budgetViewSummaryOfTotalBudgetSpent
                 headerView.summarySpentBudgetedLabel.text = "Spent \(convertDoubleToCurency(amount: totalSpentAllBudgets)) of \(convertDoubleToCurency(amount: totalBudgetsAllocation)) budgeted"
                 let percentSpent = totalSpentAllBudgets/totalBudgetsAllocation
+                
+                if percentSpent > 1 {
+                    headerView.totalProgressBar.progressColor = Colors.progressBarProgressRed
+                } else if percentSpent == 1 {
+                    headerView.totalProgressBar.progressColor = Colors.progressBarProgressBlue
+                } else if percentSpent < 0.95 {
+                    headerView.totalProgressBar.progressColor = Colors.progressBarProgressGreen
+                } else {
+                    headerView.totalProgressBar.progressColor = Colors.progressBarProgressYellow
+                }
+                
+                headerView.totalProgressBar.trackColor = Colors.progressBarTrack
                 headerView.totalProgressBar.setProgressWithAnimation(duration: 1.0, value: Float(percentSpent))
                 
 
@@ -312,12 +324,12 @@
 
                 let cellProgress = Float(amountSpentInd!/budgetAmountG[indexPath.row])
 
-                if cellProgress == 1 {
+                if cellProgress > 1 {
+                    cell.progressCircle.progressColor = Colors.progressBarProgressRed
+                } else if cellProgress == 1 {
                     cell.progressCircle.progressColor = Colors.progressBarProgressBlue
                 } else if cellProgress < 0.95 {
                     cell.progressCircle.progressColor = Colors.progressBarProgressGreen
-                } else if cellProgress > 1 {
-                    cell.progressCircle.progressColor = Colors.progressBarProgressRed
                 } else {
                     cell.progressCircle.progressColor = Colors.progressBarProgressYellow
                 }
