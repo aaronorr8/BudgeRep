@@ -26,15 +26,15 @@ class TotalProgressBar: UIView {
         createCircularPath()
     }
 
-    var progressColor = colorGreenH {
+    var progressColor = Colors.progressBarProgressGreen {
         didSet {
-           progressLayer.strokeColor = progressColor.cgColor
+            progressLayer.strokeColor = Colors.progressBarProgressGreen.cgColor
         }
     }
 
-    var trackColor = UIColor.lightGray {
+    var trackColor = Colors.progressBarTrack {
         didSet {
-            trackLayer.strokeColor = trackColor.cgColor
+            trackLayer.strokeColor = Colors.progressBarTrack.cgColor
         }
     }
 

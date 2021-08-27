@@ -150,7 +150,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
         
         let toggleSwitch = UISwitch()
-        toggleSwitch.onTintColor = colorGreenH
+        toggleSwitch.onTintColor = Colors.themeAccentGreen
 
         toggleSwitch.addTarget(self, action: #selector(self.switchToggle), for: .valueChanged)
         

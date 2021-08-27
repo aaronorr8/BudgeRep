@@ -116,8 +116,8 @@
             let gradientLayer = CAGradientLayer()
             gradientLayer.frame = self.view.bounds
             gradientLayer.colors = [
-                colorBackground1.cgColor,
-                colorBackground2.cgColor
+                Colors.budgetViewMainbackground1.cgColor,
+                Colors.budgetViewMainbackground2.cgColor
                 ]
             gradientLayer.startPoint = CGPoint(x: 0,y: 0)
             gradientLayer.endPoint = CGPoint(x: 0,y: 1)
@@ -206,9 +206,9 @@
                 let amount = Double(amt/100) + Double(amt%100)/100
                 headerView.totalRemainingBudget.text = String(convertDoubleToCurency(amount: totalBudgetsAvailable))
                 self.navigationItem.title = String(convertDoubleToCurency(amount: totalBudgetsAvailable))
-                headerView.totalRemainingBudget.textColor = colorTotalBudgetRemaining
-                headerView.remainingLabel.textColor = colorTotalBudgetRemaining
-                headerView.summarySpentBudgetedLabel.textColor = colorTotalBudgetRemaining
+                headerView.totalRemainingBudget.textColor = Colors.budgetViewTotalBudgetRemainingLabel
+                headerView.remainingLabel.textColor = Colors.budgetViewTotalBudgetRemainingLabel
+                headerView.summarySpentBudgetedLabel.textColor = Colors.budgetViewSummaryOfTotalBudgetSpent
                 headerView.summarySpentBudgetedLabel.text = "Spent \(convertDoubleToCurency(amount: totalSpentAllBudgets)) of \(convertDoubleToCurency(amount: totalBudgetsAllocation)) budgeted"
                 let percentSpent = totalSpentAllBudgets/totalBudgetsAllocation
                 headerView.totalProgressBar.setProgressWithAnimation(duration: 1.0, value: Float(percentSpent))
@@ -280,16 +280,16 @@
                 
                 
                 //MARK: CELL DESIGN
-                cell.backgroundColor = colorCellBackground
+                cell.backgroundColor = Colors.budgetViewCellBackground
                 
                 //MARK: CELL VIEW LABELS
                 cell.budgetNameLabel.text = budgetNameG[indexPath.row]
 //                cell.budgetRemainingLabel.text = "\(String(convertDoubleToCurency(amount: budgetRemainingG[indexPath.row])))"
                 cell.budgetRemainingLabel.text = (String(convertDoubleToCurency(amount: budgetAmountG[indexPath.row] - budgetHistoryAmountG[budgetNameG[indexPath.row]]!.reduce(0, +))))
-                cell.budgetNameLabel.textColor = colorCellText
-                cell.budgetRemainingLabel.textColor = colorCellText
-                cell.progressTotalLabel.textColor = colorCellText
-                cell.remainingLabel.textColor = colorCellText
+                cell.budgetNameLabel.textColor =        Colors.budgetViewCellText
+                cell.budgetRemainingLabel.textColor =   Colors.budgetViewCellText
+                cell.progressTotalLabel.textColor =     Colors.budgetViewCellText
+                cell.remainingLabel.textColor =         Colors.budgetViewCellText
                 
                 
                 
@@ -308,14 +308,18 @@
                 //cell.progressTotalLabel.text = "Spent \(String(convertDoubleToCurency(amount: amountSpentInd!)))" + "/" +  "\(String(convertDoubleToCurency(amount: budgetAmountG[indexPath.row])))"
                 //cell.progressTotalLabel.text = "Spent \(String(convertDoubleToCurency(amount: amountSpentInd!)))"
                 
-                cell.progressCircle.trackColor = colorTrackC
+                cell.progressCircle.trackColor = Colors.progressBarTrack
 
                 let cellProgress = Float(amountSpentInd!/budgetAmountG[indexPath.row])
 
-                if cellProgress <= 1 {
-                    cell.progressCircle.progressColor = colorGreenC
+                if cellProgress == 1 {
+                    cell.progressCircle.progressColor = Colors.progressBarProgressBlue
+                } else if cellProgress < 0.95 {
+                    cell.progressCircle.progressColor = Colors.progressBarProgressGreen
                 } else if cellProgress > 1 {
-                    cell.progressCircle.progressColor = colorRedC
+                    cell.progressCircle.progressColor = Colors.progressBarProgressRed
+                } else {
+                    cell.progressCircle.progressColor = Colors.progressBarProgressYellow
                 }
 
                 cell.progressCircle.setProgressWithAnimation(duration: 0.5, value: cellProgress)

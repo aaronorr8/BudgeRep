@@ -212,12 +212,12 @@
                 //MARK: HEADER PROGRESS BAR
                 let progress = totalSpentAllBudgets/totalBudgetsAllocation
                 
-                headerView.wavyProgress.trackColor = colorTrackH
+                headerView.wavyProgress.trackColor = Colors.themeAccentGray
                 
                 if progress <= 1 {
-                    headerView.wavyProgress.progressColor = colorGreenH
+                    headerView.wavyProgress.progressColor = Colors.progressBarProgressGreen
                 } else if progress > 1 {
-                    headerView.wavyProgress.progressColor = colorRedH
+                    headerView.wavyProgress.progressColor = Colors.progressBarProgressRed
                 }
                 
                 headerView.wavyProgress.setProgressWithAnimation(duration: 1.0, value: Float(progress))
@@ -299,14 +299,14 @@
                 
                 cell.progressTotalLabel.text = "\(String(convertDoubleToCurency(amount: amountSpentInd!))) of \(String(convertDoubleToCurency(amount: budgetAmountG[indexPath.row]))) spent"
                 
-                cell.progressCircle.trackColor = colorTrackC
+                cell.progressCircle.trackColor = Colors.progressBarTrack
                 
                 let cellProgress = Float(amountSpentInd!/budgetAmountG[indexPath.row])
                 
                 if cellProgress <= 1 {
-                    cell.progressCircle.progressColor = colorGreenC
+                    cell.progressCircle.progressColor = Colors.progressBarProgressGreen
                 } else if cellProgress > 1 {
-                    cell.progressCircle.progressColor = colorRedC
+                    cell.progressCircle.progressColor = Colors.progressBarProgressRed
                 }
                 
                 cell.progressCircle.setProgressWithAnimation(duration: 0.5, value: cellProgress)

@@ -97,11 +97,11 @@ class RemindersViewController: UIViewController, UITableViewDelegate, UITableVie
         if reminderArray[indexPath.row].done == false {
             cell.checkmarkImage.image = #imageLiteral(resourceName: "CheckmarkOpen2")
             cell.checkmarkImage.image = cell.checkmarkImage.image?.withRenderingMode(.alwaysTemplate)
-            cell.checkmarkImage.tintColor = colorGreenH
+            cell.checkmarkImage.tintColor = Colors.themeAccentGreen
         } else {
             cell.checkmarkImage.image = #imageLiteral(resourceName: "CheckmarkSolid")
             cell.checkmarkImage.image = cell.checkmarkImage.image?.withRenderingMode(.alwaysTemplate)
-            cell.checkmarkImage.tintColor = colorGreenH
+            cell.checkmarkImage.tintColor = Colors.themeAccentGreen
         }
         
         //DISPLAY AMOUNT
