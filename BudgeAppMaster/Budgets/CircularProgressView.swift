@@ -23,13 +23,13 @@ class CircularProgressView: UIView {
         createCircularPath()
     }
     
-    var progressColor = UIColor.red {
+    var progressColor = Colors.progressBarProgressGreen {
         didSet {
            progressLayer.strokeColor = progressColor.cgColor
         }
     }
     
-    var trackColor = UIColor.lightGray {
+    var trackColor = Colors.budgetViewCellBackground {
         didSet {
             trackLayer.strokeColor = trackColor.cgColor
         }

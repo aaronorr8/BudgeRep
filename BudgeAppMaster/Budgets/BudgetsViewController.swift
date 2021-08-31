@@ -187,7 +187,7 @@
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             
             
-            return CGSize(width: view.frame.width - 10, height: 110.0)
+            return CGSize(width: view.frame.width - 20, height: 105.0)
         }
         
         
@@ -287,6 +287,7 @@
             
             
             if budgetNameG.count == 0 {
+                emptyCell.backgroundColor = Colors.budgetViewCellBackground
                 return emptyCell
             } else {
                 
@@ -301,7 +302,7 @@
                 cell.budgetNameLabel.textColor =        Colors.budgetViewCellText
                 cell.budgetRemainingLabel.textColor =   Colors.budgetViewCellText
                 cell.progressTotalLabel.textColor =     Colors.budgetViewCellText
-                cell.remainingLabel.textColor =         Colors.budgetViewCellText
+                
                 
                 
                 
@@ -320,24 +321,26 @@
                 //cell.progressTotalLabel.text = "Spent \(String(convertDoubleToCurency(amount: amountSpentInd!)))" + "/" +  "\(String(convertDoubleToCurency(amount: budgetAmountG[indexPath.row])))"
                 //cell.progressTotalLabel.text = "Spent \(String(convertDoubleToCurency(amount: amountSpentInd!)))"
                 
-                cell.progressCircle.trackColor = Colors.progressBarTrack
 
                 let cellProgress = Float(amountSpentInd!/budgetAmountG[indexPath.row])
 
-                if cellProgress > 1 {
-                    cell.progressCircle.progressColor = Colors.progressBarProgressRed
-                } else if cellProgress == 1 {
-                    cell.progressCircle.progressColor = Colors.progressBarProgressBlue
-                } else if cellProgress < 0.95 {
-                    cell.progressCircle.progressColor = Colors.progressBarProgressGreen
-                } else {
-                    cell.progressCircle.progressColor = Colors.progressBarProgressYellow
+                
+//                if cellProgress > 1 {
+//                    cell.progressBar.progressColor = Colors.progressBarProgressRed
+//                } else if cellProgress == 1 {
+//                    cell.progressBar.progressColor = Colors.progressBarProgressBlue
+//                } else if cellProgress < 0.95 {
+//                    cell.progressBar.progressColor = Colors.progressBarProgressGreen
+//                } else {
+//                    cell.progressBar.progressColor = Colors.progressBarProgressYellow
+//                }
+//
+                cell.progressView.transform = cell.progressView.transform.scaledBy(x: 1, y: cell.progressContainer.frame.size.height/2)
+                cell.progressView.trackTintColor = .clear
+                UIView.animate(withDuration: 1) {
+                    cell.progressView.setProgress(cellProgress, animated: true)
                 }
-
-                cell.progressCircle.setProgressWithAnimation(duration: 0.5, value: cellProgress)
-//
-//
-//
+                
                 
                 return cell
                 

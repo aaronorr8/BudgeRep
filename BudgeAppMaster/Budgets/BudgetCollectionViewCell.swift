@@ -13,8 +13,10 @@ class BudgetCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var budgetNameLabel: UILabel!
     @IBOutlet weak var budgetRemainingLabel: UILabel!
     @IBOutlet weak var progressTotalLabel: UILabel!
-    @IBOutlet weak var progressCircle: CircularProgressView!
     @IBOutlet weak var remainingLabel: UILabel!
+//    @IBOutlet weak var progressBar: SimpleProgressView!
+    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var progressContainer: UIView!
     
     
     

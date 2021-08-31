@@ -10,17 +10,39 @@ import UIKit
 
 class TestingViewController: UIViewController {
     
-    @IBOutlet weak var totalProgressBar: TotalProgressBar!
+    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var progressContainer: UIView!
     
     
     
-//    let shapeLayer = CAShapeLayer()
+    //    private let progressView: UIProgressView = {
+//        let progressView = UIProgressView(progressViewStyle: .bar)
+//        progressView.trackTintColor = UIColor.gray
+//        progressView.progressTintColor = UIColor.red
+//        return progressView
+//    }()
     
+    
+    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        totalProgressBar.setProgressWithAnimation(duration: 1.0, value: 0.5)
+//        view.addSubview(progressView)
+//        progressView.frame = CGRect(x: 10, y: 100, width: view.frame.size.width-20, height: 20)
+//        progressView.setProgress(0.5, animated: false)
+        progressView.transform = progressView.transform.scaledBy(x: 1, y: progressContainer.frame.size.height/2)
+        progressView.trackTintColor = .gray
+        
+        
   
     }
-
+    
+    
+    @IBAction func goButton(_ sender: Any) {
+        UIView.animate(withDuration: 0.25) {
+            self.progressView.setProgress(0.75, animated: true)
+        }
+    }
+    
 }

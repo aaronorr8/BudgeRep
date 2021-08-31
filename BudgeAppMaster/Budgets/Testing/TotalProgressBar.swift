@@ -54,14 +54,14 @@ class TotalProgressBar: UIView {
         trackLayer.fillColor = UIColor.clear.cgColor
         trackLayer.strokeColor = trackColor.cgColor
         trackLayer.lineWidth = frame.height
-        trackLayer.lineCap = CAShapeLayerLineCap.round
+//        trackLayer.lineCap = CAShapeLayerLineCap.round
         layer.addSublayer(trackLayer)
 
         progressLayer.path = path.cgPath
         progressLayer.fillColor = UIColor.clear.cgColor
         progressLayer.strokeColor = progressColor.cgColor
         progressLayer.lineWidth = frame.height
-        progressLayer.lineCap = CAShapeLayerLineCap.round
+//        progressLayer.lineCap = CAShapeLayerLineCap.round
         layer.addSublayer(progressLayer)
     }
 

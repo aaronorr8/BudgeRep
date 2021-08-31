@@ -387,7 +387,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
 //        }
         
         
-        askForReview()
+//        askForReview()
         
     }
     
