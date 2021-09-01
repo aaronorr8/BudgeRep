@@ -313,33 +313,27 @@
                 if amountSpentInd == nil {
                     amountSpentInd = 0
                 }
-                
-//                cell.progressTotalLabel.text = "\(String(convertDoubleToCurency(amount: amountSpentInd!))) of \(String(convertDoubleToCurency(amount: budgetAmountG[indexPath.row]))) spent"
-                
-                //cell.progressTotalLabel.text = "\(String(convertDoubleToCurency(amount: amountSpentInd!)))" + " / " +  "\(String(convertDoubleToCurency(amount: budgetAmountG[indexPath.row])))"
+
                 cell.progressTotalLabel.text = "Spent \(String(convertDoubleToCurency(amount: amountSpentInd!))) of \(String(convertDoubleToCurency(amount: budgetAmountG[indexPath.row])))"
-                //cell.progressTotalLabel.text = "Spent \(String(convertDoubleToCurency(amount: amountSpentInd!)))" + "/" +  "\(String(convertDoubleToCurency(amount: budgetAmountG[indexPath.row])))"
-                //cell.progressTotalLabel.text = "Spent \(String(convertDoubleToCurency(amount: amountSpentInd!)))"
-                
+
 
                 let cellProgress = Float(amountSpentInd!/budgetAmountG[indexPath.row])
 
                 
-//                if cellProgress > 1 {
-//                    cell.progressBar.progressColor = Colors.progressBarProgressRed
-//                } else if cellProgress == 1 {
-//                    cell.progressBar.progressColor = Colors.progressBarProgressBlue
-//                } else if cellProgress < 0.95 {
-//                    cell.progressBar.progressColor = Colors.progressBarProgressGreen
-//                } else {
-//                    cell.progressBar.progressColor = Colors.progressBarProgressYellow
-//                }
-//
-                cell.progressView.transform = cell.progressView.transform.scaledBy(x: 1, y: cell.progressContainer.frame.size.height/2)
-                cell.progressView.trackTintColor = .clear
-                UIView.animate(withDuration: 1) {
-                    cell.progressView.setProgress(cellProgress, animated: true)
+                if cellProgress > 1 {
+                    cell.progressContainer.progressColor = Colors.progressBarProgressRed
+                } else if cellProgress == 1 {
+                    cell.progressContainer.progressColor = Colors.progressBarProgressBlue
+                } else if cellProgress < 0.95 {
+                    cell.progressContainer.progressColor = Colors.progressBarProgressGreen
+                } else {
+                    cell.progressContainer.progressColor = Colors.progressBarProgressYellow
                 }
+                
+                cell.progressContainer.trackColor = Colors.progressBarTrack
+                cell.progressContainer.setProgressWithAnimation(duration: 1.0, value: Float(cellProgress))
+//
+               
                 
                 
                 return cell

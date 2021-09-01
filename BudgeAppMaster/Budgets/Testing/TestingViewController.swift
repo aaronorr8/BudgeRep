@@ -10,6 +10,8 @@ import UIKit
 
 class TestingViewController: UIViewController {
     
+    var value = Float(0)
+    
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var progressContainer: UIView!
     
@@ -32,7 +34,7 @@ class TestingViewController: UIViewController {
 //        progressView.frame = CGRect(x: 10, y: 100, width: view.frame.size.width-20, height: 20)
 //        progressView.setProgress(0.5, animated: false)
         progressView.transform = progressView.transform.scaledBy(x: 1, y: progressContainer.frame.size.height/2)
-        progressView.trackTintColor = .gray
+        progressView.trackTintColor = .lightGray
         
         
   
@@ -40,8 +42,10 @@ class TestingViewController: UIViewController {
     
     
     @IBAction func goButton(_ sender: Any) {
-        UIView.animate(withDuration: 0.25) {
-            self.progressView.setProgress(0.75, animated: true)
+    
+        value = value + 0.01
+        UIView.animate(withDuration: 0.0) {
+            self.progressView.setProgress(self.value, animated: true)
         }
     }
     
