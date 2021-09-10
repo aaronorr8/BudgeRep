@@ -26,14 +26,17 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HistoryTableViewCell
         
-        var amount = budgetHistoryAmountG[budgetName]
-        var note = budgetNoteG[budgetName]
-        var date = budgetHistoryDateG[budgetName]
-        var time = budgetHistoryTimeG[budgetName]
+        let amount = budgetHistoryAmountG[budgetName]
+        let note = budgetNoteG[budgetName]
+        let date = budgetHistoryDateG[budgetName]
+        let time = budgetHistoryTimeG[budgetName]
     
-        cell.amountLabel.text = String(convertDoubleToCurency(amount: amount![indexPath.row]))
-        cell.spendNote.text = note![indexPath.row]
-        cell.dateLabel.text = String("\(date![indexPath.row]), \(time![indexPath.row])")
+        if note![indexPath.row] == "" {
+            cell.textLabel?.text = String(convertDoubleToCurency(amount: amount![indexPath.row]))
+        } else {
+            cell.textLabel?.text = String(convertDoubleToCurency(amount: amount![indexPath.row])) + ", " + note![indexPath.row]
+        }
+        cell.detailTextLabel?.text = String("\(date![indexPath.row]), \(time![indexPath.row])")
 
         
         return cell

@@ -222,7 +222,7 @@
                     headerView.totalProgressBar.progressColor = Colors.progressBarProgressYellow
                 }
                 
-                headerView.totalProgressBar.trackColor = Colors.progressBarTrack
+                headerView.totalProgressBar.trackColor = Colors.progressBarTrackTotal
                 headerView.totalProgressBar.setProgressWithAnimation(duration: 1.0, value: Float(percentSpent))
                 
 
@@ -330,7 +330,7 @@
                     cell.progressContainer.progressColor = Colors.progressBarProgressYellow
                 }
                 
-                cell.progressContainer.trackColor = Colors.progressBarTrack
+                cell.progressContainer.trackColor = Colors.progressBarTrackCell
                 cell.progressContainer.setProgressWithAnimation(duration: 1.0, value: Float(cellProgress))
 //
                
@@ -347,7 +347,7 @@
             if budgetNameG.count == 0 {
             } else {
                 myIndexG = indexPath.row
-                switchView()
+                goToAddSpend()
             }
         }
         
@@ -426,9 +426,17 @@
             }
         }
         
-        @objc func switchView() {
+        @objc func goToAddSpend() {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "AddSpendNav")
+            self.present(viewController, animated: true)
+            
+        }
+        
+        
+        @objc func goToAddBudget() {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "AddBudgetNav")
             self.present(viewController, animated: true)
             
         }
@@ -447,9 +455,9 @@
         
         @IBAction func addNewBudgetButton(_ sender: Any) {
             if subscribedUser == true || unlimitedUser == true {
-                performSegue(withIdentifier: "goToAddBudget", sender: self)
+                goToAddBudget()
             } else if budgetNameG.count < freeBudgets {
-                performSegue(withIdentifier: "goToAddBudget", sender: self)
+                goToAddBudget()
             } else {
                 self.performSegue(withIdentifier: "goToIAP", sender: self)
                 

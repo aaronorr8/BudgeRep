@@ -55,7 +55,9 @@
 		43B02ACB26DD07B90038B0FE /* SimpleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02ACA26DD07B90038B0FE /* SimpleProgressView.swift */; };
 		43B3BD1426A9A1F90074D47D /* IAPNon-ConsumableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B3BD1326A9A1F90074D47D /* IAPNon-ConsumableViewController.swift */; };
 		43C0B97626D6716D000906E6 /* TotalProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C0B97526D6716D000906E6 /* TotalProgressBar.swift */; };
+		43C252BE26E7FBD8004CDB75 /* AddSpendNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C252BD26E7FBD8004CDB75 /* AddSpendNavigationController.swift */; };
 		43C3C3ED26C41EE900BBF095 /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C3C3EC26C41EE900BBF095 /* TestingViewController.swift */; };
+		43D1A5A926EBB54900785E6C /* AddBudgetNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D1A5A826EBB54900785E6C /* AddBudgetNavigationController.swift */; };
 		43FE6F9C2257B581007C21BF /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FE6F9B2257B581007C21BF /* SettingTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -110,8 +112,10 @@
 		43B02ACA26DD07B90038B0FE /* SimpleProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleProgressView.swift; sourceTree = "<group>"; };
 		43B3BD1326A9A1F90074D47D /* IAPNon-ConsumableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IAPNon-ConsumableViewController.swift"; sourceTree = "<group>"; };
 		43C0B97526D6716D000906E6 /* TotalProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalProgressBar.swift; sourceTree = "<group>"; };
+		43C252BD26E7FBD8004CDB75 /* AddSpendNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpendNavigationController.swift; sourceTree = "<group>"; };
 		43C3C3EC26C41EE900BBF095 /* TestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
 		43C7B2182256826D00F1FC0B /* BudgeAppMaster.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BudgeAppMaster.entitlements; sourceTree = "<group>"; };
+		43D1A5A826EBB54900785E6C /* AddBudgetNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetNavigationController.swift; sourceTree = "<group>"; };
 		43FE6F9B2257B581007C21BF /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		4DAF6C3356B20D0714001DF0 /* Pods-BudgeAppMaster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BudgeAppMaster.release.xcconfig"; path = "Pods/Target Support Files/Pods-BudgeAppMaster/Pods-BudgeAppMaster.release.xcconfig"; sourceTree = "<group>"; };
 		6C778C86DABD18BCB8E509DC /* Pods_BudgeAppMaster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BudgeAppMaster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,8 +192,8 @@
 		0DA4371A223332CA00110700 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				0DA437552233354100110700 /* ReminderItem.swift */,
 				4326BF33223347D4002B501D /* ViewController.swift */,
+				0DA437552233354100110700 /* ReminderItem.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -220,6 +224,8 @@
 				0DA437452233340A00110700 /* HistoryViewController.swift */,
 				435168CB26C2BA9D007B0BA7 /* BackgroundViewController.swift */,
 				43C3C3EB26C41EC600BBF095 /* Testing */,
+				43C252BD26E7FBD8004CDB75 /* AddSpendNavigationController.swift */,
+				43D1A5A826EBB54900785E6C /* AddBudgetNavigationController.swift */,
 			);
 			path = Budgets;
 			sourceTree = "<group>";
@@ -456,6 +462,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43D1A5A926EBB54900785E6C /* AddBudgetNavigationController.swift in Sources */,
 				43B3BD1426A9A1F90074D47D /* IAPNon-ConsumableViewController.swift in Sources */,
 				0DA4373F223333E000110700 /* FooterBudgetCollectionView.swift in Sources */,
 				4326BF34223347D4002B501D /* ViewController.swift in Sources */,
@@ -468,6 +475,7 @@
 				0DA43739223333AD00110700 /* BudgetCollectionReusableView.swift in Sources */,
 				43FE6F9C2257B581007C21BF /* SettingTableViewController.swift in Sources */,
 				431CFEAB26B19C2D0056A3A9 /* SyncInstructionsViewController.swift in Sources */,
+				43C252BE26E7FBD8004CDB75 /* AddSpendNavigationController.swift in Sources */,
 				0D5AC2172240015C0047BB48 /* ToastWindow.swift in Sources */,
 				43B02ACB26DD07B90038B0FE /* SimpleProgressView.swift in Sources */,
 				0DA4374C2233343000110700 /* RemindersTableViewCell.swift in Sources */,

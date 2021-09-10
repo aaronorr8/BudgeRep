@@ -15,10 +15,11 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
     
     @IBOutlet weak var budgetNameField: UITextField!
     @IBOutlet weak var budgetAmountField: UITextField!
-//    @IBOutlet weak var addUpdateButton: UIButton!
+    //    @IBOutlet weak var addUpdateButton: UIButton!
     @IBOutlet weak var naviBar: UINavigationBar!
     @IBOutlet weak var navigationTitle: UINavigationItem!
- 
+    @IBOutlet weak var saveButton: UIButton!
+    
     
     var amt: Int = 0
     
@@ -29,24 +30,24 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
     let tempBudgetNoteG = budgetNoteG
     let tempBudgetHistoryDateG = budgetHistoryDateG
     let tempBudgetHistoryTimeG = budgetHistoryTimeG
-//    let tempBudgetRemainingG = budgetRemainingG
-//    let tempTotalSpentG = totalSpentG
+    //    let tempBudgetRemainingG = budgetRemainingG
+    //    let tempTotalSpentG = totalSpentG
     let tempSubscribedUser = subscribedUser
     
-
+    
     override func viewDidLayoutSubviews() {
         //Add underline to text fields
         budgetNameField.setUnderLine()
         budgetAmountField.setUnderLine()
-
+        
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-   
         
+        setStyles()
         
         db = Firestore.firestore()
         
@@ -55,16 +56,16 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
         
         if editModeG == true {
             print("view did layout subviews editModeG: \(editModeG)")
-            navigationTitle.title = "Edit \(budgetNameG[myIndexG])"
+            self.title = "Edit budget"
             budgetNameField.text = budgetNameG[myIndexG]
             budgetAmountField.text = String(convertDoubleToCurency(amount: budgetAmountG[myIndexG]))
-//            addUpdateButton.setTitle("Update", for: .normal)
+            saveButton.setTitle("Update budget", for: .normal)
         } else {
             print("view did layout subviews editModeG: \(editModeG)")
-            navigationTitle.title = "Create New Budget"
+            self.title = "Create new budget"
             budgetNameField.placeholder = "Enter budget name"
             budgetAmountField.placeholder = "Enter budget amount"
-//            addUpdateButton.setTitle("Save", for: .normal)
+            saveButton.setTitle("Create budget", for: .normal)
             budgetNameField.becomeFirstResponder()
         }
         
@@ -76,39 +77,55 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
     @IBAction func cancelButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
         editModeG = false
-       
+        
     }
     
+    
+    func setStyles() {
+        
+        saveButton.backgroundColor = Colors.buttonPrimaryBackground
+        saveButton.setTitleColor(Colors.buttonPrimaryText, for: .normal)
+        saveButton.layer.cornerRadius = saveButton.frame.height / 2
+    }
+    
+    
     //MARK:Add New Budget
-    @IBAction func addButton(_ sender: Any) {
-        
-        
+    @IBAction func saveButton(_ sender: Any) {
         if editModeG == false { //SAVE AS NEW BUDGET ITEM
-            if budgetNameField.text != "" {
-                budgetNameG.append(budgetNameField.text!)
-                let amount = Double(amt/100) + Double(amt%100)/100
-                budgetAmountG.append(amount)
-                budgetHistoryAmountG[budgetNameField.text!] = []
-                budgetNoteG[budgetNameField.text!] = []
-                budgetHistoryDateG[budgetNameField.text!] = []
-                budgetHistoryTimeG[budgetNameField.text!] = []
-                let totalSpent = budgetHistoryAmountG[budgetNameField.text!]?.reduce(0, +)
-//                budgetRemainingG.append(amount - totalSpent!)
-                
-                save()
-                
-                self.dismiss(animated: true, completion: nil)
-                
-            } else {
-                print("EMPTY")
+            if budgetNameField.text == "" {
                 emptyTextAlert()
+            } else if budgetNameG.contains(budgetNameField.text ?? "") {
+                budgetAlreadyExistsAlert()
+            } else {
+                
+                if budgetNameField.text != "" {
+                    budgetNameG.append(budgetNameField.text!)
+                    let amount = Double(amt/100) + Double(amt%100)/100
+                    budgetAmountG.append(amount)
+                    budgetHistoryAmountG[budgetNameField.text!] = []
+                    budgetNoteG[budgetNameField.text!] = []
+                    budgetHistoryDateG[budgetNameField.text!] = []
+                    budgetHistoryTimeG[budgetNameField.text!] = []
+                    let totalSpent = budgetHistoryAmountG[budgetNameField.text!]?.reduce(0, +)
+                    
+                    save()
+                    self.dismiss(animated: true, completion: nil)
+                }
             }
+            
         } else { //EDIT BUDGET
             
             //RETURN TO BUDGET VIEW
             if editModeG == true {
                 
-                if budgetNameField.text != "" {
+                var tempBudgetNameArray = budgetNameG
+                tempBudgetNameArray.remove(at: myIndexG)
+                
+                if budgetNameField.text == "" {
+                    emptyTextAlert()
+                } else if tempBudgetNameArray.contains(budgetNameField.text ?? "") {
+                    budgetAlreadyExistsAlert()
+                } else {
                     
                     //UPDATE BUDGET DATA
                     let oldName = budgetNameG[myIndexG]
@@ -151,7 +168,6 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
                     
                     
                     let totalSpent = budgetHistoryAmountG[budgetNameField.text!]?.reduce(0, +)
-//                    budgetRemainingG[myIndexG] = (amount - totalSpent!)
                     
                     save()
                     
@@ -159,11 +175,7 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
                     editModeG = false
                     
                     self.dismiss(animated: true, completion: nil)
-                    
-                } else {
-                    emptyTextAlert()
                 }
-                
             }
         }
         
@@ -171,6 +183,8 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
         reloadBudgetViewCC = true
         
     }
+    
+    
     
     func switchKey<T, U>(_ myDict: inout [T:U], fromKey: T, toKey: T) {
         if let entry = myDict.removeValue(forKey: fromKey) {
@@ -204,15 +218,15 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
     //MARK: Save to FireStore
     func saveToFireStore() {
         if let userID = Auth.auth().currentUser?.uid {
-        db.collection("budgets").document(userID).setData([
-            "budgetName": budgetNameG,
-            "budgetAmount": budgetAmountG,
-            "budgetHistoryAmount": budgetHistoryAmountG,
-            "budgetNote": budgetNoteG,
-            "budgetHistoryDate": budgetHistoryDateG,
-            "budgetHistoryTime": budgetHistoryTimeG,
-            "subscribedUser": subscribedUser
-            
+            db.collection("budgets").document(userID).setData([
+                "budgetName": budgetNameG,
+                "budgetAmount": budgetAmountG,
+                "budgetHistoryAmount": budgetHistoryAmountG,
+                "budgetNote": budgetNoteG,
+                "budgetHistoryDate": budgetHistoryDateG,
+                "budgetHistoryTime": budgetHistoryTimeG,
+                "subscribedUser": subscribedUser
+                
             ]) { err in
                 if let err = err {
                     print("Error writing document: \(err)")
@@ -234,7 +248,7 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
     
     
     
-  
+    
     
     
     //MARK: Print Budgets
@@ -245,25 +259,31 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
         print("budgetNote: \(budgetNoteG)")
         print("budgetHistoryDate: \(budgetHistoryDateG)")
         print("budgetHistoryTime: \(budgetHistoryTimeG)")
-//        print("totalSpent: \(String(describing: totalSpentG))")
-//        print("budgetRemaining: \(budgetRemainingG)")
+        //        print("totalSpent: \(String(describing: totalSpentG))")
+        //        print("budgetRemaining: \(budgetRemainingG)")
         print("subscribedUser: \(subscribedUser)")
         print("BREAK")
     }
     
     func emptyTextAlert() {
-            let alert = UIAlertController(title: "Please enter a budget name.", message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: "Please enter a budget name.", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
- 
+    
+    func budgetAlreadyExistsAlert() {
+        let alert = UIAlertController(title: "Budget already exists.", message: "Pleaes give this budget a unique name.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
     
     
     
-   
     
-
+    
+    
+    
     
     func textField(_ textField:UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -307,12 +327,12 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print("Return")
         
-//        budgetNameField.resignFirstResponder()
-//        budgetAmountField.becomeFirstResponder()
+        //        budgetNameField.resignFirstResponder()
+        //        budgetAmountField.becomeFirstResponder()
         return true
     }
     
-
+    
 }
 
 extension UITextField {

@@ -35,6 +35,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
     
     
     
+    @IBOutlet weak var viewSpendHistoryButtonOutlet: UIButton!
     @IBOutlet weak var spendAmount: UITextField!
     @IBOutlet weak var selectedBudgetLabel: UILabel!
     @IBOutlet weak var selectBudgetField: UITextField!
@@ -71,52 +72,26 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
 //    let tempBudgetRemainingG = budgetRemainingG
 //    let tempTotalSpentG = totalSpentG
     
-    override func viewDidLayoutSubviews() {
-        //Add underline to text fields
-        spendAmount.setUnderLine()
-        spendNoteField.setUnderLine()
-        
-        
-        //Add rounded outline to save button
-        saveButton.backgroundColor = .clear
-        saveButton.layer.cornerRadius = 10
-        saveButton.layer.borderWidth = 2
-        saveButton.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
+ 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     
     override func viewDidLoad() {
-        
-//        print("Temp....\(tempBudgetRemainingG)")
-        
         super.viewDidLoad()
         
-      
+      setStyles()
+    
+        
+        
         
         //Keyboard Shift (1/3)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
-        
 
-        
-//SET NAVIGATION BAR BUTTON AND TITLE COLOR
-        UINavigationBar.appearance().tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        //UINavigationBar.appearance().barTintColor = bgColorGradient1
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)]
-        
-        /*let remainingAmount = budgetRemainingG[myIndexG]
-        if remainingAmount >= 0.0 {
-            UINavigationBar.appearance().barTintColor = colorGreenC
-        } else {
-            UINavigationBar.appearance().barTintColor = colorRedC
-        }*/
-        //saveButton.backgroundColor = bgColorGradient1
-        
-        //saveButton.applyGradient(colours: [bgColorGradient1, bgColorGradient2])
-       
-        setNavigationBarColor()
         self.title = budgetNameG[myIndexG]
         
         
@@ -173,6 +148,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         spendAmount.inputAccessoryView = toolBar
         spendNoteField.inputAccessoryView = toolBar
         
+     
         
     }
         
@@ -189,7 +165,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
             return
         }
         
-        let spaceAfterLastButton = view.frame.height - viewHistoryOutlet.frame.size.height/2 - viewHistoryOutlet.frame.origin.y
+        let spaceAfterLastButton = view.frame.height - viewSpendHistoryButtonOutlet.frame.size.height/2 - viewSpendHistoryButtonOutlet.frame.origin.y
         let distance = spaceAfterLastButton - keyboardRect.height
         
         if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification {
@@ -205,13 +181,62 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
     }
 
     
-    func setNavigationBarColor() {
-        let barView = UIView(frame: CGRect(x:0, y:0, width:view.frame.width, height:UIApplication.shared.statusBarFrame.height))
-        barView.backgroundColor = bgColorGradient1
-        view.addSubview(barView)
+    
+    
+    //MARK: Set Styles
+    func setStyles() {
+        //Add underline to text fields
+//        spendAmount.setUnderLine()
+        spendNoteField.setUnderLine()
+        spendAmount.textColor = Colors.themeAccentPrimary
+        spendAmount.backgroundColor = Colors.budgetViewCellBackground
+        spendAmount.layer.cornerRadius = 10
         
-        navigationController?.navigationBar.barTintColor = bgColorGradient1
+        
+        
+        
+        
+        //Add rounded outline to save button
+        saveButton.backgroundColor = Colors.buttonPrimaryBackground
+        saveButton.setTitleColor(Colors.buttonPrimaryText, for: .normal)
+        saveButton.layer.cornerRadius = saveButton.frame.height / 2
+        //        saveButton.layer.borderWidth = 2
+        //        saveButton.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
+        
+        //Set color for View Spend History button
+        viewSpendHistoryButtonOutlet.backgroundColor = Colors.budgetViewCellBackground
+        viewSpendHistoryButtonOutlet.setTitleColor(Colors.buttonPrimaryBackground, for: .normal)
+
+        //Navigation bar colors
+        navigationController?.navigationBar.barTintColor = Colors.navigationBarBackground
+        UINavigationBar.appearance().tintColor = Colors.navigationBarText
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:Colors.navigationBarText]
+        
+
+        
+        
     }
+    
+    
+    
+    
+    
+    
+    
+//    func titleButton() {
+//        let button =  UIButton(type: .custom)
+//        button.setTitleColor(Colors.buttonPrimaryBackground, for: .normal)
+//        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+//        button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+//        button.backgroundColor = .clear
+//        button.setTitle(budgetNameG[myIndexG], for: .normal)
+//        button.addTarget(self, action: #selector(tapOnTitleButton), for: .touchUpInside)
+//        navigationItem.titleView = button
+//    }
+//
+//    @objc func tapOnTitleButton() {
+//        showActionSheet()
+//    }
     
 //SPEND/REFUND TOGGLE
     @objc func switchToggle() {
@@ -272,7 +297,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
             self.closeKeyboard()
             editModeG = true
             print(editModeG)
-            self.switchViewtoEdit()
+            self.goToAddBudget()
         }
       
         
@@ -461,7 +486,6 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         if budgetHistoryAmountG[budgetNameG[myIndexG]] != nil {
             budgetNameG.remove(at: myIndexG)
             budgetAmountG.remove(at: myIndexG)
-//            budgetRemainingG.remove(at: myIndexG)
             budgetHistoryAmountG.removeValue(forKey: budgetNameTemp)
             budgetHistoryDateG.removeValue(forKey: budgetNameTemp)
             budgetHistoryTimeG.removeValue(forKey: budgetNameTemp)
@@ -535,13 +559,14 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
     
     
     
-    @objc func switchViewtoEdit() {
+    @objc func goToAddBudget() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "EditBudget")
+        let viewController = storyboard.instantiateViewController(withIdentifier: "AddBudgetNav")
         self.present(viewController, animated: true)
         
-        print("tap")
     }
+    
+    
     
     @objc func switchViewtoHistory() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
