@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D5AC2142240015C0047BB48 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5AC20F224001580047BB48 /* ToastView.swift */; };
-		0D5AC2152240015C0047BB48 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5AC210224001590047BB48 /* Toast.swift */; };
-		0D5AC2162240015C0047BB48 /* ToastCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5AC2122240015B0047BB48 /* ToastCenter.swift */; };
-		0D5AC2172240015C0047BB48 /* ToastWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5AC2132240015C0047BB48 /* ToastWindow.swift */; };
 		0DA4370322332E5200110700 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA4370222332E5200110700 /* AppDelegate.swift */; };
 		0DA4370D22332E5300110700 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DA4370B22332E5300110700 /* LaunchScreen.storyboard */; };
 		0DA4371522332EA400110700 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DA4371422332EA400110700 /* GoogleService-Info.plist */; };
@@ -18,8 +14,6 @@
 		0DA437342233336E00110700 /* BudgetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA437332233336E00110700 /* BudgetsViewController.swift */; };
 		0DA437372233339E00110700 /* BudgetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA437362233339E00110700 /* BudgetCollectionViewCell.swift */; };
 		0DA43739223333AD00110700 /* BudgetCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA43738223333AD00110700 /* BudgetCollectionReusableView.swift */; };
-		0DA4373B223333C000110700 /* WavyProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA4373A223333C000110700 /* WavyProgressView.swift */; };
-		0DA4373D223333D200110700 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA4373C223333D200110700 /* CircularProgressView.swift */; };
 		0DA4373F223333E000110700 /* FooterBudgetCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA4373E223333E000110700 /* FooterBudgetCollectionView.swift */; };
 		0DA43742223333F200110700 /* AddBudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA43740223333F100110700 /* AddBudgetViewController.swift */; };
 		0DA43743223333F200110700 /* AddSpendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA43741223333F200110700 /* AddSpendViewController.swift */; };
@@ -62,11 +56,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0D5AC20F224001580047BB48 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
-		0D5AC210224001590047BB48 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
-		0D5AC2112240015A0047BB48 /* Toaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toaster.h; sourceTree = "<group>"; };
-		0D5AC2122240015B0047BB48 /* ToastCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastCenter.swift; sourceTree = "<group>"; };
-		0D5AC2132240015C0047BB48 /* ToastWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastWindow.swift; sourceTree = "<group>"; };
 		0DA436FF22332E5200110700 /* BudgeAppMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BudgeAppMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DA4370222332E5200110700 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DA4370C22332E5300110700 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -76,8 +65,6 @@
 		0DA437332233336E00110700 /* BudgetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetsViewController.swift; sourceTree = "<group>"; };
 		0DA437362233339E00110700 /* BudgetCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetCollectionViewCell.swift; sourceTree = "<group>"; };
 		0DA43738223333AD00110700 /* BudgetCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetCollectionReusableView.swift; sourceTree = "<group>"; };
-		0DA4373A223333C000110700 /* WavyProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WavyProgressView.swift; sourceTree = "<group>"; };
-		0DA4373C223333D200110700 /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		0DA4373E223333E000110700 /* FooterBudgetCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterBudgetCollectionView.swift; sourceTree = "<group>"; };
 		0DA43740223333F100110700 /* AddBudgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBudgetViewController.swift; sourceTree = "<group>"; };
 		0DA43741223333F200110700 /* AddSpendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSpendViewController.swift; sourceTree = "<group>"; };
@@ -135,18 +122,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0D5AC20E224001480047BB48 /* Toast */ = {
-			isa = PBXGroup;
-			children = (
-				0D5AC210224001590047BB48 /* Toast.swift */,
-				0D5AC2122240015B0047BB48 /* ToastCenter.swift */,
-				0D5AC2112240015A0047BB48 /* Toaster.h */,
-				0D5AC20F224001580047BB48 /* ToastView.swift */,
-				0D5AC2132240015C0047BB48 /* ToastWindow.swift */,
-			);
-			path = Toast;
-			sourceTree = "<group>";
-		};
 		0DA436F622332E5200110700 = {
 			isa = PBXGroup;
 			children = (
@@ -177,7 +152,6 @@
 				43ECFE86224E620C000BC957 /* SignUp */,
 				0DACD957225FC16B008EDF4B /* IAP */,
 				431CFEA926B19C090056A3A9 /* Instructions */,
-				0D5AC20E224001480047BB48 /* Toast */,
 				0DA4371A223332CA00110700 /* Data Model */,
 				0DA4371C223332ED00110700 /* Views */,
 				0DA437352233337300110700 /* Budgets */,
@@ -214,18 +188,17 @@
 				4393568F245DC9C000CBAFF1 /* TabBarController.swift */,
 				0DA437332233336E00110700 /* BudgetsViewController.swift */,
 				0DA43740223333F100110700 /* AddBudgetViewController.swift */,
+				43D1A5A826EBB54900785E6C /* AddBudgetNavigationController.swift */,
 				0DA43741223333F200110700 /* AddSpendViewController.swift */,
+				43C252BD26E7FBD8004CDB75 /* AddSpendNavigationController.swift */,
 				0DA437362233339E00110700 /* BudgetCollectionViewCell.swift */,
 				0DA43738223333AD00110700 /* BudgetCollectionReusableView.swift */,
-				0DA4373A223333C000110700 /* WavyProgressView.swift */,
-				0DA4373C223333D200110700 /* CircularProgressView.swift */,
+				43C0B97526D6716D000906E6 /* TotalProgressBar.swift */,
 				0DA4373E223333E000110700 /* FooterBudgetCollectionView.swift */,
 				0DA437442233340900110700 /* HistoryTableViewCell.swift */,
 				0DA437452233340A00110700 /* HistoryViewController.swift */,
 				435168CB26C2BA9D007B0BA7 /* BackgroundViewController.swift */,
 				43C3C3EB26C41EC600BBF095 /* Testing */,
-				43C252BD26E7FBD8004CDB75 /* AddSpendNavigationController.swift */,
-				43D1A5A826EBB54900785E6C /* AddBudgetNavigationController.swift */,
 			);
 			path = Budgets;
 			sourceTree = "<group>";
@@ -295,7 +268,6 @@
 			isa = PBXGroup;
 			children = (
 				43C3C3EC26C41EE900BBF095 /* TestingViewController.swift */,
-				43C0B97526D6716D000906E6 /* TotalProgressBar.swift */,
 				43B02ACA26DD07B90038B0FE /* SimpleProgressView.swift */,
 			);
 			path = Testing;
@@ -470,18 +442,14 @@
 				43935690245DC9C000CBAFF1 /* TabBarController.swift in Sources */,
 				0DA4374B2233343000110700 /* AddReminderViewController.swift in Sources */,
 				0DA43742223333F200110700 /* AddBudgetViewController.swift in Sources */,
-				0DA4373B223333C000110700 /* WavyProgressView.swift in Sources */,
 				0DA437472233340A00110700 /* HistoryViewController.swift in Sources */,
 				0DA43739223333AD00110700 /* BudgetCollectionReusableView.swift in Sources */,
 				43FE6F9C2257B581007C21BF /* SettingTableViewController.swift in Sources */,
 				431CFEAB26B19C2D0056A3A9 /* SyncInstructionsViewController.swift in Sources */,
 				43C252BE26E7FBD8004CDB75 /* AddSpendNavigationController.swift in Sources */,
-				0D5AC2172240015C0047BB48 /* ToastWindow.swift in Sources */,
 				43B02ACB26DD07B90038B0FE /* SimpleProgressView.swift in Sources */,
 				0DA4374C2233343000110700 /* RemindersTableViewCell.swift in Sources */,
 				43C3C3ED26C41EE900BBF095 /* TestingViewController.swift in Sources */,
-				0D5AC2142240015C0047BB48 /* ToastView.swift in Sources */,
-				0DA4373D223333D200110700 /* CircularProgressView.swift in Sources */,
 				0DA437562233354100110700 /* ReminderItem.swift in Sources */,
 				0DBF296F22932A9700778D01 /* IAPCollectionViewCell.swift in Sources */,
 				0DA43753223334C800110700 /* SignInUpViewController.swift in Sources */,
@@ -492,10 +460,8 @@
 				435771EF26ADB3A100383CE7 /* WelcomeScreenViewController.swift in Sources */,
 				435168CC26C2BA9D007B0BA7 /* BackgroundViewController.swift in Sources */,
 				4329DD23245C53560045E952 /* GlobalConstants.swift in Sources */,
-				0D5AC2162240015C0047BB48 /* ToastCenter.swift in Sources */,
 				0DA4370322332E5200110700 /* AppDelegate.swift in Sources */,
 				43101444264C1E3000737DA1 /* To Do's.swift in Sources */,
-				0D5AC2152240015C0047BB48 /* Toast.swift in Sources */,
 				0DA437372233339E00110700 /* BudgetCollectionViewCell.swift in Sources */,
 				0DA4374D2233343000110700 /* RemindersViewController.swift in Sources */,
 				43C0B97626D6716D000906E6 /* TotalProgressBar.swift in Sources */,

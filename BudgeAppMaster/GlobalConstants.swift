@@ -16,23 +16,27 @@ import FirebaseDatabase
 enum Colors {
     static let budgetViewMainbackground1 = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     static let budgetViewMainbackground2 = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-    static let budgetViewCellBackground = #colorLiteral(red: 0.9294117647, green: 0.9490196078, blue: 0.9568627451, alpha: 1)
+    static let budgetViewCellBackground = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9725490196, alpha: 1)
     static let budgetViewCellText = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     static let budgetViewTotalBudgetRemainingLabel = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-    static let budgetViewSummaryOfTotalBudgetSpent = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+    static let budgetViewSummaryOfTotalBudgetSpent = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     static let progressBarTrackCell = UIColor.clear
-    static let progressBarTrackTotal = #colorLiteral(red: 0.8235294118, green: 0.8549019608, blue: 0.8666666667, alpha: 1)
-    static let progressBarProgressGreen = #colorLiteral(red: 0.3764705882, green: 0.8274509804, blue: 0.5803921569, alpha: 1)
-    static let progressBarProgressYellow = #colorLiteral(red: 1, green: 0.8509803922, blue: 0.4901960784, alpha: 1)
-    static let progressBarProgressRed = #colorLiteral(red: 1, green: 0.6078431373, blue: 0.5215686275, alpha: 1)
-    static let progressBarProgressBlue = #colorLiteral(red: 0, green: 0.6470588235, blue: 0.8117647059, alpha: 1)
+    static let progressBarTrackTotal = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9725490196, alpha: 1)
+    static let progressBarProgressGreen = #colorLiteral(red: 0.5529411765, green: 0.8078431373, blue: 0.7647058824, alpha: 1)
+    static let progressBarProgressYellow = #colorLiteral(red: 1, green: 0.9058823529, blue: 0.5215686275, alpha: 1)
+    static let progressBarProgressRed = #colorLiteral(red: 0.9647058824, green: 0.5647058824, blue: 0.5568627451, alpha: 1)
+    static let progressBarProgressBlue = #colorLiteral(red: 0.4117647059, green: 0.7294117647, blue: 0.8666666667, alpha: 1)
     static let themeAccentPrimary = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-    static let themeAccentGreen = #colorLiteral(red: 0.3764705882, green: 0.8274509804, blue: 0.5803921569, alpha: 1)
+    static let themeAccentGreen = #colorLiteral(red: 0.5529411765, green: 0.8078431373, blue: 0.7647058824, alpha: 1)
     static let themeAccentGray = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
     static let buttonPrimaryBackground = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     static let buttonPrimaryText = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     static let navigationBarBackground = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     static let navigationBarText = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    static let deleteButton = #colorLiteral(red: 0.9647058824, green: 0.5647058824, blue: 0.5568627451, alpha: 1)
+    static let editButton = #colorLiteral(red: 0.4117647059, green: 0.7294117647, blue: 0.8666666667, alpha: 1)
+    static let toggleSaveAsRefund = #colorLiteral(red: 0.5529411765, green: 0.8078431373, blue: 0.7647058824, alpha: 1)
+    static let toggleGeneral = #colorLiteral(red: 0.5529411765, green: 0.8078431373, blue: 0.7647058824, alpha: 1)
 }
 
 
@@ -48,6 +52,8 @@ enum Colors {
 //let colorTrackC = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
 //let colorRedC = #colorLiteral(red: 0.9568627451, green: 0.262745098, blue: 0.2117647059, alpha: 1)
 //let colorGreenC = #colorLiteral(red: 0.3764705882, green: 0.8274509804, blue: 0.5803921569, alpha: 1)
+
+var reloadView = false
 
 let bgColorSolid = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
 let bgColorGradient1 = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -70,9 +76,6 @@ let freeMinutes = 10080 //7 days
 
 //Number of free budgets
 let freeBudgets = 3
-
-//Cross Controls
-var reloadBudgetViewCC = false
 
 
 //User Attributes

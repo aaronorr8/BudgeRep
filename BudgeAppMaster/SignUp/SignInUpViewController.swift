@@ -107,6 +107,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
     
              
     @IBAction func closeButton(_ sender: Any) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -174,7 +175,9 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                             print("UserID: \(Auth.auth().currentUser?.uid)")
                             currentUserG = Auth.auth().currentUser!.uid
                             print("currentUserG: \(currentUserG)")
-                            
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
+                            print("Set reloadView to true")
+                            reloadView = true
                         }
                         
                         
@@ -433,6 +436,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
             showSyncInstructions = false
             performSegue(withIdentifier: "goToSyncInstructions", sender: self)
         } else {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
             self.dismiss(animated: true, completion: nil)
         }
     }

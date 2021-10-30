@@ -145,11 +145,13 @@ class SettingTableViewController: UITableViewController {
             alert.addAction(UIAlertAction(title: "Yes! Rollover my money", style: UIAlertAction.Style.default, handler: { _ in
                 self.rolloverToRolloverBudget()
                 self.save()
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
                 self.tabBarController?.selectedIndex = 0
             }))
             alert.addAction(UIAlertAction(title: "No. Just reset my budgets", style: UIAlertAction.Style.default, handler: { _ in
                 self.resetBudgetsNoRollover()
                 self.save()
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
                 self.tabBarController?.selectedIndex = 0
             }))
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: { _ in
@@ -177,6 +179,8 @@ class SettingTableViewController: UITableViewController {
             
             self.present(alert, animated: true, completion: nil)
         }
+        
+        
     }
     
     @IBAction func resetReminders(_ sender: Any) {
@@ -586,7 +590,8 @@ class SettingTableViewController: UITableViewController {
             try firebaseAuth.signOut()
             deleteReminders()
             currentUserG = ""
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "signoutReload"), object: nil)
+            reloadView = true
 //            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showWelcomeScreen"), object: nil)
             needToShowWelcomeScreen = true
             self.tabBarController?.selectedIndex = 0

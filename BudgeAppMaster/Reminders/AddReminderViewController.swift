@@ -14,8 +14,8 @@ var noteDay = 0 //used to schedule notification on specific day
 
 class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    @IBOutlet weak var reminderNameInput: UITextField!
-    @IBOutlet weak var reminderAmountInput: UITextField!
+    @IBOutlet weak var reminderTitleField: UITextField!
+    @IBOutlet weak var reminderAmountField: UITextField!
     @IBOutlet weak var dueDateInput: UITextField!
     @IBOutlet weak var selectBudgetField: UITextField!
     @IBOutlet weak var navItem: UINavigationItem!
@@ -23,7 +23,7 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var repeatSwitchOutlet: UISwitch!
     @IBOutlet weak var notificationSwitchOutlet: UISwitch!
-    @IBOutlet weak var reminderLabel1: UILabel!
+    @IBOutlet weak var reminderDayLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
@@ -40,9 +40,9 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
 
     override func viewDidLayoutSubviews() {
         //Add underline to text fields
-        reminderNameInput.setUnderLine()
-        reminderAmountInput.setUnderLine()
-        selectBudgetField.setUnderLine()
+//        reminderTitleField.setUnderLine()
+//        reminderAmountField.setUnderLine()
+//        selectBudgetField.setUnderLine()
         
         scrollView.bounces = false
         
@@ -61,14 +61,14 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
         print("myIndexG: \(myIndexG)")
     
 
-        //SET NAV TITLE
-        navItem.title = "Add Bill Reminder"
         
-        reminderAmountInput.delegate = self
-        reminderAmountInput.placeholder = updateAmount()
+        reminderAmountField.delegate = self
+        reminderAmountField.placeholder = updateAmount()
+        
+        
         
         //SET FIRST RESPONDER
-        self.reminderNameInput.becomeFirstResponder()
+        self.reminderTitleField.becomeFirstResponder()
         
         //SET REPEAT AND NOTIFICATION SETTINGS
         if editModeG == true {
@@ -82,6 +82,7 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
         
         //PICKER VIEW LINKED BUDGET
         let pickerViewLinkedBudget = UIPickerView()
+        pickerViewLinkedBudget.delegate = self
         pickerViewLinkedBudget.delegate = self as UIPickerViewDelegate
         selectBudgetField.inputView = pickerViewLinkedBudget
         
@@ -101,15 +102,15 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
         //LOAD PRESETS
         if editModeG != true {
             //SET NAV TITLE (ADD NEW MODE)
-            navItem.title = "Add Reminder"
+            self.title = "Add Reminder"
         } else {
             //SET NAV TITLE (EDIT MODE)
-            navItem.title = "Edit Reminder"
+            self.title = "Edit Reminder"
             
             //SET DEFAULT VALUES
             selectBudgetField.text = reminderArray[myIndexG].linkedBudget
-            reminderNameInput.text = reminderArray[myIndexG].name
-            reminderAmountInput.text = convertDoubleToCurency(amount: reminderArray[myIndexG].amount)
+            reminderTitleField.text = reminderArray[myIndexG].name
+            reminderAmountField.text = convertDoubleToCurency(amount: reminderArray[myIndexG].amount)
             amt = Int(reminderArray[myIndexG].amount) * 100
             
             //ADD "ST", "ND", "RD", "ST" TO DATE
@@ -133,10 +134,10 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
             
             //HIDE OR UNHIDE REMINDER INPUTS
             if reminderArray[myIndexG].notificationSetting == false {
-                reminderLabel1.isHidden = true
+                reminderDayLabel.isHidden = true
                 dueDateInput.isHidden = true
             } else {
-                reminderLabel1.isHidden = false
+                reminderDayLabel.isHidden = false
                 dueDateInput.isHidden = false
             }
             
@@ -191,12 +192,12 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
             })
             
             notificationSetting = true
-            reminderLabel1.isHidden = false
+            reminderDayLabel.isHidden = false
             dueDateInput.isHidden = false
         } else {
             print("Notification Off")
             notificationSetting = false
-            reminderLabel1.isHidden = true
+            reminderDayLabel.isHidden = true
             dueDateInput.isHidden = true
         }
         print(notificationSetting)
@@ -210,15 +211,15 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
         //ADD NEW MODE
         if editModeG != true {
             
-            if reminderNameInput.text != "" {
+            if reminderTitleField.text != "" {
                 
                 //ADD NAME
-                if reminderNameInput != nil {
-                    newReminder.name = reminderNameInput.text!
+                if reminderTitleField != nil {
+                    newReminder.name = reminderTitleField.text!
                 }
                 
                 //ADD AMOUNT
-                if reminderAmountInput != nil {
+                if reminderAmountField != nil {
                     let amount = Double(amt/100) + Double(amt%100)/100
                     newReminder.amount = amount
                 }
@@ -279,16 +280,16 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
         } else {
             //MARK: EDIT MODE
             
-            if reminderNameInput.text != "" {
+            if reminderTitleField.text != "" {
                 
                 //UPDATE NAME
-                if reminderNameInput != nil {
-                    reminderArray[myIndexG].name = reminderNameInput.text!
+                if reminderTitleField != nil {
+                    reminderArray[myIndexG].name = reminderTitleField.text!
                     //                self.dismiss(animated: true, completion: nil)
                 }
                 
                 //UPDATE AMOUNT
-                if reminderAmountInput != nil {
+                if reminderAmountField != nil {
                     let amount = Double(amt/100) + Double(amt%100)/100
                     reminderArray[myIndexG].amount = amount
                 }
@@ -332,6 +333,8 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
             }
         }
         
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
+        
 
     }
     
@@ -358,20 +361,20 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
                 
                 present(alert, animated: true, completion: nil)
                 
-                reminderAmountInput.text = ""
+                reminderAmountField.text = ""
                 
                 amt = 0
                 
             } else {
-                reminderAmountInput.text = updateAmount()
+                reminderAmountField.text = updateAmount()
             }
             
-            reminderAmountInput.text = updateAmount()
+            reminderAmountField.text = updateAmount()
         }
         
         if string == "" {
             amt = amt/10
-            reminderAmountInput.text = amt == 0 ? "" : updateAmount()
+            reminderAmountField.text = amt == 0 ? "" : updateAmount()
         }
         
         return false
@@ -443,7 +446,7 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
         let content = UNMutableNotificationContent()
         
         //adding title, subtitle, body and badge
-        content.title = "Bill Reminder: \(reminderNameInput.text!)"
+        content.title = "Bill Reminder: \(reminderTitleField.text!)"
         content.subtitle = ""
         content.body = ""
         content.badge = 1

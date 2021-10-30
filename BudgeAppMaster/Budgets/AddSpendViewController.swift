@@ -78,6 +78,8 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
     }
     
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -125,7 +127,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
         
         let toggleSwitch = UISwitch()
-        toggleSwitch.onTintColor = Colors.themeAccentGreen
+        toggleSwitch.onTintColor = Colors.toggleSaveAsRefund
 
         toggleSwitch.addTarget(self, action: #selector(self.switchToggle), for: .valueChanged)
         
@@ -144,13 +146,18 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         //toolBar.setItems([flexibleSpace, toggleSwitch], animated: false)
         
         toolBar.setItems([flexibleSpace, UIBarButtonItem.init(customView: toggleText), UIBarButtonItem.init(customView: toggleSwitch)], animated: false)
+        toggleSwitch.onTintColor = Colors.toggleSaveAsRefund
         
         spendAmount.inputAccessoryView = toolBar
         spendNoteField.inputAccessoryView = toolBar
         
      
         
+        
     }
+    
+    
+    
         
     //Keyboard Shift (2/3)
     deinit {
@@ -204,16 +211,13 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         //        saveButton.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
         
         //Set color for View Spend History button
-        viewSpendHistoryButtonOutlet.backgroundColor = Colors.budgetViewCellBackground
+        viewSpendHistoryButtonOutlet.backgroundColor = .clear
         viewSpendHistoryButtonOutlet.setTitleColor(Colors.buttonPrimaryBackground, for: .normal)
+        viewSpendHistoryButtonOutlet.tintColor = Colors.buttonPrimaryBackground
+        viewSpendHistoryButtonOutlet.semanticContentAttribute = UIApplication.shared
+            .userInterfaceLayoutDirection == .rightToLeft ? .forceLeftToRight : .forceRightToLeft
 
-        //Navigation bar colors
-        navigationController?.navigationBar.barTintColor = Colors.navigationBarBackground
-        UINavigationBar.appearance().tintColor = Colors.navigationBarText
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:Colors.navigationBarText]
-        
-
-        
+    
         
     }
     
@@ -263,10 +267,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
     
     override func viewDidAppear(_ animated: Bool) {
         
-        print("editModeG: \(editModeG)")
-        print("closeallG: \(closeAllG)")
-        print("budgetNameG: \(budgetNameG)")
-        //print("myIndex: \(budgetRemainingG[myIndexG])")
+        createProgressFromValueArray()
         
         if closeAllG == true {
             self.dismiss(animated: true, completion: nil)
@@ -293,8 +294,11 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 
         
+//        let viewHistory = UIAlertAction(title: "View Spend History", style: .default) { action in
+//            self.performSegue(withIdentifier: "goToSpendHistory", sender: self)
+//        }
+        
         let edit = UIAlertAction(title: "Edit Budget", style: .default) { action in
-            self.closeKeyboard()
             editModeG = true
             print(editModeG)
             self.goToAddBudget()
@@ -302,12 +306,13 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
       
         
         let delete = UIAlertAction(title: "Delete Budget", style: .default) { action in
-            self.closeKeyboard()
+//            self.closeKeyboard()
             self.deleteBudget()
             self.dismiss(animated: true, completion: nil)
         }
         
 
+//        actionSheet.addAction(viewHistory)
         actionSheet.addAction(edit)
         actionSheet.addAction(delete)
         actionSheet.addAction(cancel)
@@ -338,6 +343,8 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
 //        } else {
             
             if spendAmount.text != "" {
+                
+                
                 
                 //DISMISS KEYBOARD
                 view.endEditing(true)
@@ -402,14 +409,18 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
                 self.dismiss(animated: true, completion: nil)
                 
                 
+                
                 //USED TO SUPPORT REMINDERS WITH LINKED BUDGETS
                 presetAmountG = 0.0
+                
+                
                 
             } else {
                 emptyTextAlert()
             }
             
 //        }
+        
         
         
 //        askForReview()
@@ -426,6 +437,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
             saveToFireStore()
             print("Saved to FireStore")
         }
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
     }
     
     //MARK: Save to FireStore
@@ -497,6 +509,20 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         save()
 
     
+    }
+    
+    
+    func createProgressFromValueArray() {
+        progressFromValueArray.removeAll()
+        for i in 0...budgetNameG.count - 1 {
+                let selectedBudget = budgetNameG[i]
+                let amountSpentInd = budgetHistoryAmountG[selectedBudget]?.reduce(0, +) ?? 0
+                let budgetAmount = budgetAmountG[i]
+                let percentSpent = Double(amountSpentInd/budgetAmount)
+                progressFromValueArray.append(percentSpent)
+            }
+       
+        print("progressFromValueArray \(progressFromValueArray)")
     }
     
    

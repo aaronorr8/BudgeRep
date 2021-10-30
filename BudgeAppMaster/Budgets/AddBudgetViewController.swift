@@ -37,8 +37,14 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
     
     override func viewDidLayoutSubviews() {
         //Add underline to text fields
-        budgetNameField.setUnderLine()
-        budgetAmountField.setUnderLine()
+//        budgetNameField.setUnderLine()
+//        budgetAmountField.setUnderLine()
+        budgetNameField.textColor = Colors.themeAccentPrimary
+        budgetNameField.backgroundColor = Colors.budgetViewCellBackground
+        budgetNameField.layer.cornerRadius = 10
+        budgetAmountField.textColor = Colors.themeAccentPrimary
+        budgetAmountField.backgroundColor = Colors.budgetViewCellBackground
+        budgetAmountField.layer.cornerRadius = 10
         
     }
     
@@ -70,7 +76,24 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
         }
         
         
+//        NotificationCenter.default.addObserver(
+//            self,
+//            selector: #selector(keyboardWillShow),
+//            name: UIResponder.keyboardWillShowNotification,
+//            object: nil
+//        )
+        
+        
     }
+    
+//    @objc func keyboardWillShow(_ notification: Notification) {
+//        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+//            let keyboardRectangle = keyboardFrame.cgRectValue
+//            let keyboardHeight = keyboardRectangle.height
+//
+//            print("Keyboard height = \(keyboardHeight)")
+//        }
+//    }
     
     
     
@@ -86,6 +109,11 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
         saveButton.backgroundColor = Colors.buttonPrimaryBackground
         saveButton.setTitleColor(Colors.buttonPrimaryText, for: .normal)
         saveButton.layer.cornerRadius = saveButton.frame.height / 2
+        
+//        //Navigation bar colors
+//        navigationController?.navigationBar.barTintColor = Colors.navigationBarBackground
+//        UINavigationBar.appearance().tintColor = Colors.navigationBarText
+//        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:Colors.navigationBarText]
     }
     
     
@@ -180,7 +208,7 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
         }
         
         
-        reloadBudgetViewCC = true
+        
         
     }
     
@@ -202,6 +230,7 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
             saveToDefaults()
             print("Save to UserDefaults")
         }
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
     }
     
     //MARK: Save to UserDefaults
@@ -348,6 +377,26 @@ extension UITextField {
     }
     
     
+}
+
+
+class TextFieldWithPadding: UITextField {
+    var textPadding = UIEdgeInsets(
+        top: 0,
+        left: 8,
+        bottom: 0,
+        right: 8
+    )
+
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        let rect = super.textRect(forBounds: bounds)
+        return rect.inset(by: textPadding)
+    }
+
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        let rect = super.editingRect(forBounds: bounds)
+        return rect.inset(by: textPadding)
+    }
 }
 
 

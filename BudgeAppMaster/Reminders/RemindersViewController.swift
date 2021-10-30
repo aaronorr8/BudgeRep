@@ -16,6 +16,8 @@ class RemindersViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var remindersTableView: UITableView!
+    @IBOutlet weak var swipeToEditLabel: UILabel!
+    @IBOutlet weak var addReminderButtonOutlet: UIBarButtonItem!
     
     var reminderIndex = 0
 
@@ -26,18 +28,31 @@ class RemindersViewController: UIViewController, UITableViewDelegate, UITableVie
         
         UIApplication.shared.applicationIconBadgeNumber = 0
         print("clear badge")
+        
+        updateGuidanceLabel()
     }
    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-  
+
         loadItems()
-        print(dataFilePath)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name: NSNotification.Name(rawValue: "reload"), object: nil)
+        
+        
+        
         
     
+    }
+    
+    func updateGuidanceLabel() {
+        if reminderArray.isEmpty == true {
+            swipeToEditLabel.text = "Add your first reminder"
+        } else {
+            swipeToEditLabel.text = "Swipe to edit"
+        }
     }
     
     
@@ -62,6 +77,9 @@ class RemindersViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
 
+    @objc func reloadTable() {
+        remindersTableView.reloadData()
+    }
     
     
     func setNavigationBarColor() {
@@ -197,6 +215,7 @@ class RemindersViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         saveData()
         remindersTableView.reloadData()
+        updateGuidanceLabel()
         
     }
     
@@ -218,10 +237,11 @@ class RemindersViewController: UIViewController, UITableViewDelegate, UITableVie
             self.deleteReminder()
             self.saveData()
             tableView.reloadData()
+            self.updateGuidanceLabel()
         }
     
-        edit.backgroundColor = #colorLiteral(red: 0.7233663201, green: 0.7233663201, blue: 0.7233663201, alpha: 1)
-        delete.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        edit.backgroundColor = Colors.editButton
+        delete.backgroundColor = Colors.deleteButton
         
         return [edit, delete]
         

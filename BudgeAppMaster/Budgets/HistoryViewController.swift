@@ -57,8 +57,8 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.deleteDialog()
         }
         
-        edit.backgroundColor = #colorLiteral(red: 0.7233663201, green: 0.7233663201, blue: 0.7233663201, alpha: 1)
-        delete.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        edit.backgroundColor = Colors.editButton
+        delete.backgroundColor = Colors.deleteButton
         
         return [edit, delete]
     }
@@ -257,6 +257,8 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     //MARK:SAVE
     func save() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
+        
         if currentUserG == "" {
             saveToDefaults()
             print("Saved to UserDefaults")

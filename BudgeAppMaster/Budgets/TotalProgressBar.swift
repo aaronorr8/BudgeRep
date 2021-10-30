@@ -46,32 +46,34 @@ class TotalProgressBar: UIView {
 
         let path = UIBezierPath()
         path.move(to: CGPoint(x: 0, y: frame.size.height/2))
-        path.addLine(to: CGPoint(x: frame.size.width, y: frame.size.height/2))
-
+        path.addLine(to: CGPoint(x: cellWidth, y: frame.size.height/2))
+//        path.addLine(to: CGPoint(x: frame.size.width, y: frame.size.height/2))
 
 
         trackLayer.path = path.cgPath
         trackLayer.fillColor = UIColor.clear.cgColor
         trackLayer.strokeColor = trackColor.cgColor
         trackLayer.lineWidth = frame.height
-//        trackLayer.lineCap = CAShapeLayerLineCap.round
+        trackLayer.lineCap = CAShapeLayerLineCap.butt
         layer.addSublayer(trackLayer)
 
         progressLayer.path = path.cgPath
         progressLayer.fillColor = UIColor.clear.cgColor
         progressLayer.strokeColor = progressColor.cgColor
         progressLayer.lineWidth = frame.height
-//        progressLayer.lineCap = CAShapeLayerLineCap.round
+        progressLayer.lineCap = CAShapeLayerLineCap.butt
         layer.addSublayer(progressLayer)
     }
 
-    func setProgressWithAnimation(duration: TimeInterval, value: Float) {
+   
+    
+    func setProgressWithAnimation(duration: TimeInterval, fromValue: Float, toValue: Float) {
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.duration = duration
-        animation.fromValue = 0
-        animation.toValue = value
+        animation.fromValue = fromValue
+        animation.toValue = toValue
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-        progressLayer.strokeEnd = CGFloat(value)
+        progressLayer.strokeEnd = CGFloat(toValue)
         progressLayer.add(animation, forKey: "animateprogress")
     }
     
