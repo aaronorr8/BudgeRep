@@ -42,7 +42,6 @@
 		4329DD23245C53560045E952 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4329DD22245C53560045E952 /* GlobalConstants.swift */; };
 		435168CC26C2BA9D007B0BA7 /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435168CB26C2BA9D007B0BA7 /* BackgroundViewController.swift */; };
 		435771EF26ADB3A100383CE7 /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435771EE26ADB3A100383CE7 /* WelcomeScreenViewController.swift */; };
-		435B276726A1BFD10002C368 /* PerksUnlimitedBudgetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435B276626A1BFD10002C368 /* PerksUnlimitedBudgetsViewController.swift */; };
 		436D9D412286269B0020F924 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436D9D402286269B0020F924 /* StoreKit.framework */; };
 		43935690245DC9C000CBAFF1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4393568F245DC9C000CBAFF1 /* TabBarController.swift */; };
 		4393F83F2233FBA8004CD359 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4393F83E2233FBA8004CD359 /* Assets.xcassets */; };
@@ -92,7 +91,6 @@
 		4329DD22245C53560045E952 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		435168CB26C2BA9D007B0BA7 /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
 		435771EE26ADB3A100383CE7 /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
-		435B276626A1BFD10002C368 /* PerksUnlimitedBudgetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerksUnlimitedBudgetsViewController.swift; sourceTree = "<group>"; };
 		436D9D402286269B0020F924 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4393568F245DC9C000CBAFF1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4393F83E2233FBA8004CD359 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -232,8 +230,8 @@
 			isa = PBXGroup;
 			children = (
 				0DACD958225FC1A3008EDF4B /* IAPSubscriptionViewController.swift */,
-				0DBF296E22932A9700778D01 /* IAPCollectionViewCell.swift */,
 				43B3BD1326A9A1F90074D47D /* IAPNon-ConsumableViewController.swift */,
+				0DBF296E22932A9700778D01 /* IAPCollectionViewCell.swift */,
 			);
 			name = IAP;
 			path = "New Group";
@@ -258,7 +256,6 @@
 		431CFEA926B19C090056A3A9 /* Instructions */ = {
 			isa = PBXGroup;
 			children = (
-				435B276626A1BFD10002C368 /* PerksUnlimitedBudgetsViewController.swift */,
 				431CFEAA26B19C2D0056A3A9 /* SyncInstructionsViewController.swift */,
 			);
 			path = Instructions;
@@ -453,7 +450,6 @@
 				0DA437562233354100110700 /* ReminderItem.swift in Sources */,
 				0DBF296F22932A9700778D01 /* IAPCollectionViewCell.swift in Sources */,
 				0DA43753223334C800110700 /* SignInUpViewController.swift in Sources */,
-				435B276726A1BFD10002C368 /* PerksUnlimitedBudgetsViewController.swift in Sources */,
 				0DA437342233336E00110700 /* BudgetsViewController.swift in Sources */,
 				0DA43743223333F200110700 /* AddSpendViewController.swift in Sources */,
 				0DA437462233340A00110700 /* HistoryTableViewCell.swift in Sources */,

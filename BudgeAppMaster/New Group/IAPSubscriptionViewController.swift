@@ -55,12 +55,14 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
     
     override func viewDidAppear(_ animated: Bool) {
         if price == "" {
+            print("price not loaded from app store")
+            print("price = \(price)")
             priceLabel.text = "Sync budgets with someone special for just $0.99/month"
-            
-            //After the 1 week free trial this subscription automatically renews for $0.99 per month unless it is canceled at least 24 hours before the end of the trial period.
             
             legalText.text = "You can manage and cancel your subscriptions by going to your App Store account settings after purchase. The subscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period."
         } else {
+            print("price is loaded from app store")
+            print("price = \(price)")
             priceLabel.text = "Sync budgets with someone special for just \(price) a month"
             
             legalText.text = "You can manage and cancel your subscriptions by going to your App Store account settings after purchase. The subscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period."
@@ -96,6 +98,9 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
         
     }
     
+    
+   
+    
     //MARK: Product Request
     
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
@@ -110,12 +115,17 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
                 print(product.price)
                 
                 list.append(product)
+                
+                let formatter = NumberFormatter()
+                formatter.numberStyle = .currency
+                formatter.locale = product.priceLocale
+                price = String((formatter.string(from: product.price) ?? ""))
+                print("price = \(price)")
         }
+
             
-//            price = product.localizedPrice
-//            print("localized price: \(price)")
+                
             
-        
         
             
             

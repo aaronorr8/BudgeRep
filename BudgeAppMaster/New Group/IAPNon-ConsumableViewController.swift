@@ -16,7 +16,9 @@ class IAPNon_ConsumableViewController: UIViewController, SKProductsRequestDelega
     
     var myProduct: SKProduct?
     
+    @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var buyButtonOutlet: UIButton!
+    var price = ""
     
 
     override func viewDidLoad() {
@@ -24,14 +26,29 @@ class IAPNon_ConsumableViewController: UIViewController, SKProductsRequestDelega
         
         self.title = "Unlock Budge"
 
-        //Add rounded outline to save button
-        buyButtonOutlet.backgroundColor = .clear
-        buyButtonOutlet.layer.cornerRadius = 10
-        buyButtonOutlet.layer.borderWidth = 2
-        buyButtonOutlet.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
+        
+        buyButtonOutlet.backgroundColor = Colors.buttonPrimaryBackground
+        buyButtonOutlet.setTitleColor(Colors.buttonPrimaryText, for: .normal)
+        buyButtonOutlet.layer.cornerRadius = buyButtonOutlet.frame.height / 2
         
         fetchProducts()
+        
+        
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if price == "" {
+            print("price not loaded from app store")
+            print("price = \(price)")
+            priceLabel.text = "Create as many budgets as you want for just $2.99"
+        } else {
+            print("price loaded from app store")
+            print("price = \(price)")
+            priceLabel.text = "Create as many budgets as you want for just \(price)"
+        }
+    }
+    
+
     
     
     //MARK: BUY NOW BUTTON
@@ -61,6 +78,9 @@ class IAPNon_ConsumableViewController: UIViewController, SKProductsRequestDelega
         
     }
     
+    @IBAction func cancelButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     func fetchProducts() {
         // UnlimitedBudgets
@@ -76,6 +96,13 @@ class IAPNon_ConsumableViewController: UIViewController, SKProductsRequestDelega
             print(product.price)
             print(product.localizedTitle)
             print(product.localizedDescription)
+            
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .currency
+            formatter.locale = product.priceLocale
+            price = String((formatter.string(from: product.price) ?? ""))
+            print("price = \(price)")
+            
         }
     }
     
@@ -123,3 +150,5 @@ class IAPNon_ConsumableViewController: UIViewController, SKProductsRequestDelega
     }
 
 }
+
+
