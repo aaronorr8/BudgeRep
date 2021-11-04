@@ -30,7 +30,7 @@ enum Colors {
     static let themeAccentGreen = #colorLiteral(red: 0.5529411765, green: 0.8078431373, blue: 0.7647058824, alpha: 1)
     static let themeAccentGray = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
     static let buttonPrimaryBackground = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-    static let buttonPrimaryText = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    static let buttonPrimaryText = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5)
     static let navigationBarBackground = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     static let navigationBarText = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     static let deleteButton = #colorLiteral(red: 0.9647058824, green: 0.5647058824, blue: 0.5568627451, alpha: 1)

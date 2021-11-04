@@ -13,6 +13,8 @@ var sceneLogInOnly = false
 class WelcomeScreenViewController: UIViewController {
     
     @IBOutlet weak var getStartedButton: UIButton!
+    @IBOutlet weak var loginButtonOutlet: UIButton!
+    @IBOutlet weak var viewOutlet: UIView!
     
 
     
@@ -50,10 +52,15 @@ class WelcomeScreenViewController: UIViewController {
     }
     
     func styleButton() {
-        getStartedButton.backgroundColor = #colorLiteral(red: 0, green: 0.5241034031, blue: 0.3747756481, alpha: 1)
+        getStartedButton.backgroundColor = Colors.buttonPrimaryBackground
         getStartedButton.layer.cornerRadius = getStartedButton.frame.height/2
-//        getStartedButton.layer.borderWidth = 2
-//        getStartedButton.layer.borderColor = #colorLiteral(red: 0, green: 0.5241034031, blue: 0.3747756481, alpha: 1)
-        getStartedButton.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
+        getStartedButton.setTitleColor(.white, for: .normal)
+        
+        loginButtonOutlet.backgroundColor = Colors.budgetViewCellBackground
+        loginButtonOutlet.layer.cornerRadius = loginButtonOutlet.frame.height/2
+        loginButtonOutlet.setTitleColor(Colors.buttonPrimaryBackground, for: .normal)
+        
+        viewOutlet.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5)
+        viewOutlet.layer.cornerRadius = 15
     }
 }
