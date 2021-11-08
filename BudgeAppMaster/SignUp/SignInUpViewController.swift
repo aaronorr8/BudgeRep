@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 
 var signUpMode = true
+var isWelcomeScreenLogin = false
 
 class SignInUpViewController: UIViewController, UITextFieldDelegate {
     
@@ -30,15 +31,28 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLayoutSubviews() {
         
-       //Add rounded outline to save button
-       signInButtonOutlet.backgroundColor = .clear
-       signInButtonOutlet.layer.cornerRadius = 6
-       signInButtonOutlet.layer.borderWidth = 2
-       signInButtonOutlet.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
         
-        //Add underline to text fields
-        emailField.setUnderLine()
-        passwordField.setUnderLine()
+        signInButtonOutlet.backgroundColor = Colors.buttonPrimaryBackground
+        signInButtonOutlet.setTitleColor(Colors.buttonPrimaryText, for: .normal)
+        signInButtonOutlet.layer.cornerRadius = signInButtonOutlet.frame.height / 2
+        
+        emailField.textColor = Colors.themeAccentPrimary
+        emailField.backgroundColor = Colors.budgetViewCellBackground
+        emailField.layer.cornerRadius = 10
+        
+        passwordField.textColor = Colors.themeAccentPrimary
+        passwordField.backgroundColor = Colors.budgetViewCellBackground
+        passwordField.layer.cornerRadius = 10
+        
+//       //Add rounded outline to save button
+//       signInButtonOutlet.backgroundColor = .clear
+//       signInButtonOutlet.layer.cornerRadius = 6
+//       signInButtonOutlet.layer.borderWidth = 2
+//       signInButtonOutlet.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
+//
+//        //Add underline to text fields
+//        emailField.setUnderLine()
+//        passwordField.setUnderLine()
     }
     
     
@@ -56,11 +70,12 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
-        if sceneLogInOnly == true {
+        if isWelcomeScreenLogin == true {
             switchModes.isHidden = true
             signUpMode = false
             signInButtonOutlet.setTitle("Login", for: .normal)
             forgotPasswordOutlet.isHidden = false
+            
         }
         
     }
@@ -107,8 +122,18 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
     
              
     @IBAction func closeButton(_ sender: Any) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
-        self.dismiss(animated: true, completion: nil)
+        
+        if isWelcomeScreenLogin == true {
+            self.navigationController!.popToRootViewController(animated: true)
+        } else {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        isWelcomeScreenLogin = false
     }
     
     
@@ -175,13 +200,12 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                             print("UserID: \(Auth.auth().currentUser?.uid)")
                             currentUserG = Auth.auth().currentUser!.uid
                             print("currentUserG: \(currentUserG)")
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
-                            print("Set reloadView to true")
-                            reloadView = true
+                            
                         }
                         
-                        
                         print("Login successful!!")
+//                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
+                        reloadView = true
                         self.newGetFireStoreData()
                         self.goToNextScreen()
                         

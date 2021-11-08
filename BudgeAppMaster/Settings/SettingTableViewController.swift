@@ -65,9 +65,9 @@ class SettingTableViewController: UITableViewController {
         
         
         if currentUserG == "" {
-            signOutButtonOutlet.setTitle("Not signed in", for: .normal)
+            signOutButtonOutlet.setTitle("Login", for: .normal)
         } else {
-            signOutButtonOutlet.setTitle("Sign Out \(currentUserG)", for: .normal)
+            signOutButtonOutlet.setTitle("Sign Out", for: .normal)
         }
     }
     
@@ -91,7 +91,14 @@ class SettingTableViewController: UITableViewController {
     
     //MARK: SignOut
     @IBAction func signOutButton(_ sender: Any) {
-        signOutAlert()
+        if currentUserG == "" {
+            signUpMode = false
+            performSegue(withIdentifier: "goToSignUp", sender: self)
+        } else {
+            signOutAlert()
+        }
+        
+        
         
     }
     

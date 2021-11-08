@@ -8,8 +8,6 @@
 
 import UIKit
 
-var sceneLogInOnly = false
-
 class WelcomeScreenViewController: UIViewController {
     
     @IBOutlet weak var getStartedButton: UIButton!
@@ -34,7 +32,8 @@ class WelcomeScreenViewController: UIViewController {
     
     
     @IBAction func LoginButton(_ sender: Any) {
-        sceneLogInOnly = true
+        isWelcomeScreenLogin = true
+        signUpMode = false
         performSegue(withIdentifier: "goToSignUp", sender: self)
         
         
