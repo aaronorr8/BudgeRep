@@ -50,11 +50,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        //            checkLoginStatus()
-        
+
         //Reset view for new users. Notification is posted when new users sign up
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: NSNotification.Name(rawValue: "reload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(signoutReload), name: NSNotification.Name(rawValue: "signoutReload"), object: nil)
@@ -98,7 +94,6 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         
         let amount = Double(amt/100) + Double(amt%100)/100
         self.navigationItem.title = String(convertDoubleToCurency(amount: totalBudgetsAvailable))
-        //            collectionView.reloadData()
         
         calculateTotalAvailable()
         calculateTotalAllocation()
@@ -142,7 +137,6 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
             loadUserDefaultsBudgets()
         }
     }
-    
     
     
     
@@ -275,31 +269,6 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         let emptyCell = collectionView.dequeueReusableCell(withReuseIdentifier: "emptyCell", for: indexPath) as! BudgetCollectionViewCell
         
         
-        //Set cell border
-        //            cell.contentView.layer.borderWidth = 1.0
-        //            cell.contentView.layer.cornerRadius = 0.0
-        //            cell.contentView.layer.borderColor = UIColor.darkGray.cgColor
-        //            emptyCell.contentView.layer.borderWidth = 1.0
-        //            emptyCell.contentView.layer.cornerRadius = 8.0
-        //            emptyCell.contentView.layer.borderColor = UIColor.darkGray.cgColor
-        
-        
-        //Shaddow
-        //            cell.contentView.layer.cornerRadius = 2.0
-        //            cell.contentView.layer.borderWidth = 1.0
-        //            cell.contentView.layer.borderColor = UIColor.clear.cgColor
-        //            cell.contentView.layer.masksToBounds = true
-        //
-        //            cell.layer.shadowColor = UIColor.black.cgColor
-        //            cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)
-        //            cell.layer.shadowRadius = 2.0
-        //            cell.layer.shadowOpacity = 0.5
-        //            cell.layer.masksToBounds = false
-        //            cell.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
-        
-        
-       
-        
         if budgetNameG.count == 0 {
             emptyCell.backgroundColor = Colors.budgetViewCellBackground
             return emptyCell
@@ -334,9 +303,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
             
             let cellProgress = Float(amountSpentInd!/budgetAmountG[indexPath.row])
             let progressToValue = Float(amountSpentInd!/budgetAmountG[indexPath.row])
-            
-            
-//            if progressFromValueArray.isEmpty == true {
+
             if progressFromValueArray.count != budgetNameG.count {
                 cell.progressContainer.setProgressWithAnimation(duration: 0.75, fromValue: 0.0, toValue: progressToValue)
             } else {
@@ -409,22 +376,12 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         let item2 = budgetAmountG[sourceIndexPath.row]
         budgetAmountG.remove(at: sourceIndexPath.row)
         budgetAmountG.insert(item2, at: destinationIndexPath.row)
-        
-        //            let item3 = budgetRemainingG[sourceIndexPath.row]
-        //            budgetRemainingG.remove(at: sourceIndexPath.row)
-        //            budgetRemainingG.insert(item3, at: destinationIndexPath.row)
-        
+
         save()
         
     }
     
-    
-    //    func addNewBudgetHandler(alert: UIAlertAction) {
-    //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    //        let viewController = storyboard.instantiateViewController(withIdentifier: "EditBudget")
-    //        self.present(viewController, animated: true)
-    //    }
-    
+
     
     //MARK: GESTURE RECOGNIZER
     @objc func handleLongGesture(gesture: UILongPressGestureRecognizer)
@@ -479,13 +436,14 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     //MARK: BUTTONS
     
     @IBAction func addNewBudgetButton(_ sender: Any) {
+      
         if subscribedUser == true || unlimitedUser == true {
             goToAddBudget()
         } else if budgetNameG.count < freeBudgets {
             goToAddBudget()
         } else {
             self.performSegue(withIdentifier: "goToIAP", sender: self)
-            
+
         }
     }
     
@@ -596,6 +554,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     
     
     @objc func reload() {
+        loadBudgetData()
         calculateTotalAvailable()
         calculateTotalAllocation()
         self.collectionView.reloadData()
@@ -619,17 +578,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         budgetHistoryTimeG.removeAll()
     }
     
-    
-    
-    //        @objc func showSignUpAndSync() {
-    //            if currentUserG == "" {
-    //                self.performSegue(withIdentifier: "goToSignUp", sender: self)
-    //            } else {
-    //                self.performSegue(withIdentifier: "goToSyncInstructions", sender: self)
-    //            }
-    //
-    //        }
-    
+
     
     @objc func showWelcomeScreen() {
         if currentUserG == "" && budgetNameG.count == 0 && needToShowWelcomeScreen == true {

@@ -44,15 +44,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
         passwordField.backgroundColor = Colors.budgetViewCellBackground
         passwordField.layer.cornerRadius = 10
         
-//       //Add rounded outline to save button
-//       signInButtonOutlet.backgroundColor = .clear
-//       signInButtonOutlet.layer.cornerRadius = 6
-//       signInButtonOutlet.layer.borderWidth = 2
-//       signInButtonOutlet.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
-//
-//        //Add underline to text fields
-//        emailField.setUnderLine()
-//        passwordField.setUnderLine()
+
     }
     
     
@@ -205,7 +197,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                         
                         print("Login successful!!")
 //                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
-                        reloadView = true
+//                        reloadView = true
                         self.newGetFireStoreData()
                         self.goToNextScreen()
                         
