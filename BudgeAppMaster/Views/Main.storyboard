@@ -1255,15 +1255,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vou-ka-roH">
-                                                    <rect key="frame" x="317" y="5.3333333333333321" width="57" height="33"/>
+                                                    <rect key="frame" x="309" y="5.3333333333333321" width="68" height="33"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="57" id="2PU-Uj-hmB"/>
+                                                        <constraint firstAttribute="width" constant="68" id="2PU-Uj-hmB"/>
                                                         <constraint firstAttribute="height" constant="33" id="lz7-gy-Hyl"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                     <state key="normal" title="Reset">
                                                         <color key="titleColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <buttonConfiguration key="configuration" style="filled" title="Reset">
+                                                        <fontDescription key="titleFontDescription" name="Outfit-Regular" family="Outfit" pointSize="14"/>
+                                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </buttonConfiguration>
                                                     <connections>
                                                         <action selector="resetAllBudgets:" destination="NBk-tc-AHQ" eventType="touchUpInside" id="2HT-2i-rPc"/>
                                                     </connections>
@@ -1274,14 +1278,14 @@
                                                         <constraint firstAttribute="height" constant="21" id="OMQ-sM-c34"/>
                                                         <constraint firstAttribute="width" constant="119" id="inG-AR-K19"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="l7Z-2p-NTP" firstAttribute="leading" secondItem="8iD-MJ-KDQ" secondAttribute="leading" constant="16" id="6P7-kv-YEI"/>
-                                                <constraint firstAttribute="trailing" secondItem="Vou-ka-roH" secondAttribute="trailing" constant="16" id="GHz-s3-CaS"/>
+                                                <constraint firstAttribute="trailing" secondItem="Vou-ka-roH" secondAttribute="trailing" constant="13" id="GHz-s3-CaS"/>
                                                 <constraint firstItem="l7Z-2p-NTP" firstAttribute="centerY" secondItem="8iD-MJ-KDQ" secondAttribute="centerY" id="YHj-b4-6xL"/>
                                                 <constraint firstItem="Vou-ka-roH" firstAttribute="centerY" secondItem="8iD-MJ-KDQ" secondAttribute="centerY" id="fdX-og-Cs9"/>
                                             </constraints>
@@ -1295,15 +1299,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2uL-Ws-8Gf">
-                                                    <rect key="frame" x="317" y="10.666666666666668" width="57" height="32.666666666666657"/>
+                                                    <rect key="frame" x="309" y="10.666666666666668" width="68" height="32.666666666666657"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="32.5" id="Ckl-X8-IB6"/>
-                                                        <constraint firstAttribute="width" constant="57" id="IsB-KY-Mys"/>
+                                                        <constraint firstAttribute="width" constant="68" id="IsB-KY-Mys"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                     <state key="normal" title="Reset">
                                                         <color key="titleColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <buttonConfiguration key="configuration" style="filled" title="Reset">
+                                                        <fontDescription key="titleFontDescription" name="Outfit-Regular" family="Outfit" pointSize="14"/>
+                                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </buttonConfiguration>
                                                     <connections>
                                                         <action selector="resetReminders:" destination="NBk-tc-AHQ" eventType="touchUpInside" id="jua-9Q-aeV"/>
                                                     </connections>
@@ -1314,14 +1322,14 @@
                                                         <constraint firstAttribute="height" constant="32" id="RDa-PR-FWB"/>
                                                         <constraint firstAttribute="width" constant="174" id="csS-Mz-G6M"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="2uL-Ws-8Gf" firstAttribute="centerY" secondItem="lp1-Mh-8Zl" secondAttribute="centerY" id="2A2-4p-KbX"/>
-                                                <constraint firstAttribute="trailing" secondItem="2uL-Ws-8Gf" secondAttribute="trailing" constant="16" id="9SR-9j-zHn"/>
+                                                <constraint firstAttribute="trailing" secondItem="2uL-Ws-8Gf" secondAttribute="trailing" constant="13" id="9SR-9j-zHn"/>
                                                 <constraint firstItem="5Vn-Ic-Er5" firstAttribute="centerY" secondItem="lp1-Mh-8Zl" secondAttribute="centerY" id="JAE-zq-eVd"/>
                                                 <constraint firstItem="5Vn-Ic-Er5" firstAttribute="leading" secondItem="lp1-Mh-8Zl" secondAttribute="leading" constant="16" id="kgu-Bj-gYd"/>
                                             </constraints>
@@ -1344,7 +1352,7 @@
                                                         <constraint firstAttribute="width" constant="249" id="c0q-wZ-jgm"/>
                                                         <constraint firstAttribute="height" constant="51" id="uQh-iK-OVb"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1354,7 +1362,7 @@
                                                         <constraint firstAttribute="width" constant="47" id="O5M-Ve-jbD"/>
                                                         <constraint firstAttribute="height" constant="31" id="Xmo-By-WiO"/>
                                                     </constraints>
-                                                    <color key="onTintColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="onTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <connections>
                                                         <action selector="monthlyResetSwitch:" destination="NBk-tc-AHQ" eventType="valueChanged" id="m95-2k-HrS"/>
                                                     </connections>
@@ -1385,7 +1393,7 @@
                                                         <constraint firstAttribute="height" constant="33" id="C6H-4R-adm"/>
                                                         <constraint firstAttribute="width" constant="290" id="k5w-lc-UJ5"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="18"/>
                                                     <state key="normal" title="Sync Budgets with Another Device">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
@@ -1413,7 +1421,7 @@
                                                         <constraint firstAttribute="width" constant="162" id="VlA-hb-xC5"/>
                                                         <constraint firstAttribute="height" constant="33" id="r4M-XA-Wp8"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="18"/>
                                                     <state key="normal" title="Sign Out">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
@@ -1449,7 +1457,7 @@
                                                         <constraint firstAttribute="height" constant="34" id="OI3-9m-XUx"/>
                                                         <constraint firstAttribute="width" constant="163" id="Q52-bT-2X2"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="18"/>
                                                     <state key="normal" title="Delete Account">
                                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
@@ -1480,7 +1488,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="LRU-bY-9f8"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1523,7 +1531,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -1564,7 +1572,7 @@
                                 <rect key="frame" x="0.0" y="117" width="390" height="693"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="Z0d-RX-vGi" detailTextLabel="giU-9I-ZuL" rowHeight="90" style="IBUITableViewCellStyleSubtitle" id="vzk-1o-Shg" customClass="HistoryTableViewCell" customModule="BudgeAppMaster" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="Z0d-RX-vGi" detailTextLabel="giU-9I-ZuL" rowHeight="90" style="IBUITableViewCellStyleSubtitle" id="vzk-1o-Shg" customClass="HistoryTableViewCell" customModule="BudgeAppMaster" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vzk-1o-Shg" id="Lug-Kc-PbG">
@@ -1624,7 +1632,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6CC-1G-uPU">
-                                <rect key="frame" x="0.0" y="378.66666666666669" width="390" height="141.00000000000006"/>
+                                <rect key="frame" x="0.0" y="329.66666666666669" width="390" height="141"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="24" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="No1-Ro-aXH" customClass="TextFieldWithPadding" customModule="BudgeAppMaster" customModuleProvider="target">
                                         <rect key="frame" x="16" y="9" width="358" height="50"/>
@@ -1693,14 +1701,14 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PigRight" translatesAutoresizingMaskIntoConstraints="NO" id="ucs-br-bMt">
-                                <rect key="frame" x="145" y="266.66666666666669" width="100" height="51"/>
+                                <rect key="frame" x="145" y="217.66666666666666" width="100" height="50.999999999999972"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="rHo-Tz-Xe2"/>
                                     <constraint firstAttribute="width" constant="100" id="rpu-JA-evN"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTh-Lt-ObT">
-                                <rect key="frame" x="16" y="525.66666666666663" width="116" height="28"/>
+                                <rect key="frame" x="16" y="476.66666666666669" width="116" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="116" id="Ias-nv-A4Y"/>
                                     <constraint firstAttribute="height" constant="28" id="w5O-aa-fLC"/>
@@ -1714,7 +1722,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cub-D6-c5p">
-                                <rect key="frame" x="16" y="561.66666666666663" width="358" height="50"/>
+                                <rect key="frame" x="16" y="512.66666666666663" width="358" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="zFA-sp-hOC"/>
                                 </constraints>
@@ -1727,7 +1735,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create an account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="STn-sH-GZO">
-                                <rect key="frame" x="16" y="331.66666666666669" width="358" height="31"/>
+                                <rect key="frame" x="16" y="282.66666666666669" width="358" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="eRu-MB-cRC"/>
                                 </constraints>
@@ -1735,7 +1743,7 @@
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKN-R8-hAG">
-                                <rect key="frame" x="120" y="623.66666666666663" width="150" height="37"/>
+                                <rect key="frame" x="120" y="574.66666666666663" width="150" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="Ila-QY-Tg0"/>
                                     <constraint firstAttribute="width" constant="150" id="PcL-2b-Zmt"/>
@@ -1769,6 +1777,7 @@
                             <constraint firstItem="6CC-1G-uPU" firstAttribute="top" secondItem="STn-sH-GZO" secondAttribute="bottom" constant="16" id="wNr-36-dvC"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="cts-sM-Ygs">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="NIe-jI-vLY">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1777,6 +1786,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="emailField" destination="No1-Ro-aXH" id="FSb-LC-1cW"/>
                         <outlet property="forgotPasswordOutlet" destination="jTh-Lt-ObT" id="qvG-40-Igp"/>
@@ -2258,10 +2268,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="IbI-2h-leB"/>
+        <segue reference="6OR-gc-DNz"/>
         <segue reference="FUk-xE-JoA"/>
         <segue reference="260-CS-rdf"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" systemColor="labelColor"/>
     <resources>
         <image name="BillsOutline" width="25" height="25"/>
         <image name="BillsSolid" width="25" height="25"/>

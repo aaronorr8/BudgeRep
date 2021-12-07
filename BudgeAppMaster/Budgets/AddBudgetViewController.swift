@@ -30,8 +30,6 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
     let tempBudgetNoteG = budgetNoteG
     let tempBudgetHistoryDateG = budgetHistoryDateG
     let tempBudgetHistoryTimeG = budgetHistoryTimeG
-    //    let tempBudgetRemainingG = budgetRemainingG
-    //    let tempTotalSpentG = totalSpentG
     let tempSubscribedUser = subscribedUser
     
     
@@ -54,6 +52,8 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
         
         
         setStyles()
+        
+        loadBudgetData()
         
         db = Firestore.firestore()
         
@@ -94,6 +94,59 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
 //            print("Keyboard height = \(keyboardHeight)")
 //        }
 //    }
+    
+    
+    func loadBudgetData() {
+        if currentUserG != "" {
+            print("Load data from Firebase")
+            fireStoreListener()
+        } else {
+            print("Load data from Defaults")
+            loadUserDefaultsBudgets()
+        }
+    }
+    
+    //MARK: Load Data from Firebase
+    func fireStoreListener() {
+        if let userID = Auth.auth().currentUser?.uid {
+            db.collection("budgets").document(userID)
+                .addSnapshotListener { documentSnapshot, error in
+                    guard let document = documentSnapshot else {
+                        print("Error fetching document: \(error!)")
+                        return
+                    }
+                    guard let data = document.data() else {
+                        print("BudgetsVC Document data was empty.")
+                        return
+                    }
+                    budgetNameG = document.get("budgetName") as! [String]
+                    budgetAmountG = document.get("budgetAmount") as! [Double]
+                    budgetHistoryAmountG = document.get("budgetHistoryAmount") as! [String : [Double]]
+                    budgetNoteG = document.get("budgetNote") as! [String : [String]]
+                    budgetHistoryDateG = document.get("budgetHistoryDate") as! [String : [String]]
+                    budgetHistoryTimeG = document.get("budgetHistoryTime") as! [String : [String]]
+                    subscribedUser = document.get("subscribedUser") as! Bool
+                }
+        }
+        
+        
+    }
+    
+    //MARK: Load User Defaults
+    func loadUserDefaultsBudgets() {
+        if defaults.value(forKey: "budgetNameUD") != nil {budgetNameG = defaults.value(forKey: "budgetNameUD") as! [String]}
+        if defaults.value(forKey: "budgetAmountUD") != nil {budgetAmountG = defaults.value(forKey: "budgetAmountUD") as! [Double]}
+        if defaults.value(forKey: "budgetHistoryAmountUD") != nil {budgetHistoryAmountG = defaults.value(forKey: "budgetHistoryAmountUD") as! [String : [Double]]}
+        if defaults.value(forKey: "budgetHistoryDateUD") != nil {budgetHistoryDateG = defaults.value(forKey: "budgetHistoryDateUD") as! [String: [String]]}
+        if defaults.value(forKey: "budgetHistoryTimeUD") != nil {budgetHistoryTimeG = defaults.value(forKey: "budgetHistoryTimeUD") as! [String: [String]]}
+        if defaults.value(forKey: "budgetNoteUD") != nil {budgetNoteG = defaults.value(forKey: "budgetNoteUD") as! [String: [String]]}
+        print("budgetNameG: \(budgetNameG)")
+        print("budgetAmountG: \(budgetAmountG)")
+        print("budgetHistoryAmountG: \(budgetHistoryAmountG)")
+        print("budgetHistoryDateG: \(budgetHistoryDateG)")
+        print("budgetHistoryTimeG: \(budgetHistoryTimeG)")
+        print("budgetNoteG: \(budgetNoteG)")
+    }
     
     
     
@@ -254,7 +307,8 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
                 "budgetNote": budgetNoteG,
                 "budgetHistoryDate": budgetHistoryDateG,
                 "budgetHistoryTime": budgetHistoryTimeG,
-                "subscribedUser": subscribedUser
+                "subscribedUser": subscribedUser,
+                "userID" : userID
                 
             ]) { err in
                 if let err = err {

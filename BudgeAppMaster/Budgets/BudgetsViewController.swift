@@ -33,6 +33,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     
     
     
+    
     //MARK: PROGRESS BAR SCALE
     let xScale = CGFloat(1.0)
     let yScale = CGFloat(3.0)
@@ -52,6 +53,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         super.viewDidLoad()
 
         //Reset view for new users. Notification is posted when new users sign up
+//        NotificationCenter.default.addObserver(self, selector: #selector(combineBudgets(notification:)), name: Notification.Name("TestNotification"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: NSNotification.Name(rawValue: "reload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(signoutReload), name: NSNotification.Name(rawValue: "signoutReload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showWelcomeScreen), name: NSNotification.Name(rawValue: "showWelcomeScreen"), object: nil)
@@ -88,10 +90,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        
-        
-        
+        print("BudgetsVC did appear")
         let amount = Double(amt/100) + Double(amt%100)/100
         self.navigationItem.title = String(convertDoubleToCurency(amount: totalBudgetsAvailable))
         
@@ -110,6 +109,11 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         
         
         print("Number of budgets = \(budgetNameG.count)")
+    }
+    
+    
+    @objc func combineBudgets (notification: NSNotification){
+        
     }
     
     
@@ -133,10 +137,13 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
             print("Load data from Firebase")
             fireStoreListener()
         } else {
-            print("Load data from Defaults")
-            loadUserDefaultsBudgets()
-        }
+        print("Load data from Defaults")
+        loadUserDefaultsBudgets()
     }
+}
+    
+    
+    
     
     
     
@@ -482,8 +489,8 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
                 "budgetNote": budgetNoteG,
                 "budgetHistoryDate": budgetHistoryDateG,
                 "budgetHistoryTime": budgetHistoryTimeG,
-                //                    "budgetRemaining": budgetRemainingG,
-                "subscribedUser": subscribedUser
+                "subscribedUser": subscribedUser,
+                "userID" : userID
             ]) { err in
                 if let err = err {
                     print("Error writing document: \(err)")
@@ -514,7 +521,6 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
                     budgetNoteG = document.get("budgetNote") as! [String : [String]]
                     budgetHistoryDateG = document.get("budgetHistoryDate") as! [String : [String]]
                     budgetHistoryTimeG = document.get("budgetHistoryTime") as! [String : [String]]
-                    //                        budgetRemainingG = document.get("budgetRemaining") as! [Double]
                     subscribedUser = document.get("subscribedUser") as! Bool
                     
                     self.collectionView.reloadData()
@@ -649,6 +655,10 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     func determineInitialScreen() {
         
     }
+    
+    
+    
+    
     
     
     

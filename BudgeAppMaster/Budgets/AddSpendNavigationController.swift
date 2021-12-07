@@ -28,7 +28,7 @@ class AddSpendNavigationController: UINavigationController {
             backgroundColor = Colors.progressBarProgressRed
         case _ where percentSpent < 0.95:
             backgroundColor = Colors.progressBarProgressGreen
-        case _ where percentSpent > 0.95 && percentSpent < 1.0:
+        case _ where percentSpent >= 0.95 && percentSpent < 1.0:
             backgroundColor = Colors.progressBarProgressYellow
         default:
             backgroundColor = Colors.progressBarProgressBlue
@@ -37,6 +37,8 @@ class AddSpendNavigationController: UINavigationController {
         appearance.backgroundColor = backgroundColor
         navigationBar.standardAppearance = appearance;
         navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
+        
+        navigationBar.tintColor = .black
     }
     
     override var prefersStatusBarHidden: Bool {

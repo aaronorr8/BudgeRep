@@ -99,51 +99,24 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         //the confirm action taking the inputs
         let saveRefund = UIAlertAction(title: "Save as Refund", style: .default) { (_) in
             
-            //getting the input values from user
-            let tempAmount = budgetHistoryAmountG[self.budgetName]![self.historyIndex]
             let amount = Double(self.amt/100) + Double(self.amt%100)/100
-            self.amt = 0
-            print("Update it")
-            
             budgetHistoryAmountG[self.budgetName]?[self.historyIndex] = 0 - amount
-            
-            self.tableView.reloadData()
-            
-            //UPDATE TOTAL REMAINING IN BUDGET
-            let totalSpent = (budgetHistoryAmountG[self.budgetName]?.reduce(0, +))!
-//            budgetRemainingG[myIndexG] = (budgetAmountG[myIndexG] - totalSpent)
-            
-            //UPDATE TOTAL SPENT IN ALL BUDGETS
-//            totalSpentG = (totalSpentG - tempAmount) + amount
-            
+
             self.save()
 
-            
+            self.amt = 0
         }
         
         let savePurchase = UIAlertAction(title: "Save as Purchase", style: .default) { (_) in
-            
-            
-            //getting the input values from user
-            let tempAmount = budgetHistoryAmountG[self.budgetName]![self.historyIndex]
+      
             let amount = Double(self.amt/100) + Double(self.amt%100)/100
-            self.amt = 0
-            print("Update it")
-            
+            print("amount = \(amount)")
             budgetHistoryAmountG[self.budgetName]?[self.historyIndex] = amount
-            
-            self.tableView.reloadData()
-            
-            //UPDATE TOTAL REMAINING IN BUDGET
-            let totalSpent = (budgetHistoryAmountG[self.budgetName]?.reduce(0, +))!
-//            budgetRemainingG[myIndexG] = (budgetAmountG[myIndexG] - totalSpent)
-            
-            //UPDATE TOTAL SPENT IN ALL BUDGETS
-//            totalSpentG = (totalSpentG - tempAmount) + amount
-            
+            print("budgetHistoryAmountG = \(budgetHistoryAmountG)")
+
             self.save()
             
-            
+            self.amt = 0
         }
         
         //the cancel action doing nothing
@@ -177,7 +150,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         //Creating UIAlertController and
         //Setting title and message for the alert dialog
-        let alertController = UIAlertController(title: "Are you sure?", message: "Delete [details]", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Are you sure?", message: "", preferredStyle: .alert)
         
         //the confirm action taking the inputs
         let confirmDelete = UIAlertAction(title: "Yes, Delete", style: .default) { (_) in
@@ -219,6 +192,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         if let digit = Int(string) {
             
             amt = amt * 10 + digit
+            print("amt = \(amt)")
             
             if amt > 1_000_000_000_00 {
                 //let alert = UIAlertController(title: "You don't make that much", message: nil, preferredStyle: UIAlertControllerStyle.alert)
@@ -257,15 +231,15 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     //MARK:SAVE
     func save() {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
-        
         if currentUserG == "" {
+            print("Save to UserDefaults")
             saveToDefaults()
-            print("Saved to UserDefaults")
         } else {
+            print("Save to FireStore")
             saveToFireStore()
-            print("Saved to FireStore")
         }
+        self.tableView.reloadData()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
     }
     
     //MARK: Save to FireStore
@@ -279,7 +253,8 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                 "budgetNote": budgetNoteG,
                 "budgetHistoryDate": budgetHistoryDateG,
                 "budgetHistoryTime": budgetHistoryTimeG,
-                "subscribedUser": subscribedUser
+                "subscribedUser": subscribedUser,
+                "userID" : userID
             ]) { err in
                 if let err = err {
                     print("Error writing document: \(err)")
@@ -298,12 +273,20 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     //MARK: Save to UserDefaults
     func saveToDefaults() {
+        
+        print("What to save to defaults")
+        print("budgetNameG: \(budgetNameG)")
+        print("budgetAmountG: \(budgetAmountG)")
+        print("budgetHistoryAmountG: \(budgetHistoryAmountG)")
+        
         defaults.set(budgetNameG, forKey: "budgetNameUD")
         defaults.set(budgetAmountG, forKey: "budgetAmountUD")
         defaults.set(budgetHistoryAmountG, forKey: "budgetHistoryAmountUD")
         defaults.set(budgetHistoryDateG, forKey: "budgetHistoryDateUD")
         defaults.set(budgetHistoryTimeG, forKey: "budgetHistoryTimeUD")
         defaults.set(budgetNoteG, forKey: "budgetNoteUD")
+        
+        
     }
     
     

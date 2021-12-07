@@ -27,16 +27,15 @@ enum Colors {
     static let progressBarProgressRed = #colorLiteral(red: 0.9647058824, green: 0.5647058824, blue: 0.5568627451, alpha: 1)
     static let progressBarProgressBlue = #colorLiteral(red: 0.4117647059, green: 0.7294117647, blue: 0.8666666667, alpha: 1)
     static let themeAccentPrimary = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-    static let themeAccentGreen = #colorLiteral(red: 0.5529411765, green: 0.8078431373, blue: 0.7647058824, alpha: 1)
+    static let themeAccentGreen = #colorLiteral(red: 0, green: 0.6134323478, blue: 0.5483384132, alpha: 1)
     static let themeAccentGray = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
     static let buttonPrimaryBackground = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     static let buttonPrimaryText = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     static let navigationBarBackground = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     static let navigationBarText = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-    static let deleteButton = #colorLiteral(red: 0.9647058824, green: 0.5647058824, blue: 0.5568627451, alpha: 1)
-    static let editButton = #colorLiteral(red: 0.4117647059, green: 0.7294117647, blue: 0.8666666667, alpha: 1)
-    static let toggleSaveAsRefund = #colorLiteral(red: 0.5529411765, green: 0.8078431373, blue: 0.7647058824, alpha: 1)
-    static let toggleGeneral = #colorLiteral(red: 0.5529411765, green: 0.8078431373, blue: 0.7647058824, alpha: 1)
+    static let deleteButton = #colorLiteral(red: 0.8039215686, green: 0.02352941176, blue: 0, alpha: 1)
+    static let editButton = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+    static let toggleGeneral = #colorLiteral(red: 0, green: 0.6134323478, blue: 0.5483384132, alpha: 1)
 }
 
 

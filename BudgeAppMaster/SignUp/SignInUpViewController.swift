@@ -11,6 +11,31 @@ import Firebase
 
 var signUpMode = true
 var isWelcomeScreenLogin = false
+var needToCombineBudgets = false
+
+//var tempFirebaseBudgetNameG = [String]()
+//var tempFirebaseBudgetAmountG = [Double]()
+//var tempFirebaseBudgetHistoryAmountG = [String : [Double]]()
+//var tempFirebaseBudgetNoteG = [String : [String]]()
+//var tempFirebaseBudgetHistoryDateG = [String : [String]]()
+//var tempFirebaseBudgetHistoryTimeG = [String : [String]]()
+
+var firebaseBudgetNameG = [String]()
+var firebaseBudgetAmountG = [Double]()
+var firebaseBudgetHistoryAmountG = [String : [Double]]()
+var firebaseBudgetNoteG = [String : [String]]()
+var firebaseBudgetHistoryDateG = [String : [String]]()
+var firebaseBudgetHistoryTimeG = [String : [String]]()
+
+var defaultsBudgetNameG = [String]()
+var defaultsBudgetAmountG = [Double]()
+var defaultsBudgetHistoryAmountG = [String : [Double]]()
+var defaultsBudgetHistoryDateG = [String: [String]]()
+var defaultsBudgetHistoryTimeG = [String: [String]]()
+var defaultsBudgetNoteG = [String: [String]]()
+
+
+
 
 class SignInUpViewController: UIViewController, UITextFieldDelegate {
     
@@ -22,13 +47,12 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var pigImage: UIImageView!
     @IBOutlet weak var forgotPasswordOutlet: UIButton!
     
-    
     var errorText = String()
     
     
     let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
-
+    
     override func viewDidLayoutSubviews() {
         
         
@@ -44,18 +68,16 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
         passwordField.backgroundColor = Colors.budgetViewCellBackground
         passwordField.layer.cornerRadius = 10
         
-
+        
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         setModeText()
-       
-    
+        
+        
         
         //Keyboard Shift (1/3)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -78,6 +100,9 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
             self.navigationItem.setHidesBackButton(true, animated: true)
         }
     }
+
+    
+    
     
     //Keyboard Shift (2/3)
     deinit {
@@ -85,7 +110,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
-   
+    
     //Keyboard Shift (3/3)
     @objc func keyboardWillChange(notification: Notification) {
         guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
@@ -112,7 +137,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
         passwordField.resignFirstResponder()
     }
     
-             
+    
     @IBAction func closeButton(_ sender: Any) {
         
         if isWelcomeScreenLogin == true {
@@ -173,6 +198,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                 }
             } else {
                 //MARK: LOGIN MODE
+                
                 Auth.auth().signIn(withEmail: email!, password: password!) { (user, error) in
                     if error != nil {
                         //ERROR STATE
@@ -192,14 +218,13 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                             print("UserID: \(Auth.auth().currentUser?.uid)")
                             currentUserG = Auth.auth().currentUser!.uid
                             print("currentUserG: \(currentUserG)")
-                            
                         }
                         
                         print("Login successful!!")
-//                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
-//                        reloadView = true
-                        self.newGetFireStoreData()
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
+                        self.saveDefaultsToFirebaseIfNeeded()
                         self.goToNextScreen()
+                        
                         
                         
                     }
@@ -207,35 +232,55 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                 
                 self.view.endEditing(true)
                 
+                
             }
         } else {
             stopSpinner()
             emptyEmailFieldAlert()
         }
         
+        
+    }
+    
+    
+    
+    
+    func showWarningIfLosingBudgets() {
+        if currentUserG == "" {
+            if budgetNameG.isEmpty == false {
+                let alert = UIAlertController(title: "WARNING!", message: "Because you already have budgets saved to your account and also created budgets when not logged in, the budgets created when not logged in will be replaced by the budgets saved to your account when you were signed in. Do you want to continue?", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Yes, continue", style: UIAlertAction.Style.default, handler: { _ in
+                    
+                    
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
     }
     
     func getUserData() {
-       
+        
     }
     
     
     //MARK: MOVE DEFAULTS TO FIRESTORE
     func transferData() {
         if let userID = Auth.auth().currentUser?.uid {
-        db.collection("budgets").document(userID).setData([
-            "budgetName": budgetNameG,
-            "budgetAmount": budgetAmountG,
-            "budgetHistoryAmount": budgetHistoryAmountG,
-            "budgetNote": budgetNoteG,
-            "budgetHistoryDate": budgetHistoryDateG,
-            "budgetHistoryTime": budgetHistoryTimeG,
-            "subscribedUser": subscribedUser
+            db.collection("budgets").document(userID).setData([
+                "budgetName": budgetNameG,
+                "budgetAmount": budgetAmountG,
+                "budgetHistoryAmount": budgetHistoryAmountG,
+                "budgetNote": budgetNoteG,
+                "budgetHistoryDate": budgetHistoryDateG,
+                "budgetHistoryTime": budgetHistoryTimeG,
+                "subscribedUser": subscribedUser
             ]) { err in
                 if let err = err {
-                    print("Error writing document: \(err)")
+                    print("Transfer Data, Error writing document: \(err)")
                 } else {
-                    print("Document successfully written!")
+                    print("Transfer data to Firebase")
+                    print("Transfer Data, Document successfully written!")
                     self.clearDefaults()
                 }
             }
@@ -257,7 +302,10 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
         defaults.set(budgetHistoryTimeG, forKey: "budgetHistoryTimeUD")
         defaults.set(budgetNoteG, forKey: "budgetNoteUD")
     }
-
+    
+    
+    
+    
     
     
     @IBAction func switchModes(_ sender: Any) {
@@ -326,20 +374,20 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
     
     func loginAlert() {
         let alert = UIAlertController(title: errorText, message: nil, preferredStyle: .alert)
-
-
+        
+        
         alert.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
     func signUpAlert() {
         let alert = UIAlertController(title: errorText, message: nil, preferredStyle: .alert)
-//        let alert = UIAlertController(title: "Oops! Looks like there's already an account with that email.", message: nil, preferredStyle: .alert)
+        //        let alert = UIAlertController(title: "Oops! Looks like there's already an account with that email.", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
-
+    
     
     func startSpinner() {
         activityIndicator.center = self.view.center
@@ -378,7 +426,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
         return emailTest.evaluate(with: testStr)
     }
     
-  
+    
     
     //MARK: Get Firestore Data
     func getFirestoreData () {
@@ -416,37 +464,6 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    func newGetFireStoreData() {
-        db = Firestore.firestore()
-        
-         if Auth.auth().currentUser?.uid != nil {
-             currentUserG = Auth.auth().currentUser!.uid
-             print("AppDelegate: currentUserG: \(currentUserG)")
-             
-             let docRef = db.collection("budgets").document(currentUserG)
-             
-             docRef.getDocument(source: .cache) { (document, error) in
-                 if let document = document {
-                     let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                     print("Cached document data: \(dataDescription)")
-                     
-                     if let subStatusFromDoc = document.get("subscribedUser") {
-                         subscribedUser = subStatusFromDoc as! Bool
-                         print("LogIn screen: subscribedUser: \(subscribedUser)")
-                     } else {
-                         print("Login screen: Couldn't get subscriber status")
-                     }
-                 } else {
-                     print("Login screen: Document does not exist in cache")
-                 }
-             }
-         } else {
-             print("Login screen: Could not get userID")
-         }
-    }
-    
-    
-  
     func goToNextScreen() {
         if showSyncInstructions == true {
             showSyncInstructions = false
@@ -459,11 +476,243 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
     
     
     
+    func saveDefaultsToFirebaseIfNeeded() {
+        print("saveDefaultsToFirebaseIfNeeded function start")
+        
+        if defaults.value(forKey: "budgetNameUD") != nil {
+            defaultsBudgetNameG = defaults.value(forKey: "budgetNameUD") as! [String]}
+        if defaults.value(forKey: "budgetAmountUD") != nil {
+            defaultsBudgetAmountG = defaults.value(forKey: "budgetAmountUD") as! [Double]}
+        if defaults.value(forKey: "budgetHistoryAmountUD") != nil {
+            defaultsBudgetHistoryAmountG = defaults.value(forKey: "budgetHistoryAmountUD") as! [String : [Double]]}
+        if defaults.value(forKey: "budgetHistoryDateUD") != nil {
+            defaultsBudgetHistoryDateG = defaults.value(forKey: "budgetHistoryDateUD") as! [String: [String]]}
+        if defaults.value(forKey: "budgetHistoryTimeUD") != nil {
+            defaultsBudgetHistoryTimeG = defaults.value(forKey: "budgetHistoryTimeUD") as! [String: [String]]}
+        if defaults.value(forKey: "budgetNoteUD") != nil {
+            defaultsBudgetNoteG = defaults.value(forKey: "budgetNoteUD") as! [String: [String]]}
+        
+        if defaultsBudgetNameG.isEmpty == false {
+            print("Save defaults to Firebase")
+            budgetNameG = defaultsBudgetNameG
+            budgetAmountG = defaultsBudgetAmountG
+            budgetHistoryAmountG = defaultsBudgetHistoryAmountG
+            budgetHistoryDateG = defaultsBudgetHistoryDateG
+            budgetHistoryTimeG = defaultsBudgetHistoryTimeG
+            budgetNoteG = defaultsBudgetNoteG
+            
+            saveToFireStore()
+            
+        } else {
+            print("Don't save defaults to Firebase")
+        }
+        
+        print("Defaults data")
+        print(defaultsBudgetNameG)
+        print(defaultsBudgetAmountG)
+        print(defaultsBudgetHistoryAmountG)
+        print(defaultsBudgetHistoryDateG)
+        print(defaultsBudgetHistoryTimeG)
+        print(defaultsBudgetNoteG)
+        
+        print("saveDefaultsToFirebaseIfNeeded function end")
+    }
     
-  
+    //MARK: Save to FireStore
+    func saveToFireStore() {
+        
+        if let userID = Auth.auth().currentUser?.uid {
+            db.collection("budgets").document(userID).setData([
+                "budgetName": budgetNameG,
+                "budgetAmount": budgetAmountG,
+                "budgetHistoryAmount": budgetHistoryAmountG,
+                "budgetNote": budgetNoteG,
+                "budgetHistoryDate": budgetHistoryDateG,
+                "budgetHistoryTime": budgetHistoryTimeG,
+                "subscribedUser": subscribedUser,
+                "userID" : userID
+            ]) { err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                } else {
+                    print("Document successfully written!")
+                }
+            }
+        }
+    }
+    
+    
+ 
+/*
+    //MARK: Combine budgets if needed
+    
+    func combineDefaultsAndFirebaseData() {
+        needToCombineBudgets = true
+//        getDefaultsData()
+//        getFirebaseData()
+//        renameFirebaseData()
+//        combineData()
+//        saveToFirebase()
+    }
+    
+    
+    //1
+    func getDefaultsData(){
+        print("getDefaultsData function start")
+        
+        if defaults.value(forKey: "budgetNameUD") != nil {
+            defaultsBudgetNameG = defaults.value(forKey: "budgetNameUD") as! [String]}
+        if defaults.value(forKey: "budgetAmountUD") != nil {
+            defaultsBudgetAmountG = defaults.value(forKey: "budgetAmountUD") as! [Double]}
+        if defaults.value(forKey: "budgetHistoryAmountUD") != nil {
+            defaultsBudgetHistoryAmountG = defaults.value(forKey: "budgetHistoryAmountUD") as! [String : [Double]]}
+        if defaults.value(forKey: "budgetHistoryDateUD") != nil {
+            defaultsBudgetHistoryDateG = defaults.value(forKey: "budgetHistoryDateUD") as! [String: [String]]}
+        if defaults.value(forKey: "budgetHistoryTimeUD") != nil {
+            defaultsBudgetHistoryTimeG = defaults.value(forKey: "budgetHistoryTimeUD") as! [String: [String]]}
+        if defaults.value(forKey: "budgetNoteUD") != nil {
+            defaultsBudgetNoteG = defaults.value(forKey: "budgetNoteUD") as! [String: [String]]}
+        
+        print("Defaults data")
+        print(defaultsBudgetNameG)
+        print(defaultsBudgetAmountG)
+        print(defaultsBudgetHistoryAmountG)
+        print(defaultsBudgetHistoryDateG)
+        print(defaultsBudgetHistoryTimeG)
+        print(defaultsBudgetNoteG)
+        
+        print("getDefaultsData function end")
+    }
     
 
+    
+    
+    
+    //2
+    func getFirebaseData() {
+        print("getFirebaseData function start")
+        
+        if let userID = Auth.auth().currentUser?.uid {
+            print("userID = \(userID)")
+            
+            let docRef = db.collection("budgets").document(userID)
+
+            docRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                    print("Document data: \(dataDescription)")
+                } else {
+                    print("Document does not exist")
+                }
+            }
+        }
+
+
+//        firebaseBudgetNameG = document.get("budgetName") as! [String]
+//        firebaseBudgetAmountG = document.get("budgetAmount") as! [Double]
+//        firebaseBudgetHistoryAmountG = document.get("budgetHistoryAmount") as! [String : [Double]]
+//        firebaseBudgetNoteG = document.get("budgetNote") as! [String : [String]]
+//        firebaseBudgetHistoryDateG = document.get("budgetHistoryDate") as! [String : [String]]
+//        firebaseBudgetHistoryTimeG = document.get("budgetHistoryTime") as! [String : [String]]
+
+        print(firebaseBudgetNameG)
+        print(firebaseBudgetAmountG)
+        print(firebaseBudgetHistoryAmountG)
+        print(firebaseBudgetHistoryDateG)
+        print(firebaseBudgetHistoryTimeG)
+        print(firebaseBudgetNoteG)
+        
+        print("getFirebaseData function end")
+    }
+    
+    //3
+    func renameFirebaseData() {
+        print("renameFirebaseData function start")
+        
+        let count = firebaseBudgetNameG.count - 1
+        
+        for i in 0...count {
+            firebaseBudgetNameG.append("\(firebaseBudgetNameG[i]) (Recovered)")
+            firebaseBudgetHistoryAmountG.switchKey(fromKey: firebaseBudgetNameG[i], toKey: "\(firebaseBudgetNameG[i]) (Recovered)")
+            firebaseBudgetNoteG.switchKey(fromKey: firebaseBudgetNameG[i], toKey: "\(firebaseBudgetNameG[i]) (Recovered)")
+            firebaseBudgetHistoryDateG.switchKey(fromKey: firebaseBudgetNameG[i], toKey: "\(firebaseBudgetNameG[i]) (Recovered)")
+            firebaseBudgetHistoryTimeG.switchKey(fromKey: firebaseBudgetNameG[i], toKey: "\(firebaseBudgetNameG[i]) (Recovered)")
+        }
+        
+        print("FIREBASE DATA:")
+        print(firebaseBudgetNameG)
+        print(firebaseBudgetAmountG)
+        print(firebaseBudgetHistoryAmountG)
+        print(firebaseBudgetNoteG)
+        print(firebaseBudgetHistoryDateG)
+        print(firebaseBudgetHistoryTimeG)
+        print("DEFAULTS DATA:")
+        print(defaultsBudgetNameG)
+        print(defaultsBudgetAmountG)
+        print(defaultsBudgetHistoryAmountG)
+        print(defaultsBudgetHistoryDateG)
+        print(defaultsBudgetHistoryTimeG)
+        print(defaultsBudgetNoteG)
+        
+        print("renameFirenase Data function end")
+    }
+    
+    //4
+    func combineData() {
+        print("combineData function start")
+        
+        budgetNameG = defaultsBudgetNameG + firebaseBudgetNameG
+        print("combined budgetNameG: \(budgetNameG)")
+        
+        budgetAmountG = defaultsBudgetAmountG + firebaseBudgetAmountG
+        print("combined budgetAmountG: \(budgetAmountG)")
+        
+        budgetHistoryAmountG = defaultsBudgetHistoryAmountG.merging(firebaseBudgetHistoryAmountG) { (current, _) in current }
+        print("combined budgetHistoryAmountG: \(defaultsBudgetHistoryAmountG)")
+        
+        budgetNoteG = defaultsBudgetNoteG.merging(firebaseBudgetNoteG) { (current, _) in current }
+        print("combined budgetNoteG: \(budgetNoteG)")
+        
+        budgetHistoryDateG = defaultsBudgetHistoryDateG.merging(firebaseBudgetHistoryDateG) { (current, _) in current }
+        print("combined budgetHistoryDateG: \(defaultsBudgetHistoryDateG)")
+        
+        budgetHistoryTimeG = defaultsBudgetHistoryTimeG.merging(firebaseBudgetHistoryTimeG) { (current, _) in current }
+        print("combined budgetHistoryTimeG: \(budgetHistoryTimeG)")
+        
+        print("combineData function end")
+    }
+    
+    //5
+    func saveToFirebase() {
+        print("saveToFirebase function start")
+        
+        if let userID = Auth.auth().currentUser?.uid {
+            db.collection("budgets").document(userID).setData([
+                "budgetName": budgetNameG,
+                "budgetAmount": budgetAmountG,
+                "budgetHistoryAmount": budgetHistoryAmountG,
+                "budgetNote": budgetNoteG,
+                "budgetHistoryDate": budgetHistoryDateG,
+                "budgetHistoryTime": budgetHistoryTimeG,
+                "subscribedUser": subscribedUser
+            ]) { err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                } else {
+                    print("Document successfully written!")
+                }
+            }
+        }
+        
+        print("saveToFirebase function end")
+    }
+    
+ */
+    
 }
+    
+
+
 
 extension UITextField {
     func setLeftPaddingPoints(_ amount:CGFloat){
@@ -472,3 +721,14 @@ extension UITextField {
         self.leftViewMode = .always
     }
 }
+
+extension Dictionary {
+    mutating func switchKey(fromKey: Key, toKey: Key) {
+        if let entry = removeValue(forKey: fromKey) {
+            self[toKey] = entry
+        }
+    }
+}
+
+
+//"Because you already have budgets saved to your account and also created budgets when not logged in, the budgets created when not logged in will be replaced by the budgets saved to your account when you were signed in. Do you want to continue?"

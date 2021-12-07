@@ -24,6 +24,7 @@ class SettingTableViewController: UITableViewController {
     let creditText = "Icons made by Freepic from www.flaticon.com"
     let pigArtist = "Freepic"
     let flatIcon = "www.flaticon.com"
+    let rolloverText = "*Rollover*"
     
     
     var amt: Int = 0
@@ -65,8 +66,10 @@ class SettingTableViewController: UITableViewController {
         
         
         if currentUserG == "" {
-            signOutButtonOutlet.setTitle("Login", for: .normal)
+            signOutButtonOutlet.isEnabled = false
+            signOutButtonOutlet.setTitle("", for: .normal)
         } else {
+            signOutButtonOutlet.isEnabled = true
             signOutButtonOutlet.setTitle("Sign Out", for: .normal)
         }
     }
@@ -82,7 +85,7 @@ class SettingTableViewController: UITableViewController {
        
         getUserDefaults()
         
-        monthlyResetSwitch.onTintColor = Colors.themeAccentGreen
+        monthlyResetSwitch.onTintColor = Colors.toggleGeneral
       
         
     }
@@ -247,15 +250,18 @@ class SettingTableViewController: UITableViewController {
     }
     
     func deleteFirebaseDocument() {
-        let userID = Auth.auth().currentUser!.uid
-        print("userID: \(userID)")
-        db.collection("budgets").document(userID).delete() { err in
-            if let err = err {
-                print("error: \(err)")
-            } else {
-                print("Document Deleted!")
-                
+        if let userID = Auth.auth().currentUser?.uid {
+            print("userID: \(userID)")
+            db.collection("budgets").document(userID).delete() { err in
+                if let err = err {
+                    print("error: \(err)")
+                } else {
+                    print("Document Deleted!")
+                    
+                }
             }
+        } else {
+            print("delete account - no userID")
         }
     }
     
@@ -265,16 +271,16 @@ class SettingTableViewController: UITableViewController {
         print("Reset Budgets, No Rollover")
         var tempRolloverAmount = 0.0
         
-        if budgetNameG.contains("Rollover") {
-            let index = budgetNameG.firstIndex(of: "Rollover")
+        if budgetNameG.contains(rolloverText) {
+            let index = budgetNameG.firstIndex(of: rolloverText)
             tempRolloverAmount = budgetAmountG[index!]
         }
         
         resetBudgets()
         rolloverTotalG = 0.0
         
-        if budgetNameG.contains("Rollover") {
-            let index = budgetNameG.firstIndex(of: "Rollover")
+        if budgetNameG.contains(rolloverText) {
+            let index = budgetNameG.firstIndex(of: rolloverText)
             budgetAmountG[index!] = tempRolloverAmount
         }
     }
@@ -282,12 +288,12 @@ class SettingTableViewController: UITableViewController {
     func rolloverToRolloverBudget() {
         print("Reset Budgets and Rollover")
         
-        if budgetNameG.contains("Rollover") {
+        if budgetNameG.contains(rolloverText) {
             resetBudgets()
 
             
             //Find Index of Rollover Budget and set rollover budget
-            let indexOfRollover = budgetNameG.firstIndex(of: "Rollover")
+            let indexOfRollover = budgetNameG.firstIndex(of: rolloverText)
             budgetAmountG[indexOfRollover!] = rolloverTotalG
             
         } else {
@@ -298,27 +304,27 @@ class SettingTableViewController: UITableViewController {
     
     func deleteRolloverBudget() {
         print("Delete Rollover Budget")
-        let indexOfRollover = budgetNameG.firstIndex(of: "Rollover")
+        let indexOfRollover = budgetNameG.firstIndex(of: rolloverText)
         budgetNameG.remove(at: indexOfRollover!)
         budgetAmountG.remove(at: indexOfRollover!)
 //        budgetRemainingG.remove(at: indexOfRollover!)
-        budgetHistoryAmountG.removeValue(forKey: "Rollover")
-        budgetHistoryDateG.removeValue(forKey: "Rollover")
-        budgetHistoryTimeG.removeValue(forKey: "Rollover")
-        budgetNoteG.removeValue(forKey: "Rollover")
+        budgetHistoryAmountG.removeValue(forKey: rolloverText)
+        budgetHistoryDateG.removeValue(forKey: rolloverText)
+        budgetHistoryTimeG.removeValue(forKey: rolloverText)
+        budgetNoteG.removeValue(forKey: rolloverText)
         
     }
     
     
     func addRolloverBudget() {
-        budgetNameG.append("Rollover")
+        budgetNameG.append(rolloverText)
         let amount = Double(amt/100) + Double(amt%100)/100
         budgetAmountG.append(rolloverTotalG)
-        budgetHistoryAmountG["Rollover"] = []
-        budgetNoteG["Rollover"] = []
-        budgetHistoryDateG["Rollover"] = []
-        budgetHistoryTimeG["Rollover"] = []
-        let totalSpent = budgetHistoryAmountG["Rollover"]?.reduce(0, +)
+        budgetHistoryAmountG[rolloverText] = []
+        budgetNoteG[rolloverText] = []
+        budgetHistoryDateG[rolloverText] = []
+        budgetHistoryTimeG[rolloverText] = []
+        let totalSpent = budgetHistoryAmountG[rolloverText]?.reduce(0, +)
 //        budgetRemainingG.append(amount - totalSpent!)
     }
     
@@ -518,9 +524,8 @@ class SettingTableViewController: UITableViewController {
                 "budgetNote": budgetNoteG,
                 "budgetHistoryDate": budgetHistoryDateG,
                 "budgetHistoryTime": budgetHistoryTimeG,
-//                "budgetRemaining": budgetRemainingG,
-//                "totalSpent": totalSpentG,
-                "subscribedUser": subscribedUser
+                "subscribedUser": subscribedUser,
+                "userID" : userID
             ]) { err in
                 if let err = err {
                     print("Error writing document: \(err)")
@@ -593,6 +598,7 @@ class SettingTableViewController: UITableViewController {
         let firebaseAuth = Auth.auth()
         subscribedUser = false
         currentUserG = ""
+        clearDefaults()
         do {
             try firebaseAuth.signOut()
             deleteReminders()
@@ -606,6 +612,22 @@ class SettingTableViewController: UITableViewController {
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
+    }
+    
+    func clearDefaults() {
+        budgetNameG.removeAll()
+        budgetAmountG.removeAll()
+        budgetHistoryAmountG.removeAll()
+        budgetHistoryDateG.removeAll()
+        budgetHistoryTimeG.removeAll()
+        budgetNoteG.removeAll()
+        
+        defaults.set(budgetNameG, forKey: "budgetNameUD")
+        defaults.set(budgetAmountG, forKey: "budgetAmountUD")
+        defaults.set(budgetHistoryAmountG, forKey: "budgetHistoryAmountUD")
+        defaults.set(budgetHistoryDateG, forKey: "budgetHistoryDateUD")
+        defaults.set(budgetHistoryTimeG, forKey: "budgetHistoryTimeUD")
+        defaults.set(budgetNoteG, forKey: "budgetNoteUD")
     }
     
     

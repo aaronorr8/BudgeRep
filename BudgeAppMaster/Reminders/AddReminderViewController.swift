@@ -236,7 +236,7 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
                     if notificationSwitchOutlet.isOn == true {
                         
                         //REMOVE LAST 2 CHARACTERS FROM STRING
-                        let tempDay = dueDateInput.text!
+                        let tempDay = dueDateInput.text ?? "1"
                         let modifiedDay = tempDay.dropLast(2)
                         newReminder.date = Int(modifiedDay)!
                         noteDay = Int(modifiedDay)!

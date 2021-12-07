@@ -127,7 +127,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
         
         let toggleSwitch = UISwitch()
-        toggleSwitch.onTintColor = Colors.toggleSaveAsRefund
+        toggleSwitch.onTintColor = Colors.toggleGeneral
 
         toggleSwitch.addTarget(self, action: #selector(self.switchToggle), for: .valueChanged)
         
@@ -146,7 +146,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         //toolBar.setItems([flexibleSpace, toggleSwitch], animated: false)
         
         toolBar.setItems([flexibleSpace, UIBarButtonItem.init(customView: toggleText), UIBarButtonItem.init(customView: toggleSwitch)], animated: false)
-        toggleSwitch.onTintColor = Colors.toggleSaveAsRefund
+        toggleSwitch.onTintColor = Colors.toggleGeneral
         
         spendAmount.inputAccessoryView = toolBar
         spendNoteField.inputAccessoryView = toolBar
@@ -451,7 +451,8 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
                 "budgetNote": budgetNoteG,
                 "budgetHistoryDate": budgetHistoryDateG,
                 "budgetHistoryTime": budgetHistoryTimeG,
-                "subscribedUser": subscribedUser
+                "subscribedUser": subscribedUser,
+                "userID" : userID
             ]) { err in
                 if let err = err {
                     print("Error writing document: \(err)")

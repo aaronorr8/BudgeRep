@@ -63,7 +63,7 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
         } else {
             print("price is loaded from app store")
             print("price = \(price)")
-            priceLabel.text = "Sync budgets with someone special for just \(price) a month"
+            priceLabel.text = "Sync budgets with someone special for just \(price)/month"
             
             legalText.text = "You can manage and cancel your subscriptions by going to your App Store account settings after purchase. The subscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period."
         }
@@ -299,8 +299,8 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
                 "budgetNote": budgetNoteG,
                 "budgetHistoryDate": budgetHistoryDateG,
                 "budgetHistoryTime": budgetHistoryTimeG,
-//                "budgetRemaining": budgetRemainingG,
-                "subscribedUser": subscribedUser
+                "subscribedUser": subscribedUser,
+                "userID" : userID
             ]) { err in
                 if let err = err {
                     print("Error writing document: \(err)")
