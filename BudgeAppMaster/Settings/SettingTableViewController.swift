@@ -662,12 +662,8 @@ class SettingTableViewController: UITableViewController {
             performSegue(withIdentifier: "goToSyncInstructions", sender: self)
         }
         
+        emailG = Auth.auth().currentUser?.email! ?? ""
         
-        
-        
-        
-        
-        //            let email = Auth.auth().currentUser!.email!
         //            let alert = UIAlertController(title: "Sync with Another Device", message: "To sync with another device, simply login with same email (\(String(describing: email))) and password as the original device.", preferredStyle: .alert)
         //            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         //            self.present(alert, animated: true, completion: nil)

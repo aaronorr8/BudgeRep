@@ -81,6 +81,7 @@ let freeBudgets = 3
 var currentUserG = ""
 var subscribedUser = Bool() //user is subscribed, no ads, unlimited budgets, and save to firebase to sync
 var unlimitedUser = Bool()  //user is subscribed, no ads, unlimited budgets, but save to defaults - can not sync
+var emailG = ""
 
 
 

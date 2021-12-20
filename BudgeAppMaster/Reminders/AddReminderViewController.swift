@@ -430,6 +430,7 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
             }
         } else if currentTextField == dueDateInput {
             dueDateInput.text = dueDateOptions[row]
+            
         }
     }
 
