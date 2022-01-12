@@ -10,6 +10,7 @@ import UIKit
 import StoreKit
 import Firebase
 import SystemConfiguration
+var showSyncInstructions = false
 
 class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
@@ -242,7 +243,10 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
     
     //MARK: UNLOCK APP
     func unlockApp() {
+        print("UNLOCK APP")
+        print("subscribedUser: True")
         subscribedUser = true
+        showSyncInstructions = true
         save()
         closeIAPScreen()
     }
@@ -253,8 +257,6 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
         if currentUserG == "" {
             hideBackButton = true
             performSegue(withIdentifier: "goToSignUp", sender: self)
-        } else {
-            performSegue(withIdentifier: "goToSyncInstructions", sender: self)
         }
         
         

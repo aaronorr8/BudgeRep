@@ -66,8 +66,9 @@ class SettingTableViewController: UITableViewController {
         
         
         if currentUserG == "" {
-            signOutButtonOutlet.isEnabled = false
-            signOutButtonOutlet.setTitle("", for: .normal)
+//            signOutButtonOutlet.isEnabled = false
+//            signOutButtonOutlet.setTitle("", for: .normal)
+            signOutButtonOutlet.setTitle("Log In", for: .normal)
         } else {
             signOutButtonOutlet.isEnabled = true
             signOutButtonOutlet.setTitle("Sign Out", for: .normal)
@@ -638,28 +639,25 @@ class SettingTableViewController: UITableViewController {
         //not subscribed, not signed in -> intro>subscribe>signup>instructions
         if subscribedUser == false && currentUserG == "" {
             signUpMode = true
-            showSyncInstructions = true
             performSegue(withIdentifier: "goToSubscription", sender: self)
         }
         
         //subscribed, not signed in -> login/signup>instructions
         if subscribedUser == true && currentUserG == "" {
             signUpMode = true
-            showSyncInstructions = true
             performSegue(withIdentifier: "goToSignUp", sender: self)
         }
         
         //not subscribed, signed in -> intro>subscribe>instructions
         if subscribedUser == false && currentUserG != "" {
-            showSyncInstructions = true
             performSegue(withIdentifier: "goToSubscription", sender: self)
         }
         
         
         //subscribed, signed in -> instructions
         if subscribedUser == true && currentUserG != "" {
-            showSyncInstructions = true
-            performSegue(withIdentifier: "goToSyncInstructions", sender: self)
+            print("show sync instructions")
+            goToSyncInstructions()
         }
         
         emailG = Auth.auth().currentUser?.email! ?? ""
@@ -668,6 +666,12 @@ class SettingTableViewController: UITableViewController {
         //            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         //            self.present(alert, animated: true, completion: nil)
         
+    }
+    
+    @objc func goToSyncInstructions() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "syncInstructionsNav")
+        self.present(viewController, animated: true)
     }
     
     

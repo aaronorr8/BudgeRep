@@ -150,8 +150,9 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        isWelcomeScreenLogin = false
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "generic"), object: nil)
     }
+    
     
     
     //MARK: SignIn Button Tapped
@@ -191,7 +192,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                         
                         print("Signup Successful!")
                         self.transferData()
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+//                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
                         self.goToNextScreen()
                         
                     }
@@ -222,7 +223,7 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
                         
                         print("Login successful!!")
                         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
-                        self.saveDefaultsToFirebaseIfNeeded()
+//                        self.saveDefaultsToFirebaseIfNeeded()
                         self.goToNextScreen()
                         
                         
@@ -465,13 +466,8 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
     
     
     func goToNextScreen() {
-        if showSyncInstructions == true {
-            showSyncInstructions = false
-            performSegue(withIdentifier: "goToSyncInstructions", sender: self)
-        } else {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
             self.dismiss(animated: true, completion: nil)
-        }
     }
     
     

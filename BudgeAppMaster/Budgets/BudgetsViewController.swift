@@ -57,6 +57,7 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: NSNotification.Name(rawValue: "reload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(signoutReload), name: NSNotification.Name(rawValue: "signoutReload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showWelcomeScreen), name: NSNotification.Name(rawValue: "showWelcomeScreen"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(generic), name: NSNotification.Name(rawValue: "generic"), object: nil)
         
         db = Firestore.firestore()
         
@@ -108,6 +109,8 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         
         
         
+        
+        
         print("Number of budgets = \(budgetNameG.count)")
     }
     
@@ -116,7 +119,18 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         
     }
     
+    @objc func generic() {
+        if showSyncInstructions == true {
+            showSyncInstructions = false
+            goToSyncInstructions()
+        }
+    }
     
+    @objc func goToSyncInstructions() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "syncInstructionsNav")
+        self.present(viewController, animated: true)
+    }
     
     func applybackgroundColor() {
         let gradientLayer = CAGradientLayer()
