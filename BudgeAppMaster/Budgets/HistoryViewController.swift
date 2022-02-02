@@ -57,8 +57,8 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.deleteDialog()
         }
         
-        edit.backgroundColor = Colors.editButton
-        delete.backgroundColor = Colors.deleteButton
+        edit.backgroundColor = Colors.themeBlack
+        delete.backgroundColor = Colors.themeRed
         
         return [edit, delete]
     }

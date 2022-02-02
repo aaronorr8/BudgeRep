@@ -16,7 +16,7 @@ class AddBudgetNavigationController: UINavigationController {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         
-        appearance.backgroundColor = Colors.progressBarProgressBlue
+        appearance.backgroundColor = Colors.themeBlue
         navigationBar.standardAppearance = appearance;
         navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
     }

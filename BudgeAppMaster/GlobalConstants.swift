@@ -14,28 +14,15 @@ import FirebaseDatabase
 
 //Budget Screen Colors
 enum Colors {
-    static let budgetViewMainbackground1 = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-    static let budgetViewMainbackground2 = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-    static let budgetViewCellBackground = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9725490196, alpha: 1)
-    static let budgetViewCellText = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-    static let budgetViewTotalBudgetRemainingLabel = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-    static let budgetViewSummaryOfTotalBudgetSpent = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-    static let progressBarTrackCell = UIColor.clear
-    static let progressBarTrackTotal = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9725490196, alpha: 1)
-    static let progressBarProgressGreen = #colorLiteral(red: 0.5529411765, green: 0.8078431373, blue: 0.7647058824, alpha: 1)
-    static let progressBarProgressYellow = #colorLiteral(red: 1, green: 0.9058823529, blue: 0.5215686275, alpha: 1)
-    static let progressBarProgressRed = #colorLiteral(red: 0.9647058824, green: 0.5647058824, blue: 0.5568627451, alpha: 1)
-    static let progressBarProgressBlue = #colorLiteral(red: 0.4117647059, green: 0.7294117647, blue: 0.8666666667, alpha: 1)
-    static let themeAccentPrimary = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-    static let themeAccentGreen = #colorLiteral(red: 0, green: 0.6134323478, blue: 0.5483384132, alpha: 1)
-    static let themeAccentGray = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
-    static let buttonPrimaryBackground = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-    static let buttonPrimaryText = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-    static let navigationBarBackground = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-    static let navigationBarText = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-    static let deleteButton = #colorLiteral(red: 0.8039215686, green: 0.02352941176, blue: 0, alpha: 1)
-    static let editButton = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-    static let toggleGeneral = #colorLiteral(red: 0, green: 0.6134323478, blue: 0.5483384132, alpha: 1)
+    static let themeWhite = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    static let themeGray = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9725490196, alpha: 1)
+    static let themeGreen = #colorLiteral(red: 0.537254902, green: 0.6784313725, blue: 0.5215686275, alpha: 1)
+    static let themeYellow = #colorLiteral(red: 0.9529411765, green: 0.8549019608, blue: 0.5529411765, alpha: 1)
+    static let themeRed = #colorLiteral(red: 0.8549019608, green: 0.6352941176, blue: 0.6352941176, alpha: 1)
+    static let themeBlue = #colorLiteral(red: 0.5411764706, green: 0.6705882353, blue: 0.862745098, alpha: 1)
+    static let themeBlack = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+    static let themeClear = UIColor.clear
+
 }
 
 

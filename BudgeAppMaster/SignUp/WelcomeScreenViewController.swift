@@ -51,13 +51,13 @@ class WelcomeScreenViewController: UIViewController {
     }
     
     func styleButton() {
-        getStartedButton.backgroundColor = Colors.buttonPrimaryBackground
+        getStartedButton.backgroundColor = Colors.themeBlack
         getStartedButton.layer.cornerRadius = getStartedButton.frame.height/2
         getStartedButton.setTitleColor(.white, for: .normal)
         
-        loginButtonOutlet.backgroundColor = Colors.budgetViewCellBackground
+        loginButtonOutlet.backgroundColor = Colors.themeGray
         loginButtonOutlet.layer.cornerRadius = loginButtonOutlet.frame.height/2
-        loginButtonOutlet.setTitleColor(Colors.buttonPrimaryBackground, for: .normal)
+        loginButtonOutlet.setTitleColor(Colors.themeBlack, for: .normal)
         
         viewOutlet.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5)
         viewOutlet.layer.cornerRadius = 15

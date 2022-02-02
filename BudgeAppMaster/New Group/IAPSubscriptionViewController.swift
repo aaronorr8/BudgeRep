@@ -47,8 +47,8 @@ class IAPSubscriptionViewController: UIViewController, SKProductsRequestDelegate
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
         
-        subscribeButton.backgroundColor = Colors.buttonPrimaryBackground
-        subscribeButton.setTitleColor(Colors.buttonPrimaryText, for: .normal)
+        subscribeButton.backgroundColor = Colors.themeBlack
+        subscribeButton.setTitleColor(Colors.themeWhite, for: .normal)
         subscribeButton.layer.cornerRadius = subscribeButton.frame.height / 2
         
       

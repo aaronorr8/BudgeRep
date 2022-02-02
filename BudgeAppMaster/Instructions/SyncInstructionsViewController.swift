@@ -21,14 +21,14 @@ class SyncInstructionsViewController: UIViewController {
         
         bulletPoint1.layer.cornerRadius = bulletPoint1.frame.height/2
         bulletPoint1.layer.masksToBounds = true
-        bulletPoint1.backgroundColor = Colors.themeAccentGreen
+        bulletPoint1.backgroundColor = Colors.themeGreen
         
         bulletPoint2.layer.cornerRadius = bulletPoint2.frame.height/2
         bulletPoint2.layer.masksToBounds = true
-        bulletPoint2.backgroundColor = Colors.themeAccentGreen
+        bulletPoint2.backgroundColor = Colors.themeGreen
         
         sendLinkButtonOutlet.layer.cornerRadius = sendLinkButtonOutlet.frame.height/2
-        sendLinkButtonOutlet.backgroundColor = Colors.budgetViewCellBackground
+        sendLinkButtonOutlet.backgroundColor = Colors.themeGray
 
         self.title = ""
         self.navigationItem.setHidesBackButton(true, animated: true)

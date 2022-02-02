@@ -37,11 +37,11 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
         //Add underline to text fields
 //        budgetNameField.setUnderLine()
 //        budgetAmountField.setUnderLine()
-        budgetNameField.textColor = Colors.themeAccentPrimary
-        budgetNameField.backgroundColor = Colors.budgetViewCellBackground
+        budgetNameField.textColor = Colors.themeBlack
+        budgetNameField.backgroundColor = Colors.themeGray
         budgetNameField.layer.cornerRadius = 10
-        budgetAmountField.textColor = Colors.themeAccentPrimary
-        budgetAmountField.backgroundColor = Colors.budgetViewCellBackground
+        budgetAmountField.textColor = Colors.themeBlack
+        budgetAmountField.backgroundColor = Colors.themeGray
         budgetAmountField.layer.cornerRadius = 10
         
     }
@@ -159,8 +159,8 @@ class AddBudgetViewController: ViewController, UITextFieldDelegate {
     
     func setStyles() {
         
-        saveButton.backgroundColor = Colors.buttonPrimaryBackground
-        saveButton.setTitleColor(Colors.buttonPrimaryText, for: .normal)
+        saveButton.backgroundColor = Colors.themeBlack
+        saveButton.setTitleColor(Colors.themeWhite, for: .normal)
         saveButton.layer.cornerRadius = saveButton.frame.height / 2
         
 //        //Navigation bar colors

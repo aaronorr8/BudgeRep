@@ -127,7 +127,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
         
         let toggleSwitch = UISwitch()
-        toggleSwitch.onTintColor = Colors.toggleGeneral
+        toggleSwitch.onTintColor = Colors.themeGreen
 
         toggleSwitch.addTarget(self, action: #selector(self.switchToggle), for: .valueChanged)
         
@@ -146,7 +146,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         //toolBar.setItems([flexibleSpace, toggleSwitch], animated: false)
         
         toolBar.setItems([flexibleSpace, UIBarButtonItem.init(customView: toggleText), UIBarButtonItem.init(customView: toggleSwitch)], animated: false)
-        toggleSwitch.onTintColor = Colors.toggleGeneral
+        toggleSwitch.onTintColor = Colors.themeGreen
         
         spendAmount.inputAccessoryView = toolBar
         spendNoteField.inputAccessoryView = toolBar
@@ -195,8 +195,8 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         //Add underline to text fields
 //        spendAmount.setUnderLine()
         spendNoteField.setUnderLine()
-        spendAmount.textColor = Colors.themeAccentPrimary
-        spendAmount.backgroundColor = Colors.budgetViewCellBackground
+        spendAmount.textColor = Colors.themeBlack
+        spendAmount.backgroundColor = Colors.themeGray
         spendAmount.layer.cornerRadius = 10
         
         
@@ -204,16 +204,16 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         
         
         //Add rounded outline to save button
-        saveButton.backgroundColor = Colors.buttonPrimaryBackground
-        saveButton.setTitleColor(Colors.buttonPrimaryText, for: .normal)
+        saveButton.backgroundColor = Colors.themeBlack
+        saveButton.setTitleColor(Colors.themeWhite, for: .normal)
         saveButton.layer.cornerRadius = saveButton.frame.height / 2
         //        saveButton.layer.borderWidth = 2
         //        saveButton.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.4588235294, blue: 0.01960784314, alpha: 1)
         
         //Set color for View Spend History button
         viewSpendHistoryButtonOutlet.backgroundColor = .clear
-        viewSpendHistoryButtonOutlet.setTitleColor(Colors.buttonPrimaryBackground, for: .normal)
-        viewSpendHistoryButtonOutlet.tintColor = Colors.buttonPrimaryBackground
+        viewSpendHistoryButtonOutlet.setTitleColor(Colors.themeBlack, for: .normal)
+        viewSpendHistoryButtonOutlet.tintColor = Colors.themeBlack
         viewSpendHistoryButtonOutlet.semanticContentAttribute = UIApplication.shared
             .userInterfaceLayoutDirection == .rightToLeft ? .forceLeftToRight : .forceRightToLeft
 

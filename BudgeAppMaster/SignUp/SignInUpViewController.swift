@@ -56,16 +56,16 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLayoutSubviews() {
         
         
-        signInButtonOutlet.backgroundColor = Colors.buttonPrimaryBackground
-        signInButtonOutlet.setTitleColor(Colors.buttonPrimaryText, for: .normal)
+        signInButtonOutlet.backgroundColor = Colors.themeBlack
+        signInButtonOutlet.setTitleColor(Colors.themeWhite, for: .normal)
         signInButtonOutlet.layer.cornerRadius = signInButtonOutlet.frame.height / 2
         
-        emailField.textColor = Colors.themeAccentPrimary
-        emailField.backgroundColor = Colors.budgetViewCellBackground
+        emailField.textColor = Colors.themeBlack
+        emailField.backgroundColor = Colors.themeGray
         emailField.layer.cornerRadius = 10
         
-        passwordField.textColor = Colors.themeAccentPrimary
-        passwordField.backgroundColor = Colors.budgetViewCellBackground
+        passwordField.textColor = Colors.themeBlack
+        passwordField.backgroundColor = Colors.themeGray
         passwordField.layer.cornerRadius = 10
         
         
@@ -151,6 +151,8 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidDisappear(_ animated: Bool) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "generic"), object: nil)
+        
+        isWelcomeScreenLogin = false
     }
     
     

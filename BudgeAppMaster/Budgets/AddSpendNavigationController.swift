@@ -20,18 +20,18 @@ class AddSpendNavigationController: UINavigationController {
         let budgetedAmount = budgetAmountG[myIndexG]
         let percentSpent = amountSpent/budgetedAmount
         
-        var backgroundColor = Colors.budgetViewCellBackground
+        var backgroundColor = Colors.themeGray
         switch percentSpent {
         case 1.0:
-            backgroundColor = Colors.progressBarProgressBlue
+            backgroundColor = Colors.themeBlue
         case _ where percentSpent > 1.0:
-            backgroundColor = Colors.progressBarProgressRed
+            backgroundColor = Colors.themeRed
         case _ where percentSpent < 0.95:
-            backgroundColor = Colors.progressBarProgressGreen
+            backgroundColor = Colors.themeGreen
         case _ where percentSpent >= 0.95 && percentSpent < 1.0:
-            backgroundColor = Colors.progressBarProgressYellow
+            backgroundColor = Colors.themeYellow
         default:
-            backgroundColor = Colors.progressBarProgressBlue
+            backgroundColor = Colors.themeBlue
         }
 
         appearance.backgroundColor = backgroundColor

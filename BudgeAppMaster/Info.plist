@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Budge</string>
+	<string>Budge Budgets</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -20,8 +20,22 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>FirebaseAutomaticScreenReportingEnabled</key>
+	<string>NO</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Outfit-Black.otf</string>
+		<string>Outfit-Bold.otf</string>
+		<string>Outfit-ExtraBold.otf</string>
+		<string>Outfit-ExtraLight.otf</string>
+		<string>Outfit-Light.otf</string>
+		<string>Outfit-Medium.otf</string>
+		<string>Outfit-Regular.otf</string>
+		<string>Outfit-SemiBold.otf</string>
+		<string>Outfit-Thin.otf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -43,19 +57,5 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Outfit-Black.otf</string>
-		<string>Outfit-Bold.otf</string>
-		<string>Outfit-ExtraBold.otf</string>
-		<string>Outfit-ExtraLight.otf</string>
-		<string>Outfit-Light.otf</string>
-		<string>Outfit-Medium.otf</string>
-		<string>Outfit-Regular.otf</string>
-		<string>Outfit-SemiBold.otf</string>
-		<string>Outfit-Thin.otf</string>
-	</array>
-	<key>FirebaseAutomaticScreenReportingEnabled</key>
-	<string>NO</string>
 </dict>
 </plist>

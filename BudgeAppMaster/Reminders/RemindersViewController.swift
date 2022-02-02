@@ -115,11 +115,11 @@ class RemindersViewController: UIViewController, UITableViewDelegate, UITableVie
         if reminderArray[indexPath.row].done == false {
             cell.checkmarkImage.image = #imageLiteral(resourceName: "CheckmarkOpen2")
             cell.checkmarkImage.image = cell.checkmarkImage.image?.withRenderingMode(.alwaysTemplate)
-            cell.checkmarkImage.tintColor = Colors.themeAccentGreen
+            cell.checkmarkImage.tintColor = Colors.themeGreen
         } else {
             cell.checkmarkImage.image = #imageLiteral(resourceName: "CheckmarkSolid")
             cell.checkmarkImage.image = cell.checkmarkImage.image?.withRenderingMode(.alwaysTemplate)
-            cell.checkmarkImage.tintColor = Colors.themeAccentGreen
+            cell.checkmarkImage.tintColor = Colors.themeGreen
         }
         
         //DISPLAY AMOUNT
@@ -240,8 +240,8 @@ class RemindersViewController: UIViewController, UITableViewDelegate, UITableVie
             self.updateGuidanceLabel()
         }
     
-        edit.backgroundColor = Colors.editButton
-        delete.backgroundColor = Colors.deleteButton
+        edit.backgroundColor = Colors.themeBlack
+        delete.backgroundColor = Colors.themeRed
         
         return [edit, delete]
         

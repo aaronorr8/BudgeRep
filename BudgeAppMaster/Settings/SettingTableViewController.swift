@@ -86,7 +86,7 @@ class SettingTableViewController: UITableViewController {
        
         getUserDefaults()
         
-        monthlyResetSwitch.onTintColor = Colors.toggleGeneral
+        monthlyResetSwitch.onTintColor = Colors.themeGreen
       
         
     }

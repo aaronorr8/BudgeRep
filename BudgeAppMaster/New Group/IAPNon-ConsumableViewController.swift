@@ -27,8 +27,8 @@ class IAPNon_ConsumableViewController: UIViewController, SKProductsRequestDelega
         self.title = "Unlock Budge"
 
         
-        buyButtonOutlet.backgroundColor = Colors.buttonPrimaryBackground
-        buyButtonOutlet.setTitleColor(Colors.buttonPrimaryText, for: .normal)
+        buyButtonOutlet.backgroundColor = Colors.themeBlack
+        buyButtonOutlet.setTitleColor(Colors.themeWhite, for: .normal)
         buyButtonOutlet.layer.cornerRadius = buyButtonOutlet.frame.height / 2
         
         fetchProducts()

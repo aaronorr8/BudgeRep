@@ -136,8 +136,8 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.view.bounds
         gradientLayer.colors = [
-            Colors.budgetViewMainbackground1.cgColor,
-            Colors.budgetViewMainbackground2.cgColor
+            Colors.themeWhite.cgColor,
+            Colors.themeWhite.cgColor
         ]
         gradientLayer.startPoint = CGPoint(x: 0,y: 0)
         gradientLayer.endPoint = CGPoint(x: 0,y: 1)
@@ -233,24 +233,24 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
             let amount = Double(amt/100) + Double(amt%100)/100
             headerView.totalRemainingBudget.text = String(convertDoubleToCurency(amount: totalBudgetsAvailable))
             self.navigationItem.title = String(convertDoubleToCurency(amount: totalBudgetsAvailable))
-            headerView.totalRemainingBudget.textColor = Colors.budgetViewTotalBudgetRemainingLabel
-            headerView.remainingLabel.textColor = Colors.budgetViewTotalBudgetRemainingLabel
-            headerView.summarySpentBudgetedLabel.textColor = Colors.budgetViewSummaryOfTotalBudgetSpent
+            headerView.totalRemainingBudget.textColor = Colors.themeBlack
+            headerView.remainingLabel.textColor = Colors.themeBlack
+            headerView.summarySpentBudgetedLabel.textColor = Colors.themeBlack
             headerView.summarySpentBudgetedLabel.text = "Spent \(convertDoubleToCurency(amount: totalSpentAllBudgets)) of \(convertDoubleToCurency(amount: totalBudgetsAllocation)) budgeted"
             let percentSpent = totalSpentAllBudgets/totalBudgetsAllocation
             
             
             if percentSpent > 1 {
-                headerView.totalProgressBar.progressColor = Colors.progressBarProgressRed
+                headerView.totalProgressBar.progressColor = Colors.themeRed
             } else if percentSpent == 1 {
-                headerView.totalProgressBar.progressColor = Colors.progressBarProgressBlue
+                headerView.totalProgressBar.progressColor = Colors.themeBlue
             } else if percentSpent < 0.95 {
-                headerView.totalProgressBar.progressColor = Colors.progressBarProgressGreen
+                headerView.totalProgressBar.progressColor = Colors.themeGreen
             } else {
-                headerView.totalProgressBar.progressColor = Colors.progressBarProgressYellow
+                headerView.totalProgressBar.progressColor = Colors.themeYellow
             }
             
-            headerView.totalProgressBar.trackColor = Colors.progressBarTrackTotal
+            headerView.totalProgressBar.trackColor = Colors.themeGray
             headerView.totalProgressBar.setProgressWithAnimation(duration: 0.75, fromValue: 0.0, toValue: Float(percentSpent))
             
             return headerView
@@ -291,21 +291,21 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
         
         
         if budgetNameG.count == 0 {
-            emptyCell.backgroundColor = Colors.budgetViewCellBackground
+            emptyCell.backgroundColor = Colors.themeGray
             return emptyCell
         } else {
             
             
             //MARK: CELL DESIGN
-            cell.backgroundColor = Colors.budgetViewCellBackground
+            cell.backgroundColor = Colors.themeGray
             
             //MARK: CELL VIEW LABELS
             cell.budgetNameLabel.text = budgetNameG[indexPath.row]
             //                cell.budgetRemainingLabel.text = "\(String(convertDoubleToCurency(amount: budgetRemainingG[indexPath.row])))"
             cell.budgetRemainingLabel.text = (String(convertDoubleToCurency(amount: budgetAmountG[indexPath.row] - budgetHistoryAmountG[budgetNameG[indexPath.row]]!.reduce(0, +))))
-            cell.budgetNameLabel.textColor =        Colors.budgetViewCellText
-            cell.budgetRemainingLabel.textColor =   Colors.budgetViewCellText
-            cell.progressTotalLabel.textColor =     Colors.budgetViewCellText
+            cell.budgetNameLabel.textColor =        Colors.themeBlack
+            cell.budgetRemainingLabel.textColor =   Colors.themeBlack
+            cell.progressTotalLabel.textColor =     Colors.themeBlack
             
             
             
@@ -332,15 +332,15 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
             }
             
             //cell colors
-            cell.progressContainer.trackColor = Colors.progressBarTrackCell
+            cell.progressContainer.trackColor = Colors.themeClear
             if cellProgress > 1 {
-                cell.progressContainer.progressColor = Colors.progressBarProgressRed
+                cell.progressContainer.progressColor = Colors.themeRed
             } else if cellProgress == 1 {
-                cell.progressContainer.progressColor = Colors.progressBarProgressBlue
+                cell.progressContainer.progressColor = Colors.themeBlue
             } else if cellProgress < 0.95 {
-                cell.progressContainer.progressColor = Colors.progressBarProgressGreen
+                cell.progressContainer.progressColor = Colors.themeGreen
             } else {
-                cell.progressContainer.progressColor = Colors.progressBarProgressYellow
+                cell.progressContainer.progressColor = Colors.themeYellow
             }
             
             
