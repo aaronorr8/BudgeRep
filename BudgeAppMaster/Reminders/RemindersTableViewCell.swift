@@ -22,9 +22,7 @@ class RemindersTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-//        checkmarkImage.image = checkmarkImage.image?.withRenderingMode(.alwaysTemplate)
-//        checkmarkImage.tintColor = bgColorGradient1
+
     }
     
     

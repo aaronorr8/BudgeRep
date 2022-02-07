@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Group 4.png",
+      "filename" : "SharedBudgets.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Group 4@2x.png",
+      "filename" : "SharedBudgets@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Group 4@3x.png",
+      "filename" : "SharedBudgets@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

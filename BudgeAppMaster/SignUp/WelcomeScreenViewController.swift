@@ -27,7 +27,7 @@ class WelcomeScreenViewController: UIViewController {
    
     
     @IBAction func getStartedButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+//        self.dismiss(animated: true, completion: nil)
     }
     
     
@@ -59,7 +59,7 @@ class WelcomeScreenViewController: UIViewController {
         loginButtonOutlet.layer.cornerRadius = loginButtonOutlet.frame.height/2
         loginButtonOutlet.setTitleColor(Colors.themeBlack, for: .normal)
         
-        viewOutlet.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5)
+        viewOutlet.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.8)
         viewOutlet.layer.cornerRadius = 15
     }
 }

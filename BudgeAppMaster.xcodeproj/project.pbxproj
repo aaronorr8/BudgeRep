@@ -42,6 +42,7 @@
 		4329DD23245C53560045E952 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4329DD22245C53560045E952 /* GlobalConstants.swift */; };
 		435168CC26C2BA9D007B0BA7 /* BackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435168CB26C2BA9D007B0BA7 /* BackgroundViewController.swift */; };
 		435771EF26ADB3A100383CE7 /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435771EE26ADB3A100383CE7 /* WelcomeScreenViewController.swift */; };
+		436406FF27AECADB008FE61F /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436406FE27AECADB008FE61F /* AboutViewController.swift */; };
 		436D9D412286269B0020F924 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436D9D402286269B0020F924 /* StoreKit.framework */; };
 		43935690245DC9C000CBAFF1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4393568F245DC9C000CBAFF1 /* TabBarController.swift */; };
 		4393F83F2233FBA8004CD359 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4393F83E2233FBA8004CD359 /* Assets.xcassets */; };
@@ -91,6 +92,7 @@
 		4329DD22245C53560045E952 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		435168CB26C2BA9D007B0BA7 /* BackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewController.swift; sourceTree = "<group>"; };
 		435771EE26ADB3A100383CE7 /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
+		436406FE27AECADB008FE61F /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		436D9D402286269B0020F924 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4393568F245DC9C000CBAFF1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4393F83E2233FBA8004CD359 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 			children = (
 				0DA43752223334C700110700 /* SignInUpViewController.swift */,
 				435771EE26ADB3A100383CE7 /* WelcomeScreenViewController.swift */,
+				436406FE27AECADB008FE61F /* AboutViewController.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				43935690245DC9C000CBAFF1 /* TabBarController.swift in Sources */,
 				0DA4374B2233343000110700 /* AddReminderViewController.swift in Sources */,
 				0DA43742223333F200110700 /* AddBudgetViewController.swift in Sources */,
+				436406FF27AECADB008FE61F /* AboutViewController.swift in Sources */,
 				0DA437472233340A00110700 /* HistoryViewController.swift in Sources */,
 				0DA43739223333AD00110700 /* BudgetCollectionReusableView.swift in Sources */,
 				43FE6F9C2257B581007C21BF /* SettingTableViewController.swift in Sources */,

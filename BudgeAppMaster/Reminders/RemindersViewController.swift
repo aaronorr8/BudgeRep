@@ -83,12 +83,12 @@ class RemindersViewController: UIViewController, UITableViewDelegate, UITableVie
     
     
     func setNavigationBarColor() {
-        navBar.barTintColor = bgColorGradient1
+        navBar.barTintColor = Colors.themeWhite
         navBar.isTranslucent = false
         navBar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         navBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)]
         let barView = UIView(frame: CGRect(x:0, y:0, width:view.frame.width, height:UIApplication.shared.statusBarFrame.height))
-        barView.backgroundColor = bgColorGradient1
+        barView.backgroundColor = Colors.themeWhite
         view.addSubview(barView)
     }
     
@@ -115,11 +115,11 @@ class RemindersViewController: UIViewController, UITableViewDelegate, UITableVie
         if reminderArray[indexPath.row].done == false {
             cell.checkmarkImage.image = #imageLiteral(resourceName: "CheckmarkOpen2")
             cell.checkmarkImage.image = cell.checkmarkImage.image?.withRenderingMode(.alwaysTemplate)
-            cell.checkmarkImage.tintColor = Colors.themeGreen
+            cell.checkmarkImage.tintColor = Colors.themeGreenDark
         } else {
             cell.checkmarkImage.image = #imageLiteral(resourceName: "CheckmarkSolid")
             cell.checkmarkImage.image = cell.checkmarkImage.image?.withRenderingMode(.alwaysTemplate)
-            cell.checkmarkImage.tintColor = Colors.themeGreen
+            cell.checkmarkImage.tintColor = Colors.themeGreenDark
         }
         
         //DISPLAY AMOUNT
@@ -170,7 +170,7 @@ class RemindersViewController: UIViewController, UITableViewDelegate, UITableVie
             //DEDUCT FROM LINKED BUDGET
             if reminderArray[indexPath.row].linkedBudget != "" {
                 //OPEN DIALOG
-                let alert = UIAlertController(title: "Nice job! Do you want to record this in \"\(reminderArray[indexPath.row].linkedBudget)\"?", message: "You'll have a chance to enter the specific amount spent", preferredStyle: UIAlertController.Style.alert)
+                let alert = UIAlertController(title: "Done!", message: "Do you want to take this from \"\(reminderArray[indexPath.row].linkedBudget)\"?", preferredStyle: UIAlertController.Style.alert)
                 
                 alert.addAction(UIAlertAction(title: "Yes, record in budget", style: UIAlertAction.Style.default, handler: { _ in
                    //MARK: NDM
@@ -195,13 +195,13 @@ class RemindersViewController: UIViewController, UITableViewDelegate, UITableVie
             //REFUND LINKED BUDGET
             if reminderArray[indexPath.row].linkedBudget != "" {
                 //OPEN DIALOG
-                let alert = UIAlertController(title: "Do you want to adjust your \"\(reminderArray[indexPath.row].linkedBudget)\" budget?", message: "You'll have a chance to enter the specific amount.", preferredStyle: UIAlertController.Style.alert)
+                let alert = UIAlertController(title: "Do you want to apply this back to your \"\(reminderArray[indexPath.row].linkedBudget)\" budget?", message: "", preferredStyle: UIAlertController.Style.alert)
                 
                 alert.addAction(UIAlertAction(title: "No thanks", style: UIAlertAction.Style.default, handler: { _ in
                     print("Cancel")
                 }))
                 
-                alert.addAction(UIAlertAction(title: "Adjust budget", style: UIAlertAction.Style.default, handler: { _ in
+                alert.addAction(UIAlertAction(title: "Yes, adjust budget", style: UIAlertAction.Style.default, handler: { _ in
                     myIndexG = budgetNameG.firstIndex(of: reminderArray[indexPath.row].linkedBudget)!
                     presetAmountG = reminderArray[indexPath.row].amount
                     presetRefundG = true

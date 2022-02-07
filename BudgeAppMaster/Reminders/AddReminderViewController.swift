@@ -64,6 +64,7 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
         
         reminderAmountField.delegate = self
         reminderAmountField.placeholder = updateAmount()
+        dueDateInput.text = "1st"
         
         
         
@@ -142,17 +143,59 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
             }
             
         }
+        
+        addDoneButtonOnKeyboard()
     }
     
+//    func closeKeyboardButton() {
+//
+//        selectBudgetField.delegate = self
+//
+//        let toolbar = UIToolbar()
+//
+//        let doneButton = UIBarButtonItem(barButtonSystemItem:UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.closeKeyboard))
+//
+//        toolbar.setItems([doneButton], animated: false)
+//
+//        selectBudgetField.inputAccessoryView = toolbar
+//
+//    }
+//
+//    @objc func closeKeyboard() {
+//        view.endEditing(true)
+//    }
+    
+    //Keyboard--------------------
+    func addDoneButtonOnKeyboard() {
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        doneToolbar.barStyle = .default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "▼", style: .done, target: self, action: #selector(doneButtonAction))
+        done.tintColor = Colors.themeBlack
+        
+        let items = [flexSpace, done]
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+        
+        selectBudgetField.inputAccessoryView = doneToolbar
+        dueDateInput.inputAccessoryView = doneToolbar
+        
+    }
+    
+    @objc func doneButtonAction() {
+        selectBudgetField.resignFirstResponder()
+        dueDateInput.resignFirstResponder()
+    }
     
     
     //MARK: NAVIGATION BAR APPEARANCE
     func setNavigationBarColor() {
-        navBar.barTintColor = bgColorGradient1
+        navBar.barTintColor = Colors.themeWhite
         navBar.isTranslucent = false
         cancelButton.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         let barView = UIView(frame: CGRect(x:0, y:0, width:view.frame.width, height:UIApplication.shared.statusBarFrame.height))
-        barView.backgroundColor = bgColorGradient1
+        barView.backgroundColor = Colors.themeWhite
         view.addSubview(barView)
     }
     
