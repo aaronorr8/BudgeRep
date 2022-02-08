@@ -240,18 +240,18 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
             let percentSpent = totalSpentAllBudgets/totalBudgetsAllocation
             
             
-            if percentSpent > 1 {
-                headerView.totalProgressBar.progressColor = Colors.themeRed
-            } else if percentSpent == 1 {
-                headerView.totalProgressBar.progressColor = Colors.themeBlue
-            } else if percentSpent < 0.95 {
-                headerView.totalProgressBar.progressColor = Colors.themeGreen
-            } else {
-                headerView.totalProgressBar.progressColor = Colors.themeYellow
-            }
-            
-            headerView.totalProgressBar.trackColor = Colors.themeGray
-            headerView.totalProgressBar.setProgressWithAnimation(duration: 0.75, fromValue: 0.0, toValue: Float(percentSpent))
+//            if percentSpent > 1 {
+//                headerView.totalProgressBar.progressColor = Colors.themeRed
+//            } else if percentSpent == 1 {
+//                headerView.totalProgressBar.progressColor = Colors.themeBlue
+//            } else if percentSpent < 0.95 {
+//                headerView.totalProgressBar.progressColor = Colors.themeGreen
+//            } else {
+//                headerView.totalProgressBar.progressColor = Colors.themeYellow
+//            }
+//            
+//            headerView.totalProgressBar.trackColor = Colors.themeGray
+//            headerView.totalProgressBar.setProgressWithAnimation(duration: 0.75, fromValue: 0.0, toValue: Float(percentSpent))
             
             return headerView
             
