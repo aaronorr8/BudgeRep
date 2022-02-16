@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "PigRight.png",
+      "filename" : "PegLeft.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "PigRight@2x.png",
+      "filename" : "PegLeft@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "PigRight@3x.png",
+      "filename" : "PegLeft@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

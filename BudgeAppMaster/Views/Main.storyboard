@@ -1602,14 +1602,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Z0d-RX-vGi">
-                                                    <rect key="frame" x="19.999999999999996" y="24.666666666666671" width="35.666666666666664" height="19.333333333333332"/>
+                                                    <rect key="frame" x="19.999999999999996" y="23.666666666666671" width="33.666666666666664" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="giU-9I-ZuL">
-                                                    <rect key="frame" x="19.999999999999996" y="47.333333333333329" width="36.666666666666664" height="15"/>
+                                                    <rect key="frame" x="19.999999999999996" y="48" width="35.666666666666664" height="16.333333333333332"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Outfit-Light" family="Outfit" pointSize="14"/>
                                                     <nil key="textColor"/>
@@ -2422,7 +2422,7 @@ easy as 1-2-done!</string>
         <image name="BudgetSolid" width="25" height="25"/>
         <image name="CheckmarkOpen2" width="51" height="50"/>
         <image name="Menu" width="32" height="32"/>
-        <image name="PigRight" width="1352" height="749"/>
+        <image name="PigRight" width="117" height="65"/>
         <image name="Pigs" width="395" height="126"/>
         <image name="SettingsOutline" width="25" height="25"/>
         <image name="SettingsSolid" width="25" height="25"/>

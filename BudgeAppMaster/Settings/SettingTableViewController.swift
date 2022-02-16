@@ -30,6 +30,7 @@ class SettingTableViewController: UITableViewController {
     var amt: Int = 0
     var referenceNote = 0
     var indexesToRemove = [Int]()
+    var carryoverAmount = [Double]()
     
     
     
@@ -131,7 +132,7 @@ class SettingTableViewController: UITableViewController {
     }
     
     
-    
+    //MARK: Carryover Button
     @IBAction func resetAllBudgets(_ sender: Any) {
         resetAllBudgets()
     }
@@ -146,19 +147,26 @@ class SettingTableViewController: UITableViewController {
         rolloverTotalG = totalBudgeted - totalSpent
         
     
-        
-        
         if rolloverTotalG > 0.0 {
             //alert with rollover option
             
-            let alert = UIAlertController(title: "You have unspent money!" , message: "Do you want to rollover your unspent money into a \"Rollover\" budget?", preferredStyle: UIAlertController.Style.alert)
+//            let alert = UIAlertController(title: "You have unspent money!" , message: "Do you want to rollover your unspent money into a \"Rollover\" budget?", preferredStyle: UIAlertController.Style.alert)
             
+            let alert = UIAlertController(title: "You have unspent money!" , message: "Do you want to roll the excess over", preferredStyle: UIAlertController.Style.alert)
+            
+//            alert.addAction(UIAlertAction(title: "Yes! Rollover my money", style: UIAlertAction.Style.default, handler: { _ in
+//                self.rolloverToRolloverBudget()
+//                self.save()
+//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
+//                self.tabBarController?.selectedIndex = 0
+//
             alert.addAction(UIAlertAction(title: "Yes! Rollover my money", style: UIAlertAction.Style.default, handler: { _ in
-                self.rolloverToRolloverBudget()
+                self.calculateCarryover()
                 self.save()
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
                 self.tabBarController?.selectedIndex = 0
             }))
+                
             alert.addAction(UIAlertAction(title: "No. Just reset my budgets", style: UIAlertAction.Style.default, handler: { _ in
                 self.resetBudgetsNoRollover()
                 self.save()
@@ -192,6 +200,133 @@ class SettingTableViewController: UITableViewController {
         }
         
         
+    }
+    
+    //MARK: Carryover
+    func calculateCarryover() {
+        clearTempArrays()
+        for i in 0...budgetNameG.count - 1 {
+            carryoverAmount.append(0 - (budgetAmountG[i] - budgetHistoryAmountG[budgetNameG[i]]!.reduce(0, +)))
+        }
+        print("carryoverAmount: \(carryoverAmount)")
+        applyCarryover()
+    }
+    
+    func applyCarryover() {
+        
+        resetBudgets()
+        
+        //FORMAT DATE AND TIME
+        let formatterDate = DateFormatter()
+        let formatterTime = DateFormatter()
+        formatterDate.locale = Locale(identifier: "en_US_POSIX")
+        formatterTime.locale = Locale(identifier: "en_US_POSIX")
+        formatterDate.dateFormat = "MMMM dd"
+        formatterTime.dateFormat = "h:mma"
+        formatterTime.amSymbol = "am"
+        formatterTime.pmSymbol = "pm"
+        
+        let dateString = formatterDate.string(from: Date())
+        let timeString = formatterTime.string(from: Date())
+        
+        for i in 0...budgetNameG.count - 1 {
+            budgetHistoryAmountG[budgetNameG[i]]?.insert(carryoverAmount[i], at: 0)
+            budgetNoteG[budgetNameG[i]]?.insert("Carryover", at:0)
+            budgetHistoryDateG[budgetNameG[i]]?.insert(dateString, at: 0)
+            budgetHistoryTimeG[budgetNameG[i]]?.insert(timeString, at: 0)
+        }
+
+    }
+    
+    
+    func resetBudgetsNoRollover() {
+        //RESET BUDGETS
+        print("Reset Budgets, No Rollover")
+        var tempRolloverAmount = 0.0
+        
+        if budgetNameG.contains(rolloverText) {
+            let index = budgetNameG.firstIndex(of: rolloverText)
+            tempRolloverAmount = budgetAmountG[index!]
+        }
+        
+        resetBudgets()
+        rolloverTotalG = 0.0
+        
+        if budgetNameG.contains(rolloverText) {
+            let index = budgetNameG.firstIndex(of: rolloverText)
+            budgetAmountG[index!] = tempRolloverAmount
+        }
+        
+
+    }
+    
+
+    
+    
+    
+    //MARK: Reset Budgets
+    func resetBudgets() {
+        budgetHistoryAmountG.forEach({ (key, value) -> Void in
+            budgetHistoryAmountG[key] = []
+        })
+        
+        budgetNoteG.forEach({ (key, value) -> Void in
+            budgetNoteG[key] = []
+        })
+        
+        budgetHistoryDateG.forEach({ (key, value) -> Void in
+            budgetHistoryDateG[key] = []
+        })
+        
+        budgetHistoryTimeG.forEach({ (key, value) -> Void in
+            budgetHistoryTimeG[key] = []
+        })
+        
+        
+    }
+    
+
+    func rolloverToRolloverBudget() {
+        print("Reset Budgets and Rollover")
+        
+        if budgetNameG.contains(rolloverText) {
+            resetBudgets()
+
+            
+            //Find Index of Rollover Budget and set rollover budget
+            let indexOfRollover = budgetNameG.firstIndex(of: rolloverText)
+            budgetAmountG[indexOfRollover!] = rolloverTotalG
+            
+        } else {
+            resetBudgets()
+            addRolloverBudget()
+        }
+    }
+    
+    func deleteRolloverBudget() {
+        print("Delete Rollover Budget")
+        let indexOfRollover = budgetNameG.firstIndex(of: rolloverText)
+        budgetNameG.remove(at: indexOfRollover!)
+        budgetAmountG.remove(at: indexOfRollover!)
+//        budgetRemainingG.remove(at: indexOfRollover!)
+        budgetHistoryAmountG.removeValue(forKey: rolloverText)
+        budgetHistoryDateG.removeValue(forKey: rolloverText)
+        budgetHistoryTimeG.removeValue(forKey: rolloverText)
+        budgetNoteG.removeValue(forKey: rolloverText)
+        
+    }
+    
+    
+    func addRolloverBudget() {
+        budgetNameG.append(rolloverText)
+        let amount = Double(amt/100) + Double(amt%100)/100
+        budgetAmountG.append(rolloverTotalG)
+        budgetHistoryAmountG[rolloverText] = []
+        budgetNoteG[rolloverText] = []
+        budgetHistoryDateG[rolloverText] = []
+        budgetHistoryTimeG[rolloverText] = []
+        let totalSpent = budgetHistoryAmountG[rolloverText]?.reduce(0, +)
+//        budgetRemainingG.append(amount - totalSpent!)
     }
     
     @IBAction func resetReminders(_ sender: Any) {
@@ -267,86 +402,7 @@ class SettingTableViewController: UITableViewController {
     }
     
     
-    func resetBudgetsNoRollover() {
-        //RESET BUDGETS
-        print("Reset Budgets, No Rollover")
-        var tempRolloverAmount = 0.0
-        
-        if budgetNameG.contains(rolloverText) {
-            let index = budgetNameG.firstIndex(of: rolloverText)
-            tempRolloverAmount = budgetAmountG[index!]
-        }
-        
-        resetBudgets()
-        rolloverTotalG = 0.0
-        
-        if budgetNameG.contains(rolloverText) {
-            let index = budgetNameG.firstIndex(of: rolloverText)
-            budgetAmountG[index!] = tempRolloverAmount
-        }
-    }
     
-    func rolloverToRolloverBudget() {
-        print("Reset Budgets and Rollover")
-        
-        if budgetNameG.contains(rolloverText) {
-            resetBudgets()
-
-            
-            //Find Index of Rollover Budget and set rollover budget
-            let indexOfRollover = budgetNameG.firstIndex(of: rolloverText)
-            budgetAmountG[indexOfRollover!] = rolloverTotalG
-            
-        } else {
-            resetBudgets()
-            addRolloverBudget()
-        }
-    }
-    
-    func deleteRolloverBudget() {
-        print("Delete Rollover Budget")
-        let indexOfRollover = budgetNameG.firstIndex(of: rolloverText)
-        budgetNameG.remove(at: indexOfRollover!)
-        budgetAmountG.remove(at: indexOfRollover!)
-//        budgetRemainingG.remove(at: indexOfRollover!)
-        budgetHistoryAmountG.removeValue(forKey: rolloverText)
-        budgetHistoryDateG.removeValue(forKey: rolloverText)
-        budgetHistoryTimeG.removeValue(forKey: rolloverText)
-        budgetNoteG.removeValue(forKey: rolloverText)
-        
-    }
-    
-    
-    func addRolloverBudget() {
-        budgetNameG.append(rolloverText)
-        let amount = Double(amt/100) + Double(amt%100)/100
-        budgetAmountG.append(rolloverTotalG)
-        budgetHistoryAmountG[rolloverText] = []
-        budgetNoteG[rolloverText] = []
-        budgetHistoryDateG[rolloverText] = []
-        budgetHistoryTimeG[rolloverText] = []
-        let totalSpent = budgetHistoryAmountG[rolloverText]?.reduce(0, +)
-//        budgetRemainingG.append(amount - totalSpent!)
-    }
-    
-    
-    func resetBudgets() {
-        budgetHistoryAmountG.forEach({ (key, value) -> Void in
-            budgetHistoryAmountG[key] = []
-        })
-        
-        budgetNoteG.forEach({ (key, value) -> Void in
-            budgetNoteG[key] = []
-        })
-        
-        budgetHistoryDateG.forEach({ (key, value) -> Void in
-            budgetHistoryDateG[key] = []
-        })
-        
-        budgetHistoryTimeG.forEach({ (key, value) -> Void in
-            budgetHistoryTimeG[key] = []
-        })
-    }
     
     func resetReminderStatus() {
         print("Reset Reminder Status")
@@ -367,6 +423,7 @@ class SettingTableViewController: UITableViewController {
     
     func clearTempArrays() {
         indexesToRemove = []
+        carryoverAmount = []
     }
     
     

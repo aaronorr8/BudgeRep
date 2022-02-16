@@ -411,13 +411,13 @@ class SignInUpViewController: UIViewController, UITextFieldDelegate {
             signInButtonOutlet.setTitle("Sign Up", for: .normal)
             instructionLabel.text = "Create an Account"
             switchModes.setTitle("Login Instead", for: .normal)
-            pigImage.image = #imageLiteral(resourceName: "PigRight")
+            pigImage.image = #imageLiteral(resourceName: "PegLeft")
             forgotPasswordOutlet.isHidden = true
         } else {
             signInButtonOutlet.setTitle("Login", for: .normal)
             instructionLabel.text = "Login to Budge"
             switchModes.setTitle("SignUp Instead", for: .normal)
-            pigImage.image = #imageLiteral(resourceName: "PigLeft")
+            pigImage.image = #imageLiteral(resourceName: "PigSlashScreen")
             forgotPasswordOutlet.isHidden = false
         }
     }
