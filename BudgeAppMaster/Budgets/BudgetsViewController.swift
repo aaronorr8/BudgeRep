@@ -574,11 +574,12 @@ class BudgetsViewController: UIViewController, UICollectionViewDataSource, UICol
     
     
     @objc func reload() {
+        loadView()
         loadBudgetData()
         calculateTotalAvailable()
         calculateTotalAllocation()
         self.collectionView.reloadData()
-        print("Notification Load List")
+        print("Notification Load List :)")
     }
     
     @objc func signoutReload() {
