@@ -158,7 +158,7 @@ class RemindersViewController: UIViewController, UITableViewDelegate, UITableVie
         return cell
     }
     
-    //SET CHECKMARK STATUS
+    //MARK: SET CHECKMARK STATUS
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         myIndexG = indexPath.row
         noteReference = reminderArray[myIndexG].notificationID
@@ -168,7 +168,7 @@ class RemindersViewController: UIViewController, UITableViewDelegate, UITableVie
             reminderArray[indexPath.row].done = true
             
             //DEDUCT FROM LINKED BUDGET
-            if reminderArray[indexPath.row].linkedBudget != "" {
+            if reminderArray[indexPath.row].linkedBudget != "" && budgetNameG.contains(reminderArray[indexPath.row].linkedBudget){
                 //OPEN DIALOG
                 let alert = UIAlertController(title: "Done!", message: "Do you want to take this from \"\(reminderArray[indexPath.row].linkedBudget)\"?", preferredStyle: UIAlertController.Style.alert)
                 
@@ -193,7 +193,7 @@ class RemindersViewController: UIViewController, UITableViewDelegate, UITableVie
             reminderArray[indexPath.row].done = false
             
             //REFUND LINKED BUDGET
-            if reminderArray[indexPath.row].linkedBudget != "" {
+            if reminderArray[indexPath.row].linkedBudget != "" && budgetNameG.contains(reminderArray[indexPath.row].linkedBudget){
                 //OPEN DIALOG
                 let alert = UIAlertController(title: "Do you want to apply this back to your \"\(reminderArray[indexPath.row].linkedBudget)\" budget?", message: "", preferredStyle: UIAlertController.Style.alert)
                 
