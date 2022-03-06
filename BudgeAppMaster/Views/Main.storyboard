@@ -83,7 +83,7 @@
                                 <rect key="frame" x="0.0" y="116" width="390" height="645"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="hvF-Ag-PfO">
-                                    <rect key="frame" x="0.0" y="162.33333206176758" width="390" height="44"/>
+                                    <rect key="frame" x="0.0" y="162.33333206176761" width="390" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 </view>
@@ -372,20 +372,20 @@
                                 <rect key="frame" x="0.0" y="56" width="390" height="734"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="JKK-TN-9lL">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="272"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="268"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ft7-Ry-mYs">
-                                                <rect key="frame" x="8" y="16.000000000000004" width="374" height="35.333333333333343"/>
+                                                <rect key="frame" x="8" y="16" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="22"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="name"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Amount (optional)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tK2-Eg-vy3">
-                                                <rect key="frame" x="8" y="67.333333333333329" width="374" height="35.333333333333329"/>
+                                                <rect key="frame" x="8" y="66" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="22"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Budget (optional)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aty-eH-7JU">
-                                                <rect key="frame" x="8" y="118.66666666666664" width="374" height="35.333333333333329"/>
+                                                <rect key="frame" x="8" y="116" width="374" height="34"/>
                                                 <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="22"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -393,7 +393,7 @@
                                                 </connections>
                                             </textField>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e3U-Rh-RDA">
-                                                <rect key="frame" x="8" y="170" width="374" height="31"/>
+                                                <rect key="frame" x="8" y="166" width="374" height="31"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeat each month:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1t-F5-Y6d">
                                                         <rect key="frame" x="0.0" y="0.0" width="325" height="31"/>
@@ -410,7 +410,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f37-Wh-G55">
-                                                <rect key="frame" x="8" y="217" width="374" height="31"/>
+                                                <rect key="frame" x="8" y="213" width="374" height="31"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notify me:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="67z-Hq-vCG">
                                                         <rect key="frame" x="0.0" y="0.0" width="325" height="31"/>
@@ -427,16 +427,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1B-CZ-FMY">
-                                                <rect key="frame" x="8" y="264" width="374" height="0.0"/>
+                                                <rect key="frame" x="8" y="260" width="374" height="0.0"/>
                                                 <subviews>
                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day to remind me:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hf2-im-HGF">
-                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="35.333333333333336"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="34"/>
                                                         <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="22"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vuf-g5-b82">
-                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="35.333333333333336"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="34"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="80" id="WWY-iF-BZU"/>
                                                         </constraints>
@@ -1283,14 +1283,9 @@
                                                         <constraint firstAttribute="width" constant="68" id="2PU-Uj-hmB"/>
                                                         <constraint firstAttribute="height" constant="33" id="lz7-gy-Hyl"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
-                                                    <state key="normal" title="Reset">
-                                                        <color key="titleColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                    <buttonConfiguration key="configuration" style="filled" title="Reset">
-                                                        <fontDescription key="titleFontDescription" name="Outfit-Regular" family="Outfit" pointSize="14"/>
-                                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </buttonConfiguration>
+                                                    <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="17"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" title="Reset"/>
                                                     <connections>
                                                         <action selector="resetAllBudgets:" destination="NBk-tc-AHQ" eventType="touchUpInside" id="2HT-2i-rPc"/>
                                                     </connections>
@@ -1327,14 +1322,10 @@
                                                         <constraint firstAttribute="height" constant="32.5" id="Ckl-X8-IB6"/>
                                                         <constraint firstAttribute="width" constant="68" id="IsB-KY-Mys"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
-                                                    <state key="normal" title="Reset">
-                                                        <color key="titleColor" red="0.25490196079999999" green="0.45882352939999999" blue="0.019607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                    <buttonConfiguration key="configuration" style="filled" title="Reset">
-                                                        <fontDescription key="titleFontDescription" name="Outfit-Regular" family="Outfit" pointSize="14"/>
-                                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </buttonConfiguration>
+                                                    <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="17"/>
+                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" title="Reset"/>
                                                     <connections>
                                                         <action selector="resetReminders:" destination="NBk-tc-AHQ" eventType="touchUpInside" id="jua-9Q-aeV"/>
                                                     </connections>
@@ -1535,6 +1526,8 @@
                     <connections>
                         <outlet property="monthlyResetSwitch" destination="AFL-Xb-kQT" id="baC-tI-1IJ"/>
                         <outlet property="pigCredit" destination="9wy-9C-MvQ" id="mRL-c8-rxh"/>
+                        <outlet property="resetRemindersButtonOutlet" destination="2uL-Ws-8Gf" id="lPX-8O-7gg"/>
+                        <outlet property="resetSpendingButtonOutlet" destination="Vou-ka-roH" id="Lhl-ae-Qbi"/>
                         <outlet property="signOutButtonOutlet" destination="lTb-KF-hqv" id="AGP-UZ-CXo"/>
                         <segue destination="jmj-We-s0t" kind="presentation" identifier="goToSubscription" modalPresentationStyle="fullScreen" id="JcN-XB-7Xc"/>
                         <segue destination="d8b-nw-57S" kind="show" identifier="goToSignUp" id="6OR-gc-DNz"/>
@@ -1602,14 +1595,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Z0d-RX-vGi">
-                                                    <rect key="frame" x="19.999999999999996" y="23.666666666666671" width="33.666666666666664" height="21"/>
+                                                    <rect key="frame" x="19.999999999999996" y="24.666666666666671" width="35.666666666666664" height="19.333333333333332"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Outfit-Regular" family="Outfit" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="giU-9I-ZuL">
-                                                    <rect key="frame" x="19.999999999999996" y="48" width="35.666666666666664" height="16.333333333333332"/>
+                                                    <rect key="frame" x="19.999999999999996" y="47.333333333333329" width="36.666666666666664" height="15"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Outfit-Light" family="Outfit" pointSize="14"/>
                                                     <nil key="textColor"/>
@@ -2411,7 +2404,7 @@ easy as 1-2-done!</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="IbI-2h-leB"/>
+        <segue reference="6OR-gc-DNz"/>
         <segue reference="Mh5-fk-KUP"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="labelColor"/>

@@ -66,6 +66,9 @@ class AddReminderViewController: UIViewController, UITextFieldDelegate, UIPicker
         reminderAmountField.placeholder = updateAmount()
         dueDateInput.text = "1st"
         
+        repeatSwitchOutlet.onTintColor = Colors.themeGreenDark
+        notificationSwitchOutlet.onTintColor = Colors.themeGreenDark
+        
         
         
         //SET FIRST RESPONDER

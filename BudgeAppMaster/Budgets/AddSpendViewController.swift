@@ -127,7 +127,6 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
         
         let toggleSwitch = UISwitch()
-        toggleSwitch.onTintColor = Colors.themeGreen
 
         toggleSwitch.addTarget(self, action: #selector(self.switchToggle), for: .valueChanged)
         
@@ -146,7 +145,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
         //toolBar.setItems([flexibleSpace, toggleSwitch], animated: false)
         
         toolBar.setItems([flexibleSpace, UIBarButtonItem.init(customView: toggleText), UIBarButtonItem.init(customView: toggleSwitch)], animated: false)
-        toggleSwitch.onTintColor = Colors.themeGreen
+        toggleSwitch.onTintColor = Colors.themeGreenDark
         
         spendAmount.inputAccessoryView = toolBar
         spendNoteField.inputAccessoryView = toolBar
@@ -246,6 +245,7 @@ class AddSpendViewController: ViewController, UITextFieldDelegate{
     @objc func switchToggle() {
         //view.endEditing(true)
         print("toggle")
+        
         
         if saveAsRefundToggle == false {
             saveAsRefundToggle = true

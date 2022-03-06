@@ -15,6 +15,8 @@ var goToMain = false
 class SettingTableViewController: UITableViewController {
 
 
+    @IBOutlet weak var resetSpendingButtonOutlet: UIButton!
+    @IBOutlet weak var resetRemindersButtonOutlet: UIButton!
     @IBOutlet weak var monthlyResetSwitch: UISwitch!
     @IBOutlet weak var signOutButtonOutlet: UIButton!
     
@@ -87,7 +89,19 @@ class SettingTableViewController: UITableViewController {
        
         getUserDefaults()
         
-        monthlyResetSwitch.onTintColor = Colors.themeGreen
+        monthlyResetSwitch.onTintColor = Colors.themeGreenDark
+        
+        
+        //Style Buttons
+        resetSpendingButtonOutlet.backgroundColor = Colors.themeBlack
+        resetSpendingButtonOutlet.setTitleColor(Colors.themeWhite, for: .normal)
+        resetSpendingButtonOutlet.layer.cornerRadius = resetSpendingButtonOutlet.frame.height / 2
+        
+        resetRemindersButtonOutlet.backgroundColor = Colors.themeBlack
+        resetRemindersButtonOutlet.setTitleColor(Colors.themeWhite, for: .normal)
+        resetRemindersButtonOutlet.layer.cornerRadius = resetSpendingButtonOutlet.frame.height / 2
+        
+        
       
         
     }
@@ -150,9 +164,11 @@ class SettingTableViewController: UITableViewController {
         
     
         var needsCarryoverOption = false
-        for i in 0...carryoverAmount.count - 1 {
-            if carryoverAmount[i] != 0.0 {
-                needsCarryoverOption = true
+        if carryoverAmount.count > 0 {
+            for i in 0...carryoverAmount.count - 1 {
+                if carryoverAmount[i] != 0.0 {
+                    needsCarryoverOption = true
+                }
             }
         }
         if needsCarryoverOption == true {
@@ -257,11 +273,13 @@ class SettingTableViewController: UITableViewController {
     //MARK: Carryover
     func calculateCarryover() {
         clearTempArrays()
-        for i in 0...budgetNameG.count - 1 {
-            carryoverAmount.append(0 - (budgetAmountG[i] - budgetHistoryAmountG[budgetNameG[i]]!.reduce(0, +)))
+        if budgetNameG.count > 0 {
+            for i in 0...budgetNameG.count - 1 {
+                carryoverAmount.append(0 - (budgetAmountG[i] - budgetHistoryAmountG[budgetNameG[i]]!.reduce(0, +)))
+            }
+            print("carryoverAmount: \(carryoverAmount)")
+            //        applyCarryover()
         }
-        print("carryoverAmount: \(carryoverAmount)")
-//        applyCarryover()
     }
     
     func applyCarryover() {
